@@ -283,7 +283,7 @@ render () {
 ![Side Menu](http://i.imgur.com/cjIcRl6.gif)
 
 ```js
-import { SideMenu, List, ListItem } from 'react-native-elements'
+import { SideMenu, ListItem } from 'react-native-elements'
 
 constructor () {
   super()
@@ -292,7 +292,7 @@ constructor () {
 
 toggleSideMenu () {
   this.setState({
-    toggled: !this.state.toggled
+    toggled: true
   })
 }
 
@@ -400,6 +400,7 @@ render () {
   const { selectedIndex } = this.state
   return (
     <ButtonGroup
+      onPress={this.updateIndex}
       selectedIndex={selectedIndex}
       buttons={buttons} />
   )
@@ -417,6 +418,7 @@ render () {
 | onPress | none | function | method to update Button Group Index (required) |
 | buttons | none | array | array of buttons for component (required) |
 | component | TouchableHighlight | React Native Component | Choose other button component such as TouchableOpacity (optional) |
+
 | containerStyle | inherited styling | object (style) | specify styling for main button container (optional) |
 | selectedBackgroundColor | white | string | specify color for selected state of button (optional) |
 | textStyle | inherited styling | object (style) | specify specific styling for text (optional) |
