@@ -1,6 +1,6 @@
 {
   "name": "react-native-elements",
-  "version": "0.5.2",
+  "version": "0.5.1",
   "description": "React Native Elements & UI Toolkit",
   "main": "src/index.js",
   "repository": {
@@ -21,8 +21,5 @@
   "bugs": {
     "url": "https://github.com/dabit3/React-Native-Elements/issues"
   },
-  "homepage": "https://github.com/dabit3/React-Native-Elements#readme",
-  "dependencies": {
-    "react-native-tab-navigator": "^0.3.3"
-  }
+  "homepage": "https://github.com/dabit3/React-Native-Elements#readme"
 }
