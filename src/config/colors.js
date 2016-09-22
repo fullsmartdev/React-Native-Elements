@@ -13,6 +13,5 @@ export default {
   grey5: '#e1e8ee',
   dkGreyBg: '#232323',
   greyOutline: '#cbd2d9',
-  searchBg: '#303337',
-  disabled: '#dadee0',
+  searchBg: '#303337'
 }
