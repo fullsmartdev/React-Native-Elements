@@ -88,6 +88,9 @@ const Button = ({
   if (!Component && Platform.OS === 'android') {
     Component = TouchableNativeFeedback
   }
+  if (!Component) {
+    Component = TouchableHighlight
+  }
   return (
     <Component
       delayLongPress={delayLongPress}
