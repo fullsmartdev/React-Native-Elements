@@ -80,7 +80,7 @@ const ListItem = ({
               !leftIcon && {marginLeft: 10},
               fontFamily && {fontFamily}
             ]}>{title}</Text>
-          {(subtitle && (typeof subtitle === 'string')) ? (
+          {subtitle && (subtitle !== '') && (
             <View style={subtitleContainerStyle}>
               <Text
                 style={[
@@ -89,10 +89,6 @@ const ListItem = ({
                   subtitleStyle && subtitleStyle,
                   fontFamily && {fontFamily}
                 ]}>{subtitle}</Text>
-            </View>
-          ) : (
-            <View style={subtitleContainerStyle}>
-              {subtitle}
             </View>
           )}
         </View>
@@ -162,6 +158,7 @@ styles = StyleSheet.create({
     height: 34
   },
   container: {
+    marginLeft: 10,
     paddingTop: 10,
     paddingRight: 10,
     paddingBottom: 10,
@@ -170,8 +167,7 @@ styles = StyleSheet.create({
     backgroundColor: 'transparent'
   },
   wrapper: {
-    flexDirection: 'row',
-    marginLeft: 10,
+    flexDirection: 'row'
   },
   icon: {
     marginRight: 8
