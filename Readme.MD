@@ -55,6 +55,7 @@ import {
 - [x] HTML style headings (h1, h2, etc...)
 - [x] [Card component](https://github.com/react-native-community/react-native-elements#card)
 - [x] [Pricing Component](https://github.com/react-native-community/react-native-elements#pricing-component)
+- [x] [Grid Component](https://github.com/react-native-community/react-native-elements#grid-component)
 
 ## Roadmap
 - [ ] Add radio buttons
@@ -62,7 +63,6 @@ import {
 - [ ] [Swipeable List Item component](https://github.com/jemise111/react-native-swipe-list-view)
 - [ ] Add icons to TextInputs
 - [ ] Profile Component `in progress`
-- [ ] Add grid component `in progress`
 - [ ] Custom Picker
 - [ ] Side Menu Improvements
 - [ ] Something you's like to see? Submit an [issue](https://github.com/dabit3/react-native-elements/issues) or a [pull request](https://github.com/dabit3/react-native-elements/pulls)
@@ -411,47 +411,6 @@ render () {
 
 ```
 
-#### ListItem implemented with custom View for Subtitle
-
-```js
-import { List, ListItem } from 'react-native-elements'
-
-render () {
-  return (
-    <List>
-      <ListItem
-        roundAvatar
-        title='Limited supply! Its like digital gold!'
-        subtitle={
-          <View style={styles.subtitleView}>
-            <Image source={require('../images/rating.png')} style={styles.ratingImage}/>
-            <Text style={styles.ratingText}>5 months ago</Text>
-          </View>
-        }
-        avatar={require('../images/avatar1.jpg')}
-      />
-    </List>
-  )
-}
-
-styles = StyleSheet.create({
-  subtitleView: {
-    flexDirection: 'row',
-    paddingLeft: 10,
-    paddingTop: 5
-  },
-  ratingImage: {
-    height: 19.21,
-    width: 100
-  },
-  ratingText: {
-    paddingLeft: 10,
-    color: 'grey'
-  }
-})
-
-```
-
 #### List Props
 
 | prop | default | type | description |
@@ -474,7 +433,7 @@ styles = StyleSheet.create({
 | onPress | none | function | onPress method for link (optional) |
 | onLongPress | none | function | onLongPress method for link (optional) |
 | roundAvatar | false | boolean | make left avatar round |
-| subtitle | none | string or object | subtitle text or custom view (optional) |
+| subtitle | none | string | subtitle text (optional) |
 | subtitleContainerStyle | none | style (object) | provide styling for subtitle container |
 | subtitleStyle | none | object (style) | additional subtitle styling (optional ) |
 | title | none | string | main title for list item (required) |
@@ -503,7 +462,7 @@ Example badge usage
   badge={{ value: 3, badgeTextStyle: { color: 'orange' }, badgeContainerStyle: { marginTop: -20 } }}
 />
 
-<ListItem
+<ListItem 
   ...
   badge={{ element: <MyCustomElement> }}
 />
@@ -515,50 +474,44 @@ Example badge usage
 
 ![Side Menu](http://i.imgur.com/cjIcRl6.gif)
 
-> This component implements [react-native-side-menu](https://github.com/react-native-community/react-native-side-menu) which is part of the [react-native-community](https://github.com/react-native-community).
-
 ```js
 import { SideMenu, List, ListItem } from 'react-native-elements'
 
 constructor () {
   super()
-  this.state = {
-    isOpen: false
-  }
-  this.toggleSideMenu = this.toggleSideMenu.bind(this)
+  this.state = { toggled: false }
 }
 
 toggleSideMenu () {
   this.setState({
-    isOpen: !this.state.isOpen
+    toggled: !this.state.toggled
   })
 }
 
 render () {
+  // SideMenu takes a React Native element as a prop for the actual Side Menu
   const MenuComponent = (
     <View style={{flex: 1, backgroundColor: '#ededed', paddingTop: 50}}>
       <List containerStyle={{marginBottom: 20}}>
       {
-        list.map((l, i) => (
+        list.map((item, i) => (
           <ListItem
             roundAvatar
-            onPress={() => console.log('Pressed')}
-            avatar={l.avatar_url}
+            onPress={() => console.log('something')}
+            avatar={{uri:item.avatar_url}}
             key={i}
-            title={l.name}
-            subtitle={l.subtitle}
-          />
+            title={item.name}
+            subtitle={item.subtitle} />
         ))
       }
       </List>
     </View>
   )
-
   return (
     <SideMenu
-      isOpen={this.state.isOpen}
-      menu={MenuComponent}>
-      <App toggleSideMenu={this.toggleSideMenu.bind(this)} />
+      MenuComponent={MenuComponent}
+      toggled={this.state.toggled}>
+      <App />
     </SideMenu>
   )
 }
@@ -569,23 +522,13 @@ render () {
 
 | prop | default | type | description |
 | ---- | ---- | ----| ---- |
-| menu | inherited | React.Component | Menu component |
-| isOpen |false | Boolean | Props driven control over menu open state |
-| openMenuOffset | 2/3 of device screen width | Number | Content view left margin if menu is opened |
-| hiddenMenuOffset | none | Number | Content view left margin if menu is hidden |
-| edgeHitWidth | none | Number | Edge distance on content view to open side menu, defaults to 60 |
-| toleranceX | none | Number | X axis tolerance |
-| toleranceY | none | Number | Y axis tolerance |
-| disableGestures | false | Bool | Disable whether the menu can be opened with gestures or not |
-| onStartShould <br /> SetResponderCapture | none | Function | Function that accepts event as an argument and specify if side-menu should react on the touch or not. Check https://facebook.github.io/react-native/docs/gesture-responder-system.html for more details |
-| onChange | none | Function | Callback on menu open/close. Is passed isOpen as an argument |
-| onMove | none | Function | Callback on menu move. Is passed left as an argument |
-| menuPosition | left | String | either 'left' or 'right' |
-| animationFunction | none | (Function -> Object) | Function that accept 2 arguments (prop, value) and return an object: <br /> - `prop` you should use at the place you specify parameter to animate <br /> - `value` you should use to specify the final value of prop |
-| animationStyle | none | (Function -> Object) | Function that accept 1 argument (value) and return an object: <br /> - `value` you should use at the place you need current value of animated parameter (left offset of content view) |
-| bounceBackOnOverdraw | true | boolean | when true, content view will bounce back to openMenuOffset when dragged further |
-
-> For issues or feature requests related to SideMenu component please click [here](https://github.com/react-native-community/react-native-side-menu/issues)
+| toggled | false | boolean | toggles side menu when true (required) |
+| toggledContainerStyle | none | object (style) | toggled state menu styling |
+| easing | Easing.inout | Easing method | specifies different easing method (optional) |
+| duration | 250 | animation length | specifies length of animation (optional) |
+| menuWidth | window width - 80 | number | the width and offset of the menu (optional) |
+| MenuComponent | none | React Native Component | the actual side menu component you would like to use (required) |
+| children | none | React Native Component | wrap RNSideMenu around the component you would like to animate (required)  |
 
 ## Search Bar
 
@@ -640,6 +583,7 @@ import { SearchBar } from 'react-native-elements'
 > This component implements the [react-native-tab-navigator](https://github.com/exponentjs/react-native-tab-navigator) from [Exponent](https://getexponent.com/). Check out [Exponent](https://getexponent.com/) if you haven't already!
 
 ```js
+
 import { Tabs, Tab, Icon } from 'react-native-elements'
 
 changeTab (selectedTab) {
@@ -674,6 +618,8 @@ const { selectedTab } = this.state
   /* ... more tabs here */
 </Tabs>
 
+styles = { /* some custom styles /* }
+
 ```
 
 ### Tabs Props
@@ -700,8 +646,6 @@ const { selectedTab } = this.state
 | selected | none | boolean | return whether the item is selected |
 | onPress | none | function | onPress method for Item |
 | allowFontScaling | false | boolean | allow font scaling for title |
-
-> For issues or feature requests related to Tab Bar component please click [here](https://github.com/exponentjs/react-native-tab-navigator/issues)
 
 ## ButtonGroup
 
@@ -1001,3 +945,107 @@ import { PricingCard } from 'react-native-elements'
 | pricingFont | System font (font weight 700) (iOS), Roboto-Bold (android) | string | specify pricing font family |
 | infoFont | System font bold (iOS), Roboto-Bold (android) | string | specify pricing information font family |
 | buttonFont | System font (iOS), Roboto (android) | string | specify button font family |
+
+## Grid Component
+The Grid component provides two types of layouts, Row and Column.
+
+#### Row
+
+<img src="http://i.imgur.com/1e8W6j6.png" width="400" >
+
+```js
+import {Grid, Row} from 'react-native-elements';
+
+<Grid>
+  <Row></Row>
+  <Row></Row>
+</Grid>
+```
+
+#### Column
+
+<img src="http://i.imgur.com/MWIBLKk.png" width="400" >
+
+```js
+import {Grid, Col} from 'react-native-elements';
+
+<Grid>
+  <Col></Col>
+  <Col></Col>
+</Grid>
+```
+
+Creating nested layout
+
+
+<table width="100" height="100">
+  <tr>
+    <td rowspan="2" width="50">1</td>
+    <td width="50" height="50">2</td>
+  </tr>
+  <tr>
+    <td>3</td>
+  </tr>
+</table>
+
+<img src="http://i.imgur.com/PZ4vR6z.png" width="400" >
+
+```js
+import {Grid, Col, Row} from 'react-native-elements';
+
+<Grid>
+  <Col></Col>
+  <Col>
+    <Row></Row>
+    <Row></Row>
+  </Col>
+</Grid>
+```
+
+#### Using the size prop
+
+A ratio can be passed to the Size Prop
+
+<img src="https://i.imgur.com/xYDQ3XV.png" width="400" >
+
+```js
+<Grid>
+  <Row size={3}></Row>
+  <Row size={1}></Row>
+</Grid>
+```
+
+<img src="http://i.imgur.com/34nfZtP.png" width="400" >
+
+```js
+<Grid>
+  <Col size={75}></Col>
+  <Col size={25}></Col>
+</Grid>
+```
+
+#### GridComponent Props
+
+| prop | default | type | description |
+| ---- | ---- | ----| ---- |
+| style | none | object (style) | Outer grid styling (optional) |
+| onPress | none | function | onPress method (optional) |
+| activeOpacity | 1 | number | Opacity on pressing (optional) |
+
+#### ColComponent Props
+
+| props | default | type | description |
+| ---- | ---- | ---- | ---- |
+| style | none | object (style) | Styling for the outer column (optional) |
+| size | none | number | Size for column (optional) |
+| onPress | none | function | onPress method (optional) |
+| activeOpacity | 1 | number | Opacity on pressing (optional) |
+
+#### RowComponent Props
+
+| props | default | type | description |
+| ---- | ---- | ---- | ---- |
+| style | none | object (style) | Styling for the outer column (optional) |
+| size | none | number | Size for row (optional) |
+| onPress | none | function | onPress method (optional) |
+| activeOpacity | 1 | number | Opacity on pressing (optional) |
