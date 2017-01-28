@@ -126,8 +126,7 @@ const Button = ({
           raised && styles.raised,
           !large && styles.small,
           buttonStyle && buttonStyle,
-          disabled && {backgroundColor: colors.disabled},
-          disabled && disabledStyle && disabledStyle
+          disabled && {backgroundColor: colors.disabled}
         ]}
         >
         {
