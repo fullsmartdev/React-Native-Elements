@@ -13,7 +13,7 @@ const FormLabel = ({containerStyle, labelStyle, children, fontFamily}) => (
       styles.label,
       labelStyle && labelStyle,
       fontFamily && {fontFamily}
-    ]}>{children}</Text>
+    ]}>{children.toUpperCase()}</Text>
   </View>
 )
 
