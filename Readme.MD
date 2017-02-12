@@ -795,7 +795,8 @@ render () {
     <ButtonGroup
       onPress={this.updateIndex}
       selectedIndex={selectedIndex}
-      buttons={buttons} />
+      buttons={buttons}
+      containerStyle={{height: 100}} />
   )
 }
 
@@ -826,7 +827,8 @@ render () {
     <ButtonGroup
       onPress={this.updateIndex}
       selectedIndex={selectedIndex}
-      buttons={buttons} />
+      buttons={buttons}
+      containerStyle={{height: 100}} />
   )
 }
 
@@ -922,7 +924,7 @@ import { FormLabel, FormInput } from 'react-native-elements'
 
 <FormLabel>Name</FormLabel>
 <FormInput onChangeText={someFunction}/>
-<FormValidationMessage>Error message</<FormValidationMessage>
+<FormValidationMessage>Error message</FormValidationMessage>
 ```
 
 #### FormValidationMessage example
@@ -1265,7 +1267,6 @@ A component with full size image and with text either inside the image or under 
   imageSrc={{require: ('./img/path')}}
   title="Lorem ipsum dolor sit amet, consectetur"
   icon={{name: 'play-circle', type: 'font-awesome'}}  // optional
-  contentContainerStyle={{height: 70}}
 >
   <View style={{flex: 1, flexDirection: 'row', justifyContent: 'space-between'}}>
     <Text>Caption</Text>
@@ -1277,8 +1278,7 @@ A component with full size image and with text either inside the image or under 
 
 | prop | default | type | description |
 | ---- | ---- | ----| ---- |
-| icon | none | object {name: string, color: string, size: number, type: string (default is material, or choose one of material-community, simple-line-icon, zocial, font-awesome, octicon, ionicon, foundation, evilicon, or entypo), iconStyle: object(style)} | Icon Component Props (optional) |
-| iconContainerStyle | none | object (style) | Styling for the outer icon container (optional) |
+| icon | none | object {name: string, color: string, size: number, type: string (default is material, or choose one of material-community, simple-line-icon, zocial, font-awesome, octicon, ionicon, foundation, evilicon, or entypo), style: object(style)} | Icon Component Props (optional) |
 | title | none | string | Text inside the tile (optional) |
 | titleStyle | none | object (style) | Styling for the title (optional) |
 | caption | none | string | Text inside the tilt when tile is featured
@@ -1289,6 +1289,6 @@ A component with full size image and with text either inside the image or under 
 | imageContainerStyle | none | object (style) | Styling for the image (optional) |
 | onPress | none | function (event) | Function to call when tile is pressed (optional) |
 | activeOpacity | 0.2 | number | Number passed to control opacity on press (optional) |
-| contentContainerStyle | none | object (style) | Styling for bottom container when not featured tile (optional) |
+| contentContainerStyling | none | object (style) | Styling for bottom container when not featured tile (optional) |
 | width | Device Width | number | Width for the tile (optional) |
 | height | Device Width * 0.8 | number | Height for the tile |
