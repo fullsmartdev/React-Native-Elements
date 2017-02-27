@@ -58,6 +58,7 @@ import {
 - [x] [Grid Component](https://github.com/react-native-community/react-native-elements#grid-component)
 - [x] [Slider Component](https://github.com/react-native-community/react-native-elements#slider-component)
 - [x] [Tile Component](https://github.com/react-native-community/react-native-elements#tile-component)
+- [x] [Avatar Component](https://github.com/react-native-community/react-native-elements#avatar-component)
 
 ## Roadmap
 - [ ] Add radio buttons
@@ -471,7 +472,7 @@ styles = StyleSheet.create({
 | containerStyle | none | object (style) | additional main container styling (optional) |
 | hideChevron | false | boolean | set if you do not want a chevron (optional) |
 | leftIcon | none | object {name, color, style, type} (type defaults to material icons) | icon configuration for left icon (optional) |
-| rightIcon | {name: 'chevron-right'} | object {name, color, style, type} (type defaults to material icons) | icon configuration for right icon (optional). Shows up unless hideChevron is set |
+| rightIcon | {name: 'chevron-right'} | object {name, color, style, type} (type defaults to material icons) | icon configuration for right icon (optional). Shows up unless hideChevron or rightTitle is set |
 | onPress | none | function | onPress method for link (optional) |
 | onLongPress | none | function | onLongPress method for link (optional) |
 | roundAvatar | false | boolean | make left avatar round |
@@ -484,7 +485,7 @@ styles = StyleSheet.create({
 | wrapperStyle | none | object (style) | additional wrapper styling (optional) |
 | underlayColor | white | string | define underlay color for TouchableHighlight (optional) |
 | fontFamily | HelevticaNeue (iOS), Roboto (android) | string | specify different font family |
-| rightTitle | none | string | provide a rightTitle to have a title show up on the right side of the button |
+| rightTitle | none | string | provide a rightTitle to have a title show up on the right side of the button, will override any icon on the right |
 | rightTitleContainerStyle | flex: 1, alignItems: 'flex-end', justifyContent: 'center' | object (style) | style the outer container of the rightTitle text |
 | rightTitleStyle | marginRight: 5, color: '#bdc6cf' | object (style) | style the text of the rightTitle text |
 | label | none | react native component | add a label with your own styling by providing a label={<SomeComponent />} prop to ListItem |
@@ -1275,6 +1276,7 @@ A component with full size image and with text either inside the image or under 
   </View>
 </Tile>
 ```
+
 ### Tile Props
 
 | prop | default | type | description |
@@ -1294,3 +1296,35 @@ A component with full size image and with text either inside the image or under 
 | contentContainerStyle | none | object (style) | Styling for bottom container when not featured tile (optional) |
 | width | Device Width | number | Width for the tile (optional) |
 | height | Device Width * 0.8 | number | Height for the tile |
+
+## Avatar Component
+
+![Avatar]()
+
+#### Avatar
+
+``` js
+<Avatar
+  width={150}
+  roundAvatar
+  source={{uri: "https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg"}}
+  onPress={() => console.log("Works!")}
+  activeOpacity={0.7}
+/>
+```
+#### Avatar with initials
+
+```js
+<Avatar
+  width={150}
+  roundAvatar
+  initials="MM"
+  onPress={() => console.log("Works!")}
+  activeOpacity={0.7}
+/>
+```
+
+### Avatar Props
+
+| prop | default | type | description |
+| ---- | ---- | ----| ---- |
