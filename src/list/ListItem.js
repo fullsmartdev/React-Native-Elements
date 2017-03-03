@@ -76,7 +76,7 @@ const ListItem = ({
         }
         <View style={styles.titleSubtitleContainer}>
           <View style={titleContainerStyle}>
-            {(title && (typeof title === 'string' || typeof title === 'number')) ? (
+            {(title && (typeof title === 'string')) ? (
               <Text
                 style={[
                   styles.title,
@@ -91,7 +91,7 @@ const ListItem = ({
             )}
           </View>
           <View style={subtitleContainerStyle}>
-            {(subtitle && (typeof subtitle === 'string' || typeof subtitle === 'number')) ? (
+            {(subtitle && (typeof subtitle === 'string')) ? (
               <Text
                 style={[
                   styles.subtitle,
@@ -149,13 +149,13 @@ ListItem.defaultProps = {
 }
 
 ListItem.propTypes = {
-  title: PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.object]),
+  title: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   avatar: PropTypes.any,
   icon: PropTypes.any,
   onPress: PropTypes.func,
   rightIcon: PropTypes.object,
   underlayColor: PropTypes.string,
-  subtitle: PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.object]),
+  subtitle: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   subtitleStyle: PropTypes.any,
   containerStyle: PropTypes.any,
   wrapperStyle: PropTypes.any,
