@@ -13,9 +13,6 @@
     "reactnative",
     "bootstrap"
   ],
-  "scripts": {
-    "build": "rm -rf build; webpack"
-  },
   "peerDependencies": {
     "react-native-vector-icons": "~4.0.0"
   },
@@ -28,12 +25,5 @@
   "dependencies": {
     "react-native-side-menu": "^0.20.1",
     "react-native-tab-navigator": "^0.3.3"
-  },
-  "devDependencies": {
-    "babel": "^6.23.0",
-    "babel-core": "^6.23.1",
-    "babel-loader": "^6.3.2",
-    "babel-preset-react-native": "^1.9.1",
-    "webpack": "^2.2.1"
   }
 }
