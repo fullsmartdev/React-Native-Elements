@@ -60,13 +60,26 @@ import {
 - [x] [Tile Component](https://github.com/react-native-community/react-native-elements#tile-component)
 - [x] [Avatar Component](https://github.com/react-native-community/react-native-elements#avatar-component)
 
-## Roadmap
-- [ ] Add radio buttons
-- [ ] Searchable Drop Down similar to [Bootstrap-3-Typehead](https://github.com/bassjobsen/Bootstrap-3-Typeahead)
-- [ ] [Swipeable List Item component](https://github.com/jemise111/react-native-swipe-list-view)
-- [ ] Add icons to TextInputs
-- [ ] Profile Component `in progress`
-- [ ] Custom Picker
+## [Roadmap](https://github.com/react-native-community/react-native-elements/issues/195#issuecomment-286213704)
+- [ ] Add Profile Component - FIRST CONTRIBUTORS
+- [ ] Add Header Component - FIRST CONTRIBUTORS
+- [ ] Add featuredTile prop in Tile - FIRST CONTRIBUTORS
+- [ ] Add Badge Component - FIRST CONTRIBUTORS
+- [ ] Expose & document Divider Component - FIRST CONTRIBUTORS
+- [ ] Refactor Social Icon to use Button - FIRST CONTRIBUTORS
+
+- [ ] Add Unit Tests - IN PROGRESS
+- [ ] Create React Native Elements Website - IN PROGRESS
+
+- [ ] Floating labels on FormInput - NOT STARTED
+- [ ] Compatibility with react-native-web - NOT STARTED
+- [ ] Support Multiple FormInput refs - NOT STARTED
+- [ ] Two-Marker Slider - NOT STARTED
+- [ ] Add Notification Component - NOT STARTED
+- [ ] Add Image Component which supports parallax - NOT STARTED
+- [ ] Add DatePicker/Calendar Component - NOT STARTED
+- [ ] Add Theming & Default Styles - NOT STARTED
+
 - [ ] Something you's like to see? Submit an [issue](https://github.com/dabit3/react-native-elements/issues) or a [pull request](https://github.com/dabit3/react-native-elements/pulls)
 
 ## Examples
@@ -472,7 +485,7 @@ styles = StyleSheet.create({
 | containerStyle | none | object (style) | additional main container styling (optional) |
 | hideChevron | false | boolean | set if you do not want a chevron (optional) |
 | leftIcon | none | object {name, color, style, type} (type defaults to material icons) | icon configuration for left icon (optional) |
-| rightIcon | {name: 'chevron-right'} | object {name, color, style, type} (type defaults to material icons) | icon configuration for right icon (optional). Shows up unless hideChevron or rightTitle is set |
+| rightIcon | {name: 'chevron-right'} | object {name, color, style, type} (type defaults to material icons) | icon configuration for right icon (optional). Shows up unless hideChevron is set |
 | onPress | none | function | onPress method for link (optional) |
 | onLongPress | none | function | onLongPress method for link (optional) |
 | roundAvatar | false | boolean | make left avatar round |
@@ -485,7 +498,7 @@ styles = StyleSheet.create({
 | wrapperStyle | none | object (style) | additional wrapper styling (optional) |
 | underlayColor | white | string | define underlay color for TouchableHighlight (optional) |
 | fontFamily | HelevticaNeue (iOS), Roboto (android) | string | specify different font family |
-| rightTitle | none | string | provide a rightTitle to have a title show up on the right side of the button, will override any icon on the right |
+| rightTitle | none | string | provide a rightTitle to have a title show up on the right side of the button |
 | rightTitleContainerStyle | flex: 1, alignItems: 'flex-end', justifyContent: 'center' | object (style) | style the outer container of the rightTitle text |
 | rightTitleStyle | marginRight: 5, color: '#bdc6cf' | object (style) | style the text of the rightTitle text |
 | label | none | react native component | add a label with your own styling by providing a label={<SomeComponent />} prop to ListItem |
@@ -592,7 +605,7 @@ render () {
 
 ## Search Bar
 
-![Search Bar](http://i.imgur.com/QvSrF62.png)
+<img src="https://i.imgur.com/mvPgPfg.png" width="300" >
 
 ```js
 import { SearchBar } from 'react-native-elements'
@@ -639,7 +652,8 @@ import { SearchBar } from 'react-native-elements'
 | placeholder | '' | string | set the placeholder text |
 | placeholderTextColor | '#86939e' | string | set the color of the placeholder text |
 | onChangeText | none | function | method to fire when text is changed |
-| clearIcon | { color: '#86939e', name: 'search' } | object {name (string), color (string), style (object)} | specify color, styling, or another [Material Icon Name](https://design.google.com/icons/) Note: pressing on this icon clears text inside the searchbar |
+| clearIcon | { color: '#86939e', name: 'search' } | object {name (string), color (string), style (object)} | specify color, styling, or another [Material Icon Name](https://design.google.com/icons/)
+(Note: pressing on this icon clears text inside the searchbar) |
 
 ## Tab Bar Component
 
@@ -908,7 +922,9 @@ import { CheckBox } from 'react-native-elements'
 | containerStyle | none | object (style) | style of main container (optional) |
 | textStyle | none | object (style) | style of text (optional) |
 | onLongPress | none | function | onLongPress function for  checkbox (optional) |
-| onPress | none | function | onPress function for checkbox (required) |
+| onLongIconPress | none | function | onLongPress function for  checkbox (optional) |
+| onPress | none | function | onPress function for container (optional) |
+| onIconPress | none | function | onPress function for checkbox (required) |
 | checkedIcon | check-square-o | string | default checked icon ([Font Awesome Icon](http://fontawesome.io/icons/)) (optional) |
 | uncheckedIcon | square-o | string | default checked icon ([Font Awesome Icon](http://fontawesome.io/icons/)) (optional) |
 | checkedColor | green | string | default checked color (optional) |
