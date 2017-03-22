@@ -5,9 +5,7 @@
 
 ## Get Started
 
-*If you are using Exponent, you can run `npm i react-native-elements --save` and skip to step 3.*
-
-*If you are using create-react-native-app, click [here](https://github.com/react-native-community/react-native-elements/blob/master/using-with-crna.md)*
+*If you are using [Expo](https://expo.io) or [create-react-native-app], click [here](https://github.com/react-native-community/react-native-elements/blob/master/using-with-crna.md)*
 
 #### Step 1
 
@@ -865,12 +863,11 @@ render () {
 | buttons | none | array | array of buttons for component (required), if returning a component, must be an object with { element: componentName } |
 | component | TouchableHighlight | React Native Component | Choose other button component such as TouchableOpacity (optional) |
 | containerStyle | inherited styling | object (style) | specify styling for main button container (optional) |
-| buttonStyle | inherited styling | object (style) | specify styling for button (optional) |
 | selectedBackgroundColor | white | string | specify color for selected state of button (optional) |
 | textStyle | inherited styling | object (style) | specify specific styling for text (optional) |
 | selectedTextStyle | inherited styling | object (style) | specify specific styling for text in the selected state (optional)|
-| innerBorderStyle | inherited styling | object { width, color } | update the styling of the interior border of the list of buttons (optional) |
 | underlayColor | white | string | specify underlayColor for TouchableHighlight (optional) |
+| borderStyle | inherited styling | object (style) | update the styling of the interior border of the list of buttons (optional) |
 
 ## Checkboxes
 
@@ -1321,11 +1318,11 @@ A component with full size image and with text either inside the image or under 
 
 ## Avatar Component
 
-![Avatar Component](https://github.com/react-native-community/react-native-elements/blob/next/src/avatar/avatar_all.png)
+<img src="https://github.com/react-native-community/react-native-elements/blob/master/src/avatar/avatar_all.png" width="500" >
 
 #### Avatars
 
-![Avatar Component](https://github.com/react-native-community/react-native-elements/blob/next/src/avatar/avatar_with_images.png)
+<img src="https://github.com/react-native-community/react-native-elements/blob/master/src/avatar/avatar_with_images.png" width="500" >
 
 ``` js
 <Avatar
@@ -1358,7 +1355,7 @@ A component with full size image and with text either inside the image or under 
 
 #### Avatar with initials
 
-![Avatar Component](https://github.com/react-native-community/react-native-elements/blob/next/src/avatar/avatar_with_initials.png)
+<img src="https://github.com/react-native-community/react-native-elements/blob/master/src/avatar/avatar_with_initials.png" width="500" >
 
 ```js
 <Avatar
@@ -1391,7 +1388,7 @@ A component with full size image and with text either inside the image or under 
 
 #### Avatar with icons
 
-![Avatar Component](https://github.com/react-native-community/react-native-elements/blob/next/src/avatar/avatar_with_icons.png)
+<img src="https://github.com/react-native-community/react-native-elements/blob/master/src/avatar/avatar_with_icons.png" width="500" >
 
 ``` js
 <Avatar
