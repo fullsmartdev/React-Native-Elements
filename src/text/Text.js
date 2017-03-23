@@ -26,14 +26,14 @@ styles = StyleSheet.create({
   text: {
     ...Platform.select({
       android: {
-        ...fonts.android.regular
+        fontFamily: fonts.android.regular
       }
     })
   },
   bold: {
     ...Platform.select({
       android: {
-        ...fonts.android.bold
+        fontFamily: fonts.android.bold
       }
     })
   }

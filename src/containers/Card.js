@@ -85,7 +85,7 @@ styles = StyleSheet.create({
         fontWeight: '500'
       },
       android: {
-        ...fonts.android.black
+        fontFamily: fonts.android.black
       }
     })
   },
@@ -102,7 +102,7 @@ styles = StyleSheet.create({
         fontWeight: 'bold'
       },
       android: {
-        ...fonts.android.black
+        fontFamily: fonts.android.black
       }
     }),
     textAlign: 'center',

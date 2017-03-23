@@ -200,7 +200,7 @@ styles = StyleSheet.create({
         fontWeight: '600'
       },
       android: {
-        ...fonts.android.bold
+        fontFamily: fonts.android.bold
       }
     })
   },

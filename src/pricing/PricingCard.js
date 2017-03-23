@@ -106,7 +106,7 @@ styles = StyleSheet.create({
         fontWeight: '800'
       },
       android: {
-        ...fonts.android.black
+        fontFamily: fonts.android.black
       }
     })
   },
@@ -120,7 +120,7 @@ styles = StyleSheet.create({
         fontWeight: '700'
       },
       android: {
-        ...fonts.android.bold
+        fontFamily: fonts.android.bold
       }
     })
   },
@@ -134,7 +134,7 @@ styles = StyleSheet.create({
         fontWeight: '600'
       },
       android: {
-        ...fonts.android.bold
+        fontFamily: fonts.android.bold
       }
     })
   },
