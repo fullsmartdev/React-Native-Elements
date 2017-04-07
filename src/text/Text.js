@@ -3,6 +3,16 @@ import { Text, StyleSheet, Platform } from 'react-native';
 import fonts from '../config/fonts';
 import normalize from '../helpers/normalizeText';
 
+TextElement.propTypes = {
+ style: PropTypes.any,
+ h1: PropTypes.bool,
+ h2: PropTypes.bool,
+ h3: PropTypes.bool,
+ h4: PropTypes.bool,
+ fontFamily: PropTypes.string,
+ children: PropTypes.any,
+};
+
 const styles = StyleSheet.create({
   text: {
     ...Platform.select({
@@ -50,16 +60,6 @@ const TextElement = (props) => {
       {...rest}
     >{children}</Text>
   );
-};
-
-TextElement.propTypes = {
- style: PropTypes.any,
- h1: PropTypes.bool,
- h2: PropTypes.bool,
- h3: PropTypes.bool,
- h4: PropTypes.bool,
- fontFamily: PropTypes.string,
- children: PropTypes.any,
 };
 
 export default TextElement;
