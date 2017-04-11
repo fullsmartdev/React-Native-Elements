@@ -13,6 +13,8 @@
 </p>
 
 <p align="center">
+  <a href="#backers"><img src="https://opencollective.com/react-native-elements/backers/badge.svg"></a>
+  <a href="#sponsors"><img src="https://opencollective.com/react-native-elements/sponsors/badge.svg"></a>
   <a href="https://www.npmjs.com/package/react-native-elements"><img src="https://img.shields.io/npm/v/react-native-elements.svg?style=flat-square"></a>
   <a href="https://www.npmjs.com/package/react-native-elements"><img src="https://img.shields.io/npm/dm/react-native-elements.svg?style=flat-square"></a>
   <a href="https://travis-ci.org/react-native-community/react-native-elements"><img src="https://img.shields.io/travis/react-native-community/react-native-elements/master.svg?style=flat-square"></a>
@@ -84,7 +86,7 @@ Check out the pre built and configured [React Native Hackathon Starter Project](
 #### Fonts
 React Native Elements uses the System font as the default font family for iOS and Sans Serif as the default font family for Android.
 
-**In the example screenshots, we are using Lato which can be downloaded. [here](https://fonts.google.com/specimen/Lato?selection.family=Lato).**
+**In the example screenshots, we are using Lato which can be downloaded [here](https://fonts.google.com/specimen/Lato?selection.family=Lato).**
 
 > We are working on a way to make a custom font family configurable through the command line.
 
@@ -496,29 +498,6 @@ styles = StyleSheet.create({
 | rightTitleContainerStyle | flex: 1, alignItems: 'flex-end', justifyContent: 'center' | object (style) | style the outer container of the rightTitle text |
 | rightTitleStyle | marginRight: 5, color: '#bdc6cf' | object (style) | style the text of the rightTitle text |
 | label | none | react native component | add a label with your own styling by providing a label={<SomeComponent />} prop to ListItem |
-| switchButton | false | boolean | add a switch to the right side of your component |
-| onSwitch | function | none | add a callback function when the switch is toggled |
-| switchDisabled | boolean | If true the user won't be able to toggle the switch. Default value is false. |
-| switchOnTintColor | string | Background color when the switch is turned on. |
-| switchThumbTintColor | string | Color of the foreground switch grip. |
-| switchTintColor | string | Border color on iOS and background color on Android when the switch is turned off. |
-| switched | boolean | The value of the switch. If true the switch will be turned on. Default value is false. |
-| textInput | PropTypes.bool | Whether to have the right title area be an input text component. |
-| textInputAutoCapitalize | boolean | Can tell TextInput to automatically capitalize certain characters. |
-| textInputAutoCorrect | boolean | Can tell TextInput to automatically capitalize certain characters. |
-| textInputAutoFocus | boolean | If true, focuses the input on componentDidMount. The default value is false. |
-| textInputEditable | boolean | If false, text is not editable. The default value is true. |
-| textInputKeyboardType | string | Can be one of the following: 'default', 'email-address', 'numeric', 'phone-pad', 'ascii-capable', 'numbers-and-punctuation', 'url', 'number-pad', 'name-phone-pad', 'decimal-pad', 'twitter', 'web-search' |
-| textInputMaxLength | number | Limits the maximum number of characters that can be entered. |
-| textInputMultiline | boolean | If true, the text input can be multiple lines. The default value is false. |
-| textInputOnChangeText | function | Callback that is called when the text input's text changes. Changed text is passed as an argument to the callback handler. |
-| textInputOnFocus | function | Callback that is called when the text input is focused. |
-| textInputValue | string | Manually set value of the input
-| textInputStyle | object (style) | Style for the input text |
-| textInputContainerStyle | object (style) | Style for the container surrounding the input text |
-| textInputOnBlur | function | Callback that is called when the text input is blurred. |
-| textInputSelectTextOnFocus | boolean | If true, all text will automatically be selected on focus. |
-| textInputReturnKeyType | string | Determines how the return key should look. For more info see [the React Native docs](https://facebook.github.io/react-native/docs/textinput.html#returnkeytype) |
 
 #### Badges
 ![Badges](http://i.imgur.com/qvJgGF2.png)
@@ -884,12 +863,11 @@ render () {
 | buttons | none | array | array of buttons for component (required), if returning a component, must be an object with { element: componentName } |
 | component | TouchableHighlight | React Native Component | Choose other button component such as TouchableOpacity (optional) |
 | containerStyle | inherited styling | object (style) | specify styling for main button container (optional) |
-| buttonStyle | inherited styling | object (style) | specify styling for button (optional) |
 | selectedBackgroundColor | white | string | specify color for selected state of button (optional) |
 | textStyle | inherited styling | object (style) | specify specific styling for text (optional) |
 | selectedTextStyle | inherited styling | object (style) | specify specific styling for text in the selected state (optional)|
-| innerBorderStyle | inherited styling | object { width, color } | update the styling of the interior border of the list of buttons (optional) |
 | underlayColor | white | string | specify underlayColor for TouchableHighlight (optional) |
+| borderStyle | inherited styling | object (style) | update the styling of the interior border of the list of buttons (optional) |
 
 ## Checkboxes
 
@@ -1087,8 +1065,8 @@ import { Card, ListItem, Button } from 'react-native-elements'
 | dividerStyle | none | object (style) | additional divider styling (if title provided) (optional) |
 | fontFamily | System font bold (iOS), Sans Serif Bold (android) | string | specify different font family |
 | imageStyle | inherited styling | object(style) | specify image styling if image is provided |
-| imageWrapperStyle | none | object(style) | specify styling for view surrounding image |
 | image | none | image uri or require path | add an image as the heading with the image prop (optional) |
+
 
 ## Pricing Component
 
@@ -1416,7 +1394,7 @@ A component with full size image and with text either inside the image or under 
 <Avatar
   small
   rounded
-  icon={{name: 'user'}}
+  icon={{type: 'user'}}
   onPress={() => console.log("Works!")}
   activeOpacity={0.7}
   containerStyle={{flex: 2, marginLeft: 20, marginTop: 115}}
@@ -1424,14 +1402,14 @@ A component with full size image and with text either inside the image or under 
 <Avatar
   medium
   overlayContainerStyle={{backgroundColor: 'blue'}}
-  icon={{name: 'meetup', color: 'red'}}
+  icon={{type: 'meetup', color: 'red'}}
   onPress={() => console.log("Works!")}
   activeOpacity={0.7}
   containerStyle={{flex: 3, marginTop: 100}}
 />
 <Avatar
   large
-  icon={{name: 'rocket', color: 'orange'}}
+  icon={{type: 'rocket', color: 'orange'}}
   overlayContainerStyle={{backgroundColor: 'white'}}
   onPress={() => console.log("Works!")}
   activeOpacity={0.7}
@@ -1440,7 +1418,7 @@ A component with full size image and with text either inside the image or under 
 <Avatar
   xlarge
   rounded
-  icon={{name: 'home'}}
+  icon={{type: 'home'}}
   onPress={() => console.log("Works!")}
   activeOpacity={0.7}
   containerStyle={{flex: 5, marginRight: 60}}
@@ -1464,5 +1442,80 @@ A component with full size image and with text either inside the image or under 
 | titleStyle | none | object (style) | style for the title |
 | overlayContainerStyle | none | object (style) | style for the view outside image or icon |
 | activeOpacity | 0.2 | number | opacity when pressed |
-| icon | none | object {name: string, color: string, size: number, type: string (default is font-awesome, or choose one of material-community, simple-line-icon, zocial, font-awesome, octicon, ionicon, foundation, evilicon, or entypo), iconStyle: object(style)} |
+| icon | none | object {name: string, color: string, size: number, type: string (default is material, or choose one of material-community, simple-line-icon, zocial, font-awesome, octicon, ionicon, foundation, evilicon, or entypo), iconStyle: object(style)} |
 | iconStyle | none | object (style) | extra styling for icon component (optional) |
+
+
+## Backers
+
+Support us with a monthly donation and help us continue our activities. [[Become a backer](https://opencollective.com/react-native-elements#backer)]
+
+<a href="https://opencollective.com/react-native-elements/backer/0/website" target="_blank"><img src="https://opencollective.com/react-native-elements/backer/0/avatar.svg"></a>
+<a href="https://opencollective.com/react-native-elements/backer/1/website" target="_blank"><img src="https://opencollective.com/react-native-elements/backer/1/avatar.svg"></a>
+<a href="https://opencollective.com/react-native-elements/backer/2/website" target="_blank"><img src="https://opencollective.com/react-native-elements/backer/2/avatar.svg"></a>
+<a href="https://opencollective.com/react-native-elements/backer/3/website" target="_blank"><img src="https://opencollective.com/react-native-elements/backer/3/avatar.svg"></a>
+<a href="https://opencollective.com/react-native-elements/backer/4/website" target="_blank"><img src="https://opencollective.com/react-native-elements/backer/4/avatar.svg"></a>
+<a href="https://opencollective.com/react-native-elements/backer/5/website" target="_blank"><img src="https://opencollective.com/react-native-elements/backer/5/avatar.svg"></a>
+<a href="https://opencollective.com/react-native-elements/backer/6/website" target="_blank"><img src="https://opencollective.com/react-native-elements/backer/6/avatar.svg"></a>
+<a href="https://opencollective.com/react-native-elements/backer/7/website" target="_blank"><img src="https://opencollective.com/react-native-elements/backer/7/avatar.svg"></a>
+<a href="https://opencollective.com/react-native-elements/backer/8/website" target="_blank"><img src="https://opencollective.com/react-native-elements/backer/8/avatar.svg"></a>
+<a href="https://opencollective.com/react-native-elements/backer/9/website" target="_blank"><img src="https://opencollective.com/react-native-elements/backer/9/avatar.svg"></a>
+<a href="https://opencollective.com/react-native-elements/backer/10/website" target="_blank"><img src="https://opencollective.com/react-native-elements/backer/10/avatar.svg"></a>
+<a href="https://opencollective.com/react-native-elements/backer/11/website" target="_blank"><img src="https://opencollective.com/react-native-elements/backer/11/avatar.svg"></a>
+<a href="https://opencollective.com/react-native-elements/backer/12/website" target="_blank"><img src="https://opencollective.com/react-native-elements/backer/12/avatar.svg"></a>
+<a href="https://opencollective.com/react-native-elements/backer/13/website" target="_blank"><img src="https://opencollective.com/react-native-elements/backer/13/avatar.svg"></a>
+<a href="https://opencollective.com/react-native-elements/backer/14/website" target="_blank"><img src="https://opencollective.com/react-native-elements/backer/14/avatar.svg"></a>
+<a href="https://opencollective.com/react-native-elements/backer/15/website" target="_blank"><img src="https://opencollective.com/react-native-elements/backer/15/avatar.svg"></a>
+<a href="https://opencollective.com/react-native-elements/backer/16/website" target="_blank"><img src="https://opencollective.com/react-native-elements/backer/16/avatar.svg"></a>
+<a href="https://opencollective.com/react-native-elements/backer/17/website" target="_blank"><img src="https://opencollective.com/react-native-elements/backer/17/avatar.svg"></a>
+<a href="https://opencollective.com/react-native-elements/backer/18/website" target="_blank"><img src="https://opencollective.com/react-native-elements/backer/18/avatar.svg"></a>
+<a href="https://opencollective.com/react-native-elements/backer/19/website" target="_blank"><img src="https://opencollective.com/react-native-elements/backer/19/avatar.svg"></a>
+<a href="https://opencollective.com/react-native-elements/backer/20/website" target="_blank"><img src="https://opencollective.com/react-native-elements/backer/20/avatar.svg"></a>
+<a href="https://opencollective.com/react-native-elements/backer/21/website" target="_blank"><img src="https://opencollective.com/react-native-elements/backer/21/avatar.svg"></a>
+<a href="https://opencollective.com/react-native-elements/backer/22/website" target="_blank"><img src="https://opencollective.com/react-native-elements/backer/22/avatar.svg"></a>
+<a href="https://opencollective.com/react-native-elements/backer/23/website" target="_blank"><img src="https://opencollective.com/react-native-elements/backer/23/avatar.svg"></a>
+<a href="https://opencollective.com/react-native-elements/backer/24/website" target="_blank"><img src="https://opencollective.com/react-native-elements/backer/24/avatar.svg"></a>
+<a href="https://opencollective.com/react-native-elements/backer/25/website" target="_blank"><img src="https://opencollective.com/react-native-elements/backer/25/avatar.svg"></a>
+<a href="https://opencollective.com/react-native-elements/backer/26/website" target="_blank"><img src="https://opencollective.com/react-native-elements/backer/26/avatar.svg"></a>
+<a href="https://opencollective.com/react-native-elements/backer/27/website" target="_blank"><img src="https://opencollective.com/react-native-elements/backer/27/avatar.svg"></a>
+<a href="https://opencollective.com/react-native-elements/backer/28/website" target="_blank"><img src="https://opencollective.com/react-native-elements/backer/28/avatar.svg"></a>
+<a href="https://opencollective.com/react-native-elements/backer/29/website" target="_blank"><img src="https://opencollective.com/react-native-elements/backer/29/avatar.svg"></a>
+
+
+## Sponsors
+
+Become a sponsor and get your logo on our README on Github with a link to your site. [[Become a sponsor](https://opencollective.com/react-native-elements#sponsor)]
+
+<a href="https://opencollective.com/react-native-elements/sponsor/0/website" target="_blank"><img src="https://opencollective.com/react-native-elements/sponsor/0/avatar.svg"></a>
+<a href="https://opencollective.com/react-native-elements/sponsor/1/website" target="_blank"><img src="https://opencollective.com/react-native-elements/sponsor/1/avatar.svg"></a>
+<a href="https://opencollective.com/react-native-elements/sponsor/2/website" target="_blank"><img src="https://opencollective.com/react-native-elements/sponsor/2/avatar.svg"></a>
+<a href="https://opencollective.com/react-native-elements/sponsor/3/website" target="_blank"><img src="https://opencollective.com/react-native-elements/sponsor/3/avatar.svg"></a>
+<a href="https://opencollective.com/react-native-elements/sponsor/4/website" target="_blank"><img src="https://opencollective.com/react-native-elements/sponsor/4/avatar.svg"></a>
+<a href="https://opencollective.com/react-native-elements/sponsor/5/website" target="_blank"><img src="https://opencollective.com/react-native-elements/sponsor/5/avatar.svg"></a>
+<a href="https://opencollective.com/react-native-elements/sponsor/6/website" target="_blank"><img src="https://opencollective.com/react-native-elements/sponsor/6/avatar.svg"></a>
+<a href="https://opencollective.com/react-native-elements/sponsor/7/website" target="_blank"><img src="https://opencollective.com/react-native-elements/sponsor/7/avatar.svg"></a>
+<a href="https://opencollective.com/react-native-elements/sponsor/8/website" target="_blank"><img src="https://opencollective.com/react-native-elements/sponsor/8/avatar.svg"></a>
+<a href="https://opencollective.com/react-native-elements/sponsor/9/website" target="_blank"><img src="https://opencollective.com/react-native-elements/sponsor/9/avatar.svg"></a>
+<a href="https://opencollective.com/react-native-elements/sponsor/10/website" target="_blank"><img src="https://opencollective.com/react-native-elements/sponsor/10/avatar.svg"></a>
+<a href="https://opencollective.com/react-native-elements/sponsor/11/website" target="_blank"><img src="https://opencollective.com/react-native-elements/sponsor/11/avatar.svg"></a>
+<a href="https://opencollective.com/react-native-elements/sponsor/12/website" target="_blank"><img src="https://opencollective.com/react-native-elements/sponsor/12/avatar.svg"></a>
+<a href="https://opencollective.com/react-native-elements/sponsor/13/website" target="_blank"><img src="https://opencollective.com/react-native-elements/sponsor/13/avatar.svg"></a>
+<a href="https://opencollective.com/react-native-elements/sponsor/14/website" target="_blank"><img src="https://opencollective.com/react-native-elements/sponsor/14/avatar.svg"></a>
+<a href="https://opencollective.com/react-native-elements/sponsor/15/website" target="_blank"><img src="https://opencollective.com/react-native-elements/sponsor/15/avatar.svg"></a>
+<a href="https://opencollective.com/react-native-elements/sponsor/16/website" target="_blank"><img src="https://opencollective.com/react-native-elements/sponsor/16/avatar.svg"></a>
+<a href="https://opencollective.com/react-native-elements/sponsor/17/website" target="_blank"><img src="https://opencollective.com/react-native-elements/sponsor/17/avatar.svg"></a>
+<a href="https://opencollective.com/react-native-elements/sponsor/18/website" target="_blank"><img src="https://opencollective.com/react-native-elements/sponsor/18/avatar.svg"></a>
+<a href="https://opencollective.com/react-native-elements/sponsor/19/website" target="_blank"><img src="https://opencollective.com/react-native-elements/sponsor/19/avatar.svg"></a>
+<a href="https://opencollective.com/react-native-elements/sponsor/20/website" target="_blank"><img src="https://opencollective.com/react-native-elements/sponsor/20/avatar.svg"></a>
+<a href="https://opencollective.com/react-native-elements/sponsor/21/website" target="_blank"><img src="https://opencollective.com/react-native-elements/sponsor/21/avatar.svg"></a>
+<a href="https://opencollective.com/react-native-elements/sponsor/22/website" target="_blank"><img src="https://opencollective.com/react-native-elements/sponsor/22/avatar.svg"></a>
+<a href="https://opencollective.com/react-native-elements/sponsor/23/website" target="_blank"><img src="https://opencollective.com/react-native-elements/sponsor/23/avatar.svg"></a>
+<a href="https://opencollective.com/react-native-elements/sponsor/24/website" target="_blank"><img src="https://opencollective.com/react-native-elements/sponsor/24/avatar.svg"></a>
+<a href="https://opencollective.com/react-native-elements/sponsor/25/website" target="_blank"><img src="https://opencollective.com/react-native-elements/sponsor/25/avatar.svg"></a>
+<a href="https://opencollective.com/react-native-elements/sponsor/26/website" target="_blank"><img src="https://opencollective.com/react-native-elements/sponsor/26/avatar.svg"></a>
+<a href="https://opencollective.com/react-native-elements/sponsor/27/website" target="_blank"><img src="https://opencollective.com/react-native-elements/sponsor/27/avatar.svg"></a>
+<a href="https://opencollective.com/react-native-elements/sponsor/28/website" target="_blank"><img src="https://opencollective.com/react-native-elements/sponsor/28/avatar.svg"></a>
+<a href="https://opencollective.com/react-native-elements/sponsor/29/website" target="_blank"><img src="https://opencollective.com/react-native-elements/sponsor/29/avatar.svg"></a>
+
+
+

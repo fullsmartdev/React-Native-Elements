@@ -148,9 +148,6 @@ Tile.propTypes = {
   captionStyle: PropTypes.any,
   width: PropTypes.number,
   height: PropTypes.number,
-  featured: PropTypes.bool,
-  children: PropTypes.any,
-  contentContainerStyle: PropTypes.any,
 };
 
 export default Tile;
