@@ -1,14 +1,15 @@
 import React from 'react';
 import {shallow} from 'enzyme';
+import toJson from 'enzyme-to-json';
 import Button from '../Button';
 import colors from '../../config/colors';
 
 describe('Button Component', () => {
   it('should render without issues', () => {
     const component = shallow(<Button />);
-    
+
     expect(component.length).toBe(1);
-    expect(component).toMatchSnapshot();
+    expect(toJson(component)).toMatchSnapshot();
   });
 
   it('should show loading indicator', () => {
@@ -16,7 +17,7 @@ describe('Button Component', () => {
 
     expect(component.find('ActivityIndicator').length).toBe(1);
   });
-  
+
   it('should have onPress event', () => {
     const onPress = jest.fn();
     const component = shallow(<Button onPress={onPress} />);
@@ -111,7 +112,23 @@ describe('Button Component', () => {
 
   it('should render title as text inside the button', () => {
     const component = shallow(<Button title='My Button' />);
-    
+
     expect(component.find('View').props().children[2].props.children).toBe('My Button');
+  });
+
+  it('should render with icon type', () => {
+    const component = shallow(<Button icon={{ name: 'acrobat', type: 'zocial' }} />);
+
+    expect(component.length).toBe(1);
+    expect(toJson(component)).toMatchSnapshot();
+  });
+
+  it('should render with default icon', () => {
+    const component = shallow(<Button
+      icon={{ name: 'wifi', size: 22, iconRight: true, style: { fontSize: 20 } }}
+    />);
+
+    expect(component.length).toBe(1);
+    expect(toJson(component)).toMatchSnapshot();
   });
 });
