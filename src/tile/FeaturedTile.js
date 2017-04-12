@@ -1,7 +1,6 @@
 import React, { PropTypes } from 'react';
 import {
   TouchableOpacity,
-  Text as NativeText,
   View,
   Image,
   StyleSheet,
@@ -10,26 +9,22 @@ import {
 import Text from '../text/Text';
 import Icon from '../icons/Icon';
 
-const FeaturedTile = props => {
-  const {
-    title,
-    icon,
-    caption,
-    imageSrc,
-    containerStyle,
-    imageContainerStyle,
-    overlayContainerStyle,
-    iconContainerStyle,
-    titleStyle,
-    captionStyle,
-    ...attributes,
-  } = props;
-
-  let {
-    width,
-    height,
-  } = props;
-
+const FeaturedTile = ({
+  title,
+  icon,
+  caption,
+  imageSrc,
+  onPress,
+  activeOpacity,
+  containerStyle,
+  imageContainerStyle,
+  overlayContainerStyle,
+  iconContainerStyle,
+  titleStyle,
+  captionStyle,
+  width,
+  height,
+}) => {
   if (!width) {
     width = Dimensions.get('window').width;
   }
@@ -81,11 +76,12 @@ const FeaturedTile = props => {
 
   return (
     <TouchableOpacity
+      onPress={onPress}
+      activeOpacity={activeOpacity}
       style={[
         styles.container,
         containerStyle && containerStyle,
       ]}
-      {...attributes}
     >
       <Image
         source={imageSrc}
@@ -137,12 +133,13 @@ FeaturedTile.propTypes = {
   caption: PropTypes.string,
   imageSrc: Image.propTypes.source.isRequired,
   onPress: PropTypes.func,
-  containerStyle: View.propTypes.style,
-  iconContainerStyle: View.propTypes.style,
-  imageContainerStyle: View.propTypes.style,
-  overlayContainerStyle: View.propTypes.style,
-  titleStyle: View.propTypes.style,
-  captionStyle: NativeText.propTypes.style,
+  activeOpacity: PropTypes.number,
+  containerStyle: PropTypes.any,
+  iconContainerStyle: PropTypes.any,
+  imageContainerStyle: PropTypes.any,
+  overlayContainerStyle: PropTypes.any,
+  titleStyle: PropTypes.any,
+  captionStyle: PropTypes.any,
   width: PropTypes.number,
   height: PropTypes.number,
 };
