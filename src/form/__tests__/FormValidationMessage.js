@@ -1,6 +1,5 @@
 import React from 'react';
 import {shallow} from 'enzyme';
-import toJson from 'enzyme-to-json';
 import FormValidationMessage from '../FormValidationMessage';
 
 describe('FormValidationMessage Component', () => {
@@ -8,16 +7,12 @@ describe('FormValidationMessage Component', () => {
     const component = shallow(<FormValidationMessage />);
 
     expect(component.length).toBe(1);
-    expect(toJson(component)).toMatchSnapshot();
+    expect(component).toMatchSnapshot();
   });
 
   it('should show text from the FormValidationMessage children', () => {
     const component = shallow(
-      <FormValidationMessage
-        containerStyle={{ backgroundColor: 'red' }}
-        labelStyle={{ backgroundColor: 'yellow' }}
-        fontFamily='arial'
-      >
+      <FormValidationMessage>
         There was an error
       </FormValidationMessage>
     );

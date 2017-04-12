@@ -290,6 +290,7 @@ export default class Slider extends Component {
       width: thumbTouchRect.width,
       height: thumbTouchRect.height,
     };
+
     return (
       <Animated.View
         style={positionStyle}
@@ -336,6 +337,7 @@ export default class Slider extends Component {
     };
 
     var touchOverflowStyle = this.getTouchOverflowStyle();
+
     return (
       <View {...other} style={[mainStyles.container, style]} onLayout={this.measureContainer.bind(this)}>
         <View

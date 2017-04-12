@@ -1,6 +1,5 @@
 import React from 'react';
 import {shallow} from 'enzyme';
-import toJson from 'enzyme-to-json';
 import CheckBox from '../CheckBox';
 
 describe('CheckBox Component', () => {
@@ -8,7 +7,7 @@ describe('CheckBox Component', () => {
     const component = shallow(<CheckBox />);
 
     expect(component.length).toBe(1);
-    expect(toJson(component)).toMatchSnapshot();
+    expect(component).toMatchSnapshot();
   });
 
   it('should use TouchableOpacity as default component', () => {
@@ -25,32 +24,8 @@ describe('CheckBox Component', () => {
   });
 
   it('should render title in Text', () => {
-    const component = shallow(<CheckBox title='Custom Text' checked />);
+    const component = shallow(<CheckBox title='Custom Text' />);
 
     expect(component.props().children.props.children[1].props.children).toBe('Custom Text');
-  });
-
-  it('should render with icon and checked', () => {
-    const component = shallow(<CheckBox 
-      iconType='font-awesome' 
-      checkedColor='red'
-      containerStyle={{ backgroundColor: 'red' }}
-    />);
-
-    expect(component.length).toBe(1);
-    expect(toJson(component)).toMatchSnapshot();
-  });
-
-  it('should render with icon and iconRight', () => {
-    const component = shallow(<CheckBox 
-      iconType='font-awesome' 
-      iconRight
-      uncheckedColor='blue'
-      rigth
-      center
-    />);
-
-    expect(component.length).toBe(1);
-    expect(toJson(component)).toMatchSnapshot();
   });
 });

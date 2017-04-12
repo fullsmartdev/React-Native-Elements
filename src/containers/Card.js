@@ -3,74 +3,68 @@ import { View, StyleSheet, Platform, Image } from 'react-native';
 import fonts from '../config/fonts';
 import colors from '../config/colors';
 import Text from '../text/Text';
-import Divider from '../divider/Divider';
+import Divider from '../Divider';
 import normalize from '../helpers/normalizeText';
 
-const Card = props => {
-  const {
-    children,
-    flexDirection,
-    containerStyle,
-    wrapperStyle,
-    imageWrapperStyle,
-    title,
-    titleStyle,
-    featuredTitle,
-    featuredTitleStyle,
-    featuredSubtitle,
-    featuredSubtitleStyle,
-    dividerStyle,
-    image,
-    imageStyle,
-    fontFamily,
-    ...attributes,
-  } = props;
+let styles = {};
 
-  return (
-    <View style={[
-      styles.container,
-      image && {padding: 0},
-      containerStyle && containerStyle]}
-      {...attributes}
-    >
-      <View style={[styles.wrapper, wrapperStyle && wrapperStyle, flexDirection && {flexDirection}]}>
-        {
-          title && (
-            <View>
-              <Text style={[
-                styles.cardTitle,
-                image && styles.imageCardTitle,
-                titleStyle && titleStyle,
-                fontFamily && {fontFamily}
-              ]}>{title}</Text>
-              { !image && <Divider style={[styles.divider, dividerStyle && dividerStyle]} />}
-            </View>
-          )
-        }
-        {
-          image && (
-            <View style={imageWrapperStyle && imageWrapperStyle}>
-              <Image
-                resizeMode='cover'
-                style={[{width: null, height: 150}, imageStyle && imageStyle]}
-                source={image}>
-                <View style={styles.overlayContainer}>
-                  {featuredTitle && <Text style={[styles.featuredTitle, featuredTitleStyle && featuredTitleStyle]}>{featuredTitle}</Text>}
-                  {featuredSubtitle && <Text style={[styles.featuredSubtitle, featuredSubtitleStyle && featuredSubtitleStyle]}>{featuredSubtitle}</Text>}
-                </View>
-              </Image>
-              <View
-                style={[{padding: 10}, wrapperStyle && wrapperStyle]}>
-                {children}
+const Card = ({
+  children,
+  flexDirection,
+  containerStyle,
+  wrapperStyle,
+  imageWrapperStyle,
+  title,
+  titleStyle,
+  featuredTitle,
+  featuredTitleStyle,
+  featuredSubtitle,
+  featuredSubtitleStyle,
+  dividerStyle,
+  image,
+  imageStyle,
+  fontFamily}) => (
+  <View style={[
+    styles.container,
+    image && {padding: 0},
+    containerStyle && containerStyle]}>
+    <View style={[styles.wrapper, wrapperStyle && wrapperStyle, flexDirection && {flexDirection}]}>
+      {
+        title && (
+          <View>
+            <Text style={[
+              styles.cardTitle,
+              image && styles.imageCardTitle,
+              titleStyle && titleStyle,
+              fontFamily && {fontFamily}
+            ]}>{title}</Text>
+            { !image && <Divider style={[styles.divider, dividerStyle && dividerStyle]} />}
+          </View>
+        )
+      }
+      {
+        image && (
+          <View style={imageWrapperStyle && imageWrapperStyle}>
+            <Image
+              resizeMode='cover'
+              style={[{width: null, height: 150}, imageStyle && imageStyle]}
+              source={image}>
+              <View style={styles.overlayContainer}>
+                {featuredTitle && <Text style={[styles.featuredTitle, featuredTitleStyle && featuredTitleStyle]}>{featuredTitle}</Text>}
+                {featuredSubtitle && <Text style={[styles.featuredSubtitle, featuredSubtitleStyle && featuredSubtitleStyle]}>{featuredSubtitle}</Text>}
               </View>
+            </Image>
+            <View
+              style={[{padding: 10}, wrapperStyle && wrapperStyle]}>
+              {children}
             </View>
-          )
-        }
-        { !image && children}
-      </View>
+          </View>
+        )
+      }
+      { !image && children}
     </View>
-  );
-};
+  </View>
+);
 
 Card.propTypes = {
   children: PropTypes.any,
@@ -90,7 +84,7 @@ Card.propTypes = {
   fontFamily: PropTypes.string,
 };
 
-const styles = StyleSheet.create({
+styles = StyleSheet.create({
   container: {
     backgroundColor: 'white',
     borderColor: colors.grey5,

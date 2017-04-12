@@ -6,29 +6,9 @@ import colors from '../config/colors';
 import FAIcon from 'react-native-vector-icons/FontAwesome';
 import getIconType from '../helpers/getIconType';
 
-const CheckBox = props => {
-  const {
-    component, 
-    checked, 
-    iconRight, 
-    title, 
-    center, 
-    right, 
-    containerStyle, 
-    textStyle, 
-    onIconPress, 
-    onLongIconPress, 
-    checkedIcon, 
-    uncheckedIcon, 
-    iconType, 
-    checkedColor, 
-    uncheckedColor, 
-    checkedTitle, 
-    fontFamily,
-    ...attributes,
-  } = props;
-  
+let styles = {};
 
+const CheckBox = ({component, checked, iconRight, title, center, right, containerStyle, textStyle, onPress, onLongPress, onIconPress, onLongIconPress, checkedIcon, uncheckedIcon, iconType, checkedColor, uncheckedColor, checkedTitle, fontFamily}) => {
   let Icon = FAIcon;
   if (iconType) {
     Icon = getIconType(iconType);
@@ -40,12 +20,12 @@ const CheckBox = props => {
   }
   return (
     <Component
+      onLongPress={onLongPress}
+      onPress={onPress}
       style={[
         styles.container,
         containerStyle && containerStyle
-      ]}
-      {...attributes}
-    >
+      ]}>
       <View style={[
         styles.wrapper,
         right && {justifyContent: 'flex-end'},
@@ -101,18 +81,20 @@ CheckBox.propTypes = {
   right: PropTypes.bool,
   containerStyle: View.propTypes.style,
   textStyle: View.propTypes.style,
+  onPress: PropTypes.func,
   checkedIcon: PropTypes.string,
   uncheckedIcon: PropTypes.string,
-  iconType: PropTypes.string,
+  iconType: PropTypes.object,
   checkedColor: PropTypes.string,
   uncheckedColor: PropTypes.string,
   checkedTitle: PropTypes.string,
+  onLongPress: PropTypes.func,
   onIconPress: PropTypes.func,
   onLongIconPress: PropTypes.func,
   fontFamily: PropTypes.string,
 };
 
-const styles = StyleSheet.create({
+styles = StyleSheet.create({
   wrapper: {
     flexDirection: 'row',
     alignItems: 'center'

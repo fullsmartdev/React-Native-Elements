@@ -3,13 +3,8 @@ import { Text, View, StyleSheet } from 'react-native';
 
 let styles = {};
 
-const Badge = props => {
-  const { badge } = props;
-
-  if (!badge) throw Error('badge prop is required');
-
+const Badge = ({ badge }) => {
   if (badge.element) return badge.element;
-
   return (
     <View style={[ styles.badge, badge.badgeContainerStyle ]}>
       <Text style={[ styles.text, badge.badgeTextStyle ]}>{badge.value}</Text>

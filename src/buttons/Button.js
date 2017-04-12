@@ -1,53 +1,59 @@
 import React, { PropTypes } from 'react';
-import {
-  TouchableNativeFeedback,
-  TouchableHighlight,
-  StyleSheet,
-  View,
-  Platform,
-  ActivityIndicator
-} from 'react-native';
+import { TouchableNativeFeedback, TouchableHighlight, StyleSheet, View, Platform, ActivityIndicator } from 'react-native';
 import colors from '../config/colors';
 import Text from '../text/Text';
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
 import getIconType from '../helpers/getIconType';
 import normalize from '../helpers/normalizeText';
 
+let styles = {};
+
 const log = () => {
   console.log('please attach method to this component'); //eslint-disable-line no-console
 };
 
-const Button = props => {
-  const {
-    disabled,
-    loading,
-    loadingRight,
-    activityIndicatorStyle,
-    buttonStyle,
-    borderRadius,
-    title,
-    onPress,
-    icon,
-    secondary,
-    secondary2,
-    secondary3,
-    primary1,
-    primary2,
-    backgroundColor,
-    color,
-    fontSize,
-    underlayColor,
-    raised,
-    textStyle,
-    large,
-    iconRight,
-    fontWeight,
-    disabledStyle,
-    fontFamily,
-    ...attributes,
-  } = props;
-  let { Component } = props;
-
+const Button = ({
+  Component,
+  disabled,
+  loading,
+  loadingRight,
+  activityIndicatorStyle,
+  buttonStyle,
+  borderRadius,
+  title,
+  onPress,
+  delayLongPress,
+  delayPressIn,
+  delayPressOut,
+  onLayout,
+  onLongPress,
+  onPressIn,
+  onPressOut,
+  hitSlop,
+  activeOpacity,
+  onHideUnderlay,
+  onShowUnderlay,
+  background,
+  SelectableBackground,
+  SelectableBackgroundBorderless,
+  Ripple,
+  icon,
+  secondary,
+  secondary2,
+  secondary3,
+  primary1,
+  primary2,
+  backgroundColor,
+  color,
+  fontSize,
+  underlayColor,
+  raised,
+  textStyle,
+  large,
+  iconRight,
+  fontWeight,
+  disabledStyle,
+  fontFamily}) => {
   let iconElement;
   if (icon) {
     let Icon;
@@ -89,11 +95,24 @@ const Button = props => {
   }
   return (
     <Component
+      delayLongPress={delayLongPress}
+      delayPressIn={delayPressIn}
+      delayPressOut={delayPressOut}
+      onLayout={onLayout}
+      onLongPress={onLongPress}
+      onPressIn={onPressIn}
+      onPressOut={onPressOut}
+      activeOpacity={activeOpacity}
+      onHideUnderlay={onHideUnderlay}
+      onShowUnderlay={onShowUnderlay}
+      background={background}
+      SelectableBackground={SelectableBackground}
+      SelectableBackgroundBorderless={SelectableBackgroundBorderless}
+      Ripple={Ripple}
+      hitSlop={hitSlop}
       underlayColor={underlayColor || 'transparent'}
       onPress={onPress || log}
-      disabled={disabled || false}
-      {...attributes}
-    >
+      disabled={disabled || false}>
       <View
         style={[
           styles.button,
@@ -141,7 +160,7 @@ const Button = props => {
 };
 
 Button.propTypes = {
-  buttonStyle: View.propTypes.style,
+  buttonStyle: PropTypes.any,
   title: PropTypes.string,
   onPress: PropTypes.any,
   icon: PropTypes.object,
@@ -158,18 +177,33 @@ Button.propTypes = {
   textStyle: PropTypes.any,
   disabled: PropTypes.bool,
   loading: PropTypes.bool,
-  activityIndicatorStyle: View.propTypes.style,
+  activityIndicatorStyle: PropTypes.any,
   loadingRight: PropTypes.bool,
   Component: PropTypes.any,
   borderRadius: PropTypes.number,
+  delayLongPress: PropTypes.number,
+  delayPressIn: PropTypes.number,
+  delayPressOut: PropTypes.number,
+  onLayout: PropTypes.func,
+  onLongPress: PropTypes.func,
+  onPressIn: PropTypes.func,
+  onPressOut: PropTypes.func,
+  hitSlop: PropTypes.objectOf(PropTypes.number),
+  activeOpacity: PropTypes.number,
+  onHideUnderlay: PropTypes.func,
+  onShowUnderlay: PropTypes.func,
+  background: PropTypes.any,
+  SelectableBackground: PropTypes.any,
+  SelectableBackgroundBorderless: PropTypes.any,
+  Ripple: PropTypes.any,
   large: PropTypes.bool,
   iconRight: PropTypes.bool,
   fontWeight: PropTypes.string,
-  disabledStyle: View.propTypes.style,
+  disabledStyle: PropTypes.any,
   fontFamily: PropTypes.string
 };
 
-const styles = StyleSheet.create({
+styles = StyleSheet.create({
   button: {
     padding: 19,
     marginLeft: 15,
