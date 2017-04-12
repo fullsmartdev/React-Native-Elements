@@ -20,7 +20,6 @@ const ButtonGroup = ({
   onHideUnderlay,
   onShowUnderlay,
   setOpacityTo,
-  lastBorderStyle,
   borderStyle
 }) => {
   const Component = component || TouchableHighlight
@@ -41,7 +40,6 @@ const ButtonGroup = ({
                 styles.button,
                 i < buttons.length - 1 && styles.borderRight,
                 i < buttons.length - 1 && borderStyle,
-                i === buttons.length - 1 && lastBorderStyle,
                 selectedIndex === i && {backgroundColor: selectedBackgroundColor || 'white'}
               ]}>
               <View style={{flex: 1}}>
