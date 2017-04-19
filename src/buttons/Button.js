@@ -1,60 +1,67 @@
-import React, { PropTypes } from 'react';
-import {
-  TouchableNativeFeedback,
-  TouchableHighlight,
-  StyleSheet,
-  View,
-  Platform,
-  ActivityIndicator
-} from 'react-native';
-import colors from '../config/colors';
-import Text from '../text/Text';
-import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
-import getIconType from '../helpers/getIconType';
-import normalize from '../helpers/normalizeText';
+import React, { PropTypes } from 'react'
+import { TouchableWithoutFeedback, TouchableNativeFeedback, TouchableOpacity, TouchableHighlight, StyleSheet, View, Platform, ActivityIndicator } from 'react-native'
+import colors from '../config/colors'
+import Text from '../text/Text'
+import MaterialIcon from 'react-native-vector-icons/MaterialIcons'
+import getIconType from '../helpers/getIconType'
+import normalize from '../helpers/normalizeText'
+
+let styles = {}
 
 const log = () => {
-  console.log('please attach method to this component'); //eslint-disable-line no-console
-};
+  console.log('please attach method to this component')
+}
 
-const Button = props => {
-  const {
-    disabled,
-    loading,
-    loadingRight,
-    activityIndicatorStyle,
-    buttonStyle,
-    borderRadius,
-    title,
-    onPress,
-    icon,
-    secondary,
-    secondary2,
-    secondary3,
-    primary1,
-    primary2,
-    backgroundColor,
-    color,
-    fontSize,
-    underlayColor,
-    raised,
-    textStyle,
-    large,
-    iconRight,
-    fontWeight,
-    disabledStyle,
-    fontFamily,
-    ...attributes,
-  } = props;
-  let { Component } = props;
-
-  let iconElement;
+const Button = ({
+  Component,
+  disabled,
+  loading,
+  loadingRight,
+  activityIndicatorStyle,
+  buttonStyle,
+  borderRadius,
+  title,
+  onPress,
+  delayLongPress,
+  delayPressIn,
+  delayPressOut,
+  onLayout,
+  onLongPress,
+  onPressIn,
+  onPressOut,
+  hitSlop,
+  activeOpacity,
+  onHideUnderlay,
+  onShowUnderlay,
+  background,
+  SelectableBackground,
+  SelectableBackgroundBorderless,
+  Ripple,
+  icon,
+  secondary,
+  secondary2,
+  secondary3,
+  primary1,
+  primary2,
+  primary3,
+  backgroundColor,
+  color,
+  fontSize,
+  underlayColor,
+  raised,
+  textStyle,
+  large,
+  iconRight,
+  fontWeight,
+  disabledStyle,
+  fontFamily}) => {
+  let iconElement
   if (icon) {
-    let Icon;
+    let Icon
     if (!icon.type) {
-      Icon = MaterialIcon;
+      Icon = MaterialIcon
     } else {
-      Icon = getIconType(icon.type);
+      Icon = getIconType(icon.type)
     }
     iconElement = (
       <Icon
@@ -65,7 +72,7 @@ const Button = props => {
           icon.style && icon.style
         ]}
         name={icon.name} />
-    );
+    )
   }
   let loadingElement;
   if(loading){
@@ -73,27 +80,40 @@ const Button = props => {
       <ActivityIndicator
         animating={true}
         style={[styles.activityIndicatorStyle, activityIndicatorStyle]}
-        color={color || 'white'}
-        size={large && 'large' || 'small'}
+        color={color || "white"}
+        size={large && "large" || "small"}
       />
-    );
+    )
   }
   if (!Component && Platform.OS === 'ios') {
-    Component = TouchableHighlight;
+    Component = TouchableHighlight
   }
   if (!Component && Platform.OS === 'android') {
-    Component = TouchableNativeFeedback;
+    Component = TouchableNativeFeedback
   }
   if (!Component) {
-    Component = TouchableHighlight;
+    Component = TouchableHighlight
   }
   return (
     <Component
+      delayLongPress={delayLongPress}
+      delayPressIn={delayPressIn}
+      delayPressOut={delayPressOut}
+      onLayout={onLayout}
+      onLongPress={onLongPress}
+      onPressIn={onPressIn}
+      onPressOut={onPressOut}
+      activeOpacity={activeOpacity}
+      onHideUnderlay={onHideUnderlay}
+      onShowUnderlay={onShowUnderlay}
+      background={background}
+      SelectableBackground={SelectableBackground}
+      SelectableBackgroundBorderless={SelectableBackgroundBorderless}
+      Ripple={Ripple}
+      hitSlop={hitSlop}
       underlayColor={underlayColor || 'transparent'}
       onPress={onPress || log}
-      disabled={disabled || false}
-      {...attributes}
-    >
+      disabled={disabled || false}>
       <View
         style={[
           styles.button,
@@ -137,11 +157,11 @@ const Button = props => {
         }
       </View>
     </Component>
-  );
-};
+  )
+}
 
 Button.propTypes = {
-  buttonStyle: View.propTypes.style,
+  buttonStyle: PropTypes.any,
   title: PropTypes.string,
   onPress: PropTypes.any,
   icon: PropTypes.object,
@@ -150,6 +170,7 @@ Button.propTypes = {
   secondary3: PropTypes.bool,
   primary1: PropTypes.bool,
   primary2: PropTypes.bool,
+  primary3: PropTypes.bool,
   backgroundColor: PropTypes.string,
   color: PropTypes.string,
   fontSize: PropTypes.any,
@@ -158,18 +179,11 @@ Button.propTypes = {
   textStyle: PropTypes.any,
   disabled: PropTypes.bool,
   loading: PropTypes.bool,
-  activityIndicatorStyle: View.propTypes.style,
-  loadingRight: PropTypes.bool,
-  Component: PropTypes.any,
-  borderRadius: PropTypes.number,
-  large: PropTypes.bool,
-  iconRight: PropTypes.bool,
-  fontWeight: PropTypes.string,
-  disabledStyle: View.propTypes.style,
-  fontFamily: PropTypes.string
-};
+  activityIndicatorStyle: PropTypes.any,
+  loadingRight: PropTypes.bool
+}
 
-const styles = StyleSheet.create({
+styles = StyleSheet.create({
   button: {
     padding: 19,
     marginLeft: 15,
@@ -212,6 +226,6 @@ const styles = StyleSheet.create({
       }
     })
   }
-});
+})
 
-export default Button;
+export default Button

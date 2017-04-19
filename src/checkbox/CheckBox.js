@@ -1,51 +1,31 @@
-import React, { PropTypes } from 'react';
-import { StyleSheet, TouchableOpacity, View, Platform } from 'react-native';
-import Text from '../text/Text';
-import fonts from '../config/fonts';
-import colors from '../config/colors';
-import FAIcon from 'react-native-vector-icons/FontAwesome';
-import getIconType from '../helpers/getIconType';
+import React from 'react'
+import { StyleSheet, TouchableOpacity, View, Platform } from 'react-native'
+import Text from '../text/Text'
+import fonts from '../config/fonts'
+import colors from '../config/colors'
+import FAIcon from 'react-native-vector-icons/FontAwesome'
+import getIconType from '../helpers/getIconType'
 
-const CheckBox = props => {
-  const {
-    component, 
-    checked, 
-    iconRight, 
-    title, 
-    center, 
-    right, 
-    containerStyle, 
-    textStyle, 
-    onIconPress, 
-    onLongIconPress, 
-    checkedIcon, 
-    uncheckedIcon, 
-    iconType, 
-    checkedColor, 
-    uncheckedColor, 
-    checkedTitle, 
-    fontFamily,
-    ...attributes,
-  } = props;
-  
+let styles = {}
 
-  let Icon = FAIcon;
+const CheckBox = ({component, checked, iconRight, title, center, right, containerStyle, textStyle, onPress, onLongPress, onIconPress, onLongIconPress, checkedIcon, uncheckedIcon, iconType, checkedColor, uncheckedColor, checkedTitle, fontFamily}) => {
+  let Icon = FAIcon
   if (iconType) {
-    Icon = getIconType(iconType);
+    Icon = getIconType(iconType)
   }
-  const Component = component || TouchableOpacity;
-  let iconName = uncheckedIcon;
+  const Component = component || TouchableOpacity
+  let iconName = uncheckedIcon
   if (checked) {
-    iconName = checkedIcon;
+    iconName = checkedIcon
   }
   return (
     <Component
+      onLongPress={onLongPress}
+      onPress={onPress}
       style={[
         styles.container,
         containerStyle && containerStyle
-      ]}
-      {...attributes}
-    >
+      ]}>
       <View style={[
         styles.wrapper,
         right && {justifyContent: 'flex-end'},
@@ -78,8 +58,8 @@ const CheckBox = props => {
         }
       </View>
     </Component>
-  );
-};
+  )
+}
 
 CheckBox.defaultProps = {
   checked: false,
@@ -90,29 +70,13 @@ CheckBox.defaultProps = {
   uncheckedColor: '#bfbfbf',
   checkedIcon: 'check-square-o',
   uncheckedIcon: 'square-o'
-};
+}
 
-CheckBox.propTypes = {
-  component: PropTypes.any,
-  checked: PropTypes.bool,
-  iconRight: PropTypes.bool,
-  title: PropTypes.string,
-  center: PropTypes.bool,
-  right: PropTypes.bool,
-  containerStyle: View.propTypes.style,
-  textStyle: View.propTypes.style,
-  checkedIcon: PropTypes.string,
-  uncheckedIcon: PropTypes.string,
-  iconType: PropTypes.string,
-  checkedColor: PropTypes.string,
-  uncheckedColor: PropTypes.string,
-  checkedTitle: PropTypes.string,
-  onIconPress: PropTypes.func,
-  onLongIconPress: PropTypes.func,
-  fontFamily: PropTypes.string,
-};
+// CheckBox.propTypes = {
+//   component, checked, iconRight, title, center, containerStyle, textStyle, onPress, checkedIcon, uncheckedIcon, iconType, checkedColor, uncheckedColor, checkedTitle
+// }
 
-const styles = StyleSheet.create({
+styles = StyleSheet.create({
   wrapper: {
     flexDirection: 'row',
     alignItems: 'center'
@@ -140,6 +104,6 @@ const styles = StyleSheet.create({
       }
     })
   }
-});
+})
 
-export default CheckBox;
+export default CheckBox
