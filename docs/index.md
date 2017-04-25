@@ -19,7 +19,6 @@
   <a href="https://www.npmjs.com/package/react-native-elements"><img src="https://img.shields.io/npm/dm/react-native-elements.svg?style=flat-square"></a>
   <a href="https://travis-ci.org/react-native-training/react-native-elements"><img src="https://img.shields.io/travis/react-native-training/react-native-elements/master.svg?style=flat-square"></a>
   <a href="https://codecov.io/gh/react-native-training/react-native-elements"><img src="https://codecov.io/gh/react-native-training/react-native-elements/coverage.svg"></a>
-  <a href="https://github.com/prettier/prettier"><img src="https://img.shields.io/badge/styled_with-prettier-ff69b4.svg"></a>
 </p>
 
 <br />
@@ -55,7 +54,6 @@ import { Button } from 'react-native-elements';
 ## Components Included
 
 - [x] [Buttons](https://react-native-training.github.io/react-native-elements/API/buttons/)
-- [x] [Badge](https://react-native-training.github.io/react-native-elements/API/badge/)
 - [x] [Social Icons / Social Icon Buttons](https://react-native-training.github.io/react-native-elements/API/social_icons/)
 - [x] [Icons](https://react-native-training.github.io/react-native-elements/API/icons/)
 - [x] [Side Menu](https://react-native-training.github.io/react-native-elements/API/side_menu/)
@@ -76,7 +74,7 @@ import { Button } from 'react-native-elements';
 
 ## Documentation
 
-[View the full docs here](https://react-native-training.github.io/react-native-elements/API/)
+[View the full docs here](https://react-native-training.github.io/react-native-elements/)
 
 ## Demo App
 
@@ -87,6 +85,7 @@ Check out the pre built and configured [React Native Hackathon Starter Project](
 #### FIRST CONTRIBUTORS
 - [ ] [Add Profile Component](https://github.com/react-native-training/react-native-elements/issues/129)
 - [ ] [Add Header Component](https://github.com/react-native-training/react-native-elements/issues/47)
+- [ ] [Add Badge Component](https://github.com/react-native-training/react-native-elements/issues/206)
 - [ ] Refactor Social Icon to use Button
 
 #### NOT STARTED

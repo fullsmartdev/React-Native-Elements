@@ -4,13 +4,12 @@ import {
   Image,
   StyleSheet,
   TouchableOpacity,
-  Text as NativeText,
 } from 'react-native';
 
 import Icon from '../icons/Icon';
 import Text from '../text/Text';
 
-const Avatar = props => {
+const Avatar = (props) => {
   const {
     component,
     onPress,
@@ -29,12 +28,15 @@ const Avatar = props => {
     titleStyle,
     overlayContainerStyle,
     activeOpacity,
-    ...attributes
+    ...attributes,
   } = props;
 
-  let { width, height } = props;
+  let {
+    width,
+    height,
+  } = props;
 
-  if (small) {
+  if(small) {
     width = 34;
     height = 34;
   } else if (medium) {
@@ -46,7 +48,7 @@ const Avatar = props => {
   } else if (xlarge) {
     width = 150;
     height = 150;
-  } else if (!width && !height) {
+  } else if(!width && !height) {
     width = 34;
     height = 34;
   } else if (!width) {
@@ -55,8 +57,8 @@ const Avatar = props => {
     height = width;
   }
 
-  let titleSize = width / 2;
-  let iconSize = width / 2;
+  let titleSize = width/2;
+  let iconSize = width/2;
 
   let Component = onPress || onLongPress ? TouchableOpacity : View;
   if (component) {
@@ -67,17 +69,14 @@ const Avatar = props => {
     if (source) {
       return (
         <Image
-          style={[
-            styles.avatar,
-            rounded && { borderRadius: width / 2 },
-            avatarStyle && avatarStyle,
-          ]}
+          style={[ styles.avatar, rounded && { borderRadius: width/2 }, avatarStyle && avatarStyle]}
           source={source}
         />
       );
     } else if (title) {
       return (
-        <Text style={[styles.title, titleStyle && titleStyle]}>
+        <Text
+          style={[ styles.title, titleStyle && titleStyle ]}>
           {title}
         </Text>
       );
@@ -99,11 +98,11 @@ const Avatar = props => {
       paddingTop: 10,
       paddingRight: 10,
       paddingBottom: 10,
-      backgroundColor: 'transparent',
+      backgroundColor: 'transparent'
     },
     avatar: {
       width: width,
-      height: height,
+      height: height
     },
     overlayContainer: {
       flex: 1,
@@ -117,7 +116,7 @@ const Avatar = props => {
       right: 0,
       bottom: 0,
       width: width,
-      height: height,
+      height: height
     },
     title: {
       color: '#ffffff',
@@ -137,12 +136,11 @@ const Avatar = props => {
     >
       <View
         style={[
-          styles.overlayContainer,
-          rounded && { borderRadius: width / 2 },
+          styles.overlayContainer, rounded && { borderRadius: width/2 },
           overlayContainerStyle && overlayContainerStyle,
         ]}
       >
-        {renderContent()}
+      {renderContent()}
       </View>
     </Component>
   );
@@ -159,11 +157,11 @@ Avatar.propTypes = {
   avatarStyle: PropTypes.any,
   rounded: PropTypes.bool,
   title: PropTypes.string,
-  titleStyle: NativeText.propTypes.style,
+  titleStyle: PropTypes.any,
   overlayContainerStyle: PropTypes.any,
   activeOpacity: PropTypes.number,
   icon: PropTypes.object,
-  iconStyle: NativeText.propTypes.style,
+  iconStyle: PropTypes.any,
   small: PropTypes.bool,
   medium: PropTypes.bool,
   large: PropTypes.bool,

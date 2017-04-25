@@ -1,16 +1,9 @@
 import React, { Component, PropTypes } from 'react';
-import {
-  TextInput,
-  StyleSheet,
-  View,
-  Platform,
-  Dimensions,
-  Text as NativeText,
-} from 'react-native';
+import { TextInput, StyleSheet, View, Platform, Dimensions } from 'react-native';
 import colors from '../config/colors';
 import normalize from '../helpers/normalizeText';
 
-const { width } = Dimensions.get('window');
+const {width} = Dimensions.get('window');
 
 class FormInput extends Component {
   focus() {
@@ -21,20 +14,17 @@ class FormInput extends Component {
     const ref = this.props.textInputRef;
     this.refs[ref].blur();
   }
-  render() {
+  render () {
     const {
       containerStyle,
       inputStyle,
       textInputRef,
       containerRef,
       selectionColor,
-      ...attributes
+      ...attributes,
     } = this.props;
     return (
-      <View
-        ref={containerRef}
-        style={[styles.container, containerStyle && containerStyle]}
-      >
+      <View ref={containerRef} style={[styles.container, containerStyle && containerStyle]}>
         <TextInput
           ref={textInputRef}
           selectionColor={selectionColor || colors.grey3}
@@ -48,7 +38,7 @@ class FormInput extends Component {
 
 FormInput.propTypes = {
   containerStyle: View.propTypes.style,
-  inputStyle: NativeText.propTypes.style,
+  inputStyle: View.propTypes.style,
   selectionColor: PropTypes.string,
   textInputRef: PropTypes.string,
   containerRef: PropTypes.string,
@@ -63,9 +53,9 @@ const styles = StyleSheet.create({
         borderBottomColor: colors.grey4,
         borderBottomWidth: 1,
         marginLeft: 20,
-        marginRight: 20,
-      },
-    }),
+        marginRight: 20
+      }
+    })
   },
   input: {
     ...Platform.select({
@@ -74,12 +64,12 @@ const styles = StyleSheet.create({
       },
       ios: {
         height: 36,
-      },
+      }
     }),
     width: width,
     color: colors.grey3,
-    fontSize: normalize(14),
-  },
+    fontSize: normalize(14)
+  }
 });
 
 export default FormInput;
