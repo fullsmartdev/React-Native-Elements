@@ -18,18 +18,8 @@ class Search extends Component {
   }
 
   clearText() {
-    if (this.props.onChangeText) {
-      this.props.onChangeText('');
-    }
-    try {
-      const ref = this.props.textInputRef;
-      this.refs[ref].clear();
-    } catch (e) {
-      if (__DEV__)
-        console.warn(
-          'Could not access textInput reference, make sure you supplied the textInputRef'
-        );
-    }
+    const ref = this.props.textInputRef;
+    this.refs[ref].clear();
   }
 
   render() {
@@ -112,7 +102,6 @@ Search.propTypes = {
   containerRef: PropTypes.string,
   selectionColor: PropTypes.string,
   underlineColorAndroid: PropTypes.string,
-  onChangeText: PropTypes.func,
 };
 
 Search.defaultProps = {
