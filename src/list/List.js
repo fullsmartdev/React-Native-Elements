@@ -1,15 +1,11 @@
-import PropTypes from 'prop-types';
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { View, StyleSheet } from 'react-native';
 import colors from '../config/colors';
 
 const List = props => {
-  const { children, containerStyle, ...attributes } = props;
+  const {children, containerStyle, ...attributes} = props;
   return (
-    <View
-      style={[styles.listContainer, containerStyle && containerStyle]}
-      {...attributes}
-    >
+    <View style={[styles.listContainer, containerStyle && containerStyle]} {...attributes}>
       {children}
     </View>
   );
@@ -27,7 +23,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderColor: colors.greyOutline,
     backgroundColor: colors.white,
-  },
+  }
 });
 
 export default List;

@@ -1,40 +1,26 @@
-import PropTypes from 'prop-types';
-import React from 'react';
-import { StyleSheet, View, Platform, Text as NativeText } from 'react-native';
+import React, { PropTypes } from 'react';
+import { StyleSheet, View, Platform } from 'react-native';
 import colors from '../config/colors';
 import fonts from '../config/fonts';
 import Text from '../text/Text';
 import normalize from '../helpers/normalizeText';
 
 const FormLabel = props => {
-  const {
-    containerStyle,
-    labelStyle,
-    children,
-    fontFamily,
-    ...attributes
-  } = props;
+  const {containerStyle, labelStyle, children, fontFamily, ...attributes} = props;
   return (
-    <View
-      style={[styles.container, containerStyle && containerStyle]}
-      {...attributes}
-    >
-      <Text
-        style={[
-          styles.label,
-          labelStyle && labelStyle,
-          fontFamily && { fontFamily },
-        ]}
-      >
-        {children}
-      </Text>
+    <View style={[styles.container, containerStyle && containerStyle]} {...attributes}>
+      <Text style={[
+        styles.label,
+        labelStyle && labelStyle,
+        fontFamily && {fontFamily}
+      ]}>{children}</Text>
     </View>
   );
 };
 
 FormLabel.propTypes = {
   containerStyle: View.propTypes.style,
-  labelStyle: NativeText.propTypes.style,
+  labelStyle: View.propTypes.style,
   children: PropTypes.any,
   fontFamily: PropTypes.string,
 };
@@ -50,13 +36,13 @@ const styles = StyleSheet.create({
     fontSize: normalize(12),
     ...Platform.select({
       ios: {
-        fontWeight: 'bold',
+        fontWeight: 'bold'
       },
       android: {
-        ...fonts.android.bold,
-      },
-    }),
-  },
+        ...fonts.android.bold
+      }
+    })
+  }
 });
 
 export default FormLabel;

@@ -1,5 +1,4 @@
-import PropTypes from 'prop-types';
-import React from 'react';
+import React, { PropTypes } from 'react';
 import {
   TouchableOpacity,
   Text as NativeText,
@@ -23,10 +22,13 @@ const FeaturedTile = props => {
     iconContainerStyle,
     titleStyle,
     captionStyle,
-    ...attributes
+    ...attributes,
   } = props;
 
-  let { width, height } = props;
+  let {
+    width,
+    height,
+  } = props;
 
   if (!width) {
     width = Dimensions.get('window').width;
@@ -73,13 +75,16 @@ const FeaturedTile = props => {
     iconContainer: {
       justifyContent: 'center',
       alignItems: 'center',
-      alignSelf: 'center',
-    },
+      alignSelf: 'center'
+    }
   });
 
   return (
     <TouchableOpacity
-      style={[styles.container, containerStyle && containerStyle]}
+      style={[
+        styles.container,
+        containerStyle && containerStyle,
+      ]}
       {...attributes}
     >
       <Image
@@ -103,10 +108,21 @@ const FeaturedTile = props => {
           >
             {icon && <Icon {...icon} />}
           </View>
-          <Text h4 style={[styles.text, titleStyle && titleStyle]}>
+          <Text
+            h4
+            style={[
+              styles.text,
+              titleStyle && titleStyle,
+            ]}
+          >
             {title}
           </Text>
-          <Text style={[styles.text, captionStyle && captionStyle]}>
+          <Text
+            style={[
+              styles.text,
+              captionStyle && captionStyle,
+            ]}
+          >
             {caption}
           </Text>
         </View>

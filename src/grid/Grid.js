@@ -1,5 +1,4 @@
-import PropTypes from 'prop-types';
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { View, StyleSheet, TouchableOpacity } from 'react-native';
 import Row from './Row';
 
@@ -9,11 +8,11 @@ class Grid extends Component {
       flex: 1,
       flexDirection: this.isRow() ? 'column' : 'row',
     },
-  });
+  })
 
   isRow() {
     let isRow = false;
-    React.Children.forEach(this.props.children, child => {
+    React.Children.forEach(this.props.children, (child) => {
       if (child && child.type === Row) {
         isRow = true;
       }
@@ -23,13 +22,16 @@ class Grid extends Component {
   }
 
   render() {
-    const { onPress, activeOpacity, containerStyle } = this.props;
+    const {onPress, activeOpacity, containerStyle} = this.props;
 
     if (onPress) {
       return (
         <TouchableOpacity activeOpacity={activeOpacity} onPress={onPress}>
           <View
-            style={[this.styles.container, containerStyle && containerStyle]}
+            style={[
+              this.styles.container,
+              containerStyle && containerStyle,
+            ]}
             {...this.props}
           >
             {this.props.children}
@@ -40,7 +42,10 @@ class Grid extends Component {
 
     return (
       <View
-        style={[this.styles.container, containerStyle && containerStyle]}
+        style={[
+          this.styles.container,
+          containerStyle && containerStyle,
+        ]}
         {...this.props}
       >
         {this.props.children}
