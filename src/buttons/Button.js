@@ -30,7 +30,6 @@ const Button = props => {
     title,
     onPress,
     icon,
-    iconComponent,
     secondary,
     secondary2,
     secondary3,
@@ -54,22 +53,20 @@ const Button = props => {
   let iconElement;
   if (icon) {
     let Icon;
-    if (iconComponent) {
-      Icon = iconComponent;
-    } else if (!icon.type) {
+    if (!icon.type) {
       Icon = MaterialIcon;
     } else {
       Icon = getIconType(icon.type);
     }
     iconElement = (
       <Icon
-        {...icon}
         color={icon.color || 'white'}
         size={icon.size || (large ? 26 : 18)}
         style={[
           iconRight ? styles.iconRight : styles.icon,
           icon.style && icon.style,
         ]}
+        name={icon.name}
       />
     );
   }
