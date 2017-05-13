@@ -1,5 +1,4 @@
-import PropTypes from 'prop-types';
-import React from 'react';
+import React, { PropTypes } from 'react';
 import {
   View,
   StyleSheet,
@@ -64,7 +63,6 @@ const ListItem = props => {
     textInputSelectTextOnFocus,
     textInputReturnKeyType,
     textInputValue,
-    textInputSecure,
     textInputStyle,
     textInputContainerStyle,
     ...attributes
@@ -172,7 +170,6 @@ const ListItem = props => {
               onChangeText={textInputOnChangeText}
               onFocus={textInputOnFocus}
               onBlur={textInputOnBlur}
-              secureTextEntry={textInputSecure}
               selectTextOnFocus={textInputSelectTextOnFocus}
               returnKeyType={textInputReturnKeyType}
             />
@@ -275,7 +272,6 @@ ListItem.propTypes = {
   textInputSelectTextOnFocus: PropTypes.bool,
   textInputReturnKeyType: PropTypes.string,
   textInputValue: PropTypes.string,
-  textInputSecure: PropTypes.bool,
   textInputStyle: PropTypes.any,
   textInputContainerStyle: PropTypes.any,
   component: PropTypes.any,

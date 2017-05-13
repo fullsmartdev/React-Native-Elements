@@ -1,5 +1,4 @@
-import PropTypes from 'prop-types';
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { View, StyleSheet, TouchableOpacity } from 'react-native';
 import Row from './Row';
 
