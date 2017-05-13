@@ -79,7 +79,6 @@ import { Button } from 'react-native-elements';
 - [x] [Slider Component](https://react-native-training.github.io/react-native-elements/API/slider/)
 - [x] [Tile Component](https://react-native-training.github.io/react-native-elements/API/tile/)
 - [x] [Avatar Component](https://react-native-training.github.io/react-native-elements/API/avatar/)
-- [x] [Header Component](https://react-native-training.github.io/react-native-elements/API/header/)
 
 ## Documentation
 
