@@ -67,7 +67,6 @@ const ListItem = props => {
     textInputSecure,
     textInputStyle,
     textInputContainerStyle,
-    onPressRightIcon,
     ...attributes
   } = props;
 
@@ -89,24 +88,22 @@ const ListItem = props => {
       {...attributes}
     >
       <View style={[styles.wrapper, wrapperStyle && wrapperStyle]}>
-        {React.isValidElement(leftIcon)
-          ? leftIcon
-          : leftIcon &&
-              leftIcon.name &&
-              <View
-                style={[
-                  styles.iconStyle,
-                  leftIconContainerStyle && leftIconContainerStyle,
-                ]}
-              >
-                <Icon
-                  type={leftIcon.type}
-                  iconStyle={[styles.icon, leftIcon.style && leftIcon.style]}
-                  name={leftIcon.name}
-                  color={leftIcon.color || colors.grey4}
-                  size={leftIcon.size || 24}
-                />
-              </View>}
+        {leftIcon &&
+          leftIcon.name &&
+          <View
+            style={[
+              styles.iconStyle,
+              leftIconContainerStyle && leftIconContainerStyle,
+            ]}
+          >
+            <Icon
+              type={leftIcon.type}
+              iconStyle={[styles.icon, leftIcon.style && leftIcon.style]}
+              name={leftIcon.name}
+              color={leftIcon.color || colors.grey4}
+              size={leftIcon.size || 24}
+            />
+          </View>}
         {avatar &&
           <Image
             style={[
@@ -181,17 +178,15 @@ const ListItem = props => {
             />
           </View>}
         {!hideChevron &&
-          (React.isValidElement(rightIcon)
-            ? rightIcon
-            : <TouchableHighlight  onPress={onPressRightIcon} disabled={!onPressRightIcon} style={styles.chevronContainer}>
-                <Icon
-                  type={rightIcon.type}
-                  iconStyle={rightIcon.style}
-                  size={28}
-                  name={rightIcon.name || 'chevron-right'}
-                  color={rightIcon.color || chevronColor}
-                />
-              </TouchableHighlight>)}
+          <View style={styles.chevronContainer}>
+            <Icon
+              type={rightIcon.type}
+              iconStyle={rightIcon.style}
+              size={28}
+              name={rightIcon.name || 'chevron-right'}
+              color={rightIcon.color || chevronColor}
+            />
+          </View>}
         {switchButton &&
           hideChevron &&
           <View style={styles.switchContainer}>
@@ -230,7 +225,7 @@ ListItem.propTypes = {
   avatar: PropTypes.any,
   icon: PropTypes.any,
   onPress: PropTypes.func,
-  rightIcon: PropTypes.oneOfType([PropTypes.element, PropTypes.object]),
+  rightIcon: PropTypes.object,
   underlayColor: PropTypes.string,
   subtitle: PropTypes.oneOfType([
     PropTypes.string,
@@ -291,10 +286,9 @@ ListItem.propTypes = {
   subtitleContainerStyle: View.propTypes.style,
   label: PropTypes.any,
   onLongPress: PropTypes.func,
-  leftIcon: PropTypes.oneOfType([PropTypes.element, PropTypes.object]),
+  leftIcon: PropTypes.object,
   leftIconContainerStyle: View.propTypes.style,
   avatarStyle: View.propTypes.style,
-  onPressRightIcon: PropTypes.func,
 };
 
 const styles = StyleSheet.create({

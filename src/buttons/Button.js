@@ -30,7 +30,6 @@ const Button = props => {
     title,
     onPress,
     icon,
-    iconComponent,
     secondary,
     secondary2,
     secondary3,
@@ -47,7 +46,6 @@ const Button = props => {
     fontWeight,
     disabledStyle,
     fontFamily,
-    containerViewStyle,
     ...attributes
   } = props;
   let { Component } = props;
@@ -55,22 +53,20 @@ const Button = props => {
   let iconElement;
   if (icon) {
     let Icon;
-    if (iconComponent) {
-      Icon = iconComponent;
-    } else if (!icon.type) {
+    if (!icon.type) {
       Icon = MaterialIcon;
     } else {
       Icon = getIconType(icon.type);
     }
     iconElement = (
       <Icon
-        {...icon}
         color={icon.color || 'white'}
         size={icon.size || (large ? 26 : 18)}
         style={[
           iconRight ? styles.iconRight : styles.icon,
           icon.style && icon.style,
         ]}
+        name={icon.name}
       />
     );
   }
@@ -94,60 +90,49 @@ const Button = props => {
   if (!Component) {
     Component = TouchableHighlight;
   }
-
-  if (borderRadius && !attributes.background) {
-    attributes.background = TouchableNativeFeedback.Ripple(
-      'ThemeAttrAndroid',
-      true
-    );
-  }
-
   return (
-    <View
-      style={[styles.container, raised && styles.raised, containerViewStyle]}
+    <Component
+      underlayColor={underlayColor || 'transparent'}
+      onPress={onPress || log}
+      disabled={disabled || false}
+      {...attributes}
     >
-      <Component
-        underlayColor={underlayColor || 'transparent'}
-        onPress={onPress || log}
-        disabled={disabled || false}
-        {...attributes}
+      <View
+        style={[
+          styles.button,
+          secondary && { backgroundColor: colors.secondary },
+          secondary2 && { backgroundColor: colors.secondary2 },
+          secondary3 && { backgroundColor: colors.secondary3 },
+          primary1 && { backgroundColor: colors.primary1 },
+          primary2 && { backgroundColor: colors.primary2 },
+          backgroundColor && { backgroundColor: backgroundColor },
+          borderRadius && { borderRadius },
+          raised && styles.raised,
+          !large && styles.small,
+          buttonStyle && buttonStyle,
+          disabled && { backgroundColor: colors.disabled },
+          disabled && disabledStyle && disabledStyle,
+        ]}
       >
-        <View
+        {icon && !iconRight && iconElement}
+        {loading && !loadingRight && loadingElement}
+        <Text
           style={[
-            styles.button,
-            secondary && { backgroundColor: colors.secondary },
-            secondary2 && { backgroundColor: colors.secondary2 },
-            secondary3 && { backgroundColor: colors.secondary3 },
-            primary1 && { backgroundColor: colors.primary1 },
-            primary2 && { backgroundColor: colors.primary2 },
-            backgroundColor && { backgroundColor: backgroundColor },
-            borderRadius && { borderRadius },
-            !large && styles.small,
-            buttonStyle && buttonStyle,
-            disabled && { backgroundColor: colors.disabled },
-            disabled && disabledStyle && disabledStyle,
+            styles.text,
+            color && { color },
+            !large && styles.smallFont,
+            fontSize && { fontSize },
+            textStyle && textStyle,
+            fontWeight && { fontWeight },
+            fontFamily && { fontFamily },
           ]}
         >
-          {icon && !iconRight && iconElement}
-          {loading && !loadingRight && loadingElement}
-          <Text
-            style={[
-              styles.text,
-              color && { color },
-              !large && styles.smallFont,
-              fontSize && { fontSize },
-              textStyle && textStyle,
-              fontWeight && { fontWeight },
-              fontFamily && { fontFamily },
-            ]}
-          >
-            {title}
-          </Text>
-          {loading && loadingRight && loadingElement}
-          {icon && iconRight && iconElement}
-        </View>
-      </Component>
-    </View>
+          {title}
+        </Text>
+        {loading && loadingRight && loadingElement}
+        {icon && iconRight && iconElement}
+      </View>
+    </Component>
   );
 };
 
@@ -156,7 +141,6 @@ Button.propTypes = {
   title: PropTypes.string,
   onPress: PropTypes.any,
   icon: PropTypes.object,
-  iconComponent: PropTypes.any,
   secondary: PropTypes.bool,
   secondary2: PropTypes.bool,
   secondary3: PropTypes.bool,
@@ -182,12 +166,10 @@ Button.propTypes = {
 };
 
 const styles = StyleSheet.create({
-  container: {
-    marginLeft: 15,
-    marginRight: 15,
-  },
   button: {
     padding: 19,
+    marginLeft: 15,
+    marginRight: 15,
     backgroundColor: colors.primary,
     justifyContent: 'center',
     alignItems: 'center',
