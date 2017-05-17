@@ -67,7 +67,6 @@ const ListItem = props => {
     textInputSecure,
     textInputStyle,
     textInputContainerStyle,
-    onPressRightIcon,
     ...attributes
   } = props;
 
@@ -183,7 +182,7 @@ const ListItem = props => {
         {!hideChevron &&
           (React.isValidElement(rightIcon)
             ? rightIcon
-            : <TouchableHighlight  onPress={onPressRightIcon} disabled={!onPressRightIcon} style={styles.chevronContainer}>
+            : <View style={styles.chevronContainer}>
                 <Icon
                   type={rightIcon.type}
                   iconStyle={rightIcon.style}
@@ -191,7 +190,7 @@ const ListItem = props => {
                   name={rightIcon.name || 'chevron-right'}
                   color={rightIcon.color || chevronColor}
                 />
-              </TouchableHighlight>)}
+              </View>)}
         {switchButton &&
           hideChevron &&
           <View style={styles.switchContainer}>
@@ -294,7 +293,6 @@ ListItem.propTypes = {
   leftIcon: PropTypes.oneOfType([PropTypes.element, PropTypes.object]),
   leftIconContainerStyle: View.propTypes.style,
   avatarStyle: View.propTypes.style,
-  onPressRightIcon: PropTypes.func,
 };
 
 const styles = StyleSheet.create({
