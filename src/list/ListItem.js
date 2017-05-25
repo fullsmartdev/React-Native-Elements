@@ -9,7 +9,6 @@ import {
   Switch,
   TextInput,
 } from 'react-native';
-import Avatar from '../avatar/Avatar';
 import Badge from '../badge/badge';
 import Icon from '../icons/Icon';
 import Text from '../text/Text';
@@ -108,15 +107,14 @@ const ListItem = props => {
                 />
               </View>}
         {avatar &&
-          <View style={styles.avatar}>
-            {React.isValidElement(avatar)
-              ? avatar
-              : <Avatar
-                  containerStyle={avatarStyle && avatarStyle}
-                  rounded={roundAvatar}
-                  source={avatar}
-                />}
-          </View>}
+          <Image
+            style={[
+              styles.avatar,
+              roundAvatar && { borderRadius: 17 },
+              avatarStyle && avatarStyle,
+            ]}
+            source={avatar}
+          />}
         <View style={styles.titleSubtitleContainer}>
           <View style={titleContainerStyle}>
             {title && (typeof title === 'string' || typeof title === 'number')
@@ -181,6 +179,7 @@ const ListItem = props => {
               returnKeyType={textInputReturnKeyType}
             />
           </View>}
+        {badge && !rightTitle && <Badge {...badge} />}
         {!hideChevron &&
           (React.isValidElement(rightIcon)
             ? rightIcon
@@ -205,7 +204,6 @@ const ListItem = props => {
               value={switched}
             />
           </View>}
-        {badge && !rightTitle && <Badge {...badge} />}
         {label && label}
       </View>
     </Component>

@@ -33,23 +33,23 @@ exports[`ListItem component should render with avatar 1`] = `
       ]
     }
   >
-    <View
-      style={
+    <Image
+      source={
         Object {
-          "height": 34,
-          "width": 34,
+          "uri": "avatar_uri",
         }
       }
-    >
-      <Avatar
-        rounded={false}
-        source={
+      style={
+        Array [
           Object {
-            "uri": "avatar_uri",
-          }
-        }
-      />
-    </View>
+            "height": 34,
+            "width": 34,
+          },
+          false,
+          undefined,
+        ]
+      }
+    />
     <View
       style={
         Object {
