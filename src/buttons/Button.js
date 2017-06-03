@@ -48,9 +48,6 @@ const Button = props => {
     disabledStyle,
     fontFamily,
     containerViewStyle,
-    rounded,
-    outline,
-    transparent,
     ...attributes
   } = props;
   let { Component } = props;
@@ -105,14 +102,6 @@ const Button = props => {
     );
   }
 
-  const baseFont = {
-    color: (textStyle && textStyle.color) || color || stylesObject.text.color,
-    size: (textStyle && textStyle.fontSize) ||
-      fontSize ||
-      (!large && stylesObject.smallFont.fontSize) ||
-      stylesObject.text.fontSize,
-  };
-
   return (
     <View
       style={[styles.container, raised && styles.raised, containerViewStyle]}
@@ -134,21 +123,6 @@ const Button = props => {
             backgroundColor && { backgroundColor: backgroundColor },
             borderRadius && { borderRadius },
             !large && styles.small,
-            rounded && {
-            borderRadius: baseFont.size * 3.8,
-            paddingHorizontal: !large ?
-              stylesObject.small.padding * 1.5 :
-              stylesObject.button.padding * 1.5,
-            },
-            outline && {
-              borderWidth: 1,
-              backgroundColor: 'transparent',
-              borderColor: baseFont.color,
-            },
-            transparent && {
-              borderWidth: 0,
-              backgroundColor: 'transparent',
-            },
             buttonStyle && buttonStyle,
             disabled && { backgroundColor: colors.disabled },
             disabled && disabledStyle && disabledStyle,
@@ -207,7 +181,7 @@ Button.propTypes = {
   fontFamily: PropTypes.string,
 };
 
-const stylesObject = {
+const styles = StyleSheet.create({
   container: {
     marginLeft: 15,
     marginRight: 15,
@@ -252,8 +226,6 @@ const stylesObject = {
       },
     }),
   },
-};
-
-const styles = StyleSheet.create(stylesObject);
+});
 
 export default Button;

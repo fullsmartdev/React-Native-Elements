@@ -42,9 +42,6 @@ exports[`Button Component should render with custom icon component 1`] = `
           undefined,
           undefined,
           undefined,
-          undefined,
-          undefined,
-          undefined,
         ]
       }
     >
@@ -126,9 +123,6 @@ exports[`Button Component should render with default icon 1`] = `
           Object {
             "padding": 12,
           },
-          undefined,
-          undefined,
-          undefined,
           undefined,
           undefined,
           undefined,
@@ -217,9 +211,6 @@ exports[`Button Component should render with icon type 1`] = `
           undefined,
           undefined,
           undefined,
-          undefined,
-          undefined,
-          undefined,
         ]
       }
     >
@@ -300,9 +291,6 @@ exports[`Button Component should render without issues 1`] = `
           Object {
             "padding": 12,
           },
-          undefined,
-          undefined,
-          undefined,
           undefined,
           undefined,
           undefined,
