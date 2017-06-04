@@ -13,22 +13,24 @@ import colors from '../config/colors';
 import normalize from '../helpers/normalizeText';
 
 class Search extends Component {
-  getRef = () => {
-    return this.props.textInputRef
-      ? this.refs[this.props.textInputRef]
-      : this.input;
-  };
-
   focus() {
-    this.getRef() && this.getRef().focus();
-  }
-
-  blur() {
-    this.getRef() && this.getRef().blur();
+    const ref = this.props.textInputRef;
+    this.refs[ref].focus();
   }
 
   clearText() {
-    this.getRef() && this.getRef().clear();
+    if (this.props.onChangeText) {
+      this.props.onChangeText('');
+    }
+    try {
+      const ref = this.props.textInputRef;
+      this.refs[ref].clear();
+    } catch (e) {
+      if (__DEV__)
+        console.warn(
+          'Could not access textInput reference, make sure you supplied the textInputRef'
+        );
+    }
   }
 
   render() {
@@ -44,7 +46,6 @@ class Search extends Component {
       clearIcon,
       containerRef,
       textInputRef,
-      selectionColor,
       underlineColorAndroid,
       ...attributes
     } = this.props;
@@ -58,8 +59,7 @@ class Search extends Component {
         ]}
       >
         <TextInput
-          ref={textInputRef || (input => this.input = input)}
-          selectionColor={selectionColor || colors.grey3}
+          ref={textInputRef}
           underlineColorAndroid={
             underlineColorAndroid ? underlineColorAndroid : 'transparent'
           }
@@ -109,8 +109,8 @@ Search.propTypes = {
   clearIcon: PropTypes.oneOfType([PropTypes.object, PropTypes.bool]),
   textInputRef: PropTypes.string,
   containerRef: PropTypes.string,
-  selectionColor: PropTypes.string,
   underlineColorAndroid: PropTypes.string,
+  onChangeText: PropTypes.func,
 };
 
 Search.defaultProps = {

@@ -166,8 +166,8 @@ styles = StyleSheet.create({
 | component | View or TouchableHighlight if onPress method is added as prop | React Native element | replace element with custom element (optional) |
 | containerStyle | none | object (style) | additional main container styling (optional) |
 | hideChevron | false | boolean | set if you do not want a chevron (optional) |
-| leftIcon | none | object {name, color, style, type} (type defaults to material icons) | icon configuration for left icon (optional) |
-| rightIcon | {name: 'chevron-right'} | object {name, color, style, type} (type defaults to material icons) | icon configuration for right icon (optional). Shows up unless hideChevron is set |
+| leftIcon | none | object {name, color, style, type} (type defaults to material icons) <br/><br/> **OR** <br/><br/> React Native element | icon configuration for left icon (optional) |
+| rightIcon | {name: 'chevron-right'} | object {name, color, style, type} (type defaults to material icons) <br/><br/> **OR** <br/><br/> React Native element | icon configuration for right icon (optional). Shows up unless hideChevron is set |
 | onPress | none | function | onPress method for link (optional) |
 | onLongPress | none | function | onLongPress method for link (optional) |
 | roundAvatar | false | boolean | make left avatar round |
@@ -202,11 +202,14 @@ styles = StyleSheet.create({
 | textInputOnChangeText | function | Callback that is called when the text input's text changes. Changed text is passed as an argument to the callback handler. |
 | textInputOnFocus | function | Callback that is called when the text input is focused. |
 | textInputValue | string | Manually set value of the input
+| textInputSecure | boolean | If true, obscures the text entered so that sensitive text like passwords stay secure. |
 | textInputStyle | object (style) | Style for the input text |
 | textInputContainerStyle | object (style) | Style for the container surrounding the input text |
 | textInputOnBlur | function | Callback that is called when the text input is blurred. |
 | textInputSelectTextOnFocus | boolean | If true, all text will automatically be selected on focus. |
 | textInputReturnKeyType | string | Determines how the return key should look. For more info see [the React Native docs](https://facebook.github.io/react-native/docs/textinput.html#returnkeytype) |
+| onPressRightIcon | function | Attaches an onPress on right Icon |
+
 
 #### Badges
 ![Badges](http://i.imgur.com/qvJgGF2.png)
