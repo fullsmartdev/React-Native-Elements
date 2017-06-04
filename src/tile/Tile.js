@@ -92,7 +92,6 @@ const Tile = props => {
 
   return (
     <TouchableOpacity
-      onPress={onPress}
       style={[styles.container, containerStyle && containerStyle]}
       {...attributes}
     >

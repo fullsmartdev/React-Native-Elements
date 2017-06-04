@@ -65,9 +65,7 @@ exports[`ListItem component should render with avatar 1`] = `
         <View />
       </View>
     </View>
-    <TouchableHighlight
-      activeOpacity={0.85}
-      disabled={true}
+    <View
       style={
         Object {
           "alignItems": "flex-end",
@@ -75,7 +73,6 @@ exports[`ListItem component should render with avatar 1`] = `
           "justifyContent": "center",
         }
       }
-      underlayColor="black"
     >
       <Icon
         color="#bdc6cf"
@@ -86,7 +83,7 @@ exports[`ListItem component should render with avatar 1`] = `
         size={28}
         underlayColor="white"
       />
-    </TouchableHighlight>
+    </View>
   </View>
 </View>
 `;
@@ -167,9 +164,7 @@ exports[`ListItem component should render with left icon 1`] = `
         <View />
       </View>
     </View>
-    <TouchableHighlight
-      activeOpacity={0.85}
-      disabled={true}
+    <View
       style={
         Object {
           "alignItems": "flex-end",
@@ -177,7 +172,6 @@ exports[`ListItem component should render with left icon 1`] = `
           "justifyContent": "center",
         }
       }
-      underlayColor="black"
     >
       <Icon
         color="#bdc6cf"
@@ -188,141 +182,7 @@ exports[`ListItem component should render with left icon 1`] = `
         size={28}
         underlayColor="white"
       />
-    </TouchableHighlight>
-  </View>
-</View>
-`;
-
-exports[`ListItem component should render with left icon component 1`] = `
-<View
-  style={
-    Array [
-      Object {
-        "backgroundColor": "transparent",
-        "borderBottomColor": "#ededed",
-        "borderBottomWidth": 1,
-        "paddingBottom": 10,
-        "paddingRight": 10,
-        "paddingTop": 10,
-      },
-      undefined,
-    ]
-  }
-  underlayColor="white"
->
-  <View
-    style={
-      Array [
-        Object {
-          "flexDirection": "row",
-          "marginLeft": 10,
-        },
-        Object {
-          "backgroundColor": "peru",
-        },
-      ]
-    }
-  >
-    <Text
-      accessible={true}
-      allowFontScaling={true}
-      ellipsizeMode="tail"
-    >
-      I'm left icon
-    </Text>
-    <View
-      style={
-        Object {
-          "flex": 1,
-          "justifyContent": "center",
-        }
-      }
-    >
-      <View>
-        <View />
-      </View>
-      <View>
-        <View />
-      </View>
     </View>
-    <TouchableHighlight
-      activeOpacity={0.85}
-      disabled={true}
-      style={
-        Object {
-          "alignItems": "flex-end",
-          "flex": 0.15,
-          "justifyContent": "center",
-        }
-      }
-      underlayColor="black"
-    >
-      <Icon
-        color="#bdc6cf"
-        name="chevron-right"
-        raised={false}
-        reverse={false}
-        reverseColor="white"
-        size={28}
-        underlayColor="white"
-      />
-    </TouchableHighlight>
-  </View>
-</View>
-`;
-
-exports[`ListItem component should render with right icon component 1`] = `
-<View
-  style={
-    Array [
-      Object {
-        "backgroundColor": "transparent",
-        "borderBottomColor": "#ededed",
-        "borderBottomWidth": 1,
-        "paddingBottom": 10,
-        "paddingRight": 10,
-        "paddingTop": 10,
-      },
-      undefined,
-    ]
-  }
-  underlayColor="white"
->
-  <View
-    style={
-      Array [
-        Object {
-          "flexDirection": "row",
-          "marginLeft": 10,
-        },
-        Object {
-          "backgroundColor": "peru",
-        },
-      ]
-    }
-  >
-    <View
-      style={
-        Object {
-          "flex": 1,
-          "justifyContent": "center",
-        }
-      }
-    >
-      <View>
-        <View />
-      </View>
-      <View>
-        <View />
-      </View>
-    </View>
-    <Text
-      accessible={true}
-      allowFontScaling={true}
-      ellipsizeMode="tail"
-    >
-      I'm right icon
-    </Text>
   </View>
 </View>
 `;
@@ -527,9 +387,7 @@ exports[`ListItem component should render with title and subtitle 1`] = `
         title
       </TextElement>
     </View>
-    <TouchableHighlight
-      activeOpacity={0.85}
-      disabled={true}
+    <View
       style={
         Object {
           "alignItems": "flex-end",
@@ -537,7 +395,6 @@ exports[`ListItem component should render with title and subtitle 1`] = `
           "justifyContent": "center",
         }
       }
-      underlayColor="black"
     >
       <Icon
         color="#bdc6cf"
@@ -548,7 +405,7 @@ exports[`ListItem component should render with title and subtitle 1`] = `
         size={28}
         underlayColor="white"
       />
-    </TouchableHighlight>
+    </View>
   </View>
 </View>
 `;
@@ -596,9 +453,7 @@ exports[`ListItem component should render without issues 1`] = `
         <View />
       </View>
     </View>
-    <TouchableHighlight
-      activeOpacity={0.85}
-      disabled={true}
+    <View
       style={
         Object {
           "alignItems": "flex-end",
@@ -606,7 +461,6 @@ exports[`ListItem component should render without issues 1`] = `
           "justifyContent": "center",
         }
       }
-      underlayColor="black"
     >
       <Icon
         color="#bdc6cf"
@@ -617,7 +471,7 @@ exports[`ListItem component should render without issues 1`] = `
         size={28}
         underlayColor="white"
       />
-    </TouchableHighlight>
+    </View>
   </View>
 </View>
 `;

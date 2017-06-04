@@ -21,23 +21,22 @@ describe('Button Component', () => {
   it('should have onPress event', () => {
     const onPress = jest.fn();
     const component = shallow(<Button onPress={onPress} />);
-    const innerComponent = component.find('TouchableHighlight');
 
-    innerComponent.simulate('press');
+    component.simulate('press');
     expect(onPress).toHaveBeenCalled();
   });
 
   it('should render primary color', () => {
     const component = shallow(<Button primary />);
 
-    expect(component.find('View').at(1).props().style[0].backgroundColor).toBe(
+    expect(component.find('View').props().style[0].backgroundColor).toBe(
       colors.primary
     );
   });
 
   it('should render primary1 color', () => {
     const component = shallow(<Button primary1 />);
-    const styles = component.find('View').at(1).props().style;
+    const styles = component.find('View').props().style;
     let backgroundColorStyles = [];
     for (let i = 0; i < styles.length; i++) {
       if (styles[i] && styles[i].hasOwnProperty('backgroundColor')) {
@@ -50,7 +49,7 @@ describe('Button Component', () => {
 
   it('should render primary2 color', () => {
     const component = shallow(<Button primary2 />);
-    const styles = component.find('View').at(1).props().style;
+    const styles = component.find('View').props().style;
     let backgroundColorStyles = [];
     for (let i = 0; i < styles.length; i++) {
       if (styles[i] && styles[i].hasOwnProperty('backgroundColor')) {
@@ -63,7 +62,7 @@ describe('Button Component', () => {
 
   it('should render secondary color', () => {
     const component = shallow(<Button secondary />);
-    const styles = component.find('View').at(1).props().style;
+    const styles = component.find('View').props().style;
     let backgroundColorStyles = [];
     for (let i = 0; i < styles.length; i++) {
       if (styles[i] && styles[i].hasOwnProperty('backgroundColor')) {
@@ -76,7 +75,7 @@ describe('Button Component', () => {
 
   it('should render secondary2 color', () => {
     const component = shallow(<Button secondary2 />);
-    const styles = component.find('View').at(1).props().style;
+    const styles = component.find('View').props().style;
     let backgroundColorStyles = [];
     for (let i = 0; i < styles.length; i++) {
       if (styles[i] && styles[i].hasOwnProperty('backgroundColor')) {
@@ -89,7 +88,7 @@ describe('Button Component', () => {
 
   it('should render secondary3 color', () => {
     const component = shallow(<Button secondary3 />);
-    const styles = component.find('View').at(1).props().style;
+    const styles = component.find('View').props().style;
     let backgroundColorStyles = [];
     for (let i = 0; i < styles.length; i++) {
       if (styles[i] && styles[i].hasOwnProperty('backgroundColor')) {
@@ -102,7 +101,7 @@ describe('Button Component', () => {
 
   it('should render custom background color', () => {
     const component = shallow(<Button backgroundColor="#777" />);
-    const styles = component.find('View').at(1).props().style;
+    const styles = component.find('View').props().style;
     let backgroundColorStyles = [];
     for (let i = 0; i < styles.length; i++) {
       if (styles[i] && styles[i].hasOwnProperty('backgroundColor')) {
@@ -116,9 +115,9 @@ describe('Button Component', () => {
   it('should render title as text inside the button', () => {
     const component = shallow(<Button title="My Button" />);
 
-    expect(
-      component.find('View').at(1).props().children[2].props.children
-    ).toBe('My Button');
+    expect(component.find('View').props().children[2].props.children).toBe(
+      'My Button'
+    );
   });
 
   it('should render with icon type', () => {
@@ -139,25 +138,6 @@ describe('Button Component', () => {
           iconRight: true,
           style: { fontSize: 20 },
         }}
-      />
-    );
-
-    expect(component.length).toBe(1);
-    expect(toJson(component)).toMatchSnapshot();
-  });
-
-  it('should render with custom icon component', () => {
-    const customIconComponent = () => {};
-
-    const component = shallow(
-      <Button
-        icon={{
-          name: 'wifi',
-          size: 22,
-          iconRight: true,
-          style: { fontSize: 20 },
-        }}
-        iconComponent={customIconComponent}
       />
     );
 

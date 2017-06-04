@@ -78,8 +78,6 @@ const CheckBox = props => {
             color={checked ? checkedColor : uncheckedColor}
             name={iconName}
             size={24}
-            onLongPress={onLongIconPress}
-            onPress={onIconPress}
           />}
       </View>
     </Component>
