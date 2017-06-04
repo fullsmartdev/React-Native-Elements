@@ -4,7 +4,7 @@ An extendable Ratings components for React Native with gestures and an intuitive
 
 ### Demo
 
-<img src="https://raw.githubusercontent.com/react-native-training/react-native-elements/master/docs/images/rating_component.gif" width="500" >
+![Demo gif](http://i.imgur.com/hpo67Dq.gifv)
 
 ```js
 import { Rating } from 'react-native-elements';

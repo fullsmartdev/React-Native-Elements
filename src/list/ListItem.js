@@ -4,11 +4,11 @@ import {
   View,
   StyleSheet,
   TouchableHighlight,
+  Image,
   Platform,
   Switch,
   TextInput,
 } from 'react-native';
-import Avatar from '../avatar/Avatar';
 import Badge from '../badge/badge';
 import Icon from '../icons/Icon';
 import Text from '../text/Text';
@@ -67,7 +67,6 @@ const ListItem = props => {
     textInputSecure,
     textInputStyle,
     textInputContainerStyle,
-    onPressRightIcon,
     ...attributes
   } = props;
 
@@ -108,15 +107,14 @@ const ListItem = props => {
                 />
               </View>}
         {avatar &&
-          <View style={styles.avatar}>
-            {React.isValidElement(avatar)
-              ? avatar
-              : <Avatar
-                  containerStyle={avatarStyle && avatarStyle}
-                  rounded={roundAvatar}
-                  source={avatar}
-                />}
-          </View>}
+          <Image
+            style={[
+              styles.avatar,
+              roundAvatar && { borderRadius: 17 },
+              avatarStyle && avatarStyle,
+            ]}
+            source={avatar}
+          />}
         <View style={styles.titleSubtitleContainer}>
           <View style={titleContainerStyle}>
             {title && (typeof title === 'string' || typeof title === 'number')
@@ -181,15 +179,10 @@ const ListItem = props => {
               returnKeyType={textInputReturnKeyType}
             />
           </View>}
-        {badge && !rightTitle && <Badge {...badge} />}
         {!hideChevron &&
           (React.isValidElement(rightIcon)
             ? rightIcon
-            : <TouchableHighlight
-                onPress={onPressRightIcon}
-                disabled={!onPressRightIcon}
-                style={styles.chevronContainer}
-              >
+            : <View style={styles.chevronContainer}>
                 <Icon
                   type={rightIcon.type}
                   iconStyle={rightIcon.style}
@@ -197,7 +190,7 @@ const ListItem = props => {
                   name={rightIcon.name || 'chevron-right'}
                   color={rightIcon.color || chevronColor}
                 />
-              </TouchableHighlight>)}
+              </View>)}
         {switchButton &&
           hideChevron &&
           <View style={styles.switchContainer}>
@@ -210,6 +203,7 @@ const ListItem = props => {
               value={switched}
             />
           </View>}
+        {badge && !rightTitle && <Badge {...badge} />}
         {label && label}
       </View>
     </Component>
@@ -299,7 +293,6 @@ ListItem.propTypes = {
   leftIcon: PropTypes.oneOfType([PropTypes.element, PropTypes.object]),
   leftIconContainerStyle: View.propTypes.style,
   avatarStyle: View.propTypes.style,
-  onPressRightIcon: PropTypes.func,
 };
 
 const styles = StyleSheet.create({
@@ -311,8 +304,8 @@ const styles = StyleSheet.create({
     paddingTop: 10,
     paddingRight: 10,
     paddingBottom: 10,
-    borderBottomColor: colors.greyOutline,
-    borderBottomWidth: 0.5,
+    borderBottomColor: '#ededed',
+    borderBottomWidth: 1,
     backgroundColor: 'transparent',
   },
   wrapper: {
