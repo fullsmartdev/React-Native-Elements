@@ -46,7 +46,6 @@ class Search extends Component {
       clearIcon,
       containerRef,
       textInputRef,
-      selectionColor,
       underlineColorAndroid,
       ...attributes
     } = this.props;
@@ -61,7 +60,6 @@ class Search extends Component {
       >
         <TextInput
           ref={textInputRef}
-          selectionColor={selectionColor || colors.grey3}
           underlineColorAndroid={
             underlineColorAndroid ? underlineColorAndroid : 'transparent'
           }
@@ -117,7 +115,6 @@ Search.propTypes = {
   clearIcon: PropTypes.oneOfType([PropTypes.object, PropTypes.bool]),
   textInputRef: PropTypes.string,
   containerRef: PropTypes.string,
-  selectionColor: PropTypes.string,
   underlineColorAndroid: PropTypes.string,
   onChangeText: PropTypes.func,
 };
