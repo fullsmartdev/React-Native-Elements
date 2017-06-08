@@ -14,20 +14,43 @@ import normalize from '../helpers/normalizeText';
 const { width } = Dimensions.get('window');
 
 class FormInput extends Component {
+  getRef = () => {
+    return this.input || this.refs[this.props.textInputRef];
+  };
+
+  getRefHandler = () => {
+    if (this.props.textInputRef) {
+      if (typeof this.props.textInputRef === 'function') {
+        return input => {
+          this.input = input;
+          this.props.textInputRef(input);
+        };
+      } else {
+        return this.props.textInputRef;
+      }
+    } else {
+      return input => this.input = input;
+    }
+  };
+
   focus() {
-    const ref = this.props.textInputRef;
-    this.refs[ref].focus();
+    this.getRef() && this.getRef().focus();
   }
+
   blur() {
-    const ref = this.props.textInputRef;
-    this.refs[ref].blur();
+    this.getRef() && this.getRef().blur();
   }
+
+  clearText() {
+    this.getRef() && this.getRef().clear();
+  }
+
   render() {
     const {
       containerStyle,
       inputStyle,
-      textInputRef,
       containerRef,
+      selectionColor,
       ...attributes
     } = this.props;
     return (
@@ -36,7 +59,8 @@ class FormInput extends Component {
         style={[styles.container, containerStyle && containerStyle]}
       >
         <TextInput
-          ref={textInputRef}
+          ref={this.getRefHandler()}
+          selectionColor={selectionColor || colors.grey3}
           style={[styles.input, inputStyle && inputStyle]}
           {...attributes}
         />
@@ -48,8 +72,11 @@ class FormInput extends Component {
 FormInput.propTypes = {
   containerStyle: View.propTypes.style,
   inputStyle: NativeText.propTypes.style,
-  textInputRef: PropTypes.string,
-  containerRef: PropTypes.string,
+  selectionColor: PropTypes.string,
+  // Deprecated
+  textInputRef: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
+  // Deprecated
+  containerRef: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
 };
 
 const styles = StyleSheet.create({
@@ -69,13 +96,12 @@ const styles = StyleSheet.create({
     ...Platform.select({
       android: {
         height: 46,
-        width: width - 30,
       },
       ios: {
         height: 36,
-        width: width,
       },
     }),
+    width: width,
     color: colors.grey3,
     fontSize: normalize(14),
   },

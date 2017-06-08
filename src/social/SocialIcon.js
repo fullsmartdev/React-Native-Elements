@@ -6,7 +6,6 @@ import {
   Platform,
   TouchableHighlight,
   ActivityIndicator,
-  Text as NativeText,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Text from '../text/Text';
@@ -146,7 +145,7 @@ SocialIcon.propTypes = {
   iconSize: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   light: PropTypes.bool,
   fontWeight: PropTypes.string,
-  fontStyle: NativeText.propTypes.style,
+  fontStyle: View.propTypes.style,
   fontFamily: PropTypes.string,
 };
 
