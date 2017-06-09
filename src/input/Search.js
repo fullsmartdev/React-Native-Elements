@@ -13,35 +13,24 @@ import colors from '../config/colors';
 import normalize from '../helpers/normalizeText';
 
 class Search extends Component {
-  getRef = () => {
-    return this.input || this.refs[this.props.textInputRef];
-  };
-
-  getRefHandler = () => {
-    if (this.props.textInputRef) {
-      if (typeof this.props.textInputRef === 'function') {
-        return input => {
-          this.input = input;
-          this.props.textInputRef(input);
-        };
-      } else {
-        return this.props.textInputRef;
-      }
-    } else {
-      return input => this.input = input;
-    }
-  };
-
   focus() {
-    this.getRef() && this.getRef().focus();
-  }
-
-  blur() {
-    this.getRef() && this.getRef().blur();
+    const ref = this.props.textInputRef;
+    this.refs[ref].focus();
   }
 
   clearText() {
-    this.getRef() && this.getRef().clear();
+    if (this.props.onChangeText) {
+      this.props.onChangeText('');
+    }
+    try {
+      const ref = this.props.textInputRef;
+      this.refs[ref].clear();
+    } catch (e) {
+      if (__DEV__)
+        console.warn(
+          'Could not access textInput reference, make sure you supplied the textInputRef'
+        );
+    }
   }
 
   render() {
@@ -56,7 +45,7 @@ class Search extends Component {
       loadingIcon,
       clearIcon,
       containerRef,
-      selectionColor,
+      textInputRef,
       underlineColorAndroid,
       ...attributes
     } = this.props;
@@ -70,8 +59,7 @@ class Search extends Component {
         ]}
       >
         <TextInput
-          ref={this.getRefHandler()}
-          selectionColor={selectionColor || colors.grey3}
+          ref={textInputRef}
           underlineColorAndroid={
             underlineColorAndroid ? underlineColorAndroid : 'transparent'
           }
@@ -81,6 +69,8 @@ class Search extends Component {
             noIcon && { paddingLeft: 9 },
             round && { borderRadius: Platform.OS === 'ios' ? 15 : 20 },
             inputStyle && inputStyle,
+            clearIcon && showLoadingIcon && {paddingRight: 50},
+            (clearIcon && !showLoadingIcon || !clearIcon && showLoadingIcon) && {paddingRight: 30}
           ]}
           {...attributes}
         />
@@ -101,7 +91,11 @@ class Search extends Component {
           />}
         {showLoadingIcon &&
           <ActivityIndicator
-            style={[styles.loadingIcon, loadingIcon.style && loadingIcon.style]}
+            style={[
+              styles.loadingIcon,
+              loadingIcon.style && loadingIcon.style,
+              clearIcon && {right: 35}
+            ]}
             color={icon.color || colors.grey3}
           />}
       </View>
@@ -119,12 +113,10 @@ Search.propTypes = {
   showLoadingIcon: PropTypes.bool,
   loadingIcon: PropTypes.object,
   clearIcon: PropTypes.oneOfType([PropTypes.object, PropTypes.bool]),
-  // Deprecated
-  textInputRef: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
-  // Deprecated
-  containerRef: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
-  selectionColor: PropTypes.string,
+  textInputRef: PropTypes.string,
+  containerRef: PropTypes.string,
   underlineColorAndroid: PropTypes.string,
+  onChangeText: PropTypes.func,
 };
 
 Search.defaultProps = {

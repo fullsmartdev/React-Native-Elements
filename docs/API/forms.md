@@ -19,13 +19,9 @@ import { FormLabel, FormInput } from 'react-native-elements'
 | ---- | ---- | ----| ---- |
 | containerStyle | none | object (style) | TextInput container styling (optional) |
 | inputStyle | none | object (style) | TextInput styling (optional) |
-
-##### Interaction methods
-| method | description |
-| ---- | ---- |
-| focus | call focus on the textinput ([example](#calling)) |
-| blur | call blur on the textinput ([example](#calling)) |
-| clearText | call clear on the textinput ([example](#calling))|
+| textInputRef | none | ref | get ref of TextInput |
+| containerRef | none | ref | get ref of TextInput container |
+| focus | none | function | call focus on the textinput(optional), eg `this.refs.someInputRef.focus()` |
 
 #### FormLabel props
 
@@ -43,18 +39,18 @@ import { FormLabel, FormInput } from 'react-native-elements'
 | labelStyle | none | object (style) | additional label styling (optional) |
 | fontFamily | System font bold (iOS), Sans Serif Bold (android) | string | specify different font family |
 
-#### <a name="calling"></a> Calling methods on FormInput
-Store a reference to the FormInput in your component by using the ref prop provided by React ([see docs](https://facebook.github.io/react/docs/refs-and-the-dom.html)):
+#### Using FormInput refs
+
 ```js
 <FormInput
-  ref={input => this.input = input}
+  ref='forminput'
+  textInputRef='email'
   ...
 />
 ```
-You can then access FormInput methods like so:
+You should be able to access the refs like this
 
 ```
-this.input.focus();
-this.input.blur();
-this.input.clearText();
+this.refs.forminput.refs.email
+
 ```
