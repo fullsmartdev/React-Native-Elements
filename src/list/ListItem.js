@@ -28,8 +28,6 @@ const ListItem = props => {
     leftIconUnderlayColor,
     leftIconContainerStyle,
     avatarStyle,
-    avatarContainerStyle,
-    avatarOverlayContainerStyle,
     underlayColor,
     subtitle,
     subtitleStyle,
@@ -130,11 +128,7 @@ const ListItem = props => {
             {React.isValidElement(avatar)
               ? avatar
               : <Avatar
-                  avatarStyle={avatarStyle && avatarStyle}
-                  containerStyle={avatarContainerStyle && avatarContainerStyle}
-                  overlayContainerStyle={
-                    avatarOverlayContainerStyle && avatarOverlayContainerStyle
-                  }
+                  containerStyle={avatarStyle && avatarStyle}
                   rounded={roundAvatar}
                   source={avatar}
                 />}
@@ -336,8 +330,6 @@ ListItem.propTypes = {
   leftIconUnderlayColor: PropTypes.string,
   leftIconContainerStyle: View.propTypes.style,
   avatarStyle: View.propTypes.style,
-  avatarContainerStyle: View.propTypes.style,
-  avatarOverlayContainerStyle: View.propTypes.style,
   onPressRightIcon: PropTypes.func,
 };
 
