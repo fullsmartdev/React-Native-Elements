@@ -44,10 +44,6 @@ Click [here](https://react-native-training.github.io/react-native-elements/API/b
 
 - ```"react-native": "https://github.com/expo/react-native/archive/sdk-16.0.0.tar.gz"```
 
-- ```"react-native-elements": "^0.13.0"```
-
-or
-
-- ```"react-native-elements": "git://github.com/react-native-training/react-native-elements.git#next"```
+- ```"react-native-elements": "^0.11.2"```
 
 - ```"react-navigation": "^1.0.0-beta.9"```
