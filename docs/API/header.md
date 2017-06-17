@@ -1,4 +1,6 @@
-![Header](https://raw.githubusercontent.com/react-native-training/react-native-elements/master/docs/images/header.png)
+#### Header Component
+
+<img src="../../docs/images/header.png" width="500" >
 
 ### Header with default components
 
