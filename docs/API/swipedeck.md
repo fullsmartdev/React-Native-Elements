@@ -4,7 +4,7 @@ An SwipeDeck component that provides [Tinder Cards](https://github.com/Monte9/re
 
 ### Demo
 
-![SwipeDeck](https://i.imgur.com/d8FxHk2.gif)
+![Demo gif](http://i.imgur.com/d8FxHk2.gifv)
 
 ```js
 import { SwipeDeck } from 'react-native-elements';
