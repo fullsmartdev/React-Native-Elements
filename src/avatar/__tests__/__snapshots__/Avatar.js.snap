@@ -13,7 +13,6 @@ exports[`Avatar Component should render avatar without height 1`] = `
         "width": 80,
       },
       undefined,
-      undefined,
     ]
   }
   width={80}
@@ -74,7 +73,6 @@ exports[`Avatar Component should render avatar without width 1`] = `
         "width": 90,
       },
       undefined,
-      undefined,
     ]
   }
 >
@@ -134,9 +132,6 @@ exports[`Avatar Component should render large avatar 1`] = `
         "paddingTop": 10,
         "width": 75,
       },
-      Object {
-        "borderRadius": 37.5,
-      },
       undefined,
     ]
   }
@@ -189,9 +184,6 @@ exports[`Avatar Component should render medium avatar 1`] = `
         "paddingRight": 10,
         "paddingTop": 10,
         "width": 50,
-      },
-      Object {
-        "borderRadius": 25,
       },
       undefined,
     ]
@@ -254,9 +246,6 @@ exports[`Avatar Component should render small avatar 1`] = `
         "paddingRight": 10,
         "paddingTop": 10,
         "width": 34,
-      },
-      Object {
-        "borderRadius": 17,
       },
       undefined,
     ]
@@ -322,7 +311,6 @@ exports[`Avatar Component should render without issues 1`] = `
         "width": 34,
       },
       undefined,
-      undefined,
     ]
   }
 >
@@ -361,9 +349,6 @@ exports[`Avatar Component should render xlarge avatar 1`] = `
         "paddingRight": 10,
         "paddingTop": 10,
         "width": 150,
-      },
-      Object {
-        "borderRadius": 75,
       },
       undefined,
     ]

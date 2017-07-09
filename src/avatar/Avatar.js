@@ -2,20 +2,14 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import {
   View,
-  Text as NativeText,
   Image,
-  Platform,
   StyleSheet,
   TouchableOpacity,
-  TouchableHighlight,
-  TouchableNativeFeedback,
-  TouchableWithoutFeedback,
+  Text as NativeText,
 } from 'react-native';
 
 import Icon from '../icons/Icon';
 import Text from '../text/Text';
-
-const DEFAULT_COLORS = ['#000', '#333', '#555', '#888', '#aaa', '#ddd'];
 
 const Avatar = props => {
   const {
@@ -36,9 +30,6 @@ const Avatar = props => {
     titleStyle,
     overlayContainerStyle,
     activeOpacity,
-    showEditButton,
-    editButton,
-    onEditPress,
     ...attributes
   } = props;
 
@@ -72,42 +63,6 @@ const Avatar = props => {
   if (component) {
     Component = component;
   }
-
-  const renderUtils = () => {
-    if (showEditButton) {
-      const editButtonProps = { ...editButton };
-
-      const defaultEditButtonSize = (width + height) / 2 / 3;
-      const editButtonSize = editButton.size || defaultEditButtonSize;
-      const editButtonSizeStyle = {
-        width: editButtonSize,
-        height: editButtonSize,
-        borderRadius: editButtonSize / 2,
-      };
-      const editButtonIconSize = editButtonSize * 0.8;
-
-      return (
-        <TouchableHighlight
-          style={[
-            styles.editButton,
-            editButtonSizeStyle,
-            editButtonProps.style,
-          ]}
-          underlayColor={editButtonProps.underlayColor}
-          onPress={onEditPress}
-        >
-          <View>
-            <Icon
-              size={editButtonIconSize}
-              name={editButtonProps.iconName}
-              type={editButtonProps.iconType}
-              color={editButtonProps.iconColor}
-            />
-          </View>
-        </TouchableHighlight>
-      );
-    }
-  };
 
   const renderContent = () => {
     if (source) {
@@ -171,25 +126,6 @@ const Avatar = props => {
       backgroundColor: 'rgba(0,0,0,0)',
       textAlign: 'center',
     },
-    editButton: {
-      position: 'absolute',
-      bottom: 0,
-      right: 0,
-      alignItems: 'center',
-      justifyContent: 'center',
-      backgroundColor: DEFAULT_COLORS[4],
-      ...Platform.select({
-        ios: {
-          shadowColor: DEFAULT_COLORS[0],
-          shadowOffset: { width: 1, height: 1 },
-          shadowRadius: 2,
-          shadowOpacity: 0.5,
-        },
-        android: {
-          elevation: 1,
-        },
-      }),
-    },
   });
 
   return (
@@ -197,11 +133,7 @@ const Avatar = props => {
       onPress={onPress}
       onLongPress={onLongPress}
       activeOpacity={activeOpacity}
-      style={[
-        styles.container,
-        rounded && { borderRadius: width / 2 },
-        containerStyle && containerStyle,
-      ]}
+      style={[styles.container, containerStyle && containerStyle]}
       {...attributes}
     >
       <View
@@ -213,32 +145,12 @@ const Avatar = props => {
       >
         {renderContent()}
       </View>
-      {renderUtils()}
     </Component>
   );
 };
 
-const defaultProps = {
-  showEditButton: false,
-  onEditPress: null,
-  editButton: {
-    size: null,
-    iconName: 'mode-edit',
-    iconType: 'material',
-    iconColor: '#fff',
-    underlayColor: DEFAULT_COLORS[0],
-    style: null,
-  },
-};
-
 Avatar.propTypes = {
-  component: PropTypes.oneOf([
-    View,
-    TouchableOpacity,
-    TouchableHighlight,
-    TouchableNativeFeedback,
-    TouchableWithoutFeedback,
-  ]),
+  component: PropTypes.func,
   width: PropTypes.number,
   height: PropTypes.number,
   onPress: PropTypes.func,
@@ -257,18 +169,6 @@ Avatar.propTypes = {
   medium: PropTypes.bool,
   large: PropTypes.bool,
   xlarge: PropTypes.bool,
-  showEditButton: PropTypes.bool,
-  onEditPress: PropTypes.func,
-  editButton: PropTypes.shape({
-    size: PropTypes.number,
-    iconName: PropTypes.string,
-    iconType: PropTypes.string,
-    iconColor: PropTypes.string,
-    underlayColor: PropTypes.string,
-    style: View.propTypes.style,
-  }),
 };
-
-Avatar.defaultProps = defaultProps;
 
 export default Avatar;

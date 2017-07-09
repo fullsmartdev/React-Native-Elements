@@ -8,6 +8,7 @@ import {
   Platform,
   Switch,
   TextInput,
+  ViewPropTypes as RNViewPropTypes,
 } from 'react-native';
 import Avatar from '../avatar/Avatar';
 import Badge from '../badge/badge';
@@ -16,6 +17,8 @@ import Text from '../text/Text';
 import colors from '../config/colors';
 import fonts from '../config/fonts';
 import normalize from '../helpers/normalizeText';
+
+const ViewPropTypes = RNViewPropTypes || View.propTypes;
 
 const ListItem = props => {
   const {
@@ -28,8 +31,6 @@ const ListItem = props => {
     leftIconUnderlayColor,
     leftIconContainerStyle,
     avatarStyle,
-    avatarContainerStyle,
-    avatarOverlayContainerStyle,
     underlayColor,
     subtitle,
     subtitleStyle,
@@ -129,11 +130,7 @@ const ListItem = props => {
             {React.isValidElement(avatar)
               ? avatar
               : <Avatar
-                  avatarStyle={avatarStyle && avatarStyle}
-                  containerStyle={avatarContainerStyle && avatarContainerStyle}
-                  overlayContainerStyle={
-                    avatarOverlayContainerStyle && avatarOverlayContainerStyle
-                  }
+                  containerStyle={avatarStyle && avatarStyle}
                   rounded={roundAvatar}
                   source={avatar}
                 />}
@@ -323,20 +320,18 @@ ListItem.propTypes = {
   component: PropTypes.any,
   fontFamily: PropTypes.string,
   rightTitle: PropTypes.string,
-  rightTitleContainerStyle: View.propTypes.style,
+  rightTitleContainerStyle: ViewPropTypes.style,
   rightTitleStyle: Text.propTypes.style,
   rightTitleNumberOfLines: PropTypes.number,
-  subtitleContainerStyle: View.propTypes.style,
+  subtitleContainerStyle: ViewPropTypes.style,
   label: PropTypes.any,
   onLongPress: PropTypes.func,
   leftIcon: PropTypes.oneOfType([PropTypes.element, PropTypes.object]),
   leftIconOnPress: PropTypes.func,
   leftIconOnLongPress: PropTypes.func,
   leftIconUnderlayColor: PropTypes.string,
-  leftIconContainerStyle: View.propTypes.style,
-  avatarStyle: View.propTypes.style,
-  avatarContainerStyle: View.propTypes.style,
-  avatarOverlayContainerStyle: View.propTypes.style,
+  leftIconContainerStyle: ViewPropTypes.style,
+  avatarStyle: ViewPropTypes.style,
   onPressRightIcon: PropTypes.func,
 };
 
@@ -350,7 +345,7 @@ const styles = StyleSheet.create({
     paddingRight: 10,
     paddingBottom: 10,
     borderBottomColor: colors.greyOutline,
-    borderBottomWidth: 1,
+    borderBottomWidth: 0.5,
     backgroundColor: 'transparent',
   },
   wrapper: {

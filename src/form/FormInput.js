@@ -7,9 +7,12 @@ import {
   Platform,
   Dimensions,
   Text as NativeText,
+  ViewPropTypes as RNViewPropTypes,
 } from 'react-native';
 import colors from '../config/colors';
 import normalize from '../helpers/normalizeText';
+
+const ViewPropTypes = RNViewPropTypes || View.propTypes;
 
 const { width } = Dimensions.get('window');
 
@@ -46,7 +49,7 @@ class FormInput extends Component {
 }
 
 FormInput.propTypes = {
-  containerStyle: View.propTypes.style,
+  containerStyle: ViewPropTypes.style,
   inputStyle: NativeText.propTypes.style,
   textInputRef: PropTypes.string,
   containerRef: PropTypes.string,
@@ -68,11 +71,11 @@ const styles = StyleSheet.create({
   input: {
     ...Platform.select({
       android: {
-        minHeight: 46,
+        height: 46,
         width: width - 30,
       },
       ios: {
-        minHeight: 36,
+        height: 36,
         width: width,
       },
     }),
