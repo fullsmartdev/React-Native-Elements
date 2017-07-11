@@ -118,7 +118,7 @@ export default class SwipeDeck extends Component {
         }
 
         return (
-          <Animated.View key={item.id} style={[styles.cardStyle, {zIndex: 1}]}>
+          <Animated.View key={item.id} style={styles.cardStyle}>
             {this.props.renderCard(item)}
           </Animated.View>
         );
