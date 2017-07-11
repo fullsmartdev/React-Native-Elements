@@ -2,7 +2,6 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
 import colors from '../config/colors';
-import ViewPropTypes from '../config/ViewPropTypes';
 
 const Badge = props => {
   const {
@@ -21,9 +20,7 @@ const Badge = props => {
 
   let Component = View;
   let childElement = (
-    <Text style={[styles.text, textStyle && textStyle]}>
-      {value}
-    </Text>
+    <Text style={[styles.text, textStyle && textStyle]}>{value}</Text>
   );
 
   if (children) {
@@ -56,8 +53,8 @@ const Badge = props => {
 };
 
 Badge.propTypes = {
-  containerStyle: ViewPropTypes.style,
-  wrapperStyle: ViewPropTypes.style,
+  containerStyle: View.propTypes.style,
+  wrapperStyle: View.propTypes.style,
   textStyle: Text.propTypes.style,
   children: PropTypes.element,
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),

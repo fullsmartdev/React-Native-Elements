@@ -6,7 +6,6 @@ import fonts from '../config/fonts';
 import colors from '../config/colors';
 import Button from '../buttons/Button';
 import normalize from '../helpers/normalizeText';
-import ViewPropTypes from '../config/ViewPropTypes';
 
 const PricingCard = props => {
   const {
@@ -74,8 +73,8 @@ const PricingCard = props => {
 };
 
 PricingCard.propTypes = {
-  containerStyle: ViewPropTypes.style,
-  wrapperStyle: ViewPropTypes.style,
+  containerStyle: View.propTypes.style,
+  wrapperStyle: View.propTypes.style,
   title: PropTypes.string,
   price: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   info: PropTypes.array,

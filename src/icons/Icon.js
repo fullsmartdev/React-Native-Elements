@@ -8,7 +8,6 @@ import {
   Text as NativeText,
 } from 'react-native';
 import getIconType from '../helpers/getIconType';
-import ViewPropTypes from '../config/ViewPropTypes';
 
 const Icon = props => {
   const {
@@ -76,11 +75,11 @@ Icon.propTypes = {
   name: PropTypes.string,
   size: PropTypes.number,
   color: PropTypes.string,
-  component: PropTypes.element,
+  component: PropTypes.func,
   underlayColor: PropTypes.string,
   reverse: PropTypes.bool,
   raised: PropTypes.bool,
-  containerStyle: ViewPropTypes.style,
+  containerStyle: View.propTypes.style,
   iconStyle: NativeText.propTypes.style,
   onPress: PropTypes.func,
   reverseColor: PropTypes.string,

@@ -11,7 +11,6 @@ import {
 } from 'react-native';
 
 import Text from '../text/Text';
-import ViewPropTypes from '../config/ViewPropTypes';
 
 const STAR_IMAGE = require('./images/star.png');
 const HEART_IMAGE = require('./images/heart.png');
@@ -209,9 +208,7 @@ export default class Rating extends Component {
           <Text style={[styles.currentRatingText, { color }]}>
             {this.getCurrentRating()}
           </Text>
-          <Text style={styles.maxRatingText}>
-            /{ratingCount}
-          </Text>
+          <Text style={styles.maxRatingText}>/{ratingCount}</Text>
         </View>
         <View>
           {readonly && <Text style={styles.readonlyLabel}>(readonly)</Text>}
@@ -333,7 +330,7 @@ Rating.propTypes = {
   imageSize: PropTypes.number,
   onFinishRating: PropTypes.func,
   showRating: PropTypes.bool,
-  style: ViewPropTypes.style,
+  style: View.propTypes.style,
   readonly: PropTypes.bool,
   startingValue: PropTypes.number,
   fractions: fractionsType,
