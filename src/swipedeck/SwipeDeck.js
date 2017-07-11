@@ -1,4 +1,5 @@
-import React, { PropTypes, Component } from 'react';
+import PropTypes from 'prop-types';
+import React, { Component } from 'react';
 import {
   View,
   Animated,
@@ -11,7 +12,6 @@ import {
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
 const SWIPE_THRESHOLD = 0.4 * SCREEN_WIDTH;
-const MOVE_THRESHOLD = 50;
 
 export default class SwipeDeck extends Component {
   static defaultProps = {
@@ -25,10 +25,6 @@ export default class SwipeDeck extends Component {
     const position = new Animated.ValueXY();
 
     const panResponder = PanResponder.create({
-      // ignore touch and handle only move-gestures
-      onMoveShouldSetPanResponderCapture: (e, gesture) => {
-        return Math.abs(gesture.dx) > MOVE_THRESHOLD;
-      },
       onStartShouldSetPanResponder: () => true,
       onPanResponderMove: (event, gesture) => {
         position.setValue({ x: gesture.dx, y: gesture.dy });
