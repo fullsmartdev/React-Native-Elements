@@ -16,7 +16,6 @@ import Text from '../text/Text';
 import colors from '../config/colors';
 import fonts from '../config/fonts';
 import normalize from '../helpers/normalizeText';
-import ViewPropTypes from '../config/ViewPropTypes';
 
 const ListItem = props => {
   const {
@@ -324,20 +323,20 @@ ListItem.propTypes = {
   component: PropTypes.any,
   fontFamily: PropTypes.string,
   rightTitle: PropTypes.string,
-  rightTitleContainerStyle: ViewPropTypes.style,
+  rightTitleContainerStyle: View.propTypes.style,
   rightTitleStyle: Text.propTypes.style,
   rightTitleNumberOfLines: PropTypes.number,
-  subtitleContainerStyle: ViewPropTypes.style,
+  subtitleContainerStyle: View.propTypes.style,
   label: PropTypes.any,
   onLongPress: PropTypes.func,
   leftIcon: PropTypes.oneOfType([PropTypes.element, PropTypes.object]),
   leftIconOnPress: PropTypes.func,
   leftIconOnLongPress: PropTypes.func,
   leftIconUnderlayColor: PropTypes.string,
-  leftIconContainerStyle: ViewPropTypes.style,
-  avatarStyle: ViewPropTypes.style,
-  avatarContainerStyle: ViewPropTypes.style,
-  avatarOverlayContainerStyle: ViewPropTypes.style,
+  leftIconContainerStyle: View.propTypes.style,
+  avatarStyle: View.propTypes.style,
+  avatarContainerStyle: View.propTypes.style,
+  avatarOverlayContainerStyle: View.propTypes.style,
   onPressRightIcon: PropTypes.func,
 };
 

@@ -1,5 +1,4 @@
-import PropTypes from 'prop-types';
-import React, { Component } from 'react';
+import React, { PropTypes, Component } from 'react';
 import {
   View,
   Animated,
@@ -119,10 +118,7 @@ export default class SwipeDeck extends Component {
         }
 
         return (
-          <Animated.View
-            key={item.id}
-            style={[styles.cardStyle, { zIndex: 0 }]}
-          >
+          <Animated.View key={item.id} style={styles.cardStyle}>
             {this.props.renderCard(item)}
           </Animated.View>
         );
