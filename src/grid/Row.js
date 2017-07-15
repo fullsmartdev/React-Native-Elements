@@ -1,13 +1,8 @@
-/*eslint-disable no-console */
 import PropTypes from 'prop-types';
 import React from 'react';
 import { View, StyleSheet, TouchableOpacity } from 'react-native';
 
 const Row = props => {
-  console.warn(
-    'Warning: Row has been deprecated and will be removed in a future version of React Native Elements'
-  );
-
   const { containerStyle, size, onPress, activeOpacity } = props;
 
   const styles = StyleSheet.create({

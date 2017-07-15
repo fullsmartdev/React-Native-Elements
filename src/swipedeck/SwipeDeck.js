@@ -1,6 +1,4 @@
-/*eslint-disable no-console */
-import PropTypes from 'prop-types';
-import React, { Component } from 'react';
+import React, { PropTypes, Component } from 'react';
 import {
   View,
   Animated,
@@ -120,10 +118,7 @@ export default class SwipeDeck extends Component {
         }
 
         return (
-          <Animated.View
-            key={item.id}
-            style={[styles.cardStyle, { zIndex: 0 }]}
-          >
+          <Animated.View key={item.id} style={styles.cardStyle}>
             {this.props.renderCard(item)}
           </Animated.View>
         );
@@ -132,10 +127,6 @@ export default class SwipeDeck extends Component {
   }
 
   render() {
-    console.warn(
-      'Warning: SwipeDeck has been deprecated and will be removed in a future version of React Native Elements'
-    );
-
     return (
       <View>
         {this.renderCards()}
