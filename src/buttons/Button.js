@@ -14,7 +14,6 @@ import Text from '../text/Text';
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
 import getIconType from '../helpers/getIconType';
 import normalize from '../helpers/normalizeText';
-import ViewPropTypes from '../config/ViewPropTypes';
 
 const log = () => {
   console.log('please attach method to this component'); //eslint-disable-line no-console
@@ -113,9 +112,9 @@ const Button = props => {
     color: (textStyle && textStyle.color) || color || stylesObject.text.color,
     size:
       (textStyle && textStyle.fontSize) ||
-      fontSize ||
-      (!large && stylesObject.smallFont.fontSize) ||
-      stylesObject.text.fontSize,
+        fontSize ||
+        (!large && stylesObject.smallFont.fontSize) ||
+        stylesObject.text.fontSize,
   };
 
   let textOptions = {};
@@ -193,7 +192,7 @@ const Button = props => {
 };
 
 Button.propTypes = {
-  buttonStyle: ViewPropTypes.style,
+  buttonStyle: View.propTypes.style,
   title: PropTypes.string,
   onPress: PropTypes.any,
   icon: PropTypes.object,
@@ -211,22 +210,22 @@ Button.propTypes = {
   textStyle: NativeText.propTypes.style,
   disabled: PropTypes.bool,
   loading: PropTypes.bool,
-  activityIndicatorStyle: ViewPropTypes.style,
+  activityIndicatorStyle: View.propTypes.style,
   loadingRight: PropTypes.bool,
   Component: PropTypes.any,
   borderRadius: PropTypes.number,
   large: PropTypes.bool,
   iconRight: PropTypes.bool,
   fontWeight: PropTypes.string,
-  disabledStyle: ViewPropTypes.style,
+  disabledStyle: View.propTypes.style,
   fontFamily: PropTypes.string,
-  containerViewStyle: ViewPropTypes.style,
+  containerViewStyle: View.propTypes.style,
   rounded: PropTypes.bool,
   outline: PropTypes.bool,
   transparent: PropTypes.bool,
   allowFontScaling: PropTypes.bool,
   textNumberOfLines: PropTypes.number,
-  textEllipsizeMode: PropTypes.string,
+  textEllipsizeMode: PropTypes.string
 };
 
 const stylesObject = {

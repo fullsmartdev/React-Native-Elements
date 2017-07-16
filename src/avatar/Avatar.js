@@ -11,7 +11,6 @@ import {
   TouchableNativeFeedback,
   TouchableWithoutFeedback,
 } from 'react-native';
-import ViewPropTypes from '../config/ViewPropTypes';
 
 import Icon from '../icons/Icon';
 import Text from '../text/Text';
@@ -266,7 +265,7 @@ Avatar.propTypes = {
     iconType: PropTypes.string,
     iconColor: PropTypes.string,
     underlayColor: PropTypes.string,
-    style: ViewPropTypes.style,
+    style: View.propTypes.style,
   }),
 };
 

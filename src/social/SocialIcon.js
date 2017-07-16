@@ -11,7 +11,6 @@ import {
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Text from '../text/Text';
 import fonts from '../config/fonts';
-import ViewPropTypes from '../config/ViewPropTypes';
 
 const log = () => {
   console.log('please attach method to this component'); // eslint-disable-line no-console
@@ -65,8 +64,9 @@ const SocialIcon = props => {
     ...attributes
   } = props;
 
-  const Component =
-    onPress || onLongPress ? component || TouchableHighlight : View;
+  const Component = onPress || onLongPress
+    ? component || TouchableHighlight
+    : View;
   let loadingElement;
   if (loading) {
     loadingElement = (
@@ -81,7 +81,7 @@ const SocialIcon = props => {
   return (
     <Component
       underlayColor={light ? 'white' : colors[type]}
-      onLongPress={!disabled && (onLongPress || log)}
+      onLongPress={disabled ? null : (onLongPress || log)}
       onPress={(!disabled || log) && (onPress || log)}
       disabled={disabled || false}
       style={[
@@ -134,14 +134,14 @@ SocialIcon.propTypes = {
   button: PropTypes.bool,
   onPress: PropTypes.func,
   onLongPress: PropTypes.func,
-  iconStyle: ViewPropTypes.style,
-  style: ViewPropTypes.style,
+  iconStyle: View.propTypes.style,
+  style: View.propTypes.style,
   iconColor: PropTypes.string,
   title: PropTypes.string,
   raised: PropTypes.bool,
   disabled: PropTypes.bool,
   loading: PropTypes.bool,
-  activityIndicatorStyle: ViewPropTypes.style,
+  activityIndicatorStyle: View.propTypes.style,
   small: PropTypes.string,
   iconSize: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   light: PropTypes.bool,

@@ -10,7 +10,6 @@ import {
 } from 'react-native';
 import Text from '../text/Text';
 import Icon from '../icons/Icon';
-import ViewPropTypes from '../config/ViewPropTypes';
 
 const FeaturedTile = props => {
   const {
@@ -122,10 +121,10 @@ FeaturedTile.propTypes = {
   caption: PropTypes.string,
   imageSrc: Image.propTypes.source.isRequired,
   onPress: PropTypes.func,
-  containerStyle: ViewPropTypes.style,
-  iconContainerStyle: ViewPropTypes.style,
-  imageContainerStyle: ViewPropTypes.style,
-  overlayContainerStyle: ViewPropTypes.style,
+  containerStyle: View.propTypes.style,
+  iconContainerStyle: View.propTypes.style,
+  imageContainerStyle: View.propTypes.style,
+  overlayContainerStyle: View.propTypes.style,
   titleStyle: NativeText.propTypes.style,
   captionStyle: NativeText.propTypes.style,
   width: PropTypes.number,

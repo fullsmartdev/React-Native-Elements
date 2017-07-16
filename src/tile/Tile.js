@@ -11,8 +11,6 @@ import {
 import Text from '../text/Text';
 import Icon from '../icons/Icon';
 import FeaturedTile from './FeaturedTile';
-import ViewPropTypes from '../config/ViewPropTypes';
-import BackgroundImage from '../config/BackgroundImage';
 
 const Tile = props => {
   const {
@@ -98,7 +96,7 @@ const Tile = props => {
       style={[styles.container, containerStyle && containerStyle]}
       {...attributes}
     >
-      <BackgroundImage
+      <Image
         source={imageSrc}
         style={[
           styles.imageContainer,
@@ -113,7 +111,7 @@ const Tile = props => {
         >
           {icon && <Icon {...icon} />}
         </View>
-      </BackgroundImage>
+      </Image>
       <View
         style={[
           styles.contentContainer,
@@ -136,17 +134,17 @@ Tile.propTypes = {
   imageSrc: Image.propTypes.source.isRequired,
   onPress: PropTypes.func,
   activeOpacity: PropTypes.number,
-  containerStyle: ViewPropTypes.style,
-  imageContainerStyle: ViewPropTypes.style,
-  iconContainerStyle: ViewPropTypes.style,
-  overlayContainerStyle: ViewPropTypes.style,
+  containerStyle: View.propTypes.style,
+  imageContainerStyle: View.propTypes.style,
+  iconContainerStyle: View.propTypes.style,
+  overlayContainerStyle: View.propTypes.style,
   titleStyle: NativeText.propTypes.style,
   captionStyle: NativeText.propTypes.style,
   width: PropTypes.number,
   height: PropTypes.number,
   featured: PropTypes.bool,
   children: PropTypes.any,
-  contentContainerStyle: ViewPropTypes.style,
+  contentContainerStyle: View.propTypes.style,
 };
 
 export default Tile;
