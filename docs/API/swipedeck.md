@@ -62,7 +62,7 @@ const DATA = [
 ];
 ```
 
-#### SwipeDeck Props
+#### Rating Props
 
 | prop | default | type | description |
 | ---- | ---- | ----| ---- |
