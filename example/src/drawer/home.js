@@ -5,7 +5,7 @@ import { Icon } from 'react-native-elements';
 
 import ButtonsTab from '../tabs/buttons';
 import ListsTab from '../tabs/lists';
-import InputTab from '../tabs/input';
+import FormsTab from '../tabs/forms';
 import FontsTab from '../tabs/fonts';
 
 const Home = TabNavigator(
@@ -35,11 +35,11 @@ const Home = TabNavigator(
         ),
       },
     },
-    InputTab: {
-      screen: InputTab,
-      path: '/input',
+    FormsTab: {
+      screen: FormsTab,
+      path: '/forms',
       navigationOptions: {
-        tabBarLabel: 'Input',
+        tabBarLabel: 'Forms',
         tabBarIcon: ({ tintColor, focused }) => (
           <Icon
             name="wpforms"
@@ -69,6 +69,7 @@ const Home = TabNavigator(
   {
     initialRouteName: 'ButtonsTab',
     animationEnabled: false,
+    swipeEnabled: false,
     tabBarOptions: {
       activeTintColor: '#e91e63',
     },

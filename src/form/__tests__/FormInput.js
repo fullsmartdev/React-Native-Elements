@@ -1,25 +1,25 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
-import Input from '../Input';
+import FormInput from '../FormInput';
 
-describe('Input Component', () => {
+describe('FormInput Component', () => {
   it('should render without issues', () => {
-    const component = shallow(<Input />);
+    const component = shallow(<FormInput />);
 
     expect(component.length).toBe(1);
     expect(toJson(component)).toMatchSnapshot();
   });
 
   it('should have a TextInput component', () => {
-    const component = shallow(<Input />);
+    const component = shallow(<FormInput />);
 
     expect(component.find('TextInput').length).toBe(1);
   });
 
   it('should call onChangeText function on adding new value', () => {
     const customFunction = jest.fn();
-    const component = shallow(<Input onChangeText={customFunction} />);
+    const component = shallow(<FormInput onChangeText={customFunction} />);
     component.find('TextInput').simulate('ChangeText', 'Text Change');
 
     expect(customFunction).toHaveBeenCalled();
@@ -28,7 +28,7 @@ describe('Input Component', () => {
   it('should call onFocus function', () => {
     const customFunction = jest.fn();
     const component = shallow(
-      <Input
+      <FormInput
         onFocus={customFunction}
         containerStyle={{ backgroundColor: 'red' }}
         inputStyle={{ backgroundColor: 'red' }}
