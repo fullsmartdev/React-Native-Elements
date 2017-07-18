@@ -5,10 +5,10 @@ import { Icon } from 'react-native-elements';
 
 import ButtonsTab from '../tabs/buttons';
 import ListsTab from '../tabs/lists';
-import FormsTab from '../tabs/forms';
+import InputTab from '../tabs/input';
 import FontsTab from '../tabs/fonts';
 
-const Home = TabNavigator(
+const Components = TabNavigator(
   {
     ButtonsTab: {
       screen: ButtonsTab,
@@ -35,11 +35,11 @@ const Home = TabNavigator(
         ),
       },
     },
-    FormsTab: {
-      screen: FormsTab,
-      path: '/forms',
+    InputTab: {
+      screen: InputTab,
+      path: '/input',
       navigationOptions: {
-        tabBarLabel: 'Forms',
+        tabBarLabel: 'Input',
         tabBarIcon: ({ tintColor, focused }) => (
           <Icon
             name="wpforms"
@@ -69,18 +69,17 @@ const Home = TabNavigator(
   {
     initialRouteName: 'ButtonsTab',
     animationEnabled: false,
-    swipeEnabled: false,
     tabBarOptions: {
       activeTintColor: '#e91e63',
     },
   }
 );
 
-Home.navigationOptions = {
-  drawerLabel: 'Home',
+Components.navigationOptions = {
+  drawerLabel: 'Components',
   drawerIcon: ({ tintColor }) => (
     <Icon
-      name="home"
+      name="settings-input-component"
       size={30}
       style={{
         width: 50,
@@ -94,4 +93,4 @@ Home.navigationOptions = {
   ),
 };
 
-export default Home;
+export default Components;

@@ -3,19 +3,21 @@ import React from 'react';
 import { StackNavigator } from 'react-navigation';
 import { Icon } from 'react-native-elements';
 
-import SwipeDecker from '../views/swipe_decker';
+import Login from '../views/login';
 
-const SwipeDeckerDrawerItem = StackNavigator({
-  SwipeDecker: {
-    screen: SwipeDecker,
+const LoginDrawerItem = StackNavigator({
+  Playground: { screen: Login }
   },
-});
+  {
+    headerMode: 'none'
+  }
+);
 
-SwipeDeckerDrawerItem.navigationOptions = {
-  drawerLabel: 'Swipe Decker',
+LoginDrawerItem.navigationOptions = {
+  drawerLabel: 'Login',
   drawerIcon: ({ tintColor }) => (
     <Icon
-      name="whatshot"
+      name="email"
       size={30}
       style={{
         width: 50,
@@ -29,4 +31,4 @@ SwipeDeckerDrawerItem.navigationOptions = {
   ),
 };
 
-export default SwipeDeckerDrawerItem;
+export default LoginDrawerItem;
