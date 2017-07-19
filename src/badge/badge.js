@@ -1,4 +1,3 @@
-/*eslint-disable no-console */
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
@@ -60,10 +59,7 @@ Badge.propTypes = {
   containerStyle: ViewPropTypes.style,
   wrapperStyle: ViewPropTypes.style,
   textStyle: Text.propTypes.style,
-  children: PropTypes.oneOfType([
-    PropTypes.element,
-    PropTypes.arrayOf(PropTypes.element),
-  ]),
+  children: PropTypes.element,
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   onPress: PropTypes.func,
   component: PropTypes.func,

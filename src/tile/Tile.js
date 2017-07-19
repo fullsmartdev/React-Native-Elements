@@ -12,7 +12,6 @@ import Text from '../text/Text';
 import Icon from '../icons/Icon';
 import FeaturedTile from './FeaturedTile';
 import ViewPropTypes from '../config/ViewPropTypes';
-import BackgroundImage from '../config/BackgroundImage';
 
 const Tile = props => {
   const {
@@ -98,7 +97,7 @@ const Tile = props => {
       style={[styles.container, containerStyle && containerStyle]}
       {...attributes}
     >
-      <BackgroundImage
+      <Image
         source={imageSrc}
         style={[
           styles.imageContainer,
@@ -113,7 +112,7 @@ const Tile = props => {
         >
           {icon && <Icon {...icon} />}
         </View>
-      </BackgroundImage>
+      </Image>
       <View
         style={[
           styles.contentContainer,
