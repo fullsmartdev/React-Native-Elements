@@ -1,8 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import {
-  Animated,
-  Easing,
   TextInput,
   StyleSheet,
   View,
@@ -17,13 +15,6 @@ import ViewPropTypes from '../config/ViewPropTypes';
 const { width } = Dimensions.get('window');
 
 class FormInput extends Component {
-  componentWillMount() {
-    this.shakeAnimationValue = new Animated.Value(0);
-    this.props.shake && this.shake();
-  }
-  componentWillReceiveProps(nextProps) {
-    nextProps.shake && this.props.shake !== nextProps.shake && this.shake();
-  }
   focus() {
     const ref = this.props.textInputRef;
     this.refs[ref].focus();
@@ -31,15 +22,6 @@ class FormInput extends Component {
   blur() {
     const ref = this.props.textInputRef;
     this.refs[ref].blur();
-  }
-  shake() {
-    const { shakeAnimationValue } = this;
-    shakeAnimationValue.setValue(0);
-    Animated.timing(shakeAnimationValue, {
-      duration: 375,
-      toValue: 3,
-      ease: Easing.bounce,
-    }).start();
   }
   render() {
     const {
@@ -49,27 +31,17 @@ class FormInput extends Component {
       containerRef,
       ...attributes
     } = this.props;
-    const translateX = this.shakeAnimationValue.interpolate({
-      inputRange: [0, 0.5, 1, 1.5, 2, 2.5, 3],
-      outputRange: [0, -15, 0, 15, 0, -15, 0],
-    });
     return (
-      <Animated.View
+      <View
         ref={containerRef}
-        style={[
-          styles.container,
-          containerStyle && containerStyle,
-          {
-            transform: [{ translateX }],
-          },
-        ]}
+        style={[styles.container, containerStyle && containerStyle]}
       >
         <TextInput
           ref={textInputRef}
           style={[styles.input, inputStyle && inputStyle]}
           {...attributes}
         />
-      </Animated.View>
+      </View>
     );
   }
 }
