@@ -5,7 +5,6 @@ import { Font } from 'expo';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 import Button from '../../../v1/buttons/Button';
-import TextButton from '../../../v1/buttons/TextButton';
 import Input from '../../../v1/input/Input';
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
@@ -99,7 +98,7 @@ export default class LoginScreen1 extends Component {
                     this.passwordInput.focus();
                   }}
                   blurOnSubmit={false}
-                  placeholderTextColor="white"
+                  placeholderTextColor="rgba(171, 189, 219, 1)"
                   displayError={!email_valid}
                   errorStyle={{textAlign: 'center', fontSize: 12}}
                   errorMessage="Please enter a valid email address"
@@ -127,7 +126,7 @@ export default class LoginScreen1 extends Component {
                   returnKeyType="done"
                   ref={ input => this.passwordInput = input}
                   blurOnSubmit={true}
-                  placeholderTextColor="white"
+                  placeholderTextColor="rgba(171, 189, 219, 1)"
                   displayError={false}
                   errorStyle={{textAlign: 'center', fontSize: 12}}
                   errorMessage="The email and password you entered did not match out records. Please try again!"
@@ -146,18 +145,6 @@ export default class LoginScreen1 extends Component {
                 buttonStyle={{height: 50, width: 250, backgroundColor: 'transparent', borderWidth: 2, borderColor: 'white', borderRadius: 30}}
                 containerStyle={{marginVertical: 10}}
                 textStyle={{fontWeight: 'bold'}}
-              />
-            </View>
-            <View style={styles.footerView}>
-              <Text style={{color: 'grey'}}>
-                New here?
-              </Text>
-              <TextButton
-                text="Create an Account"
-                activeOpacity={0.5}
-                textStyle={{color: 'white', fontSize: 15}}
-                containerStyle={{marginTop: -10}}
-                onPress={() => console.log('Account created')}
               />
             </View>
           </View> :
@@ -210,11 +197,5 @@ const styles = StyleSheet.create({
   },
   loginButton: {
     flex: 1,
-  },
-  footerView: {
-    marginTop: 20,
-    flex: 0.5,
-    justifyContent: 'center',
-    alignItems: 'center',
   }
 });
