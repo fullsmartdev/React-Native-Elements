@@ -24,22 +24,15 @@ class Button extends Component {
       onPress,
       buttonStyle,
       clear,
-      loading,
-      loadingStyle,
-      loadingProps,
-      text,
-      textStyle,
-      textProps,
-      icon,
-      iconContainerStyle,
-      iconRight,
+      loading, loadingStyle, loadingProps,
+      text, textStyle, textProps,
+      icon, iconContainerStyle, iconRight,
       ...attributes
     } = this.props;
 
     // this is what RN Button does by default
     // https://github.com/facebook/react-native/blob/master/Libraries/Components/Button.js#L118
-    const Touchable =
-      Platform.OS === 'android' ? TouchableNativeFeedback : TouchableOpacity;
+    const Touchable = Platform.OS === 'android' ? TouchableNativeFeedback : TouchableOpacity;
 
     return (
       <View style={[styles.container, containerStyle]}>
@@ -47,46 +40,40 @@ class Button extends Component {
           onPress={onPress || this.log.bind(this)}
           underlayColor={clear && 'transparent'}
           activeOpacity={clear && 0}
-          style={{
-            borderRadius:
-              (buttonStyle &&
-                buttonStyle.borderRadius &&
-                buttonStyle.borderRadius) ||
-              3,
-          }}
+          style={{borderRadius: buttonStyle && buttonStyle.borderRadius && buttonStyle.borderRadius || 3}}
           {...attributes}
         >
-          <View
-            style={[
-              styles.button,
-              clear && { backgroundColor: 'transparent', elevation: 0 },
-              buttonStyle,
-            ]}
-          >
+          <View style={[
+            styles.button,
+            clear && { backgroundColor: 'transparent', elevation: 0 },
+            buttonStyle
+          ]}>
             {loading &&
               <ActivityIndicator
                 animating={true}
                 style={[styles.loading, loadingStyle]}
-                color={(loadingProps && loadingProps.color) || 'white'}
-                size={(loadingProps && loadingProps.size) || 'small'}
+                color={loadingProps && loadingProps.color || 'white'}
+                size={loadingProps && loadingProps.size || 'small'}
                 {...loadingProps}
-              />}
-            {!loading &&
-              icon &&
-              !iconRight &&
+              />
+            }
+            {!loading && icon && !iconRight &&
               <View style={[styles.iconContainer, iconContainerStyle]}>
                 {icon}
-              </View>}
+              </View>
+            }
             {!loading &&
-              <Text style={[styles.text, textStyle]} {...textProps}>
+              <Text style={[styles.text, textStyle]}
+                {...textProps}
+              >
                 {text || 'Welcome to\nReact Native Elements'}
-              </Text>}
-            {!loading &&
-              icon &&
-              iconRight &&
+              </Text>
+            }
+            {!loading && icon && iconRight &&
               <View style={[styles.iconContainer, iconContainerStyle]}>
                 {icon}
-              </View>}
+              </View>
+            }
           </View>
         </Touchable>
       </View>
@@ -120,7 +107,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    borderRadius: 30,
+    borderRadius: 30
   },
   button: {
     flexDirection: 'row',
@@ -138,7 +125,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#2196F3',
         borderRadius: 2,
       },
-    }),
+    })
   },
   text: {
     color: 'white',
@@ -152,11 +139,11 @@ const styles = StyleSheet.create({
       android: {
         fontWeight: '500',
       },
-    }),
+    })
   },
   iconContainer: {
-    marginHorizontal: 5,
-  },
+    marginHorizontal: 5
+  }
 });
 
 export default Button;
