@@ -3,11 +3,10 @@ import React from 'react';
 import { View, Image, Dimensions } from 'react-native';
 import { DrawerNavigator, DrawerItems } from 'react-navigation';
 
-import Home from './src/drawer/home';
-import SwipeDecker from './src/drawer/swipe_decker';
+import Components from './src/drawer/components';
 import Ratings from './src/drawer/ratings';
 import Pricing from './src/drawer/pricing';
-import Playground from './src/drawer/playground';
+import Login from './src/drawer/login';
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
 
@@ -22,19 +21,21 @@ const CustomDrawerContentComponent = props => (
         resizeMode="contain"
       />
     </View>
-    <DrawerItems {...props} />
+    <View style={{marginLeft: 10}}>
+      <DrawerItems {...props} />
+    </View>
   </View>
 );
 
 const MainRoot = DrawerNavigator(
   {
-    Home: {
-      path: '/home',
-      screen: Home,
+    Login: {
+      path: '/login',
+      screen: Login
     },
-    SwipeDecker: {
-      path: '/swiper_decker',
-      screen: SwipeDecker,
+    Components: {
+      path: '/components',
+      screen: Components,
     },
     Ratings: {
       path: '/ratings',
@@ -43,14 +44,10 @@ const MainRoot = DrawerNavigator(
     Pricing: {
       path: '/pricing',
       screen: Pricing,
-    },
-    Playground: {
-      path: '/playground',
-      screen: Playground
     }
   },
   {
-    initialRouteName: 'Home',
+    initialRouteName: 'Login',
     contentOptions: {
       activeTintColor: '#548ff7',
       activeBackgroundColor: 'transparent',
