@@ -22,7 +22,7 @@
     "jest": false
   },
   "rules": {
-    "quotes": ["error", "single", { "allowTemplateLiterals": true } ],
+    "quotes": ["error", "single"],
     "semi": ["error", "always"]
   }
 }
