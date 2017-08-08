@@ -41,7 +41,6 @@ const ButtonGroup = props => {
       {...attributes}
     >
       {buttons.map((button, i) => {
-        const containerRadius = !isNaN(containerBorderRadius) ? containerBorderRadius : 3;
         return (
           <Component
             activeOpacity={activeOpacity}
@@ -71,12 +70,12 @@ const ButtonGroup = props => {
               },
               i === buttons.length - 1 && {
                 ...lastBorderStyle,
-                borderTopRightRadius: containerRadius,
-                borderBottomRightRadius: containerRadius,
+                borderTopRightRadius: containerBorderRadius || 3,
+                borderBottomRightRadius: containerBorderRadius || 3,
               },
               i === 0 && {
-                borderTopLeftRadius: containerRadius,
-                borderBottomLeftRadius: containerRadius,
+                borderTopLeftRadius: containerBorderRadius || 3,
+                borderBottomLeftRadius: containerBorderRadius || 3,
               },
               selectedIndex === i && {
                 backgroundColor: selectedBackgroundColor || 'white',
