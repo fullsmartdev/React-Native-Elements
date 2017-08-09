@@ -29,7 +29,7 @@ class Search extends Component {
         return this.props.textInputRef;
       }
     } else {
-      return input => this.input = input;
+      return input => (this.input = input);
     }
   };
 
@@ -44,9 +44,6 @@ class Search extends Component {
   clearText() {
     this.getRef() && this.getRef().clear();
     this.props.onChangeText && this.props.onChangeText('');
-    if (typeof this.props.onClearText === 'function') {
-      this.props.onClearText();
-    }
   }
 
   render() {
@@ -142,7 +139,6 @@ Search.propTypes = {
   selectionColor: PropTypes.string,
   underlineColorAndroid: PropTypes.string,
   onChangeText: PropTypes.func,
-  onClearText: PropTypes.func,
 };
 
 Search.defaultProps = {
