@@ -28,7 +28,6 @@ const CheckBox = props => {
     onLongPress,
     onIconPress,
     onLongIconPress,
-    size,
     checkedIcon,
     uncheckedIcon,
     iconType,
@@ -66,28 +65,24 @@ const CheckBox = props => {
           <Icon
             color={checked ? checkedColor : uncheckedColor}
             name={iconName}
-            size={size || 24}
+            size={24}
             onLongPress={onLongIconPress}
             onPress={onIconPress}
           />}
-
-        {React.isValidElement(title)
-          ? { title }
-          : <TextElement
-              style={[
-                styles.text,
-                textStyle && textStyle,
-                fontFamily && { fontFamily },
-              ]}
-            >
-              {checked ? checkedTitle || title : title}
-            </TextElement>}
-
+        <TextElement
+          style={[
+            styles.text,
+            textStyle && textStyle,
+            fontFamily && { fontFamily },
+          ]}
+        >
+          {checked ? checkedTitle || title : title}
+        </TextElement>
         {iconRight &&
           <Icon
             color={checked ? checkedColor : uncheckedColor}
             name={iconName}
-            size={size || 24}
+            size={24}
             onLongPress={onLongIconPress}
             onPress={onIconPress}
           />}
@@ -105,14 +100,13 @@ CheckBox.defaultProps = {
   uncheckedColor: '#bfbfbf',
   checkedIcon: 'check-square-o',
   uncheckedIcon: 'square-o',
-  size: 24,
 };
 
 CheckBox.propTypes = {
   component: PropTypes.any,
   checked: PropTypes.bool,
   iconRight: PropTypes.bool,
-  title: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+  title: PropTypes.string,
   center: PropTypes.bool,
   right: PropTypes.bool,
   containerStyle: ViewPropTypes.style,
@@ -122,7 +116,6 @@ CheckBox.propTypes = {
   checkedIcon: PropTypes.string,
   uncheckedIcon: PropTypes.string,
   iconType: PropTypes.string,
-  size: PropTypes.number,
   checkedColor: PropTypes.string,
   uncheckedColor: PropTypes.string,
   checkedTitle: PropTypes.string,
