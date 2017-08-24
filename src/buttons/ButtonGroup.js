@@ -42,9 +42,7 @@ const ButtonGroup = props => {
       {...attributes}
     >
       {buttons.map((button, i) => {
-        const containerRadius = !isNaN(containerBorderRadius)
-          ? containerBorderRadius
-          : 3;
+        const containerRadius = !isNaN(containerBorderRadius) ? containerBorderRadius : 3;
         return (
           <Component
             activeOpacity={activeOpacity}
