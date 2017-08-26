@@ -3,7 +3,7 @@ Example divider usage
 <Divider style={{ backgroundColor: 'blue' }} />
 ```
 
-#### Divider props
+#### Badge props
 
 | prop | default | type | description |
 | ---- | ---- | ----| ---- |
