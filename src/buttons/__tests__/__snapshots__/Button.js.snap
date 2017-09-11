@@ -11,7 +11,6 @@ exports[`Button Component should render with custom icon component 1`] = `
       },
       undefined,
       undefined,
-      undefined,
     ]
   }
 >
@@ -98,7 +97,6 @@ exports[`Button Component should render with default icon 1`] = `
         "marginLeft": 15,
         "marginRight": 15,
       },
-      undefined,
       undefined,
       undefined,
     ]
@@ -190,7 +188,6 @@ exports[`Button Component should render with icon type 1`] = `
       },
       undefined,
       undefined,
-      undefined,
     ]
   }
 >
@@ -276,7 +273,6 @@ exports[`Button Component should render without issues 1`] = `
         "marginLeft": 15,
         "marginRight": 15,
       },
-      undefined,
       undefined,
       undefined,
     ]

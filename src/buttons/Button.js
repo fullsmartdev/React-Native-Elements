@@ -128,12 +128,7 @@ const Button = props => {
 
   return (
     <View
-      style={[
-        styles.container,
-        raised && styles.raised,
-        containerViewStyle,
-        borderRadius && { borderRadius },
-      ]}
+      style={[styles.container, raised && styles.raised, containerViewStyle]}
     >
       <Component
         underlayColor={underlayColor || 'transparent'}
