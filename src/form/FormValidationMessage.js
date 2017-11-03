@@ -16,8 +16,8 @@ const FormValidationMessage = props => {
   } = props;
   return (
     <View
-      {...attributes}
       style={[styles.container, containerStyle && containerStyle]}
+      {...attributes}
     >
       <Text
         style={[

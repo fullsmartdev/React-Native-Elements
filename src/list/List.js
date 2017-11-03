@@ -8,8 +8,8 @@ const List = props => {
   const { children, containerStyle, ...attributes } = props;
   return (
     <View
-      {...attributes}
       style={[styles.listContainer, containerStyle && containerStyle]}
+      {...attributes}
     >
       {children}
     </View>

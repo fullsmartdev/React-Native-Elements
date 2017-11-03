@@ -197,7 +197,6 @@ const Avatar = props => {
 
   return (
     <Component
-      {...attributes}
       onPress={onPress}
       onLongPress={onLongPress}
       activeOpacity={activeOpacity}
@@ -206,6 +205,7 @@ const Avatar = props => {
         rounded && { borderRadius: width / 2 },
         containerStyle && containerStyle,
       ]}
+      {...attributes}
     >
       <View
         style={[

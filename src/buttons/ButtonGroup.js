@@ -38,8 +38,8 @@ const ButtonGroup = props => {
   const Component = component || TouchableHighlight;
   return (
     <View
-      {...attributes}
       style={[styles.container, containerStyle && containerStyle]}
+      {...attributes}
     >
       {buttons.map((button, i) => {
         const containerRadius = !isNaN(containerBorderRadius)
