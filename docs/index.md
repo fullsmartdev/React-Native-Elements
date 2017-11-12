@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://react-native-community.github.io/react-native-elements/">
-    <img alt="react-native-elements" src="images/react_native_elements_logo.png" width="450">
+    <img alt="react-native-elements" src="https://raw.githubusercontent.com/react-native-training/react-native-elements/master/docs/images/react_native_elements_logo.png" width="450">
   </a>
 </p>
 
@@ -37,10 +37,10 @@
 
 - If you are using
 [create-react-native-app](https://github.com/react-community/create-react-native-app)
-or [Expo](https://expo.io), [follow these instructions](https://react-native-training.github.io/react-native-elements/Installation/using-with-crna-or-expo/).
+or [Expo](https://expo.io), [follow these instructions](https://github.com/react-native-training/react-native-elements/blob/master/using-with-crna-or-expo.md).
 
 - If your project is a standard React Native project (if you have an
-ios/android directory and created it with `react-native init`), [follow these installation instructions](https://react-native-training.github.io/react-native-elements/Installation/default_installation/).
+ios/android directory and created it with `react-native init`), [follow these installation instructions](https://github.com/react-native-training/react-native-elements/blob/master/default_installation.md).
 
 ### Usage
 
@@ -49,13 +49,7 @@ Start using the components or try it on Snack [here](https://snack.expo.io/rJu6g
 ```js
 import { Button } from 'react-native-elements';
 
-<Button
-  raised
-  icon={{name: 'home', size: 32}}
-  buttonStyle={{backgroundColor: 'red', borderRadius: 10}}
-  textStyle={{textAlign: 'center'}}
-  title={`Welcome to\nReact Native Elements`}
-/>
+<Button />
 ```
 
 ## Components Included
@@ -63,12 +57,14 @@ import { Button } from 'react-native-elements';
 - [x] [Buttons](https://react-native-training.github.io/react-native-elements/API/buttons/)
 - [x] [Social Icons / Social Icon Buttons](https://react-native-training.github.io/react-native-elements/API/social_icons/)
 - [x] [Icons](https://react-native-training.github.io/react-native-elements/API/icons/)
+- [x] [Side Menu](https://react-native-training.github.io/react-native-elements/API/side_menu/)
 - [x] [Form Elements](https://react-native-training.github.io/react-native-elements/API/forms/)
 - [x] [Search Bar](https://react-native-training.github.io/react-native-elements/API/searchbar/)
 - [x] [ButtonGroup](https://react-native-training.github.io/react-native-elements/API/button_group/)
 - [x] [Checkboxes](https://react-native-training.github.io/react-native-elements/API/checkbox/)
 - [x] [List Element](https://react-native-training.github.io/react-native-elements/API/lists/)
 - [x] [Badge](https://react-native-training.github.io/react-native-elements/API/badge/)
+- [x] [Tab Bar Component](https://react-native-training.github.io/react-native-elements/API/tabbar/)
 - [x] [HTML style headings](https://react-native-training.github.io/react-native-elements/API/HTML_style_headings/)
 - [x] [Card component](https://react-native-training.github.io/react-native-elements/API/card/)
 - [x] [Pricing Component](https://react-native-training.github.io/react-native-elements/API/pricing/)
@@ -83,9 +79,19 @@ import { Button } from 'react-native-elements';
 
 ## Demo App
 
-Checkout the official [React Native Elements App](https://expo.io/@monte9/react-native-elements-app) on Expo which uses all of the React Native Elements components.
+Checkout the [React Native Elements App](https://expo.io/@monte9/react-native-elements-app) on Expo which is a showcase for all the components in React Native Elements.
 
-Additionally, take a look at the [example/](https://github.com/react-native-training/react-native-elements/tree/master/example) folder to view the implementation & run the RNE expo app locally.
+You can also checkout the [example/](https://github.com/react-native-training/react-native-elements/tree/master/example) folder to view its implementation & run the expo app locally.
+
+## Contributing
+
+#### Interested in contributing to this repo?
+
+Start by looking at the `Good First Task` label on issues. Click [here](https://github.com/react-native-training/react-native-elements/issues?q=is%3Aopen+is%3Aissue+label%3A%22Good+First+Task%22) to see them.
+
+Once you find a issue you would like to help out with, take a look at our [Contributing Guide](https://github.com/react-native-training/react-native-elements/blob/master/.github/CONTRIBUTING.MD) and submit a PR.
+
+Also come say **Hi** to the RNE community on our public [Slack team](https://reactnativetraining.herokuapp.com/). See you on the other side! :)
 
 ## Backers
 
@@ -157,28 +163,3 @@ Become a sponsor and get your logo on our README on Github with a link to your s
 <a href="https://opencollective.com/react-native-elements/sponsor/27/website" target="_blank"><img src="https://opencollective.com/react-native-elements/sponsor/27/avatar.svg"></a>
 <a href="https://opencollective.com/react-native-elements/sponsor/28/website" target="_blank"><img src="https://opencollective.com/react-native-elements/sponsor/28/avatar.svg"></a>
 <a href="https://opencollective.com/react-native-elements/sponsor/29/website" target="_blank"><img src="https://opencollective.com/react-native-elements/sponsor/29/avatar.svg"></a>
-
-## Roadmap
-
-#### First Contributors
-Look for the label `good first issue` on the issues. Click [here](https://github.com/react-native-training/react-native-elements/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22) to see them.
-
-#### 1.0 Release
-- [ ] [SearchBar - Platform Specific (with iOS 11 support)](https://github.com/react-native-training/react-native-elements/pull/632)
-- [ ] [ListItem - Platform Specific](https://docs.google.com/document/d/1EJc54CWQSGcaVQyqoRUQycnIOtUwFw3LxH3k8f9-Xzc/edit?usp=sharing)
-- [ ] [Button - Refactored](https://github.com/react-native-training/react-native-elements/blob/v1/example/v1/buttons/Button.js)
-- [ ] [Input - Rewritten](https://github.com/react-native-training/react-native-elements/blob/v1/example/v1/input/Input.js)
-- [ ] [Production-ready Screens](https://github.com/react-native-training/react-native-elements/tree/v1/example/v1)
-
-#### Not Started
-- [ ] [Compatibility with react-native-web](https://github.com/react-native-training/react-native-elements/issues/110)
-- [ ] [Add Notification Component](https://github.com/react-native-training/react-native-elements/issues/190)
-- [ ] [Add Image Component which supports parallax](https://github.com/react-native-training/react-native-elements/issues/203)
-- [ ] [Add DatePicker/Calendar Component](https://github.com/react-native-training/react-native-elements/issues/214)
-- [ ] Something you's like to see? Submit an [issue](https://github.com/react-native-training/react-native-elements/issues/new) or a [pull request](https://github.com/react-native-training/react-native-elements/pulls)
-
-## Contributing
-
-Interested in contributing to this repo? Checkout our [Contributing Guide](https://github.com/react-native-training/react-native-elements/blob/master/.github/CONTRIBUTING.MD)
-
-Also come say **Hi!** to the RNE community on our public [Slack team](https://reactnativetraining.herokuapp.com/). See you on the other side! :)

@@ -32,18 +32,17 @@ const Card = props => {
     image,
     imageStyle,
     fontFamily,
-    imageProps,
     ...attributes
   } = props;
 
   return (
     <View
-      {...attributes}
       style={[
         styles.container,
         image && { padding: 0 },
         containerStyle && containerStyle,
       ]}
+      {...attributes}
     >
       <View
         style={[
@@ -52,54 +51,50 @@ const Card = props => {
           flexDirection && { flexDirection },
         ]}
       >
-        {title === '' ||
-          (title &&
-            title.length > 0 &&
-            <View>
-              <Text
-                style={[
-                  styles.cardTitle,
-                  image && styles.imageCardTitle,
-                  titleStyle && titleStyle,
-                  fontFamily && { fontFamily },
-                ]}
-              >
-                {title}
-              </Text>
-              {!image &&
-                <Divider
-                  style={[styles.divider, dividerStyle && dividerStyle]}
-                />}
-            </View>)}
+        {title &&
+          <View>
+            <Text
+              style={[
+                styles.cardTitle,
+                image && styles.imageCardTitle,
+                titleStyle && titleStyle,
+                fontFamily && { fontFamily },
+              ]}
+            >
+              {title}
+            </Text>
+            {!image &&
+              <Divider
+                style={[styles.divider, dividerStyle && dividerStyle]}
+              />}
+          </View>}
         {image &&
           <View style={imageWrapperStyle && imageWrapperStyle}>
             <BackgroundImage
               resizeMode="cover"
               style={[{ width: null, height: 150 }, imageStyle && imageStyle]}
               source={image}
-              {...imageProps}
             >
-              {(featuredTitle || featuredSubtitle) &&
-                <View style={styles.overlayContainer}>
-                  {featuredTitle &&
-                    <Text
-                      style={[
-                        styles.featuredTitle,
-                        featuredTitleStyle && featuredTitleStyle,
-                      ]}
-                    >
-                      {featuredTitle}
-                    </Text>}
-                  {featuredSubtitle &&
-                    <Text
-                      style={[
-                        styles.featuredSubtitle,
-                        featuredSubtitleStyle && featuredSubtitleStyle,
-                      ]}
-                    >
-                      {featuredSubtitle}
-                    </Text>}
-                </View>}
+              <View style={styles.overlayContainer}>
+                {featuredTitle &&
+                  <Text
+                    style={[
+                      styles.featuredTitle,
+                      featuredTitleStyle && featuredTitleStyle,
+                    ]}
+                  >
+                    {featuredTitle}
+                  </Text>}
+                {featuredSubtitle &&
+                  <Text
+                    style={[
+                      styles.featuredSubtitle,
+                      featuredSubtitleStyle && featuredSubtitleStyle,
+                    ]}
+                  >
+                    {featuredSubtitle}
+                  </Text>}
+              </View>
             </BackgroundImage>
             <View style={[{ padding: 10 }, wrapperStyle && wrapperStyle]}>
               {children}
@@ -116,7 +111,6 @@ Card.propTypes = {
   flexDirection: PropTypes.string,
   containerStyle: ViewPropTypes.style,
   wrapperStyle: ViewPropTypes.style,
-  overlayStyle: ViewPropTypes.style,
   title: PropTypes.string,
   titleStyle: NativeText.propTypes.style,
   featuredTitle: PropTypes.string,
@@ -128,7 +122,6 @@ Card.propTypes = {
   imageStyle: ViewPropTypes.style,
   imageWrapperStyle: ViewPropTypes.style,
   fontFamily: PropTypes.string,
-  imageProps: PropTypes.object,
 };
 
 const styles = StyleSheet.create({

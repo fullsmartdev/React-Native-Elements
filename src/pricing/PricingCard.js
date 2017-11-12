@@ -26,8 +26,8 @@ const PricingCard = props => {
   } = props;
   return (
     <View
-      {...attributes}
       style={[styles.container, containerStyle && containerStyle]}
+      {...attributes}
     >
       <View style={[styles.wrapper, wrapperStyle && wrapperStyle]}>
         <Text

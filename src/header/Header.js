@@ -1,11 +1,9 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { StatusBar, StyleSheet, View, Dimensions } from 'react-native';
+import { StatusBar, StyleSheet, View } from 'react-native';
 import isEmpty from 'lodash.isempty';
 import DummyNavButton from './DummyNavButton';
 import NavButton from './NavButton';
 import Title from './Title';
-import ViewPropTypes from '../config/ViewPropTypes';
 
 function generateChild(value, type) {
   if (React.isValidElement(value)) {
@@ -59,12 +57,8 @@ const Header = props => {
 
   return (
     <View
+      style={[styles.outerContainer, { backgroundColor }, outerContainerStyles]}
       {...attributes}
-      style={[
-        styles.outerContainer,
-        backgroundColor && { backgroundColor },
-        outerContainerStyles,
-      ]}
     >
       <StatusBar {...statusBarProps} />
       <View style={[styles.innerContainer, innerContainerStyles]}>
@@ -72,20 +66,6 @@ const Header = props => {
       </View>
     </View>
   );
-};
-
-Header.propTypes = {
-  leftComponent: PropTypes.object,
-  centerComponent: PropTypes.object,
-  rightComponent: PropTypes.object,
-  backgroundColor: PropTypes.string,
-  outerContainerStyles: ViewPropTypes.style,
-  innerContainerStyles: ViewPropTypes.style,
-  children: PropTypes.oneOf([
-    PropTypes.element,
-    PropTypes.arrayOf(PropTypes.element),
-  ]),
-  statusBarProps: PropTypes.object,
 };
 
 const styles = StyleSheet.create({
@@ -96,8 +76,11 @@ const styles = StyleSheet.create({
     alignItems: 'flex-end',
   },
   outerContainer: {
-    width: Dimensions.get('window').width,
-    backgroundColor: '#476DC5',
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    backgroundColor: '#fff',
     borderBottomColor: '#f2f2f2',
     borderBottomWidth: 1,
     padding: 15,

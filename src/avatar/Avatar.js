@@ -40,7 +40,6 @@ const Avatar = props => {
     showEditButton,
     editButton,
     onEditPress,
-    imageProps,
     ...attributes
   } = props;
 
@@ -121,7 +120,6 @@ const Avatar = props => {
             avatarStyle && avatarStyle,
           ]}
           source={source}
-          {...imageProps}
         />
       );
     } else if (title) {
@@ -197,7 +195,6 @@ const Avatar = props => {
 
   return (
     <Component
-      {...attributes}
       onPress={onPress}
       onLongPress={onLongPress}
       activeOpacity={activeOpacity}
@@ -206,6 +203,7 @@ const Avatar = props => {
         rounded && { borderRadius: width / 2 },
         containerStyle && containerStyle,
       ]}
+      {...attributes}
     >
       <View
         style={[
@@ -270,7 +268,6 @@ Avatar.propTypes = {
     underlayColor: PropTypes.string,
     style: ViewPropTypes.style,
   }),
-  imageProps: PropTypes.object,
 };
 
 Avatar.defaultProps = defaultProps;

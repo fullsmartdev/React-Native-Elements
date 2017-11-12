@@ -80,8 +80,8 @@ const FeaturedTile = props => {
 
   return (
     <TouchableOpacity
-      {...attributes}
       style={[styles.container, containerStyle && containerStyle]}
+      {...attributes}
     >
       <Image
         source={imageSrc}

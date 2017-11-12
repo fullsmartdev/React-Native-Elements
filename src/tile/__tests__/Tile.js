@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import Tile from '../Tile';
 
-describe('Tile component', () => {
+describe('FeaturedTitle component', () => {
   it('should render without issues', () => {
     const component = shallow(<Tile imageSrc={{ url: 'http://google.com' }} />);
 
