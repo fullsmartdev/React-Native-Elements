@@ -1,19 +1,21 @@
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { Component } from 'react';
+
 import {
-  TouchableNativeFeedback,
-  TouchableHighlight,
   StyleSheet,
   View,
-  Platform,
-  ActivityIndicator,
   Text as NativeText,
+  TouchableNativeFeedback,
+  ActivityIndicator,
+  TouchableHighlight,
+  Platform,
 } from 'react-native';
+
+import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
+
 import colors from '../config/colors';
 import Text from '../text/Text';
-import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
 import getIconType from '../helpers/getIconType';
-import normalize from '../helpers/normalizeText';
 import ViewPropTypes from '../config/ViewPropTypes';
 
 const log = () => {
@@ -28,6 +30,7 @@ const Button = props => {
     activityIndicatorStyle,
     buttonStyle,
     borderRadius,
+    clear,
     title,
     onPress,
     icon,
@@ -135,23 +138,6 @@ const Button = props => {
     }
   }
 
-  const baseFont = {
-    color: (textStyle && textStyle.color) || color || stylesObject.text.color,
-    size:
-      (textStyle && textStyle.fontSize) ||
-      fontSize ||
-      (!large && stylesObject.smallFont.fontSize) ||
-      stylesObject.text.fontSize,
-  };
-
-  let textOptions = {};
-  if (textNumberOfLines) {
-    textOptions.numberOfLines = textNumberOfLines;
-    if (textEllipsizeMode) {
-      textOptions.ellipsizeMode = textEllipsizeMode;
-    }
-  }
-
   return (
     <View
       style={[
@@ -203,16 +189,10 @@ const Button = props => {
           {loading && !loadingRight && loadingElement}
           <Text
             style={[
-              styles.text,
-              color && { color },
-              !large && styles.smallFont,
-              fontSize && { fontSize },
-              textStyle && textStyle,
-              fontWeight && { fontWeight },
-              fontFamily && { fontFamily },
+              styles.button,
+              clear && { backgroundColor: 'transparent', elevation: 0 },
+              buttonStyle,
             ]}
-            {...textOptions}
-            allowFontScaling={allowFontScaling}
           >
             {title}
           </Text>
@@ -225,9 +205,22 @@ const Button = props => {
 };
 
 Button.propTypes = {
+  text: PropTypes.string,
+  textStyle: NativeText.propTypes.style,
+  textProps: PropTypes.object,
+
   buttonStyle: ViewPropTypes.style,
-  title: PropTypes.string,
+
+  clear: PropTypes.bool,
+
+  loading: PropTypes.bool,
+  loadingStyle: ViewPropTypes.style,
+  loadingProps: PropTypes.object,
+  loadingRight: PropTypes.bool,
+
   onPress: PropTypes.any,
+  containerStyle: ViewPropTypes.style,
+
   icon: PropTypes.object,
   leftIcon: PropTypes.object,
   rightIcon: PropTypes.object,
@@ -243,11 +236,8 @@ Button.propTypes = {
   fontSize: PropTypes.any,
   underlayColor: PropTypes.string,
   raised: PropTypes.bool,
-  textStyle: NativeText.propTypes.style,
   disabled: PropTypes.bool,
-  loading: PropTypes.bool,
   activityIndicatorStyle: ViewPropTypes.style,
-  loadingRight: PropTypes.bool,
   Component: PropTypes.any,
   borderRadius: PropTypes.number,
   large: PropTypes.bool,
@@ -263,45 +253,39 @@ Button.propTypes = {
   textEllipsizeMode: PropTypes.string,
 };
 
-const stylesObject = {
+const styles = StyleSheet.create({
   container: {
-    marginLeft: 15,
-    marginRight: 15,
-  },
-  button: {
-    padding: 19,
-    backgroundColor: colors.primary,
+    flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    borderRadius: 30,
+  },
+  button: {
     flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 3,
+    ...Platform.select({
+      ios: {
+        // iOS blue from https://developer.apple.com/ios/human-interface-guidelines/visual-design/color/
+        backgroundColor: '#007AFF',
+      },
+      android: {
+        elevation: 4,
+        // Material design blue from https://material.google.com/style/color.html#color-color-palette
+        backgroundColor: '#2196F3',
+        borderRadius: 2,
+      },
+    }),
   },
   text: {
     color: 'white',
-    fontSize: normalize(16),
-  },
-  icon: {
-    marginRight: 10,
-  },
-  iconRight: {
-    marginLeft: 10,
-  },
-  small: {
-    padding: 12,
-  },
-  smallFont: {
-    fontSize: normalize(14),
-  },
-  activityIndicatorStyle: {
-    marginHorizontal: 10,
-    height: 0,
-  },
-  raised: {
+    fontSize: 16,
+    textAlign: 'center',
+    padding: 8,
     ...Platform.select({
       ios: {
-        shadowColor: 'rgba(0,0,0, .4)',
-        shadowOffset: { height: 1, width: 1 },
-        shadowOpacity: 1,
-        shadowRadius: 1,
+        fontSize: 18,
       },
       android: {
         backgroundColor: '#fff',
@@ -309,8 +293,9 @@ const stylesObject = {
       },
     }),
   },
-};
-
-const styles = StyleSheet.create(stylesObject);
+  iconContainer: {
+    marginHorizontal: 5,
+  },
+});
 
 export default Button;
