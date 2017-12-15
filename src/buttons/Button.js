@@ -1,21 +1,19 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-
 import {
+  TouchableNativeFeedback,
+  TouchableHighlight,
   StyleSheet,
   View,
-  Text as NativeText,
-  TouchableNativeFeedback,
-  ActivityIndicator,
-  TouchableHighlight,
   Platform,
+  ActivityIndicator,
+  Text as NativeText,
 } from 'react-native';
-
-import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
-
 import colors from '../config/colors';
 import Text from '../text/Text';
+import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
 import getIconType from '../helpers/getIconType';
+import normalize from '../helpers/normalizeText';
 import ViewPropTypes from '../config/ViewPropTypes';
 
 const log = () => {
@@ -30,7 +28,6 @@ const Button = props => {
     activityIndicatorStyle,
     buttonStyle,
     borderRadius,
-    clear,
     title,
     onPress,
     icon,
@@ -45,14 +42,19 @@ const Button = props => {
     fontSize,
     underlayColor,
     raised,
+    textStyle,
     large,
     iconRight,
+    fontWeight,
     disabledStyle,
+    fontFamily,
     containerViewStyle,
     rounded,
     outline,
     transparent,
-    stylesObject,
+    textNumberOfLines,
+    textEllipsizeMode,
+    allowFontScaling,
     ...attributes
   } = props;
   let { Component, rightIcon, leftIcon } = props;
@@ -133,6 +135,23 @@ const Button = props => {
     }
   }
 
+  const baseFont = {
+    color: (textStyle && textStyle.color) || color || stylesObject.text.color,
+    size:
+      (textStyle && textStyle.fontSize) ||
+      fontSize ||
+      (!large && stylesObject.smallFont.fontSize) ||
+      stylesObject.text.fontSize,
+  };
+
+  let textOptions = {};
+  if (textNumberOfLines) {
+    textOptions.numberOfLines = textNumberOfLines;
+    if (textEllipsizeMode) {
+      textOptions.ellipsizeMode = textEllipsizeMode;
+    }
+  }
+
   return (
     <View
       style={[
@@ -161,7 +180,7 @@ const Button = props => {
             borderRadius && { borderRadius },
             !large && styles.small,
             rounded && {
-              borderRadius: fontSize.size * 3.8,
+              borderRadius: baseFont.size * 3.8,
               paddingHorizontal: !large
                 ? stylesObject.small.padding * 1.5
                 : stylesObject.button.padding * 1.5,
@@ -169,7 +188,7 @@ const Button = props => {
             outline && {
               borderWidth: 1,
               backgroundColor: 'transparent',
-              borderColor: fontSize.color,
+              borderColor: baseFont.color,
             },
             transparent && {
               borderWidth: 0,
@@ -184,10 +203,16 @@ const Button = props => {
           {loading && !loadingRight && loadingElement}
           <Text
             style={[
-              styles.button,
-              clear && { backgroundColor: 'transparent', elevation: 0 },
-              buttonStyle,
+              styles.text,
+              color && { color },
+              !large && styles.smallFont,
+              fontSize && { fontSize },
+              textStyle && textStyle,
+              fontWeight && { fontWeight },
+              fontFamily && { fontFamily },
             ]}
+            {...textOptions}
+            allowFontScaling={allowFontScaling}
           >
             {title}
           </Text>
@@ -200,23 +225,9 @@ const Button = props => {
 };
 
 Button.propTypes = {
-  title: PropTypes.string,
-  text: PropTypes.string,
-  textStyle: NativeText.propTypes.style,
-  textProps: PropTypes.object,
-
   buttonStyle: ViewPropTypes.style,
-
-  clear: PropTypes.bool,
-
-  loading: PropTypes.bool,
-  loadingStyle: ViewPropTypes.style,
-  loadingProps: PropTypes.object,
-  loadingRight: PropTypes.bool,
-
+  title: PropTypes.string,
   onPress: PropTypes.any,
-  containerStyle: ViewPropTypes.style,
-
   icon: PropTypes.object,
   leftIcon: PropTypes.object,
   rightIcon: PropTypes.object,
@@ -232,9 +243,11 @@ Button.propTypes = {
   fontSize: PropTypes.any,
   underlayColor: PropTypes.string,
   raised: PropTypes.bool,
+  textStyle: NativeText.propTypes.style,
   disabled: PropTypes.bool,
+  loading: PropTypes.bool,
   activityIndicatorStyle: ViewPropTypes.style,
-  stylesObject: ViewPropTypes.style,
+  loadingRight: PropTypes.bool,
   Component: PropTypes.any,
   borderRadius: PropTypes.number,
   large: PropTypes.bool,
@@ -250,39 +263,45 @@ Button.propTypes = {
   textEllipsizeMode: PropTypes.string,
 };
 
-const styles = StyleSheet.create({
+const stylesObject = {
   container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderRadius: 30,
+    marginLeft: 15,
+    marginRight: 15,
   },
   button: {
-    flexDirection: 'row',
+    padding: 19,
+    backgroundColor: colors.primary,
     justifyContent: 'center',
     alignItems: 'center',
-    borderRadius: 3,
-    ...Platform.select({
-      ios: {
-        // iOS blue from https://developer.apple.com/ios/human-interface-guidelines/visual-design/color/
-        backgroundColor: '#007AFF',
-      },
-      android: {
-        elevation: 4,
-        // Material design blue from https://material.google.com/style/color.html#color-color-palette
-        backgroundColor: '#2196F3',
-        borderRadius: 2,
-      },
-    }),
+    flexDirection: 'row',
   },
   text: {
     color: 'white',
-    fontSize: 16,
-    textAlign: 'center',
-    padding: 8,
+    fontSize: normalize(16),
+  },
+  icon: {
+    marginRight: 10,
+  },
+  iconRight: {
+    marginLeft: 10,
+  },
+  small: {
+    padding: 12,
+  },
+  smallFont: {
+    fontSize: normalize(14),
+  },
+  activityIndicatorStyle: {
+    marginHorizontal: 10,
+    height: 0,
+  },
+  raised: {
     ...Platform.select({
       ios: {
-        fontSize: 18,
+        shadowColor: 'rgba(0,0,0, .4)',
+        shadowOffset: { height: 1, width: 1 },
+        shadowOpacity: 1,
+        shadowRadius: 1,
       },
       android: {
         backgroundColor: '#fff',
@@ -290,9 +309,8 @@ const styles = StyleSheet.create({
       },
     }),
   },
-  iconContainer: {
-    marginHorizontal: 5,
-  },
-});
+};
+
+const styles = StyleSheet.create(stylesObject);
 
 export default Button;
