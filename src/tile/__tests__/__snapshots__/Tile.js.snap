@@ -49,7 +49,11 @@ exports[`Tile component should render tile with icon 1`] = `
   }
 >
   <Image
-    resizeMode="cover"
+    imageStyle={
+      Object {
+        "resizeMode": "cover",
+      }
+    }
     source={
       Object {
         "url": "http://google.com",
@@ -145,7 +149,11 @@ exports[`Tile component should render without issues 1`] = `
   }
 >
   <Image
-    resizeMode="cover"
+    imageStyle={
+      Object {
+        "resizeMode": "cover",
+      }
+    }
     source={
       Object {
         "url": "http://google.com",
