@@ -26,13 +26,6 @@ import { SearchBar } from 'react-native-elements'
   onClearText={someMethod}
   placeholder='Type Here...' />
 
-<SearchBar
-  lightTheme
-  onChangeText={someMethod}
-  onClearText={someMethod}
-  icon={{ type: 'font-awesome', name: 'search' }}
-  placeholder='Type Here...' />
-
 ```
 
 #### SearchBar props
@@ -43,7 +36,7 @@ import { SearchBar } from 'react-native-elements'
 | ---- | ---- | ----| ---- |
 | containerStyle | inherited styling | object (style) | style the container of the TextInput |
 | inputStyle | inherited styling | object (style) | style the TextInput |
-| icon | { type: 'material', color: '#86939e', name: 'search' } | object {type (string), name (string), color (string), style (object)} | specify type, name, color, and styling of the icon |
+| icon | { color: '#86939e', name: 'search' } | object {name (string), color (string), style (object)} | specify color, styling, or another [Material Icon Name](https://design.google.com/icons/) |
 | noIcon | false | boolean | remove icon from textinput |
 | lightTheme | false | boolean | change theme to light theme |
 | round | false | boolean | change TextInput styling to rounded corners |

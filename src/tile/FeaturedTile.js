@@ -4,9 +4,9 @@ import {
   TouchableOpacity,
   Text as NativeText,
   View,
+  Image,
   StyleSheet,
   Dimensions,
-  Image,
 } from 'react-native';
 import Text from '../text/Text';
 import Icon from '../icons/Icon';
@@ -45,6 +45,7 @@ const FeaturedTile = props => {
     imageContainer: {
       alignItems: 'center',
       justifyContent: 'center',
+      resizeMode: 'cover',
       backgroundColor: '#ffffff',
       width,
       height,
@@ -89,7 +90,6 @@ const FeaturedTile = props => {
           styles.imageContainer,
           imageContainerStyle && imageContainerStyle,
         ]}
-        resizeMode = 'cover'
       >
         <View
           style={[
