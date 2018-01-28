@@ -86,7 +86,6 @@ class SearchBar extends Component {
     return (
       <View style={styles.container}>
         <Input
-          {...attributes}
           onFocus={this.onFocus}
           onBlur={this.onBlur}
           onChangeText={this.onChangeText}
@@ -129,6 +128,7 @@ class SearchBar extends Component {
             styles.rightIconContainerStyle,
             rightIconContainerStyle,
           ]}
+          {...attributes}
         />
         <Button title={cancelButtonTitle} onPress={this.cancel} />
       </View>
