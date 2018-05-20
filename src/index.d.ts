@@ -980,7 +980,6 @@ export interface ListItemProps {
   bottomDivider?: boolean;
   scaleProps?: ScaleProps;
   ViewComponent?: React.ComponentClass;
-  pad?: number;
 }
 
 /**

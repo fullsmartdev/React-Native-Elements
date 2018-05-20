@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`DummyNavButton Component should render without issues 1`] = `
-<Component
+<View
   style={
     Object {
       "height": 24,

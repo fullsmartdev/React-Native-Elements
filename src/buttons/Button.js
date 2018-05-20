@@ -63,7 +63,7 @@ class Button extends Component {
       Platform.OS === 'android' &&
       (buttonStyle.borderRadius && !attributes.background)
     ) {
-      if (Platform.Version >= 21) {
+      if (Platform.VERSION >= 21) {
         attributes.background = TouchableNativeFeedback.Ripple(
           'ThemeAttrAndroid',
           true
@@ -75,11 +75,11 @@ class Button extends Component {
     return (
       <View style={[containerStyle, raised && styles.raised]}>
         <TouchableComponent
+          {...attributes}
           onPress={onPress}
           underlayColor={clear ? 'transparent' : undefined}
           activeOpacity={clear ? 0 : undefined}
           disabled={disabled}
-          {...attributes}
         >
           <ViewComponent
             {...linearGradientProps}
