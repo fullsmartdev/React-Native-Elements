@@ -111,11 +111,7 @@ class SearchBar extends Component {
                   {...otherLoadingProps}
                 />
               )}
-              {!isEmpty &&
-                renderNode(Icon, clearIcon, {
-                  ...defaultClearIcon,
-                  onPress: this.clear,
-                })}
+              {!isEmpty && renderNode(Icon, clearIcon, defaultClearIcon)}
             </View>
           }
           rightIconContainerStyle={[
@@ -157,8 +153,6 @@ SearchBar.defaultProps = {
   onFocus: () => null,
   onBlur: () => null,
   onChangeText: () => null,
-  searchIcon: defaultSearchIcon,
-  clearIcon: defaultClearIcon,
 };
 
 const styles = StyleSheet.create({

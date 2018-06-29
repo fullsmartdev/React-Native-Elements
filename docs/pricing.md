@@ -44,35 +44,43 @@ outer component styling (optional)
 | :------------: | :---------------: |
 | object (style) | inherited styling |
 
----
+### `buttonFont`
 
-### `infoStyle`
+specify button font family
 
-specify pricing information style
-
-|  Type          |                      Default                      |
-| :------------: | :-----------------------------------------------: |
-| style (object) |                       none                        |
+|  Type  |                 Default                 |
+| :----: | :-------------------------------------: |
+| string | System font (iOS), Sans Serif (android) |
 
 ---
 
-### `pricingStyle`
+### `infoFont`
 
-specify pricing text style
+specify pricing information font family
 
-|  Type          |                            Default                             |
-| :------------: | :------------------------------------------------------------: |
-| style (object) |                                none                            |
+|  Type  |                      Default                      |
+| :----: | :-----------------------------------------------: |
+| string | System font bold (iOS), Sans Serif Bold (android) |
 
 ---
 
-### `titleStyle`
+### `pricingFont`
 
-specify title text style
+specify pricing font family
 
-|  Type          |                             Default                             |
-| :------------: | :-------------------------------------------------------------: |
-| style (object) |                               none                              |
+|  Type  |                            Default                             |
+| :----: | :------------------------------------------------------------: |
+| string | System font (font weight 700) (iOS), Sans Serif Bold (android) |
+
+---
+
+### `titleFont`
+
+specify title font family
+
+|  Type  |                             Default                             |
+| :----: | :-------------------------------------------------------------: |
+| string | System font (font weight 800) (iOS), Sans Serif Black (android) |
 
 ---
 

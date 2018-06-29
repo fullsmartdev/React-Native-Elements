@@ -206,16 +206,14 @@ Example badge usage
 <img src="/react-native-elements/img/listitem_with_gradient_scale.gif" width="500" >
 
 ```js
-import TouchableScale from 'react-native-touchable-scale' // https://github.com/kohver/react-native-touchable-scale
 import LinearGradient from 'react-native-linear-gradient' // Only if no expo
 
   <ListItem
-    component={TouchableScale}
-
-    friction={90} //
-    tension={100} // These props are passed to the parent component (here TouchableScale)
-    activeScale={0.95} //
-
+    scaleProps={{
+      friction: 90,
+      tension: 100,
+      activeScale: 0.95,
+    }}
     linearGradientProps={{
       colors: ['#FF9800', '#F44336'],
       start: [1, 0],
@@ -275,7 +273,6 @@ import LinearGradient from 'react-native-linear-gradient' // Only if no expo
 * [`bottomDivider`](#bottomdivider)
 * [`scaleProps`](#scaleprops)
 * [`ViewComponent`](#viewcomponent)
-* [`pad`](#pad)
 
 ---
 
@@ -651,6 +648,16 @@ Add divider at the bottom of the list item
 
 ---
 
+### `scaleProps`
+
+Provide all props for scale feedback
+
+|                                    Type                                    | Default |
+| :------------------------------------------------------------------------: | :-----: |
+| {[...Scale props](https://github.com/kohver/react-native-touchable-scale)} |  none   |
+
+---
+
 ### `ViewComponent`
 
 Container for linear gradient (for non-expo user)
@@ -658,13 +665,3 @@ Container for linear gradient (for non-expo user)
 |   Type    | Default |
 | :-------: | :-----: |
 | component |  View   |
-
----
-
-### `pad`
-
-adds spacing between the leftComponent, the title component & right component 
-
-|   Type    | Default |
-| :-------: | :-----: |
-| number    |  `16`   |

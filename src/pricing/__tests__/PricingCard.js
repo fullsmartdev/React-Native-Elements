@@ -23,9 +23,10 @@ describe('PricingCard component', () => {
         price="$0"
         info={['1 User', 'Basic Support', 'All Core Features']}
         button={{ title: 'GET STARTED', icon: 'flight-takeoff' }}
-        titleStyle={{ fontFamily: 'arial' }}
-        infoStyle={{ fontFamily: 'arial' }}
-        pricingStyle={{ fontFamily: 'arial' }}
+        titleFont="arial"
+        infoFont="arial"
+        pricingFont="arial"
+        buttonFont="arial"
         containerStyle={{ backgroundColor: 'peru' }}
         wrapperStyle={{ backgroundColor: 'peru' }}
       />
