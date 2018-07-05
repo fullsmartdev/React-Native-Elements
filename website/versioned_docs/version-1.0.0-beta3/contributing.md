@@ -1,6 +1,7 @@
 ---
-id: contributing
+id: version-1.0.0-beta3-contributing
 title: Contributing
+original_id: contributing
 ---
 
 Thanks for taking the time to checkout this project and being willing to contribute!
