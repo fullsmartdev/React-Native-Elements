@@ -1,10 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Rating Component should render 10 images 1`] = `
-<Component
+<View
   pointerEvents="auto"
 >
-  <Component
+  <View
     onMoveShouldSetResponder={[Function]}
     onMoveShouldSetResponderCapture={[Function]}
     onResponderEnd={[Function]}
@@ -25,7 +25,7 @@ exports[`Rating Component should render 10 images 1`] = `
       }
     }
   >
-    <Component
+    <View
       style={
         Object {
           "alignItems": "center",
@@ -57,10 +57,8 @@ exports[`Rating Component should render 10 images 1`] = `
           }
         }
       />
-    </Component>
-    <Component
-      key="0"
-    >
+    </View>
+    <View>
       <Image
         source={
           Object {
@@ -74,10 +72,8 @@ exports[`Rating Component should render 10 images 1`] = `
           }
         }
       />
-    </Component>
-    <Component
-      key="1"
-    >
+    </View>
+    <View>
       <Image
         source={
           Object {
@@ -91,10 +87,8 @@ exports[`Rating Component should render 10 images 1`] = `
           }
         }
       />
-    </Component>
-    <Component
-      key="2"
-    >
+    </View>
+    <View>
       <Image
         source={
           Object {
@@ -108,10 +102,8 @@ exports[`Rating Component should render 10 images 1`] = `
           }
         }
       />
-    </Component>
-    <Component
-      key="3"
-    >
+    </View>
+    <View>
       <Image
         source={
           Object {
@@ -125,10 +117,8 @@ exports[`Rating Component should render 10 images 1`] = `
           }
         }
       />
-    </Component>
-    <Component
-      key="4"
-    >
+    </View>
+    <View>
       <Image
         source={
           Object {
@@ -142,10 +132,8 @@ exports[`Rating Component should render 10 images 1`] = `
           }
         }
       />
-    </Component>
-    <Component
-      key="5"
-    >
+    </View>
+    <View>
       <Image
         source={
           Object {
@@ -159,10 +147,8 @@ exports[`Rating Component should render 10 images 1`] = `
           }
         }
       />
-    </Component>
-    <Component
-      key="6"
-    >
+    </View>
+    <View>
       <Image
         source={
           Object {
@@ -176,10 +162,8 @@ exports[`Rating Component should render 10 images 1`] = `
           }
         }
       />
-    </Component>
-    <Component
-      key="7"
-    >
+    </View>
+    <View>
       <Image
         source={
           Object {
@@ -193,10 +177,8 @@ exports[`Rating Component should render 10 images 1`] = `
           }
         }
       />
-    </Component>
-    <Component
-      key="8"
-    >
+    </View>
+    <View>
       <Image
         source={
           Object {
@@ -210,10 +192,8 @@ exports[`Rating Component should render 10 images 1`] = `
           }
         }
       />
-    </Component>
-    <Component
-      key="9"
-    >
+    </View>
+    <View>
       <Image
         source={
           Object {
@@ -227,16 +207,16 @@ exports[`Rating Component should render 10 images 1`] = `
           }
         }
       />
-    </Component>
-  </Component>
-</Component>
+    </View>
+  </View>
+</View>
 `;
 
 exports[`Rating Component should render custom background color 1`] = `
-<Component
+<View
   pointerEvents="auto"
 >
-  <Component
+  <View
     onMoveShouldSetResponder={[Function]}
     onMoveShouldSetResponderCapture={[Function]}
     onResponderEnd={[Function]}
@@ -257,7 +237,7 @@ exports[`Rating Component should render custom background color 1`] = `
       }
     }
   >
-    <Component
+    <View
       style={
         Object {
           "alignItems": "center",
@@ -289,10 +269,8 @@ exports[`Rating Component should render custom background color 1`] = `
           }
         }
       />
-    </Component>
-    <Component
-      key="0"
-    >
+    </View>
+    <View>
       <Image
         source={
           Object {
@@ -306,10 +284,8 @@ exports[`Rating Component should render custom background color 1`] = `
           }
         }
       />
-    </Component>
-    <Component
-      key="1"
-    >
+    </View>
+    <View>
       <Image
         source={
           Object {
@@ -323,10 +299,8 @@ exports[`Rating Component should render custom background color 1`] = `
           }
         }
       />
-    </Component>
-    <Component
-      key="2"
-    >
+    </View>
+    <View>
       <Image
         source={
           Object {
@@ -340,10 +314,8 @@ exports[`Rating Component should render custom background color 1`] = `
           }
         }
       />
-    </Component>
-    <Component
-      key="3"
-    >
+    </View>
+    <View>
       <Image
         source={
           Object {
@@ -357,10 +329,8 @@ exports[`Rating Component should render custom background color 1`] = `
           }
         }
       />
-    </Component>
-    <Component
-      key="4"
-    >
+    </View>
+    <View>
       <Image
         source={
           Object {
@@ -374,16 +344,16 @@ exports[`Rating Component should render custom background color 1`] = `
           }
         }
       />
-    </Component>
-  </Component>
-</Component>
+    </View>
+  </View>
+</View>
 `;
 
 exports[`Rating Component should render custom color 1`] = `
-<Component
+<View
   pointerEvents="auto"
 >
-  <Component
+  <View
     onMoveShouldSetResponder={[Function]}
     onMoveShouldSetResponderCapture={[Function]}
     onResponderEnd={[Function]}
@@ -404,7 +374,7 @@ exports[`Rating Component should render custom color 1`] = `
       }
     }
   >
-    <Component
+    <View
       style={
         Object {
           "alignItems": "center",
@@ -436,10 +406,8 @@ exports[`Rating Component should render custom color 1`] = `
           }
         }
       />
-    </Component>
-    <Component
-      key="0"
-    >
+    </View>
+    <View>
       <Image
         source={
           Object {
@@ -453,10 +421,8 @@ exports[`Rating Component should render custom color 1`] = `
           }
         }
       />
-    </Component>
-    <Component
-      key="1"
-    >
+    </View>
+    <View>
       <Image
         source={
           Object {
@@ -470,10 +436,8 @@ exports[`Rating Component should render custom color 1`] = `
           }
         }
       />
-    </Component>
-    <Component
-      key="2"
-    >
+    </View>
+    <View>
       <Image
         source={
           Object {
@@ -487,10 +451,8 @@ exports[`Rating Component should render custom color 1`] = `
           }
         }
       />
-    </Component>
-    <Component
-      key="3"
-    >
+    </View>
+    <View>
       <Image
         source={
           Object {
@@ -504,10 +466,8 @@ exports[`Rating Component should render custom color 1`] = `
           }
         }
       />
-    </Component>
-    <Component
-      key="4"
-    >
+    </View>
+    <View>
       <Image
         source={
           Object {
@@ -521,16 +481,16 @@ exports[`Rating Component should render custom color 1`] = `
           }
         }
       />
-    </Component>
-  </Component>
-</Component>
+    </View>
+  </View>
+</View>
 `;
 
 exports[`Rating Component should render custom images 1`] = `
-<Component
+<View
   pointerEvents="auto"
 >
-  <Component
+  <View
     onMoveShouldSetResponder={[Function]}
     onMoveShouldSetResponderCapture={[Function]}
     onResponderEnd={[Function]}
@@ -551,7 +511,7 @@ exports[`Rating Component should render custom images 1`] = `
       }
     }
   >
-    <Component
+    <View
       style={
         Object {
           "alignItems": "center",
@@ -583,10 +543,8 @@ exports[`Rating Component should render custom images 1`] = `
           }
         }
       />
-    </Component>
-    <Component
-      key="0"
-    >
+    </View>
+    <View>
       <Image
         source={
           Object {
@@ -600,10 +558,8 @@ exports[`Rating Component should render custom images 1`] = `
           }
         }
       />
-    </Component>
-    <Component
-      key="1"
-    >
+    </View>
+    <View>
       <Image
         source={
           Object {
@@ -617,10 +573,8 @@ exports[`Rating Component should render custom images 1`] = `
           }
         }
       />
-    </Component>
-    <Component
-      key="2"
-    >
+    </View>
+    <View>
       <Image
         source={
           Object {
@@ -634,10 +588,8 @@ exports[`Rating Component should render custom images 1`] = `
           }
         }
       />
-    </Component>
-    <Component
-      key="3"
-    >
+    </View>
+    <View>
       <Image
         source={
           Object {
@@ -651,10 +603,8 @@ exports[`Rating Component should render custom images 1`] = `
           }
         }
       />
-    </Component>
-    <Component
-      key="4"
-    >
+    </View>
+    <View>
       <Image
         source={
           Object {
@@ -668,16 +618,16 @@ exports[`Rating Component should render custom images 1`] = `
           }
         }
       />
-    </Component>
-  </Component>
-</Component>
+    </View>
+  </View>
+</View>
 `;
 
 exports[`Rating Component should render images with the size of 30 1`] = `
-<Component
+<View
   pointerEvents="auto"
 >
-  <Component
+  <View
     onMoveShouldSetResponder={[Function]}
     onMoveShouldSetResponderCapture={[Function]}
     onResponderEnd={[Function]}
@@ -698,7 +648,7 @@ exports[`Rating Component should render images with the size of 30 1`] = `
       }
     }
   >
-    <Component
+    <View
       style={
         Object {
           "alignItems": "center",
@@ -730,10 +680,8 @@ exports[`Rating Component should render images with the size of 30 1`] = `
           }
         }
       />
-    </Component>
-    <Component
-      key="0"
-    >
+    </View>
+    <View>
       <Image
         source={
           Object {
@@ -747,10 +695,8 @@ exports[`Rating Component should render images with the size of 30 1`] = `
           }
         }
       />
-    </Component>
-    <Component
-      key="1"
-    >
+    </View>
+    <View>
       <Image
         source={
           Object {
@@ -764,10 +710,8 @@ exports[`Rating Component should render images with the size of 30 1`] = `
           }
         }
       />
-    </Component>
-    <Component
-      key="2"
-    >
+    </View>
+    <View>
       <Image
         source={
           Object {
@@ -781,10 +725,8 @@ exports[`Rating Component should render images with the size of 30 1`] = `
           }
         }
       />
-    </Component>
-    <Component
-      key="3"
-    >
+    </View>
+    <View>
       <Image
         source={
           Object {
@@ -798,10 +740,8 @@ exports[`Rating Component should render images with the size of 30 1`] = `
           }
         }
       />
-    </Component>
-    <Component
-      key="4"
-    >
+    </View>
+    <View>
       <Image
         source={
           Object {
@@ -815,16 +755,16 @@ exports[`Rating Component should render images with the size of 30 1`] = `
           }
         }
       />
-    </Component>
-  </Component>
-</Component>
+    </View>
+  </View>
+</View>
 `;
 
 exports[`Rating Component should render in readonly mode 1`] = `
-<Component
+<View
   pointerEvents="none"
 >
-  <Component
+  <View
     onMoveShouldSetResponder={[Function]}
     onMoveShouldSetResponderCapture={[Function]}
     onResponderEnd={[Function]}
@@ -845,7 +785,7 @@ exports[`Rating Component should render in readonly mode 1`] = `
       }
     }
   >
-    <Component
+    <View
       style={
         Object {
           "alignItems": "center",
@@ -877,10 +817,8 @@ exports[`Rating Component should render in readonly mode 1`] = `
           }
         }
       />
-    </Component>
-    <Component
-      key="0"
-    >
+    </View>
+    <View>
       <Image
         source={
           Object {
@@ -894,10 +832,8 @@ exports[`Rating Component should render in readonly mode 1`] = `
           }
         }
       />
-    </Component>
-    <Component
-      key="1"
-    >
+    </View>
+    <View>
       <Image
         source={
           Object {
@@ -911,10 +847,8 @@ exports[`Rating Component should render in readonly mode 1`] = `
           }
         }
       />
-    </Component>
-    <Component
-      key="2"
-    >
+    </View>
+    <View>
       <Image
         source={
           Object {
@@ -928,10 +862,8 @@ exports[`Rating Component should render in readonly mode 1`] = `
           }
         }
       />
-    </Component>
-    <Component
-      key="3"
-    >
+    </View>
+    <View>
       <Image
         source={
           Object {
@@ -945,10 +877,8 @@ exports[`Rating Component should render in readonly mode 1`] = `
           }
         }
       />
-    </Component>
-    <Component
-      key="4"
-    >
+    </View>
+    <View>
       <Image
         source={
           Object {
@@ -962,16 +892,16 @@ exports[`Rating Component should render in readonly mode 1`] = `
           }
         }
       />
-    </Component>
-  </Component>
-</Component>
+    </View>
+  </View>
+</View>
 `;
 
 exports[`Rating Component should render rating label 1`] = `
-<Component
+<View
   pointerEvents="auto"
 >
-  <Component
+  <View
     style={
       Object {
         "alignItems": "center",
@@ -981,7 +911,7 @@ exports[`Rating Component should render rating label 1`] = `
       }
     }
   >
-    <Component
+    <View
       style={
         Object {
           "alignItems": "center",
@@ -1042,10 +972,10 @@ exports[`Rating Component should render rating label 1`] = `
         /
         5
       </TextElement>
-    </Component>
-    <Component />
-  </Component>
-  <Component
+    </View>
+    <View />
+  </View>
+  <View
     onMoveShouldSetResponder={[Function]}
     onMoveShouldSetResponderCapture={[Function]}
     onResponderEnd={[Function]}
@@ -1066,7 +996,7 @@ exports[`Rating Component should render rating label 1`] = `
       }
     }
   >
-    <Component
+    <View
       style={
         Object {
           "alignItems": "center",
@@ -1098,10 +1028,8 @@ exports[`Rating Component should render rating label 1`] = `
           }
         }
       />
-    </Component>
-    <Component
-      key="0"
-    >
+    </View>
+    <View>
       <Image
         source={
           Object {
@@ -1115,10 +1043,8 @@ exports[`Rating Component should render rating label 1`] = `
           }
         }
       />
-    </Component>
-    <Component
-      key="1"
-    >
+    </View>
+    <View>
       <Image
         source={
           Object {
@@ -1132,10 +1058,8 @@ exports[`Rating Component should render rating label 1`] = `
           }
         }
       />
-    </Component>
-    <Component
-      key="2"
-    >
+    </View>
+    <View>
       <Image
         source={
           Object {
@@ -1149,10 +1073,8 @@ exports[`Rating Component should render rating label 1`] = `
           }
         }
       />
-    </Component>
-    <Component
-      key="3"
-    >
+    </View>
+    <View>
       <Image
         source={
           Object {
@@ -1166,10 +1088,8 @@ exports[`Rating Component should render rating label 1`] = `
           }
         }
       />
-    </Component>
-    <Component
-      key="4"
-    >
+    </View>
+    <View>
       <Image
         source={
           Object {
@@ -1183,16 +1103,16 @@ exports[`Rating Component should render rating label 1`] = `
           }
         }
       />
-    </Component>
-  </Component>
-</Component>
+    </View>
+  </View>
+</View>
 `;
 
 exports[`Rating Component should render value with 2 decimal places 1`] = `
-<Component
+<View
   pointerEvents="auto"
 >
-  <Component
+  <View
     style={
       Object {
         "alignItems": "center",
@@ -1202,7 +1122,7 @@ exports[`Rating Component should render value with 2 decimal places 1`] = `
       }
     }
   >
-    <Component
+    <View
       style={
         Object {
           "alignItems": "center",
@@ -1263,10 +1183,10 @@ exports[`Rating Component should render value with 2 decimal places 1`] = `
         /
         5
       </TextElement>
-    </Component>
-    <Component />
-  </Component>
-  <Component
+    </View>
+    <View />
+  </View>
+  <View
     onMoveShouldSetResponder={[Function]}
     onMoveShouldSetResponderCapture={[Function]}
     onResponderEnd={[Function]}
@@ -1287,7 +1207,7 @@ exports[`Rating Component should render value with 2 decimal places 1`] = `
       }
     }
   >
-    <Component
+    <View
       style={
         Object {
           "alignItems": "center",
@@ -1319,10 +1239,8 @@ exports[`Rating Component should render value with 2 decimal places 1`] = `
           }
         }
       />
-    </Component>
-    <Component
-      key="0"
-    >
+    </View>
+    <View>
       <Image
         source={
           Object {
@@ -1336,10 +1254,8 @@ exports[`Rating Component should render value with 2 decimal places 1`] = `
           }
         }
       />
-    </Component>
-    <Component
-      key="1"
-    >
+    </View>
+    <View>
       <Image
         source={
           Object {
@@ -1353,10 +1269,8 @@ exports[`Rating Component should render value with 2 decimal places 1`] = `
           }
         }
       />
-    </Component>
-    <Component
-      key="2"
-    >
+    </View>
+    <View>
       <Image
         source={
           Object {
@@ -1370,10 +1284,8 @@ exports[`Rating Component should render value with 2 decimal places 1`] = `
           }
         }
       />
-    </Component>
-    <Component
-      key="3"
-    >
+    </View>
+    <View>
       <Image
         source={
           Object {
@@ -1387,10 +1299,8 @@ exports[`Rating Component should render value with 2 decimal places 1`] = `
           }
         }
       />
-    </Component>
-    <Component
-      key="4"
-    >
+    </View>
+    <View>
       <Image
         source={
           Object {
@@ -1404,16 +1314,16 @@ exports[`Rating Component should render value with 2 decimal places 1`] = `
           }
         }
       />
-    </Component>
-  </Component>
-</Component>
+    </View>
+  </View>
+</View>
 `;
 
 exports[`Rating Component should render with an initial value of 3.3 1`] = `
-<Component
+<View
   pointerEvents="auto"
 >
-  <Component
+  <View
     style={
       Object {
         "alignItems": "center",
@@ -1423,7 +1333,7 @@ exports[`Rating Component should render with an initial value of 3.3 1`] = `
       }
     }
   >
-    <Component
+    <View
       style={
         Object {
           "alignItems": "center",
@@ -1464,7 +1374,7 @@ exports[`Rating Component should render with an initial value of 3.3 1`] = `
           ]
         }
       >
-        4
+        3
       </TextElement>
       <TextElement
         style={
@@ -1484,10 +1394,10 @@ exports[`Rating Component should render with an initial value of 3.3 1`] = `
         /
         5
       </TextElement>
-    </Component>
-    <Component />
-  </Component>
-  <Component
+    </View>
+    <View />
+  </View>
+  <View
     onMoveShouldSetResponder={[Function]}
     onMoveShouldSetResponderCapture={[Function]}
     onResponderEnd={[Function]}
@@ -1508,7 +1418,7 @@ exports[`Rating Component should render with an initial value of 3.3 1`] = `
       }
     }
   >
-    <Component
+    <View
       style={
         Object {
           "alignItems": "center",
@@ -1527,7 +1437,7 @@ exports[`Rating Component should render with an initial value of 3.3 1`] = `
           Object {
             "backgroundColor": "#f1c40f",
             "height": 60,
-            "width": 198,
+            "width": 150,
           }
         }
       />
@@ -1536,14 +1446,12 @@ exports[`Rating Component should render with an initial value of 3.3 1`] = `
           Object {
             "backgroundColor": "white",
             "height": 60,
-            "width": 102.00000000000001,
+            "width": 150,
           }
         }
       />
-    </Component>
-    <Component
-      key="0"
-    >
+    </View>
+    <View>
       <Image
         source={
           Object {
@@ -1557,10 +1465,8 @@ exports[`Rating Component should render with an initial value of 3.3 1`] = `
           }
         }
       />
-    </Component>
-    <Component
-      key="1"
-    >
+    </View>
+    <View>
       <Image
         source={
           Object {
@@ -1574,10 +1480,8 @@ exports[`Rating Component should render with an initial value of 3.3 1`] = `
           }
         }
       />
-    </Component>
-    <Component
-      key="2"
-    >
+    </View>
+    <View>
       <Image
         source={
           Object {
@@ -1591,10 +1495,8 @@ exports[`Rating Component should render with an initial value of 3.3 1`] = `
           }
         }
       />
-    </Component>
-    <Component
-      key="3"
-    >
+    </View>
+    <View>
       <Image
         source={
           Object {
@@ -1608,10 +1510,8 @@ exports[`Rating Component should render with an initial value of 3.3 1`] = `
           }
         }
       />
-    </Component>
-    <Component
-      key="4"
-    >
+    </View>
+    <View>
       <Image
         source={
           Object {
@@ -1625,16 +1525,16 @@ exports[`Rating Component should render with an initial value of 3.3 1`] = `
           }
         }
       />
-    </Component>
-  </Component>
-</Component>
+    </View>
+  </View>
+</View>
 `;
 
 exports[`Rating Component should render without issues 1`] = `
-<Component
+<View
   pointerEvents="auto"
 >
-  <Component
+  <View
     onMoveShouldSetResponder={[Function]}
     onMoveShouldSetResponderCapture={[Function]}
     onResponderEnd={[Function]}
@@ -1655,7 +1555,7 @@ exports[`Rating Component should render without issues 1`] = `
       }
     }
   >
-    <Component
+    <View
       style={
         Object {
           "alignItems": "center",
@@ -1687,10 +1587,8 @@ exports[`Rating Component should render without issues 1`] = `
           }
         }
       />
-    </Component>
-    <Component
-      key="0"
-    >
+    </View>
+    <View>
       <Image
         source={
           Object {
@@ -1704,10 +1602,8 @@ exports[`Rating Component should render without issues 1`] = `
           }
         }
       />
-    </Component>
-    <Component
-      key="1"
-    >
+    </View>
+    <View>
       <Image
         source={
           Object {
@@ -1721,10 +1617,8 @@ exports[`Rating Component should render without issues 1`] = `
           }
         }
       />
-    </Component>
-    <Component
-      key="2"
-    >
+    </View>
+    <View>
       <Image
         source={
           Object {
@@ -1738,10 +1632,8 @@ exports[`Rating Component should render without issues 1`] = `
           }
         }
       />
-    </Component>
-    <Component
-      key="3"
-    >
+    </View>
+    <View>
       <Image
         source={
           Object {
@@ -1755,10 +1647,8 @@ exports[`Rating Component should render without issues 1`] = `
           }
         }
       />
-    </Component>
-    <Component
-      key="4"
-    >
+    </View>
+    <View>
       <Image
         source={
           Object {
@@ -1772,7 +1662,7 @@ exports[`Rating Component should render without issues 1`] = `
           }
         }
       />
-    </Component>
-  </Component>
-</Component>
+    </View>
+  </View>
+</View>
 `;

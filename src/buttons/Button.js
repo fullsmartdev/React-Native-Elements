@@ -16,6 +16,11 @@ import Icon from '../icons/Icon';
 import nodeType from '../helpers/nodeType';
 import ViewPropTypes from '../config/ViewPropTypes';
 
+const log = () => {
+  /* eslint-disable no-console */
+  console.log('Please attach a method to this component');
+};
+
 class Button extends Component {
   componentDidMount() {
     const { linearGradientProps, ViewComponent } = this.props;
@@ -58,7 +63,7 @@ class Button extends Component {
       Platform.OS === 'android' &&
       (buttonStyle.borderRadius && !attributes.background)
     ) {
-      if (Platform.Version >= 21) {
+      if (Platform.VERSION >= 21) {
         attributes.background = TouchableNativeFeedback.Ripple(
           'ThemeAttrAndroid',
           true
@@ -70,11 +75,11 @@ class Button extends Component {
     return (
       <View style={[containerStyle, raised && styles.raised]}>
         <TouchableComponent
+          {...attributes}
           onPress={onPress}
           underlayColor={clear ? 'transparent' : undefined}
           activeOpacity={clear ? 0 : undefined}
           disabled={disabled}
-          {...attributes}
         >
           <ViewComponent
             {...linearGradientProps}
@@ -157,7 +162,7 @@ Button.defaultProps = {
   iconRight: false,
   TouchableComponent:
     Platform.OS === 'ios' ? TouchableOpacity : TouchableNativeFeedback,
-  onPress: () => console.log('Please attach a method to this component'),
+  onPress: log,
   clear: false,
   loadingProps: {
     color: 'white',
@@ -187,6 +192,12 @@ const styles = StyleSheet.create({
   disabled: {
     // grey from designmodo.github.io/Flat-UI/
     backgroundColor: '#D1D5D8',
+    ...Platform.select({
+      android: {
+        //no elevation
+        borderRadius: 2,
+      },
+    }),
   },
   title: {
     backgroundColor: 'transparent',
@@ -199,7 +210,7 @@ const styles = StyleSheet.create({
         fontSize: 18,
       },
       android: {
-        fontFamily: 'sans-serif-medium',
+        fontWeight: '500',
       },
     }),
   },
