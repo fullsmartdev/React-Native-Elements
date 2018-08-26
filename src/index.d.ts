@@ -161,13 +161,6 @@ export interface AvatarProps {
    */
 
   size?: 'small' | 'medium' | 'large' | 'xlarge' | number;
-
-  /**
-   * Image Component of Avatar
-   * @default React Native default Image component
-   */
-
-  ImageComponent?: React.ComponentClass;
 }
 
 /**
@@ -190,7 +183,7 @@ export interface ButtonProps extends TouchableWithoutFeedbackProps {
    *
    * @default View
    */
-  ViewComponent?: React.ComponentClass<any>;
+  ViewComponent?: React.ComponentClass;
 
   /**
    * Additional styling for button (background) view component
@@ -620,21 +613,9 @@ export interface CheckBoxProps {
   containerStyle?: StyleProp<ViewStyle>;
 
   /**
-   * Style of container that wraps the check box and text
-   */
-  wrapperStyle?: StyleProp<ViewStyle>;
-
-  /**
    * style of text
    */
   textStyle?: StyleProp<TextStyle>;
-
-  /**
-   * Size of the checkbox
-   *
-   * @default 24
-   */
-  size?: number;
 
   /**
    * onLongPress function for checkbox
@@ -715,11 +696,6 @@ export interface InputProps extends TextInputProperties {
   containerStyle?: StyleProp<ViewStyle>;
 
   /**
-   * Styling for Input Component Container (optional)
-   */
-  inputContainerStyle?: StyleProp<ViewStyle>;
-
-  /**
    * Displays an icon to the left (optional)
    */
   leftIcon?: IconNode;
@@ -760,11 +736,6 @@ export interface InputProps extends TextInputProperties {
   errorMessage?: string;
 
   /**
-   * 	props to be passed to the React Native Text component used to display the error message (optional)
-   */
-  errorProps?: TextProps;
-
-  /**
    * 	Add styling to label (optional)
    */
   labelStyle?: StyleProp<TextStyle>;
@@ -773,11 +744,6 @@ export interface InputProps extends TextInputProperties {
    * 	Adds label (optional)
    */
   label?: string;
-
-  /**
-   *  props to be passed to the React Native Text component used to display the label (optional)
-   */
-  labelProps?: TextProps;
 }
 
 export class Input extends React.Component<InputProps, any> {
@@ -794,13 +760,6 @@ export class Input extends React.Component<InputProps, any> {
    * eg `this.inputRef.focus()`
    */
   focus(): void;
-
-  /**
-   * Calls isFocused() on the Input
-   *
-   * eg `let focused = this.inputRef.isFocused()`
-   */
-  isFocused(): boolean;
 
   /**
    * Calls blur on the Input
@@ -1021,7 +980,6 @@ export interface ListItemProps {
   bottomDivider?: boolean;
   scaleProps?: ScaleProps;
   ViewComponent?: React.ComponentClass;
-  pad?: number;
 }
 
 /**
@@ -1149,19 +1107,36 @@ export interface PricingCardProps {
   wrapperStyle?: StyleProp<ViewStyle>;
 
   /**
-   * component title style
+   * Specify title font family
+   *
+   * System font (font weight 800) (iOS)
+   * Sans Serif Black (android)
    */
-  titleStyle?: StyleProp<TextStyle>;
+  titleFont?: string;
 
   /**
-   * component pricing text style
+   * Specify pricing font family
+   *
+   * System font (font weight 700) (iOS)
+   * Sans Serif Bold (android)
    */
-  pricingStyle?: StyleProp<TextStyle>;
+  pricingFont?: string;
 
   /**
-   * component info text style
+   * Specify pricing information font family
+   *
+   * System font bold (iOS)
+   * Sans Serif Bold (android)
    */
-  infoStyle?: StyleProp<TextStyle>;
+  infoFont?: string;
+
+  /**
+   * Specify button font family
+   *
+   * System font (iOS)
+   * Sans Serif (android)
+   */
+  buttonFont?: string;
 }
 
 /**
@@ -1329,74 +1304,6 @@ export interface SearchBarBase extends TextInputProperties {
    */
   onChangeText?(text: string): void;
 }
-
-export interface TooltipProps {
-  /**
-   * sets backgroundColor of the tooltip and pointer.
-   */
-  backgroundColor?: string;
-
-  /**
-   * Color to highlight the item the tooltip is surrounding.
-   */
-  highlightColor?: string;
-
-  /**
-   * function which gets called on closing the tooltip.
-   */
-  onClose?(): void;
-
-  /**
-   * function which gets called on opening the tooltip.
-   */
-  onOpen?(): void;
-
-  /**
-   * Color of tooltip pointer, it defaults to the backgroundColor if none passed .
-   */
-  pointerColor?: string;
-
-  /**
-   * Flag to determine to toggle or not the tooltip on press.
-   */
-  toggleOnPress?(): void;
-
-  /**
-   * Component to be rendered as the display container.
-   */
-  popover?: React.ReactElement<{}>;
-
-  /**
-   * Passes style object to tooltip container
-   */
-  containerStyle?: StyleProp<ViewStyle>;
-
-  /**
-   * Tooltip container height. Necessary in order to render the container in the correct place. Pass height according to the size of the content rendered inside the container.
-   * @default 40
-   */
-  height?: number;
-
-  /**
-   * Tooltip container width. Necessary in order to render the container in the correct place. Pass height according to the size of the content rendered inside the container.
-   * @default 150
-   */
-  width?: number;
-
-  /**
-   *  Flag to determine whether or not dislay overlay shadow when tooltip is open.
-   *
-   * @default true
-   */
-  withOverlay?: boolean;
-
-  /**
-   * Flag to determine whether or not dislay pointer.
-   */
-  withPointer?: boolean;
-}
-
-export class Tooltip extends React.Component<TooltipProps, any> {}
 
 export interface SearchBarDefault extends SearchBarBase {
   /**
