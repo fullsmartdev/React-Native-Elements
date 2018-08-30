@@ -30,10 +30,6 @@ class Input extends Component {
     this.input.focus();
   }
 
-  isFocused() {
-    return this.input.isFocused();
-  }
-
   blur() {
     this.input.blur();
   }
@@ -67,11 +63,9 @@ class Input extends Component {
       rightIconContainerStyle,
       inputStyle,
       errorStyle,
-      errorProps,
       errorMessage,
-      label,
       labelStyle,
-      labelProps,
+      label,
       ...attributes
     } = this.props;
     const translateX = this.shakeAnimationValue.interpolate({
@@ -81,7 +75,7 @@ class Input extends Component {
 
     return (
       <View style={[{ width: '90%' }, containerStyle]}>
-        {!!label && <Text {...labelProps} style={[styles.label, labelStyle]}>{label}</Text>}
+        {label && <Text style={[styles.label, labelStyle]}>{label}</Text>}
         <Animated.View
           style={[
             styles.inputContainer,
@@ -101,9 +95,9 @@ class Input extends Component {
             </View>
           )}
           <TextInput
-            underlineColorAndroid="transparent"
             {...attributes}
             ref={this._inputRef}
+            underlineColorAndroid="transparent"
             style={[styles.input, inputStyle]}
           />
           {rightIcon && (
@@ -112,8 +106,8 @@ class Input extends Component {
             </View>
           )}
         </Animated.View>
-        {!!errorMessage && (
-          <Text {...errorProps} style={[styles.error, errorStyle && errorStyle]}>
+        {errorMessage && (
+          <Text style={[styles.error, errorStyle && errorStyle]}>
             {errorMessage}
           </Text>
         )}
@@ -135,14 +129,11 @@ Input.propTypes = {
   inputStyle: Text.propTypes.style,
 
   shake: PropTypes.any,
-
   errorStyle: Text.propTypes.style,
   errorMessage: PropTypes.string,
-  errorProps: PropTypes.object,
 
   label: PropTypes.string,
   labelStyle: Text.propTypes.style,
-  labelProps: PropTypes.object,
 };
 
 const styles = StyleSheet.create({
