@@ -16,15 +16,6 @@ describe('PricingCard component', () => {
     expect(toJson(component)).toMatchSnapshot();
   });
 
-  it('should render without info', () => {
-    const component = shallow(
-      <PricingCard button={{ title: 'GET STARTED', icon: 'flight-takeoff' }} />
-    );
-
-    expect(component.length).toBe(1);
-    expect(toJson(component)).toMatchSnapshot();
-  });
-
   it('should render with props', () => {
     const component = shallow(
       <PricingCard
@@ -32,9 +23,10 @@ describe('PricingCard component', () => {
         price="$0"
         info={['1 User', 'Basic Support', 'All Core Features']}
         button={{ title: 'GET STARTED', icon: 'flight-takeoff' }}
-        titleStyle={{ fontFamily: 'arial' }}
-        infoStyle={{ fontFamily: 'arial' }}
-        pricingStyle={{ fontFamily: 'arial' }}
+        titleFont="arial"
+        infoFont="arial"
+        pricingFont="arial"
+        buttonFont="arial"
         containerStyle={{ backgroundColor: 'peru' }}
         wrapperStyle={{ backgroundColor: 'peru' }}
       />

@@ -21,7 +21,6 @@ ratingCompleted(rating) {
 <Rating
   showRating
   onFinishRating={this.ratingCompleted}
-  onStartRating={this.ratingStarted}
   style={{ paddingVertical: 10 }}
 />
 
@@ -33,7 +32,6 @@ ratingCompleted(rating) {
   readonly
   imageSize={40}
   onFinishRating={this.ratingCompleted}
-  onStartRating={this.ratingStarted}
   style={{ paddingVertical: 10 }}
 />
 
@@ -44,7 +42,6 @@ ratingCompleted(rating) {
   startingValue={1.57}
   imageSize={40}
   onFinishRating={this.ratingCompleted}
-  onStartRating={this.ratingStarted}
   showRating
   style={{ paddingVertical: 10 }}
 />
@@ -60,7 +57,6 @@ const WATER_IMAGE = require('./water.png')
   ratingCount={10}
   imageSize={30}
   onFinishRating={this.ratingCompleted}
-  onStartRating={this.ratingStarted}
   style={{ paddingVertical: 10 }}
 />
 ```
@@ -93,7 +89,6 @@ const { rating } = this.props;
 ### Props
 
 * [`onFinishRating`](#onfinishrating)
-* [`onStartRating`](#onstartrating)
 * [`fractions`](#fractions)
 * [`imageSize`](#imagesize)
 * [`ratingBackgroundColor`](#ratingbackgroundcolor)
@@ -119,16 +114,6 @@ Callback method when the user finishes rating. Gives you the final rating value 
 |   Type   | Default |
 | :------: | :-----: |
 | function |  none   |
-
----
-
-### `onStartRating`
-
-Callback method when the user starts the rating. (optional)
-
-|   Type   | Default |
-| :------: | :-----: |
-| function |  undefined   |
 
 ---
 

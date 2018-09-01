@@ -49,7 +49,7 @@ exports[`CheckBox Component should allow custom checked Icon 1`] = `
     />
   }
 >
-  <Component
+  <View
     style={
       Array [
         Object {
@@ -58,7 +58,6 @@ exports[`CheckBox Component should allow custom checked Icon 1`] = `
         },
         false,
         false,
-        undefined,
       ]
     }
   >
@@ -102,7 +101,7 @@ exports[`CheckBox Component should allow custom checked Icon 1`] = `
         />
       }
     />
-  </Component>
+  </View>
 </TouchableOpacity>
 `;
 
@@ -155,7 +154,7 @@ exports[`CheckBox Component should allow custom checked Icon 2`] = `
     />
   }
 >
-  <Component
+  <View
     style={
       Array [
         Object {
@@ -164,7 +163,6 @@ exports[`CheckBox Component should allow custom checked Icon 2`] = `
         },
         false,
         false,
-        undefined,
       ]
     }
   >
@@ -208,7 +206,7 @@ exports[`CheckBox Component should allow custom checked Icon 2`] = `
         />
       }
     />
-  </Component>
+  </View>
 </TouchableOpacity>
 `;
 
@@ -236,7 +234,7 @@ exports[`CheckBox Component should render with icon and checked 1`] = `
   uncheckedColor="#bfbfbf"
   uncheckedIcon="square-o"
 >
-  <Component
+  <View
     style={
       Array [
         Object {
@@ -245,7 +243,6 @@ exports[`CheckBox Component should render with icon and checked 1`] = `
         },
         false,
         false,
-        undefined,
       ]
     }
   >
@@ -267,7 +264,7 @@ exports[`CheckBox Component should render with icon and checked 1`] = `
       uncheckedColor="#bfbfbf"
       uncheckedIcon="square-o"
     />
-  </Component>
+  </View>
 </TouchableOpacity>
 `;
 
@@ -293,7 +290,7 @@ exports[`CheckBox Component should render with icon and iconRight 1`] = `
   uncheckedColor="blue"
   uncheckedIcon="square-o"
 >
-  <Component
+  <View
     style={
       Array [
         Object {
@@ -306,7 +303,6 @@ exports[`CheckBox Component should render with icon and iconRight 1`] = `
         Object {
           "justifyContent": "center",
         },
-        undefined,
       ]
     }
   >
@@ -323,7 +319,7 @@ exports[`CheckBox Component should render with icon and iconRight 1`] = `
       uncheckedColor="blue"
       uncheckedIcon="square-o"
     />
-  </Component>
+  </View>
 </TouchableOpacity>
 `;
 
@@ -348,7 +344,7 @@ exports[`CheckBox Component should render without issues 1`] = `
   uncheckedColor="#bfbfbf"
   uncheckedIcon="square-o"
 >
-  <Component
+  <View
     style={
       Array [
         Object {
@@ -357,7 +353,6 @@ exports[`CheckBox Component should render without issues 1`] = `
         },
         false,
         false,
-        undefined,
       ]
     }
   >
@@ -373,6 +368,6 @@ exports[`CheckBox Component should render without issues 1`] = `
       uncheckedColor="#bfbfbf"
       uncheckedIcon="square-o"
     />
-  </Component>
+  </View>
 </TouchableOpacity>
 `;

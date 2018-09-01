@@ -78,7 +78,7 @@ original_id: avatar
 <Avatar
   small
   rounded
-  icon={{name: 'user', type: 'font-awesome'}}
+  icon={{name: 'user'}}
   onPress={() => console.log("Works!")}
   activeOpacity={0.7}
   containerStyle={{flex: 2, marginLeft: 20, marginTop: 115}}
@@ -86,14 +86,14 @@ original_id: avatar
 <Avatar
   medium
   overlayContainerStyle={{backgroundColor: 'blue'}}
-  icon={{name: 'meetup', color: 'red', type: 'font-awesome'}}
+  icon={{name: 'meetup', color: 'red'}}
   onPress={() => console.log("Works!")}
   activeOpacity={0.7}
   containerStyle={{flex: 3, marginTop: 100}}
 />
 <Avatar
   large
-  icon={{name: 'rocket', color: 'orange', type: 'font-awesome'}}
+  icon={{name: 'rocket', color: 'orange'}}
   overlayContainerStyle={{backgroundColor: 'white'}}
   onPress={() => console.log("Works!")}
   activeOpacity={0.7}
@@ -102,7 +102,7 @@ original_id: avatar
 <Avatar
   xlarge
   rounded
-  icon={{name: 'home', type: 'font-awesome'}}
+  icon={{name: 'home'}}
   onPress={() => console.log("Works!")}
   activeOpacity={0.7}
   containerStyle={{flex: 5, marginRight: 60}}
