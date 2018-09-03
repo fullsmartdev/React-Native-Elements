@@ -199,11 +199,11 @@ styles = StyleSheet.create({
 
 ### List Props
 
-* [`containerStyle`](#containerstyle-list)
+* [`containerStyle`](#containerstyle)
 
 ---
 
-### `containerStyle` (List)
+### `containerStyle`
 
 style the list container
 
@@ -221,7 +221,7 @@ style the list container
 * [`avatarStyle`](#avatarstyle)
 * [`chevronColor`](#chevroncolor)
 * [`component`](#component)
-* [`containerStyle`](#containerstyle-listitem)
+* [`containerStyle`](#containerstyle)
 * [`disabled`](#disabled)
 * [`disabledStyle`](#disabledstyle)
 * [`fontFamily`](#fontfamily)
@@ -340,7 +340,7 @@ replace element with custom element (optional)
 
 ---
 
-### `containerStyle` (ListItem)
+### `containerStyle`
 
 additional main container styling (optional)
 

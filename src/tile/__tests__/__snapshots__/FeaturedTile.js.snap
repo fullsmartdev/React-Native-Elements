@@ -37,7 +37,7 @@ exports[`FeaturedTitle component should render with Icon 1`] = `
       ]
     }
   >
-    <Component
+    <View
       style={
         Array [
           Object {
@@ -62,7 +62,7 @@ exports[`FeaturedTitle component should render with Icon 1`] = `
         ]
       }
     >
-      <Component
+      <View
         style={
           Array [
             Object {
@@ -78,7 +78,6 @@ exports[`FeaturedTitle component should render with Icon 1`] = `
       >
         <Icon
           color="black"
-          disabled={false}
           name="play-circle"
           raised={false}
           reverse={false}
@@ -87,7 +86,7 @@ exports[`FeaturedTitle component should render with Icon 1`] = `
           type="font-awesome"
           underlayColor="white"
         />
-      </Component>
+      </View>
       <TextElement
         h4={true}
         style={
@@ -119,7 +118,7 @@ exports[`FeaturedTitle component should render with Icon 1`] = `
           ]
         }
       />
-    </Component>
+    </View>
   </ImageBackground>
 </TouchableOpacity>
 `;
@@ -159,7 +158,7 @@ exports[`FeaturedTitle component should render with width and height 1`] = `
       ]
     }
   >
-    <Component
+    <View
       style={
         Array [
           Object {
@@ -182,7 +181,7 @@ exports[`FeaturedTitle component should render with width and height 1`] = `
         ]
       }
     >
-      <Component
+      <View
         style={
           Array [
             Object {
@@ -221,7 +220,7 @@ exports[`FeaturedTitle component should render with width and height 1`] = `
           ]
         }
       />
-    </Component>
+    </View>
   </ImageBackground>
 </TouchableOpacity>
 `;
@@ -259,7 +258,7 @@ exports[`FeaturedTitle component should render without issues 1`] = `
       ]
     }
   >
-    <Component
+    <View
       style={
         Array [
           Object {
@@ -282,7 +281,7 @@ exports[`FeaturedTitle component should render without issues 1`] = `
         ]
       }
     >
-      <Component
+      <View
         style={
           Array [
             Object {
@@ -321,7 +320,7 @@ exports[`FeaturedTitle component should render without issues 1`] = `
           ]
         }
       />
-    </Component>
+    </View>
   </ImageBackground>
 </TouchableOpacity>
 `;

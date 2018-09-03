@@ -76,7 +76,7 @@ title: Avatar
 ```js
 <Avatar
   rounded
-  icon={{name: 'user', type: 'font-awesome'}}
+  icon={{name: 'user'}}
   onPress={() => console.log("Works!")}
   activeOpacity={0.7}
   containerStyle={{flex: 2, marginLeft: 20, marginTop: 115}}
@@ -84,7 +84,7 @@ title: Avatar
 <Avatar
   size="small"
   rounded
-  icon={{name: 'user', type: 'font-awesome'}}
+  icon={{name: 'user'}}
   onPress={() => console.log("Works!")}
   activeOpacity={0.7}
   containerStyle={{flex: 2, marginLeft: 20, marginTop: 115}}
@@ -92,14 +92,14 @@ title: Avatar
 <Avatar
   size="medium"
   overlayContainerStyle={{backgroundColor: 'blue'}}
-  icon={{name: 'meetup', color: 'red', type: 'font-awesome'}}
+  icon={{name: 'meetup', color: 'red'}}
   onPress={() => console.log("Works!")}
   activeOpacity={0.7}
   containerStyle={{flex: 3, marginTop: 100}}
 />
 <Avatar
   size="large"
-  icon={{name: 'rocket', color: 'orange', type: 'font-awesome'}}
+  icon={{name: 'rocket', color: 'orange'}}
   overlayContainerStyle={{backgroundColor: 'white'}}
   onPress={() => console.log("Works!")}
   activeOpacity={0.7}
@@ -108,7 +108,7 @@ title: Avatar
 <Avatar
   size="xlarge"
   rounded
-  icon={{name: 'home', type: 'font-awesome'}}
+  icon={{name: 'home'}}
   onPress={() => console.log("Works!")}
   activeOpacity={0.7}
   containerStyle={{flex: 5, marginRight: 60}}
@@ -116,23 +116,10 @@ title: Avatar
 <Avatar
   size={200}
   rounded
-  icon={{name: 'user', type: 'font-awesome'}}
+  icon={{name: 'user'}}
   onPress={() => console.log("Works!")}
   activeOpacity={0.7}
   containerStyle={{flex: 2, marginLeft: 20, marginTop: 115}}
-/>
-```
-
-#### Avatar with title placeholder
-
-<img src="/react-native-elements/img/avatar_with_title_placeholder.gif" width="500" >
-
-```js
-<ListItem
-  leftAvatar={{ title: name[0], source: { uri: avatar_url } }}
-  title={name}
-  subtitle={role}
-  chevron
 />
 ```
 
@@ -153,9 +140,6 @@ title: Avatar
 * [`size`](#size)
 * [`title`](#title)
 * [`titleStyle`](#titlestyle)
-* [`placeholderStyle`](#placeholderstyle)
-* [`renderPlaceholderContent`](#renderplaceholdercontent)
-* [`ImageComponent`](#ImageComponent)
 
 ---
 
@@ -278,7 +262,6 @@ Image source
 | object (style) |  none   |
 
 ---
-
 ### `size`
 
 Size of the avatar
@@ -291,7 +274,7 @@ Size of the avatar
 
 ### `title`
 
-Renders title in the placeholder
+Renders title in the avatar
 
 |  Type  | Default |
 | :----: | :-----: |
@@ -307,32 +290,3 @@ Style for the title
 | :------------: | :-----: |
 | object (style) |  none   |
 
----
-
-### `placeholderStyle`
-
-Adds style to the placeholder wrapper
-
-|      Type      |             Default              |
-| :------------: | :------------------------------: |
-| object (style) | `{ backgroundColor: '#BDBDBD' }` |
-
----
-
-### `renderPlaceholderContent`
-
-Custom placeholder element (by default, it's the title)
-
-|            Type            | Default |
-| :------------------------: | :-----: |
-| React component or element |  none   |
-
----
-
-### `ImageComponent`
-
-Custom ImageComponent for Avatar
-
-|            Type            | Default |
-| :------------------------: | :-----: |
-| React component or element |  Image   |

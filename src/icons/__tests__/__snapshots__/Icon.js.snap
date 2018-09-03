@@ -1,80 +1,25 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Icon component should apply custom disabled styles 1`] = `
-<Component>
-  <TouchableHighlight
-    activeOpacity={0.85}
-    delayPressOut={100}
-    disabled={true}
-    onPress={[MockFunction]}
-    style={
-      Object {
-        "alignItems": "center",
-        "backgroundColor": "pink",
-        "justifyContent": "center",
-      }
-    }
-    underlayColor="white"
-  >
-    <Icon
-      allowFontScaling={false}
-      color="black"
-      name="wifi"
-      size={24}
-      style={
-        Object {
-          "backgroundColor": "transparent",
-        }
-      }
-    />
-  </TouchableHighlight>
-</Component>
-`;
-
-exports[`Icon component should apply default disabled styles 1`] = `
-<Component>
-  <TouchableHighlight
-    activeOpacity={0.85}
-    delayPressOut={100}
-    disabled={true}
-    onPress={[MockFunction]}
-    style={
-      Object {
-        "alignItems": "center",
-        "backgroundColor": "#D1D5D8",
-        "justifyContent": "center",
-      }
-    }
-    underlayColor="white"
-  >
-    <Icon
-      allowFontScaling={false}
-      color="black"
-      name="wifi"
-      size={24}
-      style={
-        Object {
-          "backgroundColor": "transparent",
-        }
-      }
-    />
-  </TouchableHighlight>
-</Component>
-`;
-
 exports[`Icon component should render with icon type 1`] = `
-<Component>
-  <Component
+<View>
+  <View
     style={
-      Object {
-        "alignItems": "center",
-        "backgroundColor": "red",
-        "borderRadius": 28,
-        "height": 52,
-        "justifyContent": "center",
-        "margin": 7,
-        "width": 52,
-      }
+      Array [
+        Object {
+          "margin": 7,
+        },
+        Object {
+          "borderRadius": 28,
+          "height": 52,
+          "width": 52,
+        },
+        false,
+        Object {
+          "alignItems": "center",
+          "backgroundColor": "red",
+          "justifyContent": "center",
+        },
+      ]
     }
     underlayColor="red"
   >
@@ -84,24 +29,34 @@ exports[`Icon component should render with icon type 1`] = `
       name="alert"
       size={24}
       style={
-        Object {
-          "backgroundColor": "peru",
-        }
+        Array [
+          Object {
+            "backgroundColor": "transparent",
+          },
+          Object {
+            "backgroundColor": "peru",
+          },
+        ]
       }
     />
-  </Component>
-</Component>
+  </View>
+</View>
 `;
 
 exports[`Icon component should render without issues 1`] = `
-<Component>
-  <Component
+<View>
+  <View
     style={
-      Object {
-        "alignItems": "center",
-        "backgroundColor": "transparent",
-        "justifyContent": "center",
-      }
+      Array [
+        false,
+        false,
+        false,
+        Object {
+          "alignItems": "center",
+          "backgroundColor": "transparent",
+          "justifyContent": "center",
+        },
+      ]
     }
     underlayColor="white"
   >
@@ -111,11 +66,14 @@ exports[`Icon component should render without issues 1`] = `
       name="wifi"
       size={24}
       style={
-        Object {
-          "backgroundColor": "transparent",
-        }
+        Array [
+          Object {
+            "backgroundColor": "transparent",
+          },
+          undefined,
+        ]
       }
     />
-  </Component>
-</Component>
+  </View>
+</View>
 `;
