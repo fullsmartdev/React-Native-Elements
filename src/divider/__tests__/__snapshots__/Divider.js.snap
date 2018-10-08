@@ -1,11 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Divider Component should render with style 1`] = `
-<Component
+<View
   style={
     Array [
       Object {
-        "backgroundColor": "#bcbbc1",
+        "backgroundColor": "#BCBBC1",
         "height": 0.5,
       },
       Object {
@@ -17,11 +17,11 @@ exports[`Divider Component should render with style 1`] = `
 `;
 
 exports[`Divider Component should render without issues 1`] = `
-<Component
+<View
   style={
     Array [
       Object {
-        "backgroundColor": "#bcbbc1",
+        "backgroundColor": "#BCBBC1",
         "height": 0.5,
       },
       undefined,

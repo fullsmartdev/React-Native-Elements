@@ -78,48 +78,33 @@ Components defined through props take precedence over components passed in as ch
 
 ### Header customisability
 
-We wanted the Header to be as customisable as possible, so you are free to try different combinations of props. For example, if you want to change the left, center, or right component's layout, you can adjust the `containerStyle`
+We wanted the Header to be as customisable as possible, so you are free to try different combinations of props. For example, if you want to change the left, center, or right component's layout, you can adjust the `innerContainerStyles`
 
 ```js
 <Header
   statusBarProps={{ barStyle: 'light-content' }}
-  barStyle="light-content" // or directly
   leftComponent={<MyCustomLeftComponent />}
   centerComponent={{ text: 'MY TITLE', style: { color: '#fff' } }}
-  containerStyle={{
-    backgroundColor: '#3D6DCC',
-    justifyContent: 'space-around',
-  }}
+  outerContainerStyles={{ backgroundColor: '#3D6DCC' }}
+  innerContainerStyles={{ justifyContent: 'space-around' }}
 />
 ```
 
 ### Props
 
-* [`containerStyle`](#containerstyle)
 * [`backgroundColor`](#backgroundcolor)
-* [`leftComponent`](#leftcomponent)
 * [`centerComponent`](#centercomponent)
-* [`rightComponent`](#rightcomponent)
-* [`leftContainerStyle`](#leftcontainerstyle)
 * [`centerContainerStyle`](#centercontainerstyle)
-* [`rightContainerStyle`](#rightcontainerstyle)
+* [`innerContainerStyles`](#innercontainerstyles)
+* [`leftComponent`](#leftcomponent)
+* [`outerContainerStyles`](#outercontainerstyles)
 * [`placement`](#placement)
-* [`barStyle`](#barstyle)
+* [`rightComponent`](#rightcomponent)
 * [`statusBarProps`](#statusbarprops)
 
 ---
 
 # Reference
-
-### `containerstyle`
-
-styling around the main container
-
-| Type  | Default |
-| :---: | :-----: |
-| style |  none   |
-
----
 
 ### `backgroundColor`
 
@@ -131,43 +116,13 @@ sets backgroundColor of the parent component
 
 ---
 
-### `leftComponent`
-
-define your left component here
-
-|                                                                                                                     Type                                                                                                                     | Default |
-| :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :-----: |
-| { text: string, [...Text props](https://facebook.github.io/react-native/docs/text.html#props)}<br/>**OR**<br/>{ icon: string, [...Icon props](/react-native-elements/docs/icon.html#icon-props)} <br/>**OR**<br/> React element or component |  none   |
-
----
-
 ### `centerComponent`
 
 define your center component here
 
-|                                                                                                                     Type                                                                                                                     | Default |
-| :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :-----: |
-| { text: string, [...Text props](https://facebook.github.io/react-native/docs/text.html#props)}<br/>**OR**<br/>{ icon: string, [...Icon props](/react-native-elements/docs/icon.html#icon-props)} <br/>**OR**<br/> React element or component |  none   |
-
----
-
-### `rightComponent`
-
-define your right component here
-
-|                                                                                                                     Type                                                                                                                     | Default |
-| :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :-----: |
-| { text: string, [...Text props](https://facebook.github.io/react-native/docs/text.html#props)}<br/>**OR**<br/>{ icon: string, [...Icon props](/react-native-elements/docs/icon.html#icon-props)} <br/>**OR**<br/> React element or component |  none   |
-
----
-
-### `leftContainerStyle`
-
-styling for container around the leftComponent
-
-| Type  |   Default   |
-| :---: | :---------: |
-| style | { flex: 1 } |
+|                                                          Type                                                           | Default |
+| :---------------------------------------------------------------------------------------------------------------------: | :-----: |
+| configuration object for default component (text: string, ...props for React Native Text component) valid React Element |  none   |
 
 ---
 
@@ -175,19 +130,39 @@ styling for container around the leftComponent
 
 styling for container around the centerComponent
 
-| Type  |   Default   |
-| :---: | :---------: |
-| style | { flex: 3 } |
+|  Type  |                            Default                             |
+| :----: | :------------------------------------------------------------: |
+| object | { flex: 1, marginHorizontal: Platform.OS === 'ios' ? 15 : 16 } |
 
 ---
 
-### `rightContainerStyle`
+### `innerContainerStyles`
 
-styling for container around the rightComponent
+styling for inner container
 
-| Type  |   Default   |
-| :---: | :---------: |
-| style | { flex: 1 } |
+|      Type      |                                                                     Default                                                                     |
+| :------------: | :---------------------------------------------------------------------------------------------------------------------------------------------: |
+| object (style) | [source](https://github.com/react-native-training/react-native-elements/blob/1f06e20e7742b87be696cf3921979afdfdd87315/src/header/Header.js#L85) |
+
+---
+
+### `leftComponent`
+
+define your left component here
+
+|                                                            Type                                                             | Default |
+| :-------------------------------------------------------------------------------------------------------------------------: | :-----: |
+| configuration object for default component (icon: string, ...props for React Native Elements Icon) or a valid React Element |  none   |
+
+---
+
+### `outerContainerStyles`
+
+styling for outer container
+
+|      Type      |                                                                     Default                                                                     |
+| :------------: | :---------------------------------------------------------------------------------------------------------------------------------------------: |
+| object (style) | [source](https://github.com/react-native-training/react-native-elements/blob/1f06e20e7742b87be696cf3921979afdfdd87315/src/header/Header.js#L91) |
 
 ---
 
@@ -195,19 +170,19 @@ styling for container around the rightComponent
 
 Alignment for title
 
-|            Type             | Default  |
-| :-------------------------: | :------: |
-| 'left', 'center' or 'right' | 'center' |
+|  Type   | Default  |
+| :-----: | :------: |
+| boolean | 'center' |
 
 ---
 
-### `barStyle`
+### `rightComponent`
 
-Sets the color of the status bar text.
+define your right component here
 
-|                    Type                    |                                          Default                                           |
-| :----------------------------------------: | :----------------------------------------------------------------------------------------: |
-| 'default', 'light-content', 'dark-content' | 'default' ([source](https://facebook.github.io/react-native/docs/statusbar.html#barstyle)) |
+|                                                                 Type                                                                  | Default |
+| :-----------------------------------------------------------------------------------------------------------------------------------: | :-----: |
+| configuration object for default component (icon: string, ...props for React Native Elements Icon component) or a valid React Element |  none   |
 
 ---
 
@@ -215,6 +190,6 @@ Sets the color of the status bar text.
 
 accepts all props for StatusBar
 
-|                                            Type                                             | Default |
-| :-----------------------------------------------------------------------------------------: | :-----: |
-| { [...StatusBar props](https://facebook.github.io/react-native/docs/statusbar.html#props) } |  none   |
+|      Type      | Default |
+| :------------: | :-----: |
+| object (props) |  none   |

@@ -51,7 +51,6 @@ import { CheckBox } from 'react-native-elements'
 * [`center`](#center)
 * [`title`](#title)
 * [`containerStyle`](#containerstyle)
-* [`wrapperStyle`](#wrapperstyle)
 * [`textStyle`](#textstyle)
 * [`onLongPress`](#onlongpress)
 * [`onLongIconPress`](#onlongiconpress)
@@ -135,14 +134,6 @@ Title of checkbox (required)
 ### `containerStyle`
 
 Style of main container (optional)
-
-|      Type      | Default |
-| :------------: | :-----: |
-| object (style) |  none   |
-
-### `wrapperStyle`
-
-Style of container that wraps the check box and text(optional)
 
 |      Type      | Default |
 | :------------: | :-----: |

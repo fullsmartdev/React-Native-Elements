@@ -22,18 +22,6 @@ const defaultSearchIcon = {
   color: ANDROID_GRAY,
   name: 'magnify',
 };
-const defaultCancelIcon = {
-  type: 'material-community',
-  size: 25,
-  color: ANDROID_GRAY,
-  name: 'arrow-left',
-};
-const defaultClearIcon = {
-  type: 'material-community',
-  name: 'close',
-  size: 25,
-  color: ANDROID_GRAY,
-};
 
 class SearchBar extends Component {
   focus = () => {
@@ -95,6 +83,20 @@ class SearchBar extends Component {
     const { hasFocus, isEmpty } = this.state;
     const { style: loadingStyle, ...otherLoadingProps } = loadingProps;
 
+    const defaultCancelIcon = {
+      type: 'material-community',
+      size: 25,
+      color: ANDROID_GRAY,
+      name: 'arrow-left',
+      onPress: this.cancel,
+    };
+    const defaultClearIcon = {
+      type: 'material-community',
+      name: 'close',
+      size: 25,
+      color: ANDROID_GRAY,
+      onPress: this.clear,
+    };
     return (
       <View style={[styles.container, containerStyle]}>
         <Input
@@ -107,10 +109,7 @@ class SearchBar extends Component {
           inputContainerStyle={[styles.inputContainer, inputContainerStyle]}
           leftIcon={
             hasFocus
-              ? renderNode(Icon, cancelIcon, {
-                  ...defaultCancelIcon,
-                  onPress: this.cancel,
-                })
+              ? renderNode(Icon, cancelIcon, defaultCancelIcon)
               : renderNode(Icon, searchIcon, defaultSearchIcon)
           }
           leftIconContainerStyle={[
@@ -125,11 +124,7 @@ class SearchBar extends Component {
                   {...otherLoadingProps}
                 />
               )}
-              {!isEmpty &&
-                renderNode(Icon, clearIcon, {
-                  ...defaultClearIcon,
-                  onPress: this.clear,
-                })}
+              {!isEmpty && renderNode(Icon, clearIcon, defaultClearIcon)}
             </View>
           }
           rightIconContainerStyle={[
@@ -168,9 +163,6 @@ SearchBar.defaultProps = {
   onFocus: () => null,
   onBlur: () => null,
   onChangeText: () => null,
-  searchIcon: defaultSearchIcon,
-  clearIcon: defaultCancelIcon,
-  cancelIcon: defaultCancelIcon,
 };
 
 const styles = StyleSheet.create({

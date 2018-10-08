@@ -1,6 +1,6 @@
 import React from 'react';
 import { Image } from 'react-native';
-import { shallow, mount } from 'enzyme';
+import { shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import CheckBox from '../CheckBox';
 
@@ -22,7 +22,7 @@ describe('CheckBox Component', () => {
     const View = jest.fn();
     const component = shallow(<CheckBox component={View} />);
 
-    expect(component.find(View).exists()).toBe(true);
+    expect(component.find('View').length).toBe(1);
   });
 
   it('should render title in Text', () => {

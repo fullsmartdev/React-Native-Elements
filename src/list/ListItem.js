@@ -4,11 +4,10 @@ import {
   Platform,
   StyleSheet,
   Switch,
-  TouchableHighlight,
+  TouchableOpacity,
   View,
 } from 'react-native';
-import renderNode from '../helpers/renderNode';
-import nodeType from '../helpers/nodeType';
+import TouchableScale from 'react-native-touchable-scale';
 import Avatar from '../avatar/Avatar';
 import Badge from '../badge/badge';
 import CheckBox from '../checkbox/CheckBox';
@@ -16,37 +15,12 @@ import Icon from '../icons/Icon';
 import Text from '../text/Text';
 import ButtonGroup from '../buttons/ButtonGroup';
 import Input from '../input/Input';
+import Divider from '../divider/Divider';
 import ViewPropTypes from '../config/ViewPropTypes';
+
 import colors from '../config/colors';
 
 const ANDROID_SECONDARY = 'rgba(0, 0, 0, 0.54)';
-
-const chevronDefaultProps = {
-  type: Platform.OS === 'ios' ? 'ionicon' : 'material',
-  color: '#D1D1D6',
-  name: Platform.OS === 'ios' ? 'ios-arrow-forward' : 'keyboard-arrow-right',
-  size: 16,
-};
-const checkmarkDefaultProps = {
-  name: 'check',
-  size: 20,
-  color: colors.primary,
-};
-const renderText = (content, defaultProps, style) =>
-  renderNode(Text, content, {
-    ...defaultProps,
-    style: [style, defaultProps && defaultProps.style],
-  });
-const renderAvatar = content =>
-  renderNode(Avatar, content, {
-    size: 40,
-    rounded: true,
-  });
-const renderIcon = content =>
-  renderNode(Icon, content, {
-    color: Platform.OS === 'ios' ? null : ANDROID_SECONDARY,
-    size: 24,
-  });
 
 const ListItem = props => {
   const {
@@ -57,9 +31,7 @@ const ListItem = props => {
     subtitleStyle,
     subtitleProps,
     containerStyle,
-    onPress,
-    onLongPress,
-    component: Component = onPress || onLongPress ? TouchableHighlight : View,
+    component,
     leftIcon,
     leftAvatar,
     leftElement,
@@ -78,62 +50,65 @@ const ListItem = props => {
     checkBox,
     badge,
     chevron,
+    chevronColor,
     contentContainerStyle,
     rightContentContainerStyle,
     checkmark,
+    checkmarkColor,
     disabled,
     disabledStyle,
     bottomDivider,
     topDivider,
-    pad,
+    scaleProps,
     linearGradientProps,
     ViewComponent = linearGradientProps && global.Expo
       ? global.Expo.LinearGradient
       : View,
     ...attributes
   } = props;
+
+  const { onPress, onLongPress } = props;
+  let Component =
+    component ||
+    (scaleProps
+      ? TouchableScale
+      : onPress || onLongPress ? TouchableOpacity : View);
+
   return (
-    <Component
-      {...attributes}
-      onPress={onPress}
-      onLongPress={onLongPress}
-      disabled={disabled}
-    >
+    <Component {...attributes} {...scaleProps} disabled={disabled}>
+      {topDivider && <Divider />}
       <PadView
         Component={ViewComponent}
         {...linearGradientProps}
         style={[
           styles.container,
           (buttonGroup || switchProps) && { paddingVertical: 8 },
-          topDivider && { borderTopWidth: StyleSheet.hairlineWidth },
-          bottomDivider && { borderBottomWidth: StyleSheet.hairlineWidth },
           containerStyle,
           disabled && disabledStyle,
         ]}
-        pad={pad}
       >
-        {renderNode(Text, leftElement)}
+        {renderNode(leftElement)}
         {renderIcon(leftIcon)}
         {renderAvatar(leftAvatar)}
         {(title || subtitle) && (
           <View style={[styles.contentContainer, contentContainerStyle]}>
-            {renderText(title, titleProps, [styles.title, titleStyle])}
-            {renderText(subtitle, subtitleProps, [
+            {renderNode(title, titleProps, [styles.title, titleStyle])}
+            {renderNode(subtitle, subtitleProps, [
               styles.subtitle,
               subtitleStyle,
             ])}
           </View>
         )}
-        {(!!rightTitle || !!rightSubtitle) && (
+        {(rightTitle || rightSubtitle) && (
           <View
             style={[styles.rightContentContainer, rightContentContainerStyle]}
           >
-            {renderText(rightTitle, rightTitleProps, [
+            {renderNode(rightTitle, rightTitleProps, [
               styles.title,
               styles.rightTitle,
               rightTitleStyle,
             ])}
-            {renderText(rightSubtitle, rightSubtitleProps, [
+            {renderNode(rightSubtitle, rightSubtitleProps, [
               styles.subtitle,
               styles.rightSubtitle,
               rightSubtitleStyle,
@@ -176,13 +151,23 @@ const ListItem = props => {
         )}
         {renderAvatar(rightAvatar)}
         {renderIcon(rightIcon)}
-        {renderNode(Text, rightElement)}
-        {renderNode(Icon, checkmark, checkmarkDefaultProps)}
-        {renderNode(Icon, chevron, chevronDefaultProps)}
+        {renderNode(rightElement)}
+        {checkmark && <Checkmark color={checkmarkColor} />}
+        {chevron && <Chevron color={chevronColor} />}
       </PadView>
+      {bottomDivider && <Divider />}
     </Component>
   );
 };
+
+const Chevron = ({ color }) => (
+  <Icon
+    type={Platform.OS === 'ios' ? 'ionicon' : 'material'}
+    name={Platform.OS === 'ios' ? 'ios-arrow-forward' : 'keyboard-arrow-right'}
+    size={16}
+    color={color}
+  />
+);
 
 const Checkmark = ({ color }) => (
   <Icon type="material" name="check" size={20} color={color} />
@@ -194,14 +179,13 @@ const styles = StyleSheet.create({
       ios: {
         padding: 14,
       },
-      default: {
+      android: {
         padding: 16,
       },
     }),
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: 'white',
-    borderColor: colors.divider,
   },
   title: {
     backgroundColor: 'transparent',
@@ -209,7 +193,7 @@ const styles = StyleSheet.create({
       ios: {
         fontSize: 17,
       },
-      default: {
+      android: {
         fontSize: 16,
       },
     }),
@@ -220,7 +204,7 @@ const styles = StyleSheet.create({
       ios: {
         fontSize: 15,
       },
-      default: {
+      android: {
         color: ANDROID_SECONDARY,
         fontSize: 14,
       },
@@ -272,11 +256,16 @@ const styles = StyleSheet.create({
   },
 });
 
+const elementOrObject = PropTypes.oneOfType([
+  PropTypes.element,
+  PropTypes.object,
+]);
+
 ListItem.propTypes = {
   containerStyle: ViewPropTypes.style,
   contentContainerStyle: ViewPropTypes.style,
   rightContentContainerStyle: ViewPropTypes.style,
-  component: PropTypes.func,
+  component: PropTypes.element,
   onPress: PropTypes.func,
   onLongPress: PropTypes.func,
   title: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
@@ -285,12 +274,12 @@ ListItem.propTypes = {
   subtitle: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
   subtitleStyle: Text.propTypes.style,
   subtitleProps: PropTypes.object,
-  leftIcon: nodeType,
-  leftAvatar: nodeType,
-  leftElement: nodeType,
-  rightIcon: nodeType,
-  rightAvatar: nodeType,
-  rightElement: nodeType,
+  leftIcon: elementOrObject,
+  leftAvatar: elementOrObject,
+  leftElement: PropTypes.element,
+  rightIcon: elementOrObject,
+  rightAvatar: elementOrObject,
+  rightElement: PropTypes.element,
   rightTitle: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
   rightTitleStyle: Text.propTypes.style,
   rightTitleProps: PropTypes.object,
@@ -302,22 +291,22 @@ ListItem.propTypes = {
   switch: PropTypes.object,
   checkBox: PropTypes.object,
   badge: PropTypes.object,
-  chevron: nodeType,
-  checkmark: nodeType,
+  chevron: PropTypes.bool,
+  chevronColor: PropTypes.string,
+  checkmark: PropTypes.bool,
+  checkmarkColor: PropTypes.string,
   disabled: PropTypes.bool,
   disabledStyle: ViewPropTypes.style,
   topDivider: PropTypes.bool,
   bottomDivider: PropTypes.bool,
-  pad: PropTypes.number,
-  linearGradientProps: PropTypes.object,
-  ViewComponent: PropTypes.func,
 };
 
 ListItem.defaultProps = {
-  pad: 16,
+  chevronColor: '#D1D1D6',
+  checkmarkColor: colors.primary,
 };
 
-const PadView = ({ children, pad, Component, ...props }) => {
+const PadView = ({ children, pad = 16, Component, ...props }) => {
   const childrens = React.Children.toArray(children);
   const length = childrens.length;
   const Container = Component || View;
@@ -331,5 +320,33 @@ const PadView = ({ children, pad, Component, ...props }) => {
     </Container>
   );
 };
+
+const renderAvatar = content =>
+  content == null ? null : React.isValidElement(content) ? (
+    content
+  ) : (
+    <Avatar width={40} height={40} rounded {...content} />
+  );
+
+const renderIcon = content =>
+  content == null ? null : React.isValidElement(content) ? (
+    content
+  ) : (
+    <Icon
+      color={Platform.OS === 'ios' ? null : ANDROID_SECONDARY}
+      size={24}
+      {...content}
+      containerStyle={content && content.containerStyle}
+    />
+  );
+
+const renderNode = (content, props, style) =>
+  content == null ? null : React.isValidElement(content) ? (
+    content
+  ) : (
+    <Text {...props} style={[style, props && props.style]}>
+      {content}
+    </Text>
+  );
 
 export default ListItem;
