@@ -106,7 +106,7 @@ view the implementation & run the RNE expo app locally.
 
 ## v1.0 Roadmap 🏃 🏎 🏇
 
-Current release: `1.0.0-beta5`
+Current release: `1.0.0-beta6`
 
 ### New Features:
 
@@ -119,7 +119,7 @@ Current release: `1.0.0-beta5`
 * [x] **Launching RNE Ecosystem** ✨🚀✨ - @monte9
 * [x] ListItem component - **Platform specific (re-write)** -
       @martinezguillaume, @johot
-* [ ] Themes support - **NEW** - @iRoachie **WIP**
+* [x] Themes support - **NEW** - @iRoachie
 * [ ] React Native Web support - **NEW** - @Gregor1971 **WIP** -
       [branch](https://github.com/react-native-training/react-native-elements/tree/rn-web) -
       [PR](https://github.com/react-native-training/react-native-elements/pull/867)
@@ -133,7 +133,7 @@ Current release: `1.0.0-beta5`
 * [x] Update react, react-native & other dependencies
 * [x] Update docs for ListItem component -
       **[$20](https://opencollective.com/react-native-elements#budget)**
-* [ ] Write docs for Themes support **(Pending completion of theme support)** -
+* [x] Write docs for Themes support -
       **[$20](https://opencollective.com/react-native-elements#budget)**
 * [ ] Create a compelling demo/example app for RNE + RNW (Checkout
       [rn-web](https://github.com/react-native-training/react-native-elements/tree/rn-web)
