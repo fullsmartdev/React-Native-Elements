@@ -81,7 +81,7 @@ describe('Badge Component', () => {
 
   it('should allow custom component', () => {
     const component = shallow(
-      <Badge theme={theme} value="23" Component={TouchableWithoutFeedback} />
+      <Badge theme={theme} value="23" component={TouchableWithoutFeedback} />
     );
 
     expect(component.length).toBe(1);

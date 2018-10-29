@@ -11,7 +11,7 @@ const Badge = props => {
     textStyle,
     wrapperStyle,
     onPress,
-    Component = onPress ? TouchableOpacity : View,
+    component,
     value,
     children,
     element,
@@ -33,6 +33,14 @@ const Badge = props => {
 
   if (children && value) {
     console.error('Badge can only contain either child element or value');
+  }
+
+  let Component = View;
+
+  if (component) {
+    Component = component;
+  } else if (onPress) {
+    Component = TouchableOpacity;
   }
 
   return (
@@ -65,7 +73,7 @@ Badge.propTypes = {
   ]),
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   onPress: PropTypes.func,
-  Component: PropTypes.func,
+  component: PropTypes.func,
   element: PropTypes.element,
   theme: PropTypes.object,
 };

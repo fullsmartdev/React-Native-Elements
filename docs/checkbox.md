@@ -49,7 +49,7 @@ import { CheckBox } from 'react-native-elements'
 ### Props
 
 * [`iconType`](#icontype)
-* [`Component`](#Component)
+* [`component`](#component)
 * [`checked`](#checked)
 * [`size`](#size)
 * [`iconRight`](#iconright)
@@ -75,15 +75,13 @@ import { CheckBox } from 'react-native-elements'
 
 ### `iconType`
 
-Icon family, can be one of the following: simple-line-icon, zocial, octicon,
-material, material-community, ionicon, foundation, evilicon, entypo (required
-only if specifying an icon that is not from font-awesome)
+Icon family, can be one of the following: simple-line-icon, zocial, octicon, material, material-community, ionicon, foundation, evilicon, entypo (required only if specifying an icon that is not from font-awesome)
 
 |  Type  |   Default   |
 | :----: | :---------: |
 | string | fontawesome |
 
-### `Component`
+### `component`
 
 Specify React Native component for main button (optional)
 
@@ -189,8 +187,7 @@ onPress function for checkbox (required)
 
 ### `checkedIcon`
 
-Default checked icon ([Font Awesome Icon](http://fontawesome.io/icons/))
-(optional)
+Default checked icon ([Font Awesome Icon](http://fontawesome.io/icons/)) (optional)
 
 |               Type               |    Default     |
 | :------------------------------: | :------------: |
@@ -198,8 +195,7 @@ Default checked icon ([Font Awesome Icon](http://fontawesome.io/icons/))
 
 ### `uncheckedIcon`
 
-Default checked icon ([Font Awesome Icon](http://fontawesome.io/icons/))
-(optional)
+Default checked icon ([Font Awesome Icon](http://fontawesome.io/icons/)) (optional)
 
 |               Type               | Default  |
 | :------------------------------: | :------: |

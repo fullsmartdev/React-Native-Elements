@@ -17,7 +17,7 @@ const ButtonGroup = props => {
   const { theme, ...rest } = props;
 
   const {
-    Component,
+    component: Component,
     buttons,
     onPress,
     selectedIndex,
@@ -176,7 +176,7 @@ const styles = {
 
 ButtonGroup.propTypes = {
   button: PropTypes.object,
-  Component: PropTypes.any,
+  component: PropTypes.any,
   onPress: PropTypes.func,
   buttons: PropTypes.array,
   containerStyle: ViewPropTypes.style,
@@ -210,7 +210,7 @@ ButtonGroup.defaultProps = {
   selectMultiple: false,
   containerBorderRadius: 3,
   onPress: () => {},
-  Component: Platform.OS === 'ios' ? TouchableOpacity : TouchableNativeFeedback,
+  component: Platform.OS === 'ios' ? TouchableOpacity : TouchableNativeFeedback,
 };
 
 export { ButtonGroup };

@@ -26,7 +26,7 @@ const Icon = props => {
     disabled,
     disabledStyle,
     onPress,
-    Component = onPress ? TouchableHighlight : View,
+    component: Component = onPress ? TouchableHighlight : View,
     ...attributes
   } = props;
 
@@ -76,7 +76,7 @@ Icon.propTypes = {
   name: PropTypes.string,
   size: PropTypes.number,
   color: PropTypes.string,
-  Component: PropTypes.func,
+  component: PropTypes.func,
   underlayColor: PropTypes.string,
   reverse: PropTypes.bool,
   raised: PropTypes.bool,
