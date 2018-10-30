@@ -200,7 +200,11 @@ exports[`Rating Component should apply values from theme 1`] = `
     </View>
     <View>
       <Image
-        source={Object {}}
+        source={
+          Object {
+            "testUri": "../../../src/rating/images/star.png",
+          }
+        }
         style={
           Object {
             "height": 60,
@@ -211,7 +215,11 @@ exports[`Rating Component should apply values from theme 1`] = `
     </View>
     <View>
       <Image
-        source={Object {}}
+        source={
+          Object {
+            "testUri": "../../../src/rating/images/star.png",
+          }
+        }
         style={
           Object {
             "height": 60,
@@ -222,7 +230,11 @@ exports[`Rating Component should apply values from theme 1`] = `
     </View>
     <View>
       <Image
-        source={Object {}}
+        source={
+          Object {
+            "testUri": "../../../src/rating/images/star.png",
+          }
+        }
         style={
           Object {
             "height": 60,
@@ -233,7 +245,11 @@ exports[`Rating Component should apply values from theme 1`] = `
     </View>
     <View>
       <Image
-        source={Object {}}
+        source={
+          Object {
+            "testUri": "../../../src/rating/images/star.png",
+          }
+        }
         style={
           Object {
             "height": 60,
@@ -244,7 +260,11 @@ exports[`Rating Component should apply values from theme 1`] = `
     </View>
     <View>
       <Image
-        source={Object {}}
+        source={
+          Object {
+            "testUri": "../../../src/rating/images/star.png",
+          }
+        }
         style={
           Object {
             "height": 60,
@@ -320,7 +340,11 @@ exports[`Rating Component should render 10 images 1`] = `
       key="0"
     >
       <Image
-        source={Object {}}
+        source={
+          Object {
+            "testUri": "../../../src/rating/images/star.png",
+          }
+        }
         style={
           Object {
             "height": 60,
@@ -333,7 +357,11 @@ exports[`Rating Component should render 10 images 1`] = `
       key="1"
     >
       <Image
-        source={Object {}}
+        source={
+          Object {
+            "testUri": "../../../src/rating/images/star.png",
+          }
+        }
         style={
           Object {
             "height": 60,
@@ -346,7 +374,11 @@ exports[`Rating Component should render 10 images 1`] = `
       key="2"
     >
       <Image
-        source={Object {}}
+        source={
+          Object {
+            "testUri": "../../../src/rating/images/star.png",
+          }
+        }
         style={
           Object {
             "height": 60,
@@ -359,7 +391,11 @@ exports[`Rating Component should render 10 images 1`] = `
       key="3"
     >
       <Image
-        source={Object {}}
+        source={
+          Object {
+            "testUri": "../../../src/rating/images/star.png",
+          }
+        }
         style={
           Object {
             "height": 60,
@@ -372,7 +408,11 @@ exports[`Rating Component should render 10 images 1`] = `
       key="4"
     >
       <Image
-        source={Object {}}
+        source={
+          Object {
+            "testUri": "../../../src/rating/images/star.png",
+          }
+        }
         style={
           Object {
             "height": 60,
@@ -385,7 +425,11 @@ exports[`Rating Component should render 10 images 1`] = `
       key="5"
     >
       <Image
-        source={Object {}}
+        source={
+          Object {
+            "testUri": "../../../src/rating/images/star.png",
+          }
+        }
         style={
           Object {
             "height": 60,
@@ -398,7 +442,11 @@ exports[`Rating Component should render 10 images 1`] = `
       key="6"
     >
       <Image
-        source={Object {}}
+        source={
+          Object {
+            "testUri": "../../../src/rating/images/star.png",
+          }
+        }
         style={
           Object {
             "height": 60,
@@ -411,7 +459,11 @@ exports[`Rating Component should render 10 images 1`] = `
       key="7"
     >
       <Image
-        source={Object {}}
+        source={
+          Object {
+            "testUri": "../../../src/rating/images/star.png",
+          }
+        }
         style={
           Object {
             "height": 60,
@@ -424,7 +476,11 @@ exports[`Rating Component should render 10 images 1`] = `
       key="8"
     >
       <Image
-        source={Object {}}
+        source={
+          Object {
+            "testUri": "../../../src/rating/images/star.png",
+          }
+        }
         style={
           Object {
             "height": 60,
@@ -437,7 +493,11 @@ exports[`Rating Component should render 10 images 1`] = `
       key="9"
     >
       <Image
-        source={Object {}}
+        source={
+          Object {
+            "testUri": "../../../src/rating/images/star.png",
+          }
+        }
         style={
           Object {
             "height": 60,
@@ -957,7 +1017,11 @@ exports[`Rating Component should render images with the size of 30 1`] = `
       key="0"
     >
       <Image
-        source={Object {}}
+        source={
+          Object {
+            "testUri": "../../../src/rating/images/star.png",
+          }
+        }
         style={
           Object {
             "height": 30,
@@ -970,7 +1034,11 @@ exports[`Rating Component should render images with the size of 30 1`] = `
       key="1"
     >
       <Image
-        source={Object {}}
+        source={
+          Object {
+            "testUri": "../../../src/rating/images/star.png",
+          }
+        }
         style={
           Object {
             "height": 30,
@@ -983,7 +1051,11 @@ exports[`Rating Component should render images with the size of 30 1`] = `
       key="2"
     >
       <Image
-        source={Object {}}
+        source={
+          Object {
+            "testUri": "../../../src/rating/images/star.png",
+          }
+        }
         style={
           Object {
             "height": 30,
@@ -996,7 +1068,11 @@ exports[`Rating Component should render images with the size of 30 1`] = `
       key="3"
     >
       <Image
-        source={Object {}}
+        source={
+          Object {
+            "testUri": "../../../src/rating/images/star.png",
+          }
+        }
         style={
           Object {
             "height": 30,
@@ -1009,7 +1085,11 @@ exports[`Rating Component should render images with the size of 30 1`] = `
       key="4"
     >
       <Image
-        source={Object {}}
+        source={
+          Object {
+            "testUri": "../../../src/rating/images/star.png",
+          }
+        }
         style={
           Object {
             "height": 30,
@@ -1085,7 +1165,11 @@ exports[`Rating Component should render in readonly mode 1`] = `
       key="0"
     >
       <Image
-        source={Object {}}
+        source={
+          Object {
+            "testUri": "../../../src/rating/images/star.png",
+          }
+        }
         style={
           Object {
             "height": 60,
@@ -1098,7 +1182,11 @@ exports[`Rating Component should render in readonly mode 1`] = `
       key="1"
     >
       <Image
-        source={Object {}}
+        source={
+          Object {
+            "testUri": "../../../src/rating/images/star.png",
+          }
+        }
         style={
           Object {
             "height": 60,
@@ -1111,7 +1199,11 @@ exports[`Rating Component should render in readonly mode 1`] = `
       key="2"
     >
       <Image
-        source={Object {}}
+        source={
+          Object {
+            "testUri": "../../../src/rating/images/star.png",
+          }
+        }
         style={
           Object {
             "height": 60,
@@ -1124,7 +1216,11 @@ exports[`Rating Component should render in readonly mode 1`] = `
       key="3"
     >
       <Image
-        source={Object {}}
+        source={
+          Object {
+            "testUri": "../../../src/rating/images/star.png",
+          }
+        }
         style={
           Object {
             "height": 60,
@@ -1137,7 +1233,11 @@ exports[`Rating Component should render in readonly mode 1`] = `
       key="4"
     >
       <Image
-        source={Object {}}
+        source={
+          Object {
+            "testUri": "../../../src/rating/images/star.png",
+          }
+        }
         style={
           Object {
             "height": 60,
@@ -1274,7 +1374,11 @@ exports[`Rating Component should render rating label 1`] = `
       key="0"
     >
       <Image
-        source={Object {}}
+        source={
+          Object {
+            "testUri": "../../../src/rating/images/star.png",
+          }
+        }
         style={
           Object {
             "height": 60,
@@ -1287,7 +1391,11 @@ exports[`Rating Component should render rating label 1`] = `
       key="1"
     >
       <Image
-        source={Object {}}
+        source={
+          Object {
+            "testUri": "../../../src/rating/images/star.png",
+          }
+        }
         style={
           Object {
             "height": 60,
@@ -1300,7 +1408,11 @@ exports[`Rating Component should render rating label 1`] = `
       key="2"
     >
       <Image
-        source={Object {}}
+        source={
+          Object {
+            "testUri": "../../../src/rating/images/star.png",
+          }
+        }
         style={
           Object {
             "height": 60,
@@ -1313,7 +1425,11 @@ exports[`Rating Component should render rating label 1`] = `
       key="3"
     >
       <Image
-        source={Object {}}
+        source={
+          Object {
+            "testUri": "../../../src/rating/images/star.png",
+          }
+        }
         style={
           Object {
             "height": 60,
@@ -1326,7 +1442,11 @@ exports[`Rating Component should render rating label 1`] = `
       key="4"
     >
       <Image
-        source={Object {}}
+        source={
+          Object {
+            "testUri": "../../../src/rating/images/star.png",
+          }
+        }
         style={
           Object {
             "height": 60,
@@ -1463,7 +1583,11 @@ exports[`Rating Component should render value with 2 decimal places 1`] = `
       key="0"
     >
       <Image
-        source={Object {}}
+        source={
+          Object {
+            "testUri": "../../../src/rating/images/star.png",
+          }
+        }
         style={
           Object {
             "height": 60,
@@ -1476,7 +1600,11 @@ exports[`Rating Component should render value with 2 decimal places 1`] = `
       key="1"
     >
       <Image
-        source={Object {}}
+        source={
+          Object {
+            "testUri": "../../../src/rating/images/star.png",
+          }
+        }
         style={
           Object {
             "height": 60,
@@ -1489,7 +1617,11 @@ exports[`Rating Component should render value with 2 decimal places 1`] = `
       key="2"
     >
       <Image
-        source={Object {}}
+        source={
+          Object {
+            "testUri": "../../../src/rating/images/star.png",
+          }
+        }
         style={
           Object {
             "height": 60,
@@ -1502,7 +1634,11 @@ exports[`Rating Component should render value with 2 decimal places 1`] = `
       key="3"
     >
       <Image
-        source={Object {}}
+        source={
+          Object {
+            "testUri": "../../../src/rating/images/star.png",
+          }
+        }
         style={
           Object {
             "height": 60,
@@ -1515,7 +1651,11 @@ exports[`Rating Component should render value with 2 decimal places 1`] = `
       key="4"
     >
       <Image
-        source={Object {}}
+        source={
+          Object {
+            "testUri": "../../../src/rating/images/star.png",
+          }
+        }
         style={
           Object {
             "height": 60,
@@ -1652,7 +1792,11 @@ exports[`Rating Component should render with an initial value of 3.3 1`] = `
       key="0"
     >
       <Image
-        source={Object {}}
+        source={
+          Object {
+            "testUri": "../../../src/rating/images/star.png",
+          }
+        }
         style={
           Object {
             "height": 60,
@@ -1665,7 +1809,11 @@ exports[`Rating Component should render with an initial value of 3.3 1`] = `
       key="1"
     >
       <Image
-        source={Object {}}
+        source={
+          Object {
+            "testUri": "../../../src/rating/images/star.png",
+          }
+        }
         style={
           Object {
             "height": 60,
@@ -1678,7 +1826,11 @@ exports[`Rating Component should render with an initial value of 3.3 1`] = `
       key="2"
     >
       <Image
-        source={Object {}}
+        source={
+          Object {
+            "testUri": "../../../src/rating/images/star.png",
+          }
+        }
         style={
           Object {
             "height": 60,
@@ -1691,7 +1843,11 @@ exports[`Rating Component should render with an initial value of 3.3 1`] = `
       key="3"
     >
       <Image
-        source={Object {}}
+        source={
+          Object {
+            "testUri": "../../../src/rating/images/star.png",
+          }
+        }
         style={
           Object {
             "height": 60,
@@ -1704,7 +1860,11 @@ exports[`Rating Component should render with an initial value of 3.3 1`] = `
       key="4"
     >
       <Image
-        source={Object {}}
+        source={
+          Object {
+            "testUri": "../../../src/rating/images/star.png",
+          }
+        }
         style={
           Object {
             "height": 60,
@@ -1780,7 +1940,11 @@ exports[`Rating Component should render without issues 1`] = `
       key="0"
     >
       <Image
-        source={Object {}}
+        source={
+          Object {
+            "testUri": "../../../src/rating/images/star.png",
+          }
+        }
         style={
           Object {
             "height": 60,
@@ -1793,7 +1957,11 @@ exports[`Rating Component should render without issues 1`] = `
       key="1"
     >
       <Image
-        source={Object {}}
+        source={
+          Object {
+            "testUri": "../../../src/rating/images/star.png",
+          }
+        }
         style={
           Object {
             "height": 60,
@@ -1806,7 +1974,11 @@ exports[`Rating Component should render without issues 1`] = `
       key="2"
     >
       <Image
-        source={Object {}}
+        source={
+          Object {
+            "testUri": "../../../src/rating/images/star.png",
+          }
+        }
         style={
           Object {
             "height": 60,
@@ -1819,7 +1991,11 @@ exports[`Rating Component should render without issues 1`] = `
       key="3"
     >
       <Image
-        source={Object {}}
+        source={
+          Object {
+            "testUri": "../../../src/rating/images/star.png",
+          }
+        }
         style={
           Object {
             "height": 60,
@@ -1832,7 +2008,11 @@ exports[`Rating Component should render without issues 1`] = `
       key="4"
     >
       <Image
-        source={Object {}}
+        source={
+          Object {
+            "testUri": "../../../src/rating/images/star.png",
+          }
+        }
         style={
           Object {
             "height": 60,
