@@ -3,86 +3,75 @@ id: button
 title: Button
 ---
 
-Buttons are touchable elements used to interact with the screen. They may
-display text, icons, or both. Buttons can be styled with several props to look a
-specific way.
+Buttons can be used to interact with the screen. It takes the following props.
 
-<div class="component-preview">
-  <figure>
-    <img src="/react-native-elements/img/button/button--solid.jpg" alt="Solid Button" />
-    <figcaption>Solid</figcaption>
-  </figure>
-  <figure>
-  <img src="/react-native-elements/img/button/button--clear.jpg" alt="Clear Button" />
-    <figcaption>Clear</figcaption>
-  </figure>
-  <figure>
-  <img src="/react-native-elements/img/button/button--outline.jpg" alt="Outline Button" />
-    <figcaption>Outline</figcaption>
-  </figure>
-</div>
-
-## Usage
+<img src="/react-native-elements/img/buttons.png" width="300" />
 
 ```js
 import { Button } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 <Button
-  title="Solid Button"
-/>
-
-<Button
-  title="Outline button"
-  type="outline"
-/>
-
-<Button
-  title="Clear button"
-  type="clear"
+  title='BUTTON'
 />
 
 <Button
   icon={
     <Icon
-      name="arrow-right"
+      name='arrow-right'
       size={15}
-      color="white"
+      color='white'
     />
   }
-  title="Button with icon component"
+  title='BUTTON WITH ICON COMPONENT'
 />
 
 <Button
   icon={{
-    name: "arrow-right"
+    name: 'arrow-right',
     size: 15,
-    color: "white"
+    color: 'white'
   }}
-  title="Button with icon object"
+  title='BUTTON WITH ICON OBJECT'
+/>
+
+<Button
+  icon={<CustomIcon />}
+  title='BUTTON WITH CUSTOM ICON'
 />
 
 <Button
   icon={
     <Icon
-      name="arrow-right"
+      name='arrow-right'
       size={15}
-      color="white"
+      color='white'
     />
   }
   iconRight
-  title="Button with right icon"
+  title='BUTTON WITH RIGHT ICON'
 />
 
 <Button
-  title="Loading button"
+  title="LOADING BUTTON"
   loading
+  loadingProps={{ size: "large", color: "rgba(111, 202, 186, 1)" }}
+  titleStyle={{ fontWeight: "700" }}
+  buttonStyle={{
+    backgroundColor: "rgba(92, 99,216, 1)",
+    width: 300,
+    height: 45,
+    borderColor: "transparent",
+    borderWidth: 0,
+    borderRadius: 5
+  }}
+  containerStyle={{ marginTop: 20 }}
 />
 ```
 
 ---
 
-## Props
+### Props
 
 > Also receives all
 > [TouchableNativeFeedback](http://facebook.github.io/react-native/docs/touchablenativefeedback.html#props)
@@ -91,6 +80,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 > (iOS) props
 
 * [`buttonStyle`](#buttonstyle)
+* [`clear`](#clear)
 * [`containerStyle`](#containerstyle)
 * [`disabled`](#disabled)
 * [`disabledStyle`](#disabledstyle)
@@ -107,21 +97,50 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 * [`title`](#title)
 * [`titleProps`](#titleprops)
 * [`titleStyle`](#titlestyle)
-* [`type`](#type)
 * [`TouchableComponent`](#touchablecomponent)
 * [`ViewComponent`](#viewcomponent)
 
 ---
 
-## Reference
+# Reference
+
+### `TouchableComponent`
+
+component for user interaction
+
+|        Type         |                           Default                           |
+| :-----------------: | :---------------------------------------------------------: |
+| Touchable Component | TouchableOpacity (ios) or TouchableNativeFeedback (android) |
+
+---
+
+### `ViewComponent`
+
+component for container
+
+|          Type          | Default |
+| :--------------------: | :-----: |
+| React Native Component |  View   |
+
+---
 
 ### `buttonStyle`
 
 add additional styling for button component (optional)
 
-|        Type         | Default |
-| :-----------------: | :-----: |
-| View style (object) |  none   |
+|      Type      | Default |
+| :------------: | :-----: |
+| object (style) |  none   |
+
+---
+
+### `clear`
+
+makes the button transparent (optional)
+
+|  Type   | Default |
+| :-----: | :-----: |
+| boolean |  none   |
 
 ---
 
@@ -149,9 +168,9 @@ disables user interaction
 
 style of the button when disabled
 
-|        Type         |    Default     |
-| :-----------------: | :------------: |
-| View style (object) | Internal Style |
+|        Type         |    Default    |
+| :-----------------: | :-----------: |
+| View style (object) | See button.js |
 
 ---
 
@@ -159,9 +178,9 @@ style of the button when disabled
 
 style of the title when disabled
 
-|        Type         |    Default     |
-| :-----------------: | :------------: |
-| Text style (object) | Internal Style |
+|        Type         |    Default    |
+| :-----------------: | :-----------: |
+| Text style (object) | See button.js |
 
 ---
 
@@ -188,11 +207,11 @@ styling for Icon Component container
 
 ### `iconRight`
 
-displays Icon to the right of title. Needs to be used along with `icon` prop
+displays Icon to the right of title. Needs to be used along with icon prop
 
 |  Type   | Default |
 | :-----: | :-----: |
-| boolean |  false  |
+| boolean |  none   |
 
 ---
 
@@ -200,9 +219,9 @@ displays Icon to the right of title. Needs to be used along with `icon` prop
 
 displays a linear gradient. See [usage](#lineargradient-usage).
 
-|                                                      Type                                                      | Default |
-| :------------------------------------------------------------------------------------------------------------: | :-----: |
-| {[...Gradient props](https://github.com/react-native-community/react-native-linear-gradient#additional-props)} |  none   |
+|                                                       Type                                                        | Default |
+| :---------------------------------------------------------------------------------------------------------------: | :-----: |
+| object([gradient props](https://github.com/react-native-community/react-native-linear-gradient#additional-props)) |  none   |
 
 ---
 
@@ -212,7 +231,7 @@ prop to display a loading spinner (optional)
 
 |  Type   | Default |
 | :-----: | :-----: |
-| boolean |  false  |
+| boolean |  none   |
 
 ---
 
@@ -220,9 +239,9 @@ prop to display a loading spinner (optional)
 
 add additional props for ActivityIndicator component (optional)
 
-|                                                 Type                                                 |     Default     |
-| :--------------------------------------------------------------------------------------------------: | :-------------: |
-| {[...ActivityIndicator props](https://facebook.github.io/react-native/docs/activityindicator#props)} | Internal object |
+|      Type      | Default |
+| :------------: | :-----: |
+| object (style) |  none   |
 
 ---
 
@@ -230,9 +249,9 @@ add additional props for ActivityIndicator component (optional)
 
 add additional styling for loading component (optional)
 
-|        Type         |    Default     |
-| :-----------------: | :------------: |
-| View style (object) | Internal Style |
+|        Type         | Default |
+| :-----------------: | :-----: |
+| View style (object) |  none   |
 
 ---
 
@@ -248,7 +267,7 @@ onPress method (optional)
 
 ### `raised`
 
-Add raised button styling (optional). Has no effect if `type="clear"`.
+add raised button styling (optional)
 
 |  Type   | Default |
 | :-----: | :-----: |
@@ -270,9 +289,9 @@ button title (optional)
 
 add additional props for Text component (optional)
 
-|                                    Type                                    | Default |
-| :------------------------------------------------------------------------: | :-----: |
-| {[...Text props](https://facebook.github.io/react-native/docs/text#props)} |  none   |
+|      Type      | Default |
+| :------------: | :-----: |
+| object (style) |  none   |
 
 ---
 
@@ -283,36 +302,6 @@ add additional styling for title component (optional)
 |        Type         | Default |
 | :-----------------: | :-----: |
 | Text style (object) |  none   |
-
----
-
-### `type`
-
-Type of button (optional)
-
-|            Type             | Default |
-| :-------------------------: | :-----: |
-| `solid`, `clear`, `outline` |  solid  |
-
----
-
-### `TouchableComponent`
-
-component for user interaction
-
-|        Type         |                           Default                           |
-| :-----------------: | :---------------------------------------------------------: |
-| Touchable Component | TouchableOpacity (ios) or TouchableNativeFeedback (android) |
-
----
-
-### `ViewComponent`
-
-component for container
-
-|          Type          | Default |
-| :--------------------: | :-----: |
-| React Native Component |  View   |
 
 ---
 

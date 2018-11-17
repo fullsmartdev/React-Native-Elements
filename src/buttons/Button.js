@@ -11,13 +11,8 @@ import {
 } from 'react-native';
 
 import { withTheme, ViewPropTypes } from '../config';
-import { renderNode, nodeType, conditionalStyle, color } from '../helpers';
+import { renderNode, nodeType } from '../helpers';
 import Icon from '../icons/Icon';
-
-const defaultLoadingProps = (type, theme) => ({
-  color: type === 'solid' ? 'white' : theme.colors.primary,
-  size: 'small',
-});
 
 class Button extends Component {
   componentDidMount() {
@@ -36,10 +31,10 @@ class Button extends Component {
       containerStyle,
       onPress,
       buttonStyle,
-      type,
+      clear,
       loading,
       loadingStyle,
-      loadingProps: passedLoadingProps,
+      loadingProps,
       title,
       titleProps,
       titleStyle,
@@ -71,48 +66,34 @@ class Button extends Component {
         attributes.background = TouchableNativeFeedback.SelectableBackground();
       }
     }
-
-    const loadingProps = {
-      ...defaultLoadingProps(type, theme),
-      ...passedLoadingProps,
-    };
-
     return (
-      <View
-        style={StyleSheet.flatten([
-          styles.container,
-          {
-            borderRadius:
-              buttonStyle.borderRadius || styles.container.borderRadius,
-          },
-          containerStyle,
-          raised && !disabled && styles.raised(type),
-        ])}
-      >
+      <View style={[containerStyle, raised && styles.raised]}>
         <TouchableComponent
           onPress={onPress}
-          activeOpacity={0.3}
+          underlayColor={clear ? 'transparent' : undefined}
+          activeOpacity={clear ? 0 : undefined}
           disabled={disabled}
           {...attributes}
         >
           <ViewComponent
             {...linearGradientProps}
             style={StyleSheet.flatten([
-              styles.button(type, theme),
+              styles.button(theme),
               buttonStyle,
-              disabled && styles.disabled(type, theme),
+              disabled && styles.disabled,
               disabled && disabledStyle,
+              clear && { backgroundColor: 'transparent', elevation: 0 },
             ])}
           >
             {loading && (
               <ActivityIndicator
+                animating={true}
                 style={StyleSheet.flatten([styles.loading, loadingStyle])}
                 color={loadingProps.color}
                 size={loadingProps.size}
                 {...loadingProps}
               />
             )}
-
             {!loading &&
               icon &&
               !iconRight &&
@@ -122,14 +103,13 @@ class Button extends Component {
                   iconContainerStyle,
                 ]),
               })}
-
             {!loading &&
               !!title && (
                 <Text
                   style={StyleSheet.flatten([
-                    styles.title(type, theme),
+                    styles.title,
                     titleStyle,
-                    disabled && styles.disabledTitle(theme),
+                    disabled && styles.disabledTitle,
                     disabled && disabledTitleStyle,
                   ])}
                   {...titleProps}
@@ -137,7 +117,6 @@ class Button extends Component {
                   {title}
                 </Text>
               )}
-
             {!loading &&
               icon &&
               iconRight &&
@@ -159,7 +138,7 @@ Button.propTypes = {
   titleStyle: Text.propTypes.style,
   titleProps: PropTypes.object,
   buttonStyle: ViewPropTypes.style,
-  type: PropTypes.oneOf(['solid', 'clear', 'outline']),
+  clear: PropTypes.bool,
   loading: PropTypes.bool,
   loadingStyle: ViewPropTypes.style,
   loadingProps: PropTypes.object,
@@ -179,12 +158,16 @@ Button.propTypes = {
 };
 
 Button.defaultProps = {
-  title: '',
+  title: 'Welcome to\nReact Native Elements',
   iconRight: false,
   TouchableComponent:
     Platform.OS === 'android' ? TouchableNativeFeedback : TouchableOpacity,
   onPress: () => console.log('Please attach a method to this component'),
-  type: 'solid',
+  clear: false,
+  loadingProps: {
+    color: 'white',
+    size: 'small',
+  },
   buttonStyle: {
     borderRadius: 3,
   },
@@ -194,36 +177,29 @@ Button.defaultProps = {
 };
 
 const styles = {
-  button: (type, theme) => ({
+  button: theme => ({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 3,
-    backgroundColor: type === 'solid' ? theme.colors.primary : 'transparent',
-    padding: 8,
-    borderWidth: type === 'outline' ? StyleSheet.hairlineWidth : 0,
-    borderColor: theme.colors.primary,
+    backgroundColor: theme.colors.primary,
+    ...Platform.select({
+      android: {
+        elevation: 4,
+        borderRadius: 2,
+      },
+    }),
   }),
-  container: {
-    borderRadius: 3,
+  disabled: {
+    // grey from designmodo.github.io/Flat-UI/
+    backgroundColor: '#D1D5D8',
   },
-  disabled: (type, theme) => ({
-    ...conditionalStyle(type === 'solid', {
-      backgroundColor: theme.colors.disabled,
-    }),
-    ...conditionalStyle(type === 'outline', {
-      borderColor: color(theme.colors.disabled).darken(0.3),
-    }),
-  }),
-  disabledTitle: theme => ({
-    color: color(theme.colors.disabled).darken(0.3),
-  }),
-  title: (type, theme) => ({
-    color: type === 'solid' ? 'white' : theme.colors.primary,
+  title: {
+    backgroundColor: 'transparent',
+    color: 'white',
     fontSize: 16,
     textAlign: 'center',
-    paddingTop: 2,
-    paddingBottom: 1,
+    padding: 8,
     ...Platform.select({
       ios: {
         fontSize: 18,
@@ -232,27 +208,26 @@ const styles = {
         fontFamily: 'sans-serif-medium',
       },
     }),
-  }),
+  },
+  disabledTitle: {
+    color: '#F3F4F5',
+  },
   iconContainer: {
     marginHorizontal: 5,
   },
-  raised: type =>
-    type !== 'clear' && {
-      backgroundColor: '#fff',
-      ...Platform.select({
-        ios: {
-          shadowColor: 'rgba(0,0,0, .4)',
-          shadowOffset: { height: 1, width: 1 },
-          shadowOpacity: 1,
-          shadowRadius: 1,
-        },
-        android: {
-          elevation: 4,
-        },
-      }),
-    },
-  loading: {
-    marginVertical: 2,
+  raised: {
+    ...Platform.select({
+      ios: {
+        shadowColor: 'rgba(0,0,0, .4)',
+        shadowOffset: { height: 1, width: 1 },
+        shadowOpacity: 1,
+        shadowRadius: 1,
+      },
+      android: {
+        backgroundColor: '#fff',
+        elevation: 2,
+      },
+    }),
   },
 };
 

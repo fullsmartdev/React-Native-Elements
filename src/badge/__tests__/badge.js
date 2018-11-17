@@ -7,11 +7,22 @@ import renderer from 'react-test-renderer';
 import { ThemeProvider } from '../../config';
 import theme from '../../config/theme';
 
-import ThemedBadge, { Badge } from '../Badge';
+import ThemedBadge, { Badge } from '../badge';
 
 describe('Badge Component', () => {
   it('should render without issue', () => {
-    const component = shallow(<Badge theme={theme} value={10} />);
+    const component = shallow(<Badge theme={theme} />);
+
+    expect(component.length).toBe(1);
+    expect(toJson(component)).toMatchSnapshot();
+  });
+
+  it('should show error if value and child are included', () => {
+    const component = shallow(
+      <Badge theme={theme} value="Hello">
+        <Text />
+      </Badge>
+    );
 
     expect(component.length).toBe(1);
     expect(toJson(component)).toMatchSnapshot();
@@ -19,7 +30,9 @@ describe('Badge Component', () => {
 
   it('should render if element included', () => {
     const component = shallow(
-      <Badge theme={theme} value={<Text title="foo" />} />
+      <Badge theme={theme}>
+        <Text title="foo" />
+      </Badge>
     );
 
     expect(component.length).toBe(1);
@@ -34,27 +47,33 @@ describe('Badge Component', () => {
     expect(toJson(component)).toMatchSnapshot();
   });
 
-  it('should apply container style in the badge', () => {
+  it('should apply text style in the badge', () => {
     const component = shallow(
-      <Badge
-        theme={theme}
-        value={10}
-        containerStyle={{ backgroundColor: 'orange' }}
-      />
+      <Badge theme={theme} textStyle={{ color: 'orange' }} />
     );
 
     expect(component.length).toBe(1);
     expect(toJson(component)).toMatchSnapshot();
   });
 
-  it('should allow badge style', () => {
+  it('should apply container style in the badge', () => {
     const component = shallow(
-      <Badge
-        theme={theme}
-        value={10}
-        badgeStyle={{ backgroundColor: 'pink' }}
-      />
+      <Badge theme={theme} containerStyle={{ backgroundColor: 'orange' }} />
     );
+
+    expect(component.length).toBe(1);
+    expect(toJson(component)).toMatchSnapshot();
+  });
+
+  it('should allow adding custom element', () => {
+    const component = shallow(<Badge element={<Text>Hello</Text>} />);
+
+    expect(component.find('Text').props().children).toBe('Hello');
+    expect(toJson(component)).toMatchSnapshot();
+  });
+
+  it('should allow wrapper style', () => {
+    const component = shallow(<Badge theme={theme} wrapperStyle={{}} />);
 
     expect(component.length).toBe(1);
     expect(toJson(component)).toMatchSnapshot();
@@ -62,7 +81,7 @@ describe('Badge Component', () => {
 
   it('should allow custom component', () => {
     const component = shallow(
-      <Badge theme={theme} value={10} Component={TouchableWithoutFeedback} />
+      <Badge theme={theme} value="23" component={TouchableWithoutFeedback} />
     );
 
     expect(component.length).toBe(1);
@@ -71,42 +90,12 @@ describe('Badge Component', () => {
 
   it('should have a touchable when onPress is passed in', () => {
     const component = shallow(
-      <Badge theme={theme} value={10} onPress={jest.fn()} />
+      <Badge theme={theme} value="23" onPress={jest.fn()} />
     );
 
     expect(component.length).toBe(1);
     expect(component.find(TouchableOpacity)).toBeTruthy();
     expect(toJson(component)).toMatchSnapshot();
-  });
-
-  describe('Mini badge', () => {
-    it('primary', () => {
-      const component = shallow(<Badge theme={theme} />);
-
-      expect(component.length).toBe(1);
-      expect(toJson(component)).toMatchSnapshot();
-    });
-
-    it('success', () => {
-      const component = shallow(<Badge theme={theme} status="success" />);
-
-      expect(component.length).toBe(1);
-      expect(toJson(component)).toMatchSnapshot();
-    });
-
-    it('warning', () => {
-      const component = shallow(<Badge theme={theme} status="warning" />);
-
-      expect(component.length).toBe(1);
-      expect(toJson(component)).toMatchSnapshot();
-    });
-
-    it('error', () => {
-      const component = shallow(<Badge theme={theme} status="error" />);
-
-      expect(component.length).toBe(1);
-      expect(toJson(component)).toMatchSnapshot();
-    });
   });
 
   it('should use values set by the theme', () => {

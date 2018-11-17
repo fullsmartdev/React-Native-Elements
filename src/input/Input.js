@@ -15,12 +15,6 @@ import { fonts, withTheme, ViewPropTypes, TextPropTypes } from '../config';
 
 import Icon from '../icons/Icon';
 
-const renderText = (content, defaultProps, style) =>
-  renderNode(Text, content, {
-    ...defaultProps,
-    style: StyleSheet.flatten([style, defaultProps && defaultProps.style]),
-  });
-
 class Input extends React.Component {
   shakeAnimationValue = new Animated.Value(0);
 
@@ -80,10 +74,13 @@ class Input extends React.Component {
 
     return (
       <View style={StyleSheet.flatten([{ width: '90%' }, containerStyle])}>
-        {renderText(
-          label,
-          { style: labelStyle, ...labelProps },
-          styles.label(theme)
+        {!!label && (
+          <Text
+            {...labelProps}
+            style={StyleSheet.flatten([styles.label(theme), labelStyle])}
+          >
+            {label}
+          </Text>
         )}
 
         <Animated.View
@@ -152,7 +149,7 @@ Input.propTypes = {
   errorProps: PropTypes.object,
   errorStyle: TextPropTypes.style,
   errorMessage: PropTypes.string,
-  label: PropTypes.node,
+  label: PropTypes.string,
   labelStyle: TextPropTypes.style,
   labelProps: PropTypes.object,
   theme: PropTypes.object,

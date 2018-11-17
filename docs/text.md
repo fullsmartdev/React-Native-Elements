@@ -3,8 +3,6 @@ id: text
 title: Text
 ---
 
-Text displays words and characters at various sizes.
-
 ![Text](/react-native-elements/img/text.png)
 
 ```js

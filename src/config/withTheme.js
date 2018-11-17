@@ -1,8 +1,5 @@
 import React from 'react';
-import merge from 'lodash.merge';
-import hoistNonReactStatics from 'hoist-non-react-statics';
-
-import { ThemeConsumer } from './ThemeProvider';
+import { merge, ThemeConsumer } from './index';
 import DefaultTheme from './theme';
 
 const isClassComponent = Component =>
@@ -51,16 +48,18 @@ const withTheme = (WrappedComponent, themeKey) => {
         WrappedComponent.name ||
         'Component'}`;
 
-  if (isClassComponent(WrappedComponent)) {
-    const forwardRef = (props, ref) => {
-      return <ThemedComponent {...props} forwardedRef={ref} />;
-    };
-
-    forwardRef.displayName = name;
-    return hoistNonReactStatics(React.forwardRef(forwardRef), WrappedComponent);
-  }
+  const forwardRef = (props, ref) => {
+    return <ThemedComponent {...props} forwardedRef={ref} />;
+  };
 
   ThemedComponent.displayName = name;
+  forwardRef.displayName = name;
+
+  // Forward refs from children
+  if (isClassComponent(WrappedComponent)) {
+    return React.forwardRef(forwardRef);
+  }
+
   return ThemedComponent;
 };
 
