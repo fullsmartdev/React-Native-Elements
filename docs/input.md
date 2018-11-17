@@ -3,9 +3,6 @@ id: input
 title: Input
 ---
 
-Inputs allow users to enter text into a UI. They typically appear in forms and
-dialogs.
-
 <img src="/react-native-elements/img/input.png" width="300"/>
 
 ```js
@@ -48,25 +45,23 @@ import { Input } from 'react-native-elements';
 
 ### Props
 
-> This component inherits
-> [all native TextInput props that come with a standard React Native TextInput element](https://facebook.github.io/react-native/docs/textinput.html),
-> along with the following:
+> This component inherits [all native TextInput props that come with a standard React Native TextInput element](https://facebook.github.io/react-native/docs/textinput.html), along with the following:
 
-* [`containerStyle`](#containerstyle)
-* [`inputContainerStyle`](#inputcontainerstyle)
-* [`errorMessage`](#errormessage)
-* [`errorStyle`](#errorstyle)
-* [`errorProps`](#errorprops)
-* [`inputComponent`](#inputComponent)
-* [`inputStyle`](#inputstyle)
-* [`label`](#label)
-* [`labelStyle`](#labelStyle)
-* [`labelProps`](#labelprops)
-* [`leftIcon`](#lefticon)
-* [`leftIconContainerStyle`](#lefticoncontainerstyle)
-* [`rightIcon`](#righticon)
-* [`rightIconContainerStyle`](#righticoncontainerstyle)
-* [`shake`](#shake)
+- [`containerStyle`](#containerstyle)
+- [`inputContainerStyle`](#inputcontainerstyle)
+- [`errorMessage`](#errormessage)
+- [`errorStyle`](#errorstyle)
+- [`errorProps`](#errorprops)
+- [`inputComponent`](#inputComponent)
+- [`inputStyle`](#inputstyle)
+- [`label`](#label)
+- [`labelStyle`](#labelStyle)
+- [`labelProps`](#labelprops)
+- [`leftIcon`](#lefticon)
+- [`leftIconContainerStyle`](#lefticoncontainerstyle)
+- [`rightIcon`](#righticon)
+- [`rightIconContainerStyle`](#righticoncontainerstyle)
+- [`shake`](#shake)
 
 ---
 
@@ -114,8 +109,7 @@ add styling to error message (optional)
 
 ### `errorProps`
 
-props to be passed to the React Native `Text` component used to display the
-error message (optional)
+props to be passed to the React Native `Text` component used to display the error message (optional)
 
 |                                      Type                                       | Default |
 | :-----------------------------------------------------------------------------: | :-----: |
@@ -125,8 +119,7 @@ error message (optional)
 
 ### `inputComponent`
 
-component that will be rendered in place of the React Native `TextInput`
-(optional)
+component that will be rendered in place of the React Native `TextInput` (optional)
 
 |          Type          |  Default  |
 | :--------------------: | :-------: |
@@ -136,8 +129,7 @@ component that will be rendered in place of the React Native `TextInput`
 
 ### `inputStyle`
 
-style that will be passed to the `style` props of the React Native `TextInput`
-(optional)
+style that will be passed to the `style` props of the React Native `TextInput` (optional)
 
 |  Type  | Default |
 | :----: | :-----: |
@@ -151,13 +143,13 @@ add a label on top of the input (optional)
 
 |  Type  | Default |
 | :----: | :-----: |
-| string **OR** React element or component |  none   |
+| string |  none   |
 
 ---
 
 ### `labelStyle`
 
-styling for the label (optional);  You can only use this if `label` is a string
+styling for the label (optional)
 
 |  Type  | Default |
 | :----: | :-----: |
@@ -167,12 +159,11 @@ styling for the label (optional);  You can only use this if `label` is a string
 
 ### `labelProps`
 
-props to be passed to the React Native `Text` component used to display the
-label or React Component used instead of simple string in `label` prop (optional)
+props to be passed to the React Native `Text` component used to display the label (optional)
 
 |                                      Type                                       | Default |
 | :-----------------------------------------------------------------------------: | :-----: |
-| {[...Text props](https://facebook.github.io/react-native/docs/text.html#props)} **OR** passed component props |  none   |
+| {[...Text props](https://facebook.github.io/react-native/docs/text.html#props)} |  none   |
 
 ---
 

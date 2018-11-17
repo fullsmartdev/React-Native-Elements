@@ -3,7 +3,7 @@ id: tooltip
 title: Tooltip
 ---
 
-Tooltips display informative text when users tap on an element.
+Easy to use and customisable tooltip.
 
 <img alt="tooltip example gif" width='290' src='/react-native-elements/img/tooltipExample.gif'>
 
@@ -31,8 +31,8 @@ import { Tooltip, Text } from 'react-native-elements';
 * [`popover`](#popover)
 * [`toggleOnPress`](#toggleOnPress)
 * [`width`](#width)
-* [`withOverlay`](#withoverlay)
-* [`withPointer`](#withpointer)
+* [`withOverlay`](#withOverlay)
+* [`withPointer`](#withPointer)
 
 ---
 

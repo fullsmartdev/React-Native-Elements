@@ -16,7 +16,7 @@ const CheckBox = props => {
   const { theme, ...rest } = props;
 
   const {
-    Component,
+    component,
     checked,
     iconRight,
     title,
@@ -32,6 +32,8 @@ const CheckBox = props => {
     checkedColor = theme.colors.primary,
     ...attributes
   } = rest;
+
+  const Component = component;
 
   return (
     <Component
@@ -84,12 +86,12 @@ CheckBox.defaultProps = {
   checkedIcon: 'check-square-o',
   uncheckedIcon: 'square-o',
   size: 24,
-  Component: TouchableOpacity,
+  component: TouchableOpacity,
 };
 
 CheckBox.propTypes = {
   ...CheckBoxIcon.propTypes,
-  Component: PropTypes.any,
+  component: PropTypes.any,
   iconRight: PropTypes.bool,
   title: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
   center: PropTypes.bool,

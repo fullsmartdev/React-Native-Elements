@@ -1,39 +1,63 @@
-import React from 'react';
+/*eslint-disable no-console */
 import PropTypes from 'prop-types';
+import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 
 import { ViewPropTypes, withTheme } from '../config';
-import { renderNode } from '../helpers';
 
 const Badge = props => {
   const {
     containerStyle,
     textStyle,
-    badgeStyle,
+    wrapperStyle,
     onPress,
-    Component = onPress ? TouchableOpacity : View,
+    component,
     value,
+    children,
+    element,
     theme,
-    status,
     ...attributes
   } = props;
 
-  const element = renderNode(Text, value, {
-    style: StyleSheet.flatten([styles.text, textStyle && textStyle]),
-  });
+  if (element) return element;
+
+  let childElement = (
+    <Text style={StyleSheet.flatten([styles.text, textStyle && textStyle])}>
+      {value}
+    </Text>
+  );
+
+  if (children) {
+    childElement = children;
+  }
+
+  if (children && value) {
+    console.error('Badge can only contain either child element or value');
+  }
+
+  let Component = View;
+
+  if (component) {
+    Component = component;
+  } else if (onPress) {
+    Component = TouchableOpacity;
+  }
 
   return (
-    <View style={StyleSheet.flatten([containerStyle && containerStyle])}>
+    <View
+      style={StyleSheet.flatten([
+        styles.container && wrapperStyle && wrapperStyle,
+      ])}
+    >
       <Component
         {...attributes}
         style={StyleSheet.flatten([
-          styles.badge(theme, status),
-          !element && styles.miniBadge,
-          badgeStyle && badgeStyle,
+          styles.badge(theme),
+          containerStyle && containerStyle,
         ])}
         onPress={onPress}
       >
-        {element}
+        {childElement}
       </Component>
     </View>
   );
@@ -41,45 +65,35 @@ const Badge = props => {
 
 Badge.propTypes = {
   containerStyle: ViewPropTypes.style,
-  badgeStyle: ViewPropTypes.style,
+  wrapperStyle: ViewPropTypes.style,
   textStyle: Text.propTypes.style,
-  value: PropTypes.node,
+  children: PropTypes.oneOfType([
+    PropTypes.element,
+    PropTypes.arrayOf(PropTypes.element),
+  ]),
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   onPress: PropTypes.func,
-  Component: PropTypes.func,
+  component: PropTypes.func,
+  element: PropTypes.element,
   theme: PropTypes.object,
-  status: PropTypes.oneOf(['primary', 'success', 'warning', 'error']),
 };
-
-Badge.defaultProps = {
-  status: 'primary',
-};
-
-const size = 26;
-const miniSize = 12;
 
 const styles = {
-  badge: (theme, status) => ({
-    alignSelf: 'center',
-    minWidth: size,
-    height: size,
-    borderRadius: size / 2,
+  container: {
+    flexDirection: 'row',
+  },
+  badge: theme => ({
+    padding: 12,
+    paddingTop: 3,
+    paddingBottom: 3,
+    borderRadius: 20,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: theme.colors[status],
-    borderWidth: StyleSheet.hairlineWidth,
-    borderColor: '#fff',
+    backgroundColor: theme.colors.primary,
   }),
-  miniBadge: {
-    paddingHorizontal: 0,
-    paddingVertical: 0,
-    minWidth: miniSize,
-    height: miniSize,
-    borderRadius: miniSize / 2,
-  },
   text: {
-    fontSize: 16,
+    fontSize: 14,
     color: 'white',
-    paddingHorizontal: 8,
   },
 };
 

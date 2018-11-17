@@ -34,7 +34,7 @@ class SearchBar extends Component {
     super(props);
     this.state = {
       hasFocus: false,
-      isEmpty: props.value ? props.value === "" : true,
+      isEmpty: true,
       cancelButtonWidth: 0,
       cancelButtonTransform: 0,
     };

@@ -26,11 +26,11 @@ const Icon = props => {
     disabled,
     disabledStyle,
     onPress,
-    Component = onPress ? TouchableHighlight : View,
+    component: Component = onPress ? TouchableHighlight : View,
     ...attributes
   } = props;
 
-  let Icon = getIconType(type);
+  let Icon = getIconType(type || 'material');
 
   return (
     <View style={containerStyle && containerStyle}>
@@ -76,7 +76,7 @@ Icon.propTypes = {
   name: PropTypes.string,
   size: PropTypes.number,
   color: PropTypes.string,
-  Component: PropTypes.func,
+  component: PropTypes.func,
   underlayColor: PropTypes.string,
   reverse: PropTypes.bool,
   raised: PropTypes.bool,
@@ -96,7 +96,6 @@ Icon.defaultProps = {
   color: 'black',
   reverseColor: 'white',
   disabled: false,
-  type: 'material',
 };
 
 const styles = StyleSheet.create({
