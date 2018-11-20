@@ -59,7 +59,6 @@ exports[`SearchBar wrapper component should apply values from theme 1`] = `
                   "placeholder": "Enter search term",
                 },
                 "colors": Object {
-                  "disabled": "hsl(208, 8%, 90%)",
                   "divider": "#bcbbc1",
                   "error": "#ff190c",
                   "grey0": "#393e42",
@@ -72,8 +71,6 @@ exports[`SearchBar wrapper component should apply values from theme 1`] = `
                   "primary": "#2089dc",
                   "searchBg": "#303337",
                   "secondary": "#8F0CE8",
-                  "success": "#52c41a",
-                  "warning": "#faad14",
                 },
               }
             }
@@ -98,7 +95,6 @@ exports[`SearchBar wrapper component should apply values from theme 1`] = `
                     "fontStyle": "normal",
                     "fontWeight": "normal",
                   },
-                  Object {},
                 ]
               }
               testID="iconIcon"
@@ -183,7 +179,7 @@ exports[`SearchBar wrapper component should render an Android SearchBar 1`] = `
   clearIcon={
     Object {
       "color": "rgba(0, 0, 0, 0.54)",
-      "name": "close",
+      "name": "arrow-left",
       "size": 25,
       "type": "material-community",
     }

@@ -10,15 +10,14 @@ import {
 } from 'react-native';
 
 import { ViewPropTypes, withTheme } from '../config';
-import { normalizeText, color } from '../helpers';
-
 import Text from '../text/Text';
+import normalize from '../helpers/normalizeText';
 
 const ButtonGroup = props => {
   const { theme, ...rest } = props;
 
   const {
-    Component,
+    component: Component,
     buttons,
     onPress,
     selectedIndex,
@@ -37,11 +36,7 @@ const ButtonGroup = props => {
     onShowUnderlay,
     setOpacityTo,
     containerBorderRadius,
-    disabled,
-    disabledStyle,
-    disabledTextStyle,
-    disabledSelectedStyle,
-    disabledSelectedTextStyle,
+    disableSelected,
     ...attributes
   } = rest;
 
@@ -61,9 +56,6 @@ const ButtonGroup = props => {
     >
       {buttons.map((button, i) => {
         const isSelected = selectedIndex === i || selectedIndexes.includes(i);
-        const isDisabled =
-          disabled === true ||
-          (Array.isArray(disabled) && disabled.includes(i));
 
         return (
           <View
@@ -96,13 +88,12 @@ const ButtonGroup = props => {
             ])}
           >
             <Component
-              testID="buttonGroupItem"
               activeOpacity={activeOpacity}
               setOpacityTo={setOpacityTo}
               onHideUnderlay={onHideUnderlay}
               onShowUnderlay={onShowUnderlay}
               underlayColor={underlayColor}
-              disabled={isDisabled}
+              disabled={disableSelected && isSelected ? true : false}
               onPress={() => {
                 if (selectMultiple) {
                   if (selectedIndexes.includes(i)) {
@@ -124,10 +115,6 @@ const ButtonGroup = props => {
                     backgroundColor: theme.colors.primary,
                   },
                   isSelected && selectedButtonStyle && selectedButtonStyle,
-                  isDisabled && styles.disabled,
-                  isDisabled && disabledStyle,
-                  isDisabled && isSelected && styles.disabledSelected(theme),
-                  isDisabled && isSelected && disabledSelectedStyle,
                 ])}
               >
                 {button.element ? (
@@ -140,9 +127,6 @@ const ButtonGroup = props => {
                       textStyle && textStyle,
                       isSelected && { color: '#fff' },
                       isSelected && selectedTextStyle,
-                      isDisabled && styles.disabledText(theme),
-                      isDisabled && disabledTextStyle,
-                      isDisabled && isSelected && disabledSelectedTextStyle,
                     ])}
                   >
                     {button}
@@ -180,7 +164,7 @@ const styles = {
     height: 40,
   },
   buttonText: theme => ({
-    fontSize: normalizeText(13),
+    fontSize: normalize(13),
     color: theme.colors.grey2,
     ...Platform.select({
       ios: {
@@ -188,20 +172,11 @@ const styles = {
       },
     }),
   }),
-  disabled: {
-    backgroundColor: 'transparent',
-  },
-  disabledText: theme => ({
-    color: color(theme.colors.disabled).darken(0.3),
-  }),
-  disabledSelected: theme => ({
-    backgroundColor: theme.colors.disabled,
-  }),
 };
 
 ButtonGroup.propTypes = {
   button: PropTypes.object,
-  Component: PropTypes.any,
+  component: PropTypes.any,
   onPress: PropTypes.func,
   buttons: PropTypes.array,
   containerStyle: ViewPropTypes.style,
@@ -225,25 +200,17 @@ ButtonGroup.propTypes = {
   ]),
   buttonStyle: ViewPropTypes.style,
   containerBorderRadius: PropTypes.number,
+  disableSelected: PropTypes.bool,
   selectMultiple: PropTypes.bool,
   theme: PropTypes.object,
-  disabled: PropTypes.oneOfType([
-    PropTypes.bool,
-    PropTypes.arrayOf(PropTypes.number),
-  ]),
-  disabledStyle: ViewPropTypes.style,
-  disabledTextStyle: NativeText.propTypes.style,
-  disabledSelectedStyle: ViewPropTypes.style,
-  disabledSelectedTextStyle: NativeText.propTypes.style,
 };
 
 ButtonGroup.defaultProps = {
   selectedIndexes: [],
   selectMultiple: false,
   containerBorderRadius: 3,
-  disabled: false,
-  Component: Platform.OS === 'ios' ? TouchableOpacity : TouchableNativeFeedback,
-  onPress: () => null,
+  onPress: () => {},
+  component: Platform.OS === 'ios' ? TouchableOpacity : TouchableNativeFeedback,
 };
 
 export { ButtonGroup };

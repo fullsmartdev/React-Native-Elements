@@ -3,39 +3,33 @@ import PropTypes from 'prop-types';
 import {
   View,
   Text,
-  Image as RNImage,
+  Image,
   Platform,
   StyleSheet,
   TouchableOpacity,
   TouchableHighlight,
   TouchableNativeFeedback,
   TouchableWithoutFeedback,
+  Animated,
 } from 'react-native';
 
 import { withTheme, ViewPropTypes } from '../config';
 import { renderNode, nodeType } from '../helpers';
 
 import Icon from '../icons/Icon';
-import Image from '../image/Image';
 
-const avatarSizes = {
+const DEFAULT_COLORS = ['#000', '#333', '#555', '#888', '#aaa', '#ddd'];
+const DEFAULT_SIZES = {
   small: 34,
   medium: 50,
   large: 75,
   xlarge: 150,
 };
 
-const defaultEditButton = {
-  name: 'mode-edit',
-  type: 'material',
-  color: '#fff',
-  underlayColor: '#000',
-};
-
 const Avatar = ({
   onPress,
   onLongPress,
-  Component = onPress || onLongPress ? TouchableOpacity : View,
+  component: Component = onPress || onLongPress ? TouchableOpacity : View,
   containerStyle,
   icon,
   iconStyle,
@@ -47,7 +41,7 @@ const Avatar = ({
   titleStyle,
   overlayContainerStyle,
   showEditButton,
-  editButton: passedEditButton,
+  editButton,
   onEditPress,
   imageProps,
   placeholderStyle,
@@ -56,20 +50,17 @@ const Avatar = ({
   ...attributes
 }) => {
   const width =
-    typeof size === 'number' ? size : avatarSizes[size] || avatarSizes.small;
+    typeof size === 'number'
+      ? size
+      : DEFAULT_SIZES[size] || DEFAULT_SIZES.small;
   const height = width;
   const titleSize = width / 2;
   const iconSize = width / 2;
-
-  const editButton = {
-    ...defaultEditButton,
-    ...passedEditButton,
-  };
   const editButtonSize = editButton.size || (width + height) / 2 / 3;
 
   const Utils = showEditButton && (
     <TouchableHighlight
-      style={StyleSheet.flatten([
+      style={[
         styles.editButton,
         {
           width: editButtonSize,
@@ -77,12 +68,17 @@ const Avatar = ({
           borderRadius: editButtonSize / 2,
         },
         editButton.style,
-      ])}
+      ]}
       underlayColor={editButton.underlayColor}
       onPress={onEditPress}
     >
       <View>
-        <Icon size={editButtonSize * 0.8} {...editButton} />
+        <Icon
+          size={editButtonSize * 0.8}
+          name={editButton.iconName}
+          type={editButton.iconType}
+          color={editButton.iconColor}
+        />
       </View>
     </TouchableHighlight>
   );
@@ -91,13 +87,7 @@ const Avatar = ({
     (renderPlaceholderContent &&
       renderNode(undefined, renderPlaceholderContent)) ||
     (title && (
-      <Text
-        style={StyleSheet.flatten([
-          styles.title,
-          { fontSize: titleSize },
-          titleStyle,
-        ])}
-      >
+      <Text style={[styles.title, { fontSize: titleSize }, titleStyle]}>
         {title}
       </Text>
     )) ||
@@ -115,29 +105,21 @@ const Avatar = ({
     <Component
       onPress={onPress}
       onLongPress={onLongPress}
-      style={StyleSheet.flatten([
+      style={[
         styles.container,
         { height, width },
-        rounded && { borderRadius: width / 2 },
+        rounded && { borderRadius: width / 2, overflow: 'hidden' },
         containerStyle,
-      ])}
+      ]}
       {...attributes}
     >
-      <Image
+      <FadeInImage
         placeholderStyle={placeholderStyle}
         PlaceholderContent={PlaceholderContent}
-        containerStyle={StyleSheet.flatten([
-          styles.overlayContainer,
-          overlayContainerStyle,
-          rounded && { borderRadius: width / 2, overflow: 'hidden' },
-        ])}
+        containerStyle={overlayContainerStyle}
         source={source}
         {...imageProps}
-        style={StyleSheet.flatten([
-          styles.avatar,
-          imageProps && imageProps.style,
-          avatarStyle,
-        ])}
+        style={[imageProps && imageProps.style, avatarStyle]}
         ImageComponent={ImageComponent}
       />
       {Utils}
@@ -168,10 +150,10 @@ const styles = StyleSheet.create({
     right: 0,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#aaa',
+    backgroundColor: DEFAULT_COLORS[4],
     ...Platform.select({
       ios: {
-        shadowColor: '#000',
+        shadowColor: DEFAULT_COLORS[0],
         shadowOffset: { width: 1, height: 1 },
         shadowRadius: 2,
         shadowOpacity: 0.5,
@@ -181,10 +163,19 @@ const styles = StyleSheet.create({
       },
     }),
   },
+  placeholderContainer: {
+    ...StyleSheet.absoluteFillObject,
+  },
+  placeholder: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#BDBDBD',
+  },
 });
 
 Avatar.propTypes = {
-  Component: PropTypes.oneOf([
+  component: PropTypes.oneOf([
     View,
     TouchableOpacity,
     TouchableHighlight,
@@ -193,13 +184,13 @@ Avatar.propTypes = {
   ]),
   onPress: PropTypes.func,
   onLongPress: PropTypes.func,
-  containerStyle: ViewPropTypes.style,
-  source: RNImage.propTypes.source,
-  avatarStyle: ViewPropTypes.style,
+  containerStyle: PropTypes.any,
+  source: Image.propTypes.source,
+  avatarStyle: PropTypes.any,
   rounded: PropTypes.bool,
   title: PropTypes.string,
   titleStyle: Text.propTypes.style,
-  overlayContainerStyle: ViewPropTypes.style,
+  overlayContainerStyle: PropTypes.any,
   activeOpacity: PropTypes.number,
   icon: PropTypes.object,
   iconStyle: Text.propTypes.style,
@@ -211,25 +202,91 @@ Avatar.propTypes = {
   onEditPress: PropTypes.func,
   editButton: PropTypes.shape({
     size: PropTypes.number,
-    name: PropTypes.string,
-    type: PropTypes.string,
-    color: PropTypes.string,
+    iconName: PropTypes.string,
+    iconType: PropTypes.string,
+    iconColor: PropTypes.string,
     underlayColor: PropTypes.string,
     style: ViewPropTypes.style,
   }),
   placeholderStyle: ViewPropTypes.style,
   renderPlaceholderContent: nodeType,
   imageProps: PropTypes.object,
-  ImageComponent: PropTypes.oneOfType([PropTypes.func, PropTypes.object]),
+  ImageComponent: PropTypes.func,
 };
 
 Avatar.defaultProps = {
   showEditButton: false,
   onEditPress: null,
   size: 'small',
-  editButton: defaultEditButton,
-  ImageComponent: RNImage,
+  editButton: {
+    size: null,
+    iconName: 'mode-edit',
+    iconType: 'material',
+    iconColor: '#fff',
+    underlayColor: DEFAULT_COLORS[0],
+    style: null,
+  },
+  ImageComponent: Image,
 };
 
-export { Avatar };
+class FadeInImage extends React.PureComponent {
+  placeholderContainerOpacity = new Animated.Value(1);
+
+  onLoadEnd = () => {
+    /* Images finish loading in the same frame for some reason,
+      the images will fade in separately with staggerNonce */
+    const minimumWait = 100;
+    const staggerNonce = 200 * Math.random();
+    setTimeout(
+      () =>
+        Animated.timing(this.placeholderContainerOpacity, {
+          toValue: 0,
+          duration: 350,
+          useNativeDriver: true,
+        }).start(),
+      minimumWait + staggerNonce
+    );
+  };
+
+  render() {
+    const {
+      placeholderStyle,
+      PlaceholderContent,
+      containerStyle,
+      style,
+      ImageComponent,
+      ...attributes
+    } = this.props;
+
+    return Platform.OS === 'ios' ? (
+      <View style={[styles.overlayContainer, containerStyle]}>
+        <ImageComponent
+          {...attributes}
+          onLoadEnd={this.onLoadEnd}
+          style={[styles.avatar, style]}
+        />
+        <Animated.View
+          style={[
+            styles.placeholderContainer,
+            { opacity: this.placeholderContainerOpacity },
+          ]}
+        >
+          <View style={[style, styles.placeholder, placeholderStyle]}>
+            {PlaceholderContent}
+          </View>
+        </Animated.View>
+      </View>
+    ) : (
+      <View style={[styles.overlayContainer, containerStyle]}>
+        <View style={styles.placeholderContainer}>
+          <View style={[style, styles.placeholder, placeholderStyle]}>
+            {PlaceholderContent}
+          </View>
+        </View>
+        <Image {...attributes} style={[styles.avatar, style]} />
+      </View>
+    );
+  }
+}
+
 export default withTheme(Avatar, 'Avatar');

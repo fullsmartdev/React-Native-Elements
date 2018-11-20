@@ -3,13 +3,7 @@ id: checkbox
 title: CheckBox
 ---
 
-CheckBoxes allow users to complete tasks that involve making choices such as
-selecting options, or switching settings on or off. It provides a clear visual
-of either a true or false choice.
-
 ![Checkboxes](/react-native-elements/img/checkbox.png)
-
-## Usage
 
 ```js
 import { CheckBox } from 'react-native-elements'
@@ -52,12 +46,10 @@ import { CheckBox } from 'react-native-elements'
 />
 ```
 
----
-
-## Props
+### Props
 
 * [`iconType`](#icontype)
-* [`Component`](#Component)
+* [`component`](#component)
 * [`checked`](#checked)
 * [`size`](#size)
 * [`iconRight`](#iconright)
@@ -79,17 +71,17 @@ import { CheckBox } from 'react-native-elements'
 
 ---
 
-## Reference
+# Reference
 
 ### `iconType`
 
-type of icon set. [Supported sets here](icon.md#available-icon-sets).
+Icon family, can be one of the following: simple-line-icon, zocial, octicon, material, material-community, ionicon, foundation, evilicon, entypo (required only if specifying an icon that is not from font-awesome)
 
-|  Type  |   Default    |
-| :----: | :----------: |
-| string | font-awesome |
+|  Type  |   Default   |
+| :----: | :---------: |
+| string | fontawesome |
 
-### `Component`
+### `component`
 
 Specify React Native component for main button (optional)
 
@@ -195,8 +187,7 @@ onPress function for checkbox (required)
 
 ### `checkedIcon`
 
-Default checked icon ([Font Awesome Icon](http://fontawesome.io/icons/))
-(optional)
+Default checked icon ([Font Awesome Icon](http://fontawesome.io/icons/)) (optional)
 
 |               Type               |    Default     |
 | :------------------------------: | :------------: |
@@ -204,8 +195,7 @@ Default checked icon ([Font Awesome Icon](http://fontawesome.io/icons/))
 
 ### `uncheckedIcon`
 
-Default checked icon ([Font Awesome Icon](http://fontawesome.io/icons/))
-(optional)
+Default checked icon ([Font Awesome Icon](http://fontawesome.io/icons/)) (optional)
 
 |               Type               | Default  |
 | :------------------------------: | :------: |

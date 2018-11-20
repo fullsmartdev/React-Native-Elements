@@ -26,7 +26,7 @@ class SearchBar extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isEmpty: props.value ? props.value === "" : true
+      isEmpty: true,
     };
   }
 

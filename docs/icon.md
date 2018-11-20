@@ -3,33 +3,26 @@ id: icon
 title: Icon
 ---
 
-Icons are visual indicators usually used to describe action or intent.
-
 ![Icon](/react-native-elements/img/icons.png)
+
+Icons take the name of a [material icon](https://design.google.com/icons/) as a
+prop. Use the
+[icon directory](https://oblador.github.io/react-native-vector-icons/) to search
+for icons
+
+> You can override Material icons with one of the following:
+> [material-community](https://materialdesignicons.com/),
+> [font-awesome](http://fontawesome.io/icons/),
+> [octicon](https://octicons.github.com/), [ionicon](http://ionicons.com/),
+> [foundation](http://zurb.com/playground/foundation-icon-fonts-3),
+> [evilicon](http://evil-icons.io/),
+> [simple-line-icon](http://simplelineicons.com/),
+> [zocial](http://weloveiconfonts.com/), or [entypo](http://www.entypo.com/) by
+> providing a type prop.
 
 > Hint: use **reverse** to make your icon look like a button
 
-## Available Icon Sets
-
-The icon sets in React Native Elements are made possible through
-[react-native-vector-icons](https://github.com/oblador/react-native-vector-icons).
-
-The current list of available icons sets are:
-
-* [material](https://material.io/tools/icons)
-* [material-community](https://materialdesignicons.com/)
-* [font-awesome](http://fontawesome.io/icons/)
-* [octicon](https://octicons.github.com/)
-* [ionicon](http://ionicons.com/)
-* [foundation](http://zurb.com/playground/foundation-icon-fonts-3)
-* [evilicon](http://evil-icons.io/)
-* [simple-line-icon](http://simplelineicons.com/)
-* [zocial](http://weloveiconfonts.com/)
-* [entypo](http://www.entypo.com/)
-* [feather](https://feathericons.com/)
-* [antdesign](http://beta.ant.design/components/icon/)
-
-## Custom Icon Fonts
+### Custom Icon Fonts
 
 Register your own custom icons by calling
 `registerCustomIconType('customid', customFont)`. Create a custom font by
@@ -42,8 +35,6 @@ If you are looking to implement custom icon fonts, please look at our example
 app
 [here](https://github.com/react-native-training/react-native-elements-app/blob/master/src/views/buttons_home.js)
 to see how to use them with React Native Elements.
-
-## Usage
 
 ```js
 import { Icon } from 'react-native-elements'
@@ -78,11 +69,11 @@ import { Icon } from 'react-native-elements'
 
 ---
 
-## Props
+### Props
 
 * [`color`](#color)
 * [`containerStyle`](#containerstyle)
-* [`Component`](#Component)
+* [`component`](#component)
 * [`disabled`](#disabled)
 * [`disabledStyle`](#disabledstyle)
 * [`onPress`](#onpress)
@@ -98,7 +89,7 @@ import { Icon } from 'react-native-elements'
 
 ---
 
-## Reference
+# Reference
 
 ### `name`
 
@@ -112,7 +103,8 @@ name of icon (required)
 
 ### `type`
 
-type of icon set. [Supported sets here](#available-icon-sets).
+type (defaults to material, options are
+`material-community, zocial, font-awesome, octicon, ionicon, foundation, evilicon, simple-line-icon, feather or entypo`)
 
 |  Type  | Default  |
 | :----: | :------: |
@@ -150,7 +142,7 @@ additional styling to icon (optional)
 
 ---
 
-### `Component`
+### `component`
 
 update React Native Component (optional)
 

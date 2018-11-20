@@ -3,9 +3,6 @@ id: searchbar
 title: SearchBar
 ---
 
-SearchBars are used to search or filter items. Use a SearchBar when the number
-of items directly impacts a user's ability to find one of them.
-
 ## Default SearchBar
 
 <img src="/react-native-elements/img/searchbar.png" width="300" >
@@ -19,8 +16,6 @@ of items directly impacts a user's ability to find one of them.
 **Android**
 
 <img src="https://user-images.githubusercontent.com/17592779/31586716-f6e8ff9c-b1d4-11e7-918f-2a7e11d51b08.gif" width="300">
-
-## Usage
 
 ```js
 import { SearchBar } from 'react-native-elements'
@@ -75,28 +70,20 @@ import { SearchBar } from 'react-native-elements'
   placeholder='Search' />
 ```
 
----
+### Props
 
-## Props
-
-> This component inherits all
-> [React Native Elements Input props](/react-native-elements/docs/input.html#props),
-> which means
-> [all native TextInput props that come with a standard React Native TextInput element](https://facebook.github.io/react-native/docs/textinput.html),
-> along with the following:
+> This component inherits all [React Native Elements Input props](/react-native-elements/docs/input.html#props), which means [all native TextInput props that come with a standard React Native TextInput element](https://facebook.github.io/react-native/docs/textinput.html), along with the following:
 
 * [`platform`](#platform)
 * [`clearIcon`](#clearicon)
 * [`searchIcon`](#searchIcon)
-* [`cancelIcon`](#cancelicon-platform-android-only) (**`platform="android"`
-  only**)
+* [`cancelIcon`](#cancelicon-platform-android-only) (**`platform="android"` only**)
 * [`containerStyle`](#containerstyle)
 * [`inputContainerStyle`](#inputcontainerstyle)
 * [`inputStyle`](#inputstyle)
 * [`leftIconContainerStyle`](#lefticoncontainerstyle)
 * [`rightIconContainerStyle`](#righticoncontainerstyle)
-* [`lightTheme`](#lighttheme-platform-default-only) (**`platform="default"`
-  only**)
+* [`lightTheme`](#lighttheme-platform-default-only) (**`platform="default"` only**)
 * [`loadingProps`](#loadingprops)
 * [`noIcon`](#noicon)
 * [`onChangeText`](#onchangetext)
@@ -112,7 +99,7 @@ import { SearchBar } from 'react-native-elements'
 
 ---
 
-## Reference
+# Reference
 
 ### `platform`
 
@@ -126,8 +113,8 @@ choose the look and feel of the search bar. One of "default", "ios", "android"
 
 ### `clearIcon`
 
-This props allows to override the `Icon` props or use a custom component. Use
-`null` or `false` to hide the icon.
+This props allows to override the `Icon` props or use a custom component.
+Use `null` or `false` to hide the icon.
 
 |                                             Type                                              | Default |
 | :-------------------------------------------------------------------------------------------: | :-----: |
@@ -137,8 +124,8 @@ This props allows to override the `Icon` props or use a custom component. Use
 
 ### `searchIcon`
 
-This props allows to override the `Icon` props or use a custom component. Use
-`null` or `false` to hide the icon.
+This props allows to override the `Icon` props or use a custom component.
+Use `null` or `false` to hide the icon.
 
 |                                             Type                                              | Default |
 | :-------------------------------------------------------------------------------------------: | :-----: |
@@ -148,8 +135,8 @@ This props allows to override the `Icon` props or use a custom component. Use
 
 ### `cancelIcon` (**`platform="android"` only**)
 
-This props allows to override the `Icon` props or use a custom component. Use
-`null` or `false` to hide the icon.
+This props allows to override the `Icon` props or use a custom component.
+Use `null` or `false` to hide the icon.
 
 |                                             Type                                              | Default |
 | :-------------------------------------------------------------------------------------------: | :-----: |
@@ -338,9 +325,7 @@ callback fired when pressing the cancel button (iOS) or the back icon (Android)
 
 #### <a name="calling"></a> Calling methods on SearchBar
 
-Store a reference to the SearchBar in your component by using the ref prop
-provided by React
-([see docs](https://facebook.github.io/react/docs/refs-and-the-dom.html)):
+Store a reference to the SearchBar in your component by using the ref prop provided by React ([see docs](https://facebook.github.io/react/docs/refs-and-the-dom.html)):
 
 ```js
 <SearchBar

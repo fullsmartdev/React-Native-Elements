@@ -3,15 +3,9 @@ id: listitem
 title: ListItem
 ---
 
-ListItems are used to display rows of information, such as a contact list,
-playlist, or menu. They are very customizeable and can contain switches,
-avatars, badges, icons, and more.
-
 ![Lists](/react-native-elements/img/lists.png)
 
-## Usage
-
-### Using Map Function - Implemented with avatar
+#### Using Map Function. Implemented with avatar.
 
 ```js
 import { ListItem } from 'react-native-elements'
@@ -44,7 +38,7 @@ const list = [
 </View>
 ```
 
-### Using Map Function - Implemented with link and icon
+#### Using Map Function. Implemented with link and icon.
 
 ```js
 import { ListItem } from 'react-native-elements'
@@ -74,7 +68,7 @@ const list = [
 </View>
 ```
 
-### Using RN FlatList - Implemented with link and avatar
+#### Using RN FlatList. Implemented with link and avatar.
 
 ```js
 import { ListItem } from 'react-native-elements'
@@ -103,6 +97,7 @@ renderItem = ({ item }) => (
   />
 )
 
+
 render () {
   return (
     <FlatList
@@ -114,7 +109,7 @@ render () {
 }
 ```
 
-### Using RN FlatList - Implemented with custom avatar component.
+#### Using RN FlatList. Implemented with custom avatar component.
 
 ```js
 import { ListItem } from 'react-native-elements'
@@ -156,7 +151,7 @@ render () {
 }
 ```
 
-### ListItem implemented with custom View for Subtitle
+#### ListItem implemented with custom View for Subtitle
 
 ```js
 import { ListItem } from 'react-native-elements'
@@ -193,7 +188,7 @@ styles = StyleSheet.create({
 })
 ```
 
-### Badges
+#### Badges
 
 ![Badges](/react-native-elements/img/list-badges.jpeg)
 
@@ -206,7 +201,7 @@ Example badge usage
 />
 ```
 
-### Linear gradient + Scale feedback
+#### Linear gradient + Scale feedback
 
 <img src="/react-native-elements/img/listitem_with_gradient_scale.gif" width="500" >
 
@@ -215,10 +210,12 @@ import TouchableScale from 'react-native-touchable-scale' // https://github.com/
 import LinearGradient from 'react-native-linear-gradient' // Only if no expo
 
   <ListItem
-    Component={TouchableScale}
+    component={TouchableScale}
+
     friction={90} //
     tension={100} // These props are passed to the parent component (here TouchableScale)
     activeScale={0.95} //
+
     linearGradientProps={{
       colors: ['#FF9800', '#F44336'],
       start: [1, 0],
@@ -237,9 +234,9 @@ import LinearGradient from 'react-native-linear-gradient' // Only if no expo
 
 ---
 
-## Props
+### Props
 
-* [`Component`](#Component)
+* [`component`](#component)
 * [`containerStyle`](#containerstyle)
 * [`contentContainerStyle`](#contentcontainerstyle)
 * [`rightContentContainerStyle`](#rightcontentcontainerstyle)
@@ -280,15 +277,15 @@ import LinearGradient from 'react-native-linear-gradient' // Only if no expo
 
 ---
 
-## Reference
+# Reference
 
-### `Component`
+### `component`
 
 replace element with custom element (optional)
 
-|                                  Type                                   |  Default  |
-| :---------------------------------------------------------------------: | :-------: |
-| View or TouchableHighlight (default) if onPress method is added as prop | component |
+|                            Type                             |  Default  |
+| :---------------------------------------------------------: | :-------: |
+| View or TouchableOpacity if onPress method is added as prop | component |
 
 ---
 

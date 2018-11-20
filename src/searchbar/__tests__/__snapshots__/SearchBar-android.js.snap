@@ -60,7 +60,6 @@ exports[`Android SearchBar component should render with a custom cancel icon 1`]
     theme={
       Object {
         "colors": Object {
-          "disabled": "hsl(208, 8%, 90%)",
           "divider": "#bcbbc1",
           "error": "#ff190c",
           "grey0": "#393e42",
@@ -73,8 +72,6 @@ exports[`Android SearchBar component should render with a custom cancel icon 1`]
           "primary": "#2089dc",
           "searchBg": "#303337",
           "secondary": "#8F0CE8",
-          "success": "#52c41a",
-          "warning": "#faad14",
         },
       }
     }
@@ -142,7 +139,6 @@ exports[`Android SearchBar component should render with a custom cancel icon com
     theme={
       Object {
         "colors": Object {
-          "disabled": "hsl(208, 8%, 90%)",
           "divider": "#bcbbc1",
           "error": "#ff190c",
           "grey0": "#393e42",
@@ -155,8 +151,6 @@ exports[`Android SearchBar component should render with a custom cancel icon com
           "primary": "#2089dc",
           "searchBg": "#303337",
           "secondary": "#8F0CE8",
-          "success": "#52c41a",
-          "warning": "#faad14",
         },
       }
     }
@@ -224,7 +218,6 @@ exports[`Android SearchBar component should render with a custom clear icon 1`] 
     theme={
       Object {
         "colors": Object {
-          "disabled": "hsl(208, 8%, 90%)",
           "divider": "#bcbbc1",
           "error": "#ff190c",
           "grey0": "#393e42",
@@ -237,8 +230,6 @@ exports[`Android SearchBar component should render with a custom clear icon 1`] 
           "primary": "#2089dc",
           "searchBg": "#303337",
           "secondary": "#8F0CE8",
-          "success": "#52c41a",
-          "warning": "#faad14",
         },
       }
     }
@@ -306,7 +297,6 @@ exports[`Android SearchBar component should render with a custom clear icon comp
     theme={
       Object {
         "colors": Object {
-          "disabled": "hsl(208, 8%, 90%)",
           "divider": "#bcbbc1",
           "error": "#ff190c",
           "grey0": "#393e42",
@@ -319,8 +309,6 @@ exports[`Android SearchBar component should render with a custom clear icon comp
           "primary": "#2089dc",
           "searchBg": "#303337",
           "secondary": "#8F0CE8",
-          "success": "#52c41a",
-          "warning": "#faad14",
         },
       }
     }
@@ -388,7 +376,6 @@ exports[`Android SearchBar component should render with a custom methods 1`] = `
     theme={
       Object {
         "colors": Object {
-          "disabled": "hsl(208, 8%, 90%)",
           "divider": "#bcbbc1",
           "error": "#ff190c",
           "grey0": "#393e42",
@@ -401,8 +388,6 @@ exports[`Android SearchBar component should render with a custom methods 1`] = `
           "primary": "#2089dc",
           "searchBg": "#303337",
           "secondary": "#8F0CE8",
-          "success": "#52c41a",
-          "warning": "#faad14",
         },
       }
     }
@@ -470,7 +455,6 @@ exports[`Android SearchBar component should render with a custom search icon 1`]
     theme={
       Object {
         "colors": Object {
-          "disabled": "hsl(208, 8%, 90%)",
           "divider": "#bcbbc1",
           "error": "#ff190c",
           "grey0": "#393e42",
@@ -483,8 +467,6 @@ exports[`Android SearchBar component should render with a custom search icon 1`]
           "primary": "#2089dc",
           "searchBg": "#303337",
           "secondary": "#8F0CE8",
-          "success": "#52c41a",
-          "warning": "#faad14",
         },
       }
     }
@@ -545,7 +527,6 @@ exports[`Android SearchBar component should render with a custom search icon com
     theme={
       Object {
         "colors": Object {
-          "disabled": "hsl(208, 8%, 90%)",
           "divider": "#bcbbc1",
           "error": "#ff190c",
           "grey0": "#393e42",
@@ -558,8 +539,6 @@ exports[`Android SearchBar component should render with a custom search icon com
           "primary": "#2089dc",
           "searchBg": "#303337",
           "secondary": "#8F0CE8",
-          "success": "#52c41a",
-          "warning": "#faad14",
         },
       }
     }
@@ -640,7 +619,6 @@ exports[`Android SearchBar component should render with loading 1`] = `
     theme={
       Object {
         "colors": Object {
-          "disabled": "hsl(208, 8%, 90%)",
           "divider": "#bcbbc1",
           "error": "#ff190c",
           "grey0": "#393e42",
@@ -653,8 +631,6 @@ exports[`Android SearchBar component should render with loading 1`] = `
           "primary": "#2089dc",
           "searchBg": "#303337",
           "secondary": "#8F0CE8",
-          "success": "#52c41a",
-          "warning": "#faad14",
         },
       }
     }
@@ -722,7 +698,6 @@ exports[`Android SearchBar component should render without cancel icon 1`] = `
     theme={
       Object {
         "colors": Object {
-          "disabled": "hsl(208, 8%, 90%)",
           "divider": "#bcbbc1",
           "error": "#ff190c",
           "grey0": "#393e42",
@@ -735,8 +710,6 @@ exports[`Android SearchBar component should render without cancel icon 1`] = `
           "primary": "#2089dc",
           "searchBg": "#303337",
           "secondary": "#8F0CE8",
-          "success": "#52c41a",
-          "warning": "#faad14",
         },
       }
     }
@@ -804,7 +777,6 @@ exports[`Android SearchBar component should render without clear icon 1`] = `
     theme={
       Object {
         "colors": Object {
-          "disabled": "hsl(208, 8%, 90%)",
           "divider": "#bcbbc1",
           "error": "#ff190c",
           "grey0": "#393e42",
@@ -817,8 +789,6 @@ exports[`Android SearchBar component should render without clear icon 1`] = `
           "primary": "#2089dc",
           "searchBg": "#303337",
           "secondary": "#8F0CE8",
-          "success": "#52c41a",
-          "warning": "#faad14",
         },
       }
     }
@@ -886,7 +856,6 @@ exports[`Android SearchBar component should render without issues 1`] = `
     theme={
       Object {
         "colors": Object {
-          "disabled": "hsl(208, 8%, 90%)",
           "divider": "#bcbbc1",
           "error": "#ff190c",
           "grey0": "#393e42",
@@ -899,8 +868,6 @@ exports[`Android SearchBar component should render without issues 1`] = `
           "primary": "#2089dc",
           "searchBg": "#303337",
           "secondary": "#8F0CE8",
-          "success": "#52c41a",
-          "warning": "#faad14",
         },
       }
     }
@@ -961,7 +928,6 @@ exports[`Android SearchBar component should render without search icon 1`] = `
     theme={
       Object {
         "colors": Object {
-          "disabled": "hsl(208, 8%, 90%)",
           "divider": "#bcbbc1",
           "error": "#ff190c",
           "grey0": "#393e42",
@@ -974,8 +940,6 @@ exports[`Android SearchBar component should render without search icon 1`] = `
           "primary": "#2089dc",
           "searchBg": "#303337",
           "secondary": "#8F0CE8",
-          "success": "#52c41a",
-          "warning": "#faad14",
         },
       }
     }

@@ -3,13 +3,9 @@ id: button_group
 title: ButtonGroup
 ---
 
-ButtonGroup is a linear set of segments, each of which function as a button that
-can display a different view. Use a ButtonGroup to offer choices that are
-closely related but mutually exclusive.
+### [Snack Demo](https://snack.expo.io/BJZpMm3ob)
 
 ![ButtonGroup](/react-native-elements/img/button_group.png)
-
-## Usage
 
 ### Using strings
 
@@ -72,24 +68,16 @@ render () {
 }
 ```
 
----
+### Props
 
-## Props
-
-> This component inherits
-> [all native TouchableHighlight and TouchableOpacity props that come with React Native TouchableHighlight or TouchableOpacity elements](https://facebook.github.io/react-native/docs/touchablehighlight.html),
-> along with the following:
+> This component inherits [all native TouchableHighlight and TouchableOpacity props that come with React Native TouchableHighlight or TouchableOpacity elements](https://facebook.github.io/react-native/docs/touchablehighlight.html), along with the following:
 
 * [`buttonStyle`](#buttonstyle)
 * [`buttons`](#buttons)
-* [`Component`](#Component)
+* [`component`](#component)
 * [`containerBorderRadius`](#containerborderradius)
 * [`containerStyle`](#containerstyle)
-* [`disabled`](#disabled)
-* [`disabledStyle`](#disabledstyle)
-* [`disabledTextStyle`](#disabledtextstyle)
-* [`disabledSelectedStyle`](#disabledselectedstyle)
-* [`disabledSelectedTextStyle`](#disabledselectedtextstyle)
+* [`disableSelected`](#disableselected)
 * [`innerBorderStyle`](#innerborderstyle)
 * [`onPress`](#onpress)
 * [`selectMultiple`](#selectmultiple)
@@ -102,7 +90,9 @@ render () {
 
 ---
 
-## Reference
+# Reference
+
+---
 
 ### `buttonStyle`
 
@@ -116,8 +106,7 @@ specify styling for button (optional)
 
 ### `buttons`
 
-array of buttons for component (required), if returning a component, must be an
-object with { element: componentName }
+array of buttons for component (required), if returning a component, must be an object with { element: componentName }
 
 | Type  | Default |
 | :---: | :-----: |
@@ -125,7 +114,7 @@ object with { element: componentName }
 
 ---
 
-### `Component`
+### `component`
 
 Choose other button component such as TouchableOpacity (optional)
 
@@ -155,54 +144,13 @@ specify styling for main button container (optional)
 
 ---
 
-### `disabled`
+### `disableSelected`
 
-Controls if buttons are disabled. Setting `true` makes all of them disabled,
-while using an array only makes those indices disabled.
+disables the currently selected button if true
 
-|          Type           | Default |
-| :---------------------: | :-----: |
-| boolean **OR** number[] |  false  |
-
----
-
-### `disabledStyle`
-
-Styling for each button when disabled.
-
-|        Type         |    Default     |
-| :-----------------: | :------------: |
-| View style (object) | Internal Style |
-
----
-
-### `disabledTextStyle`
-
-Styling for the text of each button when disabled.
-
-|        Type         |    Default     |
-| :-----------------: | :------------: |
-| Text style (object) | Internal Style |
-
----
-
-### `disabledSelectedStyle`
-
-Styling for each selected button when disabled.
-
-|        Type         |    Default     |
-| :-----------------: | :------------: |
-| View style (object) | Internal Style |
-
----
-
-### `disabledSelectedTextStyle`
-
-Styling for the text of each selected button when disabled.
-
-|        Type         |    Default     |
-| :-----------------: | :------------: |
-| Text style (object) | Internal Style |
+|  Type   | Default |
+| :-----: | :-----: |
+| boolean |  false  |
 
 ---
 

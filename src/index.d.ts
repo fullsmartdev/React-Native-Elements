@@ -35,7 +35,6 @@ export type IconType =
   | 'foundation'
   | 'evilicon'
   | 'entypo'
-  | 'antdesign'
   | string;
 
 export interface IconObject {
@@ -94,12 +93,7 @@ export interface AvatarProps {
    *
    * @default TouchableOpacity
    */
-  Component?: React.ComponentClass;
-
-  /**
-   * Callback function when pressing Edit button
-   */
-  onEditPress?(): void;
+  component?: React.ComponentClass;
 
   /**
    * Callback function when pressing component
@@ -156,30 +150,6 @@ export interface AvatarProps {
   activeOpacity?: number;
 
   /**
-   * If to show the edit button or not
-   *
-   * @default false
-   */
-  showEditButton?: boolean;
-
-  /**
-   * Edit button for the avatar
-   *
-   * @default "{size: null, iconName: 'mode-edit', iconType: 'material', iconColor: '#fff', underlayColor: '#000', style: null}"
-   */
-  editButton?: Partial<IconProps>;
-
-  /**
-   * Style for the placeholder
-   */
-  placeholderStyle?: StyleProp<ViewStyle>;
-
-  /**
-   * Render a content inside placeholder
-   */
-  renderPlaceholderContent?: React.ReactElement<{}>;
-
-  /**
    * Icon for the avatar
    */
   icon?: AvatarIcon;
@@ -188,11 +158,6 @@ export interface AvatarProps {
    * extra styling for icon component
    */
   iconStyle?: StyleProp<TextStyle>;
-
-  /**
-   * Optional properties to pass to the image if provided e.g "resizeMode"
-   */
-  imageProps?: Partial<ImageProperties>;
 
   /**
    * Size of Avatar
@@ -242,6 +207,8 @@ export interface ButtonProps
 
   /**
    * Button title
+   *
+   * @default 'Welcome to\nReact Native Elements'
    */
   title?: string;
 
@@ -302,11 +269,11 @@ export interface ButtonProps
   linearGradientProps?: Object;
 
   /**
-   * Type of button
+   * If the button should appear without a background (clear style)
    *
-   * @default solid
+   * @default false
    */
-  type?: 'solid' | 'clear' | 'outline';
+  clear?: boolean;
 
   /**
    * If the user is allowed to interact with the button
@@ -345,17 +312,17 @@ export interface BadgeProps {
    *
    * @default null
    */
-  value?: React.ReactNode;
+  value?: string | number;
 
   /**
-   * Additional styling for badge (background) view component
-   */
-  badgeStyle?: StyleProp<ViewStyle>;
-
-  /**
-   * Style for the container
+   * Style for the outer badge component
    */
   containerStyle?: StyleProp<ViewStyle>;
+
+  /**
+   * Style for the outer-most badge component
+   */
+  wrapperStyle?: StyleProp<ViewStyle>;
 
   /**
    * Style for the text in the badge
@@ -363,18 +330,16 @@ export interface BadgeProps {
   textStyle?: StyleProp<TextStyle>;
 
   /**
-   * Custom component to replace the badge component
+   * Override the default badge contents, mutually exclusive with 'value' property
+   */
+  children?: React.ReactElement<{}>;
+
+  /**
+   * Custom component to replace the badge outer component
    *
    * @default View (if onPress then TouchableOpacity)
    */
-  Component?: React.ComponentClass;
-
-  /**
-   * Determines color of the indicator
-   *
-   * @default primary
-   */
-  status?: 'primary' | 'success' | 'warning' | 'error';
+  component?: React.ComponentClass;
 
   /**
    * Function called when pressed on the badge
@@ -386,7 +351,7 @@ export interface BadgeProps {
  * Badge component
  *
  */
-export class Badge extends React.Component<BadgeProps> {}
+export class Badge extends React.Component<BadgeProps, any> {}
 
 export interface CardProps {
   /**
@@ -514,6 +479,11 @@ export interface ButtonGroupProps {
   selectedIndexes?: number[];
 
   /**
+   * Method to update Button Group Index
+   */
+  onPress(selectedIndex: number): void;
+
+  /**
    * Array of buttons for component, if returning a component, must be an object with { element: componentName }
    */
   buttons: string[] | ElementObject[];
@@ -523,7 +493,7 @@ export interface ButtonGroupProps {
    *
    * @default TouchableHighlight
    */
-  Component?: React.ComponentType<any>;
+  component?: React.ComponentClass;
 
   /**
    * Specify styling for main button container
@@ -565,6 +535,13 @@ export interface ButtonGroupProps {
   underlayColor?: string;
 
   /**
+   * Disables the currently selected button if true
+   *
+   * @default false
+   */
+  disableSelected?: boolean;
+
+  /**
    * Determines what the opacity of the wrapped view should be when touch is active.
    */
   activeOpacity?: number;
@@ -578,40 +555,6 @@ export interface ButtonGroupProps {
    * Styling for the final border edge
    */
   lastBorderStyle?: StyleProp<TextStyle | ViewStyle>;
-
-  /**
-   * Controls if buttons are disabled
-   *
-   * Setting `true` makes all of them disabled, while using an array only makes those indices disabled
-   *
-   * @default false
-   */
-  disabled?: boolean | number[];
-
-  /**
-   * Styling for each button when disabled
-   */
-  disabledStyle?: StyleProp<ViewStyle>;
-
-  /**
-   * Styling for each selected button when disabled
-   */
-  disabledSelectedStyle?: StyleProp<ViewStyle>;
-
-  /**
-   * Styling for the text of each button when disabled
-   */
-  disabledTextStyle?: StyleProp<TextStyle>;
-
-  /**
-   * Styling for the text of each selected button when disabled
-   */
-  disabledSelectedTextStyle?: StyleProp<TextStyle>;
-
-  /**
-   * Method to update Button Group Index
-   */
-  onPress(selectedIndex: number): void;
 
   /**
    *
@@ -630,7 +573,7 @@ export interface ButtonGroupProps {
   setOpacityTo?(value: number): void;
 }
 
-export class ButtonGroup extends React.Component<ButtonGroupProps> {}
+export class ButtonGroup extends React.Component<ButtonGroupProps, any> {}
 
 export interface CheckBoxProps {
   /**
@@ -642,7 +585,7 @@ export interface CheckBoxProps {
   /**
    *  Specify React Native component for main button
    */
-  Component?: React.ComponentClass;
+  component?: React.ComponentClass;
 
   /**
    * Flag for checking the icon
@@ -938,7 +881,7 @@ export interface HeaderProps extends ViewProperties {
    *
    * @default 'center'
    */
-  placement?: 'left' | 'center' | 'right';
+  placement?: boolean;
 
   /**
    * Styling for main container
@@ -999,7 +942,7 @@ export interface IconProps {
   /**
    * View if no onPress method is defined, TouchableHighlight if onPress method is defined	React Native component	update React Native Component
    */
-  Component?: React.ComponentClass;
+  component?: React.ComponentClass;
 
   /**
    * onPress method for button
@@ -1074,11 +1017,14 @@ export interface ScaleProps extends TouchableWithoutFeedbackProps {
 }
 
 export interface ListItemProps {
+  component?: React.ReactElement<{}>;
   containerStyle?: StyleProp<ViewStyle>;
   contentContainerStyle?: StyleProp<ViewStyle>;
   rightContentContainerStyle?: StyleProp<ViewStyle>;
-  chevron?: boolean | Partial<IconProps>;
-  checkmark?: boolean | Partial<IconProps>;
+  chevron?: boolean | IconProps;
+  checkmark?: boolean | IconProps;
+  onPress?(): void;
+  onLongPress?(): void;
   title?: string | React.ReactElement<{}>;
   titleStyle?: StyleProp<TextStyle>;
   titleProps?: TextProperties;
@@ -1091,10 +1037,10 @@ export interface ListItemProps {
   rightSubtitle?: string | React.ReactElement<{}>;
   rightSubtitleStyle?: StyleProp<TextStyle>;
   rightSubtitleProps?: TextProperties;
-  leftIcon?: Partial<IconProps> | React.ReactElement<{}>;
-  rightIcon?: Partial<IconProps> | React.ReactElement<{}>;
-  leftAvatar?: Partial<AvatarProps> | React.ReactElement<{}>;
-  rightAvatar?: Partial<AvatarProps> | React.ReactElement<{}>;
+  leftIcon?: IconProps | React.ReactElement<{}>;
+  rightIcon?: IconProps | React.ReactElement<{}>;
+  leftAvatar?: AvatarProps | React.ReactElement<{}>;
+  rightAvatar?: AvatarProps | React.ReactElement<{}>;
   leftElement?: React.ReactElement<{}>;
   rightElement?: React.ReactElement<{}>;
   switch?: SwitchProperties;
@@ -1107,11 +1053,8 @@ export interface ListItemProps {
   topDivider?: boolean;
   bottomDivider?: boolean;
   scaleProps?: ScaleProps;
+  ViewComponent?: React.ComponentClass;
   pad?: number;
-  Component?: React.ComponentType<{}>;
-  ViewComponent?: React.ComponentType<{}>;
-  onPress?(): void;
-  onLongPress?(): void;
 }
 
 /**
@@ -1571,13 +1514,6 @@ export interface SliderProps {
   value?: number;
 
   /**
-   * Choose the orientation
-   *
-   * @default horizontal
-   */
-  orientation?: 'horizontal' | 'vertical';
-
-  /**
    * If true the user won't be able to move the slider
    *
    * @default false
@@ -1795,7 +1731,7 @@ export interface SocialIconProps {
    *
    * @default TouchableHighlight
    */
-  Component?: React.ComponentClass;
+  component?: React.ComponentClass;
 
   /**
    * Specify different font family
@@ -1924,35 +1860,6 @@ export interface TileProps {
  */
 export class Tile extends React.Component<TileProps, any> {}
 
-export interface ImageProps extends ImageProperties {
-  /**
-   * Specify a different component as the Image component.
-   *
-   * @default Image
-   */
-  ImageComponent?: React.ComponentClass<any>;
-
-  /**
-   * Content to render when image is loading
-   */
-  PlaceholderContent?: React.ComponentType<any>;
-
-  /**
-   * Additional styling for the container
-   */
-  containerStyle?: StyleProp<ViewStyle>;
-
-  /**
-   * Additional styling for the placeholder container
-   */
-  placeholderStyle?: StyleProp<ViewStyle>;
-}
-
-/**
- * Image component
- */
-export class Image extends React.Component<ImageProps> {}
-
 /**
  * Colors
  */
@@ -1968,10 +1875,7 @@ export interface Colors {
   readonly grey5: string;
   readonly greyOutline: string;
   readonly searchBg: string;
-  readonly success: string;
-  readonly warning: string;
   readonly error: string;
-  readonly disabled: string;
   readonly [key: string]: string;
 }
 
@@ -1996,6 +1900,8 @@ export function registerCustomIconType(id: string, font: any): void;
 
 type RecursivePartial<T> = { [P in keyof T]?: RecursivePartial<T[P]> };
 
+type PartialExcept<T, K extends keyof T> = RecursivePartial<T> & Pick<T, K>;
+
 export interface FullTheme {
   Avatar: Partial<AvatarProps>;
   Badge: Partial<BadgeProps>;
@@ -2006,7 +1912,6 @@ export interface FullTheme {
   Divider: Partial<DividerProps>;
   Header: Partial<HeaderProps>;
   Icon: Partial<IconProps>;
-  Image: Partial<ImageProps>;
   Input: Partial<InputProps>;
   ListItem: Partial<ListItemProps>;
   Overlay: Partial<OverlayProps>;
@@ -2021,34 +1926,34 @@ export interface FullTheme {
   colors: RecursivePartial<Colors>;
 }
 
-export type Theme<T = {}> = Partial<FullTheme> & T;
+export type Theme<T> = PartialExcept<FullTheme, 'colors'> & T;
 
 export type UpdateTheme = (updates: RecursivePartial<FullTheme>) => void;
 
-export interface ThemeProps<T> {
-  theme: Theme<T>;
+export interface ThemeProps {
+  theme: Theme<{}>;
   updateTheme: UpdateTheme;
 }
 
 /**
  * ThemeProvider
  */
-export interface ThemeProviderProps<T> {
-  theme?: Theme<T>;
+export interface ThemeProviderProps {
+  theme?: Theme<{}>;
   children: React.ReactChild;
 }
 
-export class ThemeProvider<T> extends React.Component<ThemeProviderProps<T>> {
+export class ThemeProvider extends React.Component<ThemeProviderProps> {
   updateTheme: UpdateTheme;
-  getTheme(): Theme<T>;
+  getTheme(): Theme<{}>;
 }
 
-export interface ThemeConsumerProps<T> {
-  children(props: ThemeProps<T>): React.ReactChild;
+export interface ThemeConsumerProps {
+  children(props: ThemeProps): React.ReactChild;
 }
 
-export class ThemeConsumer<T> extends React.Component<ThemeConsumerProps<T>> {}
+export class ThemeConsumer extends React.Component<ThemeConsumerProps> {}
 
-export function withTheme<P = {}, T = {}>(
-  component: React.ComponentType<P & ThemeProps<T>>
+export function withTheme<P extends {}>(
+  component: React.ComponentType<P & ThemeProps>
 ): React.ComponentClass<P>;

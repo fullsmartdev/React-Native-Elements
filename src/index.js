@@ -14,12 +14,11 @@ import Overlay from './overlay/Overlay';
 
 // Utilities
 import SearchBar from './searchbar/SearchBar';
-import Badge from './badge/Badge';
+import Badge from './badge/badge';
 import CheckBox from './checkbox/CheckBox';
 import Divider from './divider/Divider';
 import Slider from './slider/Slider';
 import ButtonGroup from './buttons/ButtonGroup';
-import Image from './image/Image';
 
 // Productivity
 import Card from './card/Card';
@@ -64,5 +63,4 @@ export {
   ThemeProvider,
   ThemeConsumer,
   withTheme,
-  Image,
 };
