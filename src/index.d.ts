@@ -932,6 +932,19 @@ export type HeaderSubComponent =
 
 export interface HeaderProps extends ViewProperties {
   /**
+   * Specify a different component as the background for the button.
+   * Useful for if you want to make a button with a gradient background.
+   *
+   * @default View
+   */
+  ViewComponent?: React.ComponentClass<any>;
+
+  /**
+   * Object of props to be applied to the linearGradient view(ViewComponent)
+   */
+  linearGradientProps?: Object;
+
+  /**
    * Accepts all props for StatusBar
    */
   statusBarProps?: StatusBarProperties;
@@ -2006,9 +2019,12 @@ export type Theme<T = {}> = Partial<FullTheme> & T;
 
 export type UpdateTheme = (updates: RecursivePartial<FullTheme>) => void;
 
+export type ReplaceTheme = (updates: RecursivePartial<FullTheme>) => void;
+
 export interface ThemeProps<T> {
   theme: Theme<T>;
   updateTheme: UpdateTheme;
+  replaceTheme: ReplaceTheme;
 }
 
 /**
@@ -2021,6 +2037,7 @@ export interface ThemeProviderProps<T> {
 
 export class ThemeProvider<T> extends React.Component<ThemeProviderProps<T>> {
   updateTheme: UpdateTheme;
+  replaceTheme: ReplaceTheme;
 
   getTheme(): Theme<T>;
 }
