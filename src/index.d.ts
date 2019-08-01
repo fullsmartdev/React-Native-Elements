@@ -932,19 +932,6 @@ export type HeaderSubComponent =
 
 export interface HeaderProps extends ViewProperties {
   /**
-   * Specify a different component as the background for the button.
-   * Useful for if you want to make a button with a gradient background.
-   *
-   * @default View
-   */
-  ViewComponent?: React.ComponentClass<any>;
-
-  /**
-   * Object of props to be applied to the linearGradient view(ViewComponent)
-   */
-  linearGradientProps?: Object;
-
-  /**
    * Accepts all props for StatusBar
    */
   statusBarProps?: StatusBarProperties;
@@ -1680,7 +1667,8 @@ export type SocialMediaType =
   | 'soundcloud'
   | 'gitlab'
   | 'angellist'
-  | 'codepen';
+  | 'codepen'
+  | 'weibo';
 
 export interface SocialIconProps {
   /**

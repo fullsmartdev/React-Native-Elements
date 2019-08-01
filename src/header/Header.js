@@ -1,5 +1,4 @@
-/* eslint-disable no-nested-ternary */
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import {
   Platform,
@@ -49,96 +48,75 @@ Children.propTypes = {
   children: PropTypes.oneOfType([nodeType, PropTypes.node]),
 };
 
-class Header extends Component {
-  componentDidMount() {
-    const { linearGradientProps, ViewComponent } = this.props;
-    if (linearGradientProps && !global.Expo && !ViewComponent) {
-      /* eslint-disable no-console */
-      console.error(
-        "You need to pass a ViewComponent to use linearGradientProps !\nExample: ViewComponent={require('react-native-linear-gradient')}"
-      );
-    }
-  }
-
-  render() {
-    const {
-      statusBarProps,
-      leftComponent,
-      centerComponent,
-      rightComponent,
-      leftContainerStyle,
-      centerContainerStyle,
-      rightContainerStyle,
-      backgroundColor,
-      backgroundImage,
-      backgroundImageStyle,
+const Header = ({
+  statusBarProps,
+  leftComponent,
+  centerComponent,
+  rightComponent,
+  leftContainerStyle,
+  centerContainerStyle,
+  rightContainerStyle,
+  backgroundColor,
+  backgroundImage,
+  backgroundImageStyle,
+  containerStyle,
+  placement,
+  barStyle,
+  children,
+  theme,
+  ...attributes
+}) => (
+  <ImageBackground
+    testID="headerContainer"
+    {...attributes}
+    style={StyleSheet.flatten([
+      styles.container(theme),
+      backgroundColor && { backgroundColor },
       containerStyle,
-      placement,
-      barStyle,
-      children,
-      linearGradientProps,
-      ViewComponent = linearGradientProps && global.Expo
-        ? global.Expo.LinearGradient
-        : ImageBackground,
-      theme,
-      ...attributes
-    } = this.props;
+    ])}
+    source={backgroundImage}
+    imageStyle={backgroundImageStyle}
+  >
+    <StatusBar barStyle={barStyle} {...statusBarProps} />
+    <Children
+      style={StyleSheet.flatten([
+        placement === 'center' && styles.rightLeftContainer,
+        leftContainerStyle,
+      ])}
+      placement="left"
+    >
+      {(React.isValidElement(children) && children) ||
+        children[0] ||
+        leftComponent}
+    </Children>
 
-    return (
-      <ViewComponent
-        testID="headerContainer"
-        {...attributes}
-        style={StyleSheet.flatten([
-          styles.container(theme),
-          backgroundColor && { backgroundColor },
-          containerStyle,
-        ])}
-        source={backgroundImage}
-        imageStyle={backgroundImageStyle}
-        {...linearGradientProps}
-      >
-        <StatusBar barStyle={barStyle} {...statusBarProps} />
-        <Children
-          style={StyleSheet.flatten([
-            placement === 'center' && styles.rightLeftContainer,
-            leftContainerStyle,
-          ])}
-          placement="left"
-        >
-          {(React.isValidElement(children) && children) ||
-            children[0] ||
-            leftComponent}
-        </Children>
+    <Children
+      style={StyleSheet.flatten([
+        styles.centerContainer,
+        placement !== 'center' && {
+          paddingHorizontal: Platform.select({
+            android: 16,
+            default: 15,
+          }),
+        },
+        centerContainerStyle,
+      ])}
+      placement={placement}
+    >
+      {children[1] || centerComponent}
+    </Children>
 
-        <Children
-          style={StyleSheet.flatten([
-            styles.centerContainer,
-            placement !== 'center' && {
-              paddingHorizontal: Platform.select({
-                android: 16,
-                default: 15,
-              }),
-            },
-            centerContainerStyle,
-          ])}
-          placement={placement}
-        >
-          {children[1] || centerComponent}
-        </Children>
-
-        <Children
-          style={StyleSheet.flatten([
-            placement === 'center' && styles.rightLeftContainer,
-            rightContainerStyle,
-          ])}
-          placement="right"
-        >
-          {children[2] || rightComponent}
-        </Children>
-      </ViewComponent>
-    );
-  }
-}
+    <Children
+      style={StyleSheet.flatten([
+        placement === 'center' && styles.rightLeftContainer,
+        rightContainerStyle,
+      ])}
+      placement="right"
+    >
+      {children[2] || rightComponent}
+    </Children>
+  </ImageBackground>
+);
 
 Header.propTypes = {
   placement: PropTypes.oneOf(['left', 'center', 'right']),
@@ -159,8 +137,6 @@ Header.propTypes = {
     PropTypes.node,
   ]),
   theme: PropTypes.object,
-  linearGradientProps: PropTypes.object,
-  ViewComponent: PropTypes.oneOfType([PropTypes.func, PropTypes.object]),
 };
 
 Header.defaultProps = {
