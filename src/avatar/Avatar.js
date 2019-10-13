@@ -134,8 +134,8 @@ const Avatar = ({
         PlaceholderContent={PlaceholderContent}
         containerStyle={StyleSheet.flatten([
           styles.overlayContainer,
-          rounded && { borderRadius: width / 2, overflow: 'hidden' },
           overlayContainerStyle,
+          rounded && { borderRadius: width / 2, overflow: 'hidden' },
         ])}
         source={source}
         {...imageProps}

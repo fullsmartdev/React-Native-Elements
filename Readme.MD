@@ -4,6 +4,10 @@
   </a>
 </p>
 
+<h3 align="center">
+  React Native Elements
+</h3>
+
 <p align="center">
   Cross Platform <a href="https://facebook.github.io/react-native/">React Native</a> UI Toolkit
 </p>
