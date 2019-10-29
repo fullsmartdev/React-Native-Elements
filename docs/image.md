@@ -40,7 +40,6 @@ import { Image } from 'react-native-elements';
 
 - [`containerStyle`](#containerstyle)
 - [`placeholderStyle`](#placeholderstyle)
-- [`transition`](#transition)
 - [`PlaceholderContent`](#placeholdercontent)
 - [`ImageComponent`](#imagecomponent)
 
@@ -65,16 +64,6 @@ Additional styling for the placeholder container (optional)
 |        Type         | Default |
 | :-----------------: | :-----: |
 | View style (object) |  none   |
-
----
-
-### `transition`
-
-Perform fade transition on image load
-
-|  Type   | Default |
-| :-----: | :-----: |
-| boolean |  true   |
 
 ---
 

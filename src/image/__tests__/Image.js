@@ -90,17 +90,4 @@ describe('Image Component', () => {
     ).toBe('red');
     expect(component.toJSON()).toMatchSnapshot();
   });
-
-  it('should render without the transition', () => {
-    const component = shallow(
-      <Image
-        source={{ uri: 'https://i.imgur.com/0y8Ftya.jpg' }}
-        transition={false}
-      />
-    );
-
-    component.find({ testID: 'RNE__Image' }).prop('onLoad')();
-    expect(component.length).toBe(1);
-    expect(toJson(component)).toMatchSnapshot();
-  });
 });

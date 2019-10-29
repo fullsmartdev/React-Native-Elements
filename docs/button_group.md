@@ -83,6 +83,7 @@ render () {
 - [`buttonStyle`](#buttonstyle)
 - [`buttons`](#buttons)
 - [`Component`](#Component)
+- [`containerBorderRadius`](#containerborderradius)
 - [`containerStyle`](#containerstyle)
 - [`disabled`](#disabled)
 - [`disabledStyle`](#disabledstyle)
@@ -131,6 +132,16 @@ Choose other button component such as TouchableOpacity (optional)
 |          Type          |      Default       |
 | :--------------------: | :----------------: |
 | React Native Component | TouchableHighlight |
+
+---
+
+### `containerBorderRadius`
+
+Set's the border radius for the first and last button in the button group
+
+|  Type  | Default |
+| :----: | :-----: |
+| number |    3    |
 
 ---
 

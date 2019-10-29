@@ -34,15 +34,8 @@ const CheckBox = props => {
     ...attributes
   } = rest;
 
-  const accessibilityStates = [
-    ...(checked ? ['checked'] : []),
-    ...(!checked ? ['unchecked'] : []),
-  ];
-
   return (
     <Component
-      accessibilityRole="checkbox"
-      accessibilityStates={accessibilityStates}
       {...attributes}
       testID="checkbox"
       onLongPress={onLongPress}

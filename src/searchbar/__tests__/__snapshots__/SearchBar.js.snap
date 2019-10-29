@@ -44,15 +44,16 @@ exports[`SearchBar wrapper component should apply values from theme 1`] = `
           }
         }
       >
-        <View
-          style={
-            Object {
-              "overflow": "hidden",
-            }
-          }
-        >
+        <View>
           <View
             replaceTheme={[Function]}
+            style={
+              Object {
+                "alignItems": "center",
+                "backgroundColor": "transparent",
+                "justifyContent": "center",
+              }
+            }
             theme={
               Object {
                 "SearchBar": Object {
@@ -93,43 +94,32 @@ exports[`SearchBar wrapper component should apply values from theme 1`] = `
                 },
               }
             }
+            underlayColor="white"
             updateTheme={[Function]}
           >
-            <View
+            <Text
+              allowFontScaling={false}
               style={
-                Object {
-                  "alignItems": "center",
-                  "backgroundColor": "transparent",
-                  "justifyContent": "center",
-                }
+                Array [
+                  Object {
+                    "color": "rgba(0, 0, 0, 0.54)",
+                    "fontSize": 25,
+                  },
+                  Object {
+                    "backgroundColor": "transparent",
+                  },
+                  Object {
+                    "fontFamily": "Material Icons",
+                    "fontStyle": "normal",
+                    "fontWeight": "normal",
+                  },
+                  Object {},
+                ]
               }
+              testID="iconIcon"
             >
-              <Text
-                allowFontScaling={false}
-                brand={false}
-                solid={false}
-                style={
-                  Array [
-                    Object {
-                      "color": "rgba(0, 0, 0, 0.54)",
-                      "fontSize": 25,
-                    },
-                    Object {
-                      "backgroundColor": "transparent",
-                    },
-                    Object {
-                      "fontFamily": "Material Icons",
-                      "fontStyle": "normal",
-                      "fontWeight": "normal",
-                    },
-                    Object {},
-                  ]
-                }
-                testID="iconIcon"
-              >
-                
-              </Text>
-            </View>
+              
+            </Text>
           </View>
         </View>
       </View>
