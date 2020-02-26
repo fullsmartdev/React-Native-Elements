@@ -138,7 +138,6 @@ const Avatar = ({
           overlayContainerStyle,
         ])}
         source={source}
-        borderRadius={rounded ? width / 2 : undefined}
         {...imageProps}
         style={StyleSheet.flatten([
           styles.avatar,
