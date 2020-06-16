@@ -2,7 +2,6 @@ import React from 'react';
 import { Text, TouchableWithoutFeedback, TouchableOpacity } from 'react-native';
 import { shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
-import { render } from 'react-native-testing-library';
 import renderer from 'react-test-renderer';
 
 import { ThemeProvider } from '../../config';
@@ -78,14 +77,6 @@ describe('Badge Component', () => {
     expect(component.length).toBe(1);
     expect(component.find(TouchableOpacity)).toBeTruthy();
     expect(toJson(component)).toMatchSnapshot();
-  });
-
-  it('text props', () => {
-    const { getAllByTestId } = render(
-      <Badge theme={theme} textProps={{ testID: 'textid' }} value={10} />
-    );
-    const elements = getAllByTestId('textid');
-    expect(elements).toHaveLength(1);
   });
 
   describe('Mini badge', () => {
