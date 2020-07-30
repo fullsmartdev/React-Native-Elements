@@ -224,11 +224,11 @@ const styles = {
       backgroundColor: theme.colors.disabled,
     }),
     ...conditionalStyle(type === 'outline', {
-      borderColor: color(theme.colors.disabled).darken(0.3).string(),
+      borderColor: color(theme.colors.disabled).darken(0.3),
     }),
   }),
   disabledTitle: (theme) => ({
-    color: color(theme.colors.disabled).darken(0.3).string(),
+    color: color(theme.colors.disabled).darken(0.3),
   }),
   title: (type, theme) => ({
     color: type === 'solid' ? 'white' : theme.colors.primary,
