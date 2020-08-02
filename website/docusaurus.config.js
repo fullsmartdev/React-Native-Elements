@@ -108,7 +108,7 @@ module.exports = {
           title: 'More',
           items: [
             {
-              label: 'GitHub',
+              label: 'Github',
               to: 'https://github.com/react-native-elements/react-native-elements'
             }
           ]

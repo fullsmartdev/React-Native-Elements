@@ -1,13 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`CheckBox Component should allow custom checked Icon 1`] = `
-<ForwardRef
+<TouchableOpacity
   accessibilityRole="checkbox"
   accessibilityState={
     Object {
       "checked": true,
     }
   }
+  activeOpacity={0.2}
   checkedIcon={
     <Image
       source={
@@ -59,12 +60,7 @@ exports[`CheckBox Component should allow custom checked Icon 1`] = `
     }
   >
     <CheckBoxIcon
-      Component={
-        Object {
-          "$$typeof": Symbol(react.forward_ref),
-          "render": [Function],
-        }
-      }
+      Component={[Function]}
       center={false}
       checked={true}
       checkedColor="#2089dc"
@@ -142,17 +138,18 @@ exports[`CheckBox Component should allow custom checked Icon 1`] = `
       }
     />
   </View>
-</ForwardRef>
+</TouchableOpacity>
 `;
 
 exports[`CheckBox Component should allow custom checked Icon when unchecked 1`] = `
-<ForwardRef
+<TouchableOpacity
   accessibilityRole="checkbox"
   accessibilityState={
     Object {
       "checked": false,
     }
   }
+  activeOpacity={0.2}
   checkedIcon={
     <Image
       source={
@@ -204,12 +201,7 @@ exports[`CheckBox Component should allow custom checked Icon when unchecked 1`] 
     }
   >
     <CheckBoxIcon
-      Component={
-        Object {
-          "$$typeof": Symbol(react.forward_ref),
-          "render": [Function],
-        }
-      }
+      Component={[Function]}
       center={false}
       checked={false}
       checkedColor="#2089dc"
@@ -287,17 +279,18 @@ exports[`CheckBox Component should allow custom checked Icon when unchecked 1`] 
       }
     />
   </View>
-</ForwardRef>
+</TouchableOpacity>
 `;
 
 exports[`CheckBox Component should allow passing props to the title 1`] = `
-<ForwardRef
+<TouchableOpacity
   accessibilityRole="checkbox"
   accessibilityState={
     Object {
       "checked": true,
     }
   }
+  activeOpacity={0.2}
   checkedIcon="check-square-o"
   size={24}
   style={
@@ -325,12 +318,7 @@ exports[`CheckBox Component should allow passing props to the title 1`] = `
     }
   >
     <CheckBoxIcon
-      Component={
-        Object {
-          "$$typeof": Symbol(react.forward_ref),
-          "render": [Function],
-        }
-      }
+      Component={[Function]}
       center={false}
       checked={true}
       checkedColor="#2089dc"
@@ -399,17 +387,18 @@ exports[`CheckBox Component should allow passing props to the title 1`] = `
       Yea
     </Themed.Text>
   </View>
-</ForwardRef>
+</TouchableOpacity>
 `;
 
 exports[`CheckBox Component should render title in Text 1`] = `
-<ForwardRef
+<TouchableOpacity
   accessibilityRole="checkbox"
   accessibilityState={
     Object {
       "checked": true,
     }
   }
+  activeOpacity={0.2}
   checkedIcon="check-square-o"
   size={24}
   style={
@@ -437,12 +426,7 @@ exports[`CheckBox Component should render title in Text 1`] = `
     }
   >
     <CheckBoxIcon
-      Component={
-        Object {
-          "$$typeof": Symbol(react.forward_ref),
-          "render": [Function],
-        }
-      }
+      Component={[Function]}
       center={false}
       checked={true}
       checkedColor="#2089dc"
@@ -506,17 +490,18 @@ exports[`CheckBox Component should render title in Text 1`] = `
       Custom Text
     </Themed.Text>
   </View>
-</ForwardRef>
+</TouchableOpacity>
 `;
 
 exports[`CheckBox Component should render with icon and checked 1`] = `
-<ForwardRef
+<TouchableOpacity
   accessibilityRole="checkbox"
   accessibilityState={
     Object {
       "checked": false,
     }
   }
+  activeOpacity={0.2}
   checkedIcon="check-square-o"
   iconType="font-awesome"
   size={24}
@@ -542,12 +527,7 @@ exports[`CheckBox Component should render with icon and checked 1`] = `
     }
   >
     <CheckBoxIcon
-      Component={
-        Object {
-          "$$typeof": Symbol(react.forward_ref),
-          "render": [Function],
-        }
-      }
+      Component={[Function]}
       center={false}
       checked={false}
       checkedColor="red"
@@ -603,17 +583,18 @@ exports[`CheckBox Component should render with icon and checked 1`] = `
       uncheckedIcon="square-o"
     />
   </View>
-</ForwardRef>
+</TouchableOpacity>
 `;
 
 exports[`CheckBox Component should render with icon and iconRight 1`] = `
-<ForwardRef
+<TouchableOpacity
   accessibilityRole="checkbox"
   accessibilityState={
     Object {
       "checked": false,
     }
   }
+  activeOpacity={0.2}
   checkedIcon="check-square-o"
   iconType="font-awesome"
   size={24}
@@ -639,12 +620,7 @@ exports[`CheckBox Component should render with icon and iconRight 1`] = `
     }
   >
     <CheckBoxIcon
-      Component={
-        Object {
-          "$$typeof": Symbol(react.forward_ref),
-          "render": [Function],
-        }
-      }
+      Component={[Function]}
       center={true}
       checked={false}
       checkedColor="#2089dc"
@@ -695,17 +671,18 @@ exports[`CheckBox Component should render with icon and iconRight 1`] = `
       uncheckedIcon="square-o"
     />
   </View>
-</ForwardRef>
+</TouchableOpacity>
 `;
 
 exports[`CheckBox Component should render without issues 1`] = `
-<ForwardRef
+<TouchableOpacity
   accessibilityRole="checkbox"
   accessibilityState={
     Object {
       "checked": false,
     }
   }
+  activeOpacity={0.2}
   checkedIcon="check-square-o"
   size={24}
   style={
@@ -729,12 +706,7 @@ exports[`CheckBox Component should render without issues 1`] = `
     }
   >
     <CheckBoxIcon
-      Component={
-        Object {
-          "$$typeof": Symbol(react.forward_ref),
-          "render": [Function],
-        }
-      }
+      Component={[Function]}
       center={false}
       checked={false}
       checkedColor="#2089dc"
@@ -784,5 +756,5 @@ exports[`CheckBox Component should render without issues 1`] = `
       uncheckedIcon="square-o"
     />
   </View>
-</ForwardRef>
+</TouchableOpacity>
 `;

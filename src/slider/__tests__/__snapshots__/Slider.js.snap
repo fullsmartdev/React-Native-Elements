@@ -4,7 +4,6 @@ exports[`Slider component should apply values from theme 1`] = `[Function]`;
 
 exports[`Slider component should bound the max value 1`] = `
 <View
-  allowTouchTrack={false}
   animationType="timing"
   onLayout={[Function]}
   step={0}
@@ -32,7 +31,7 @@ exports[`Slider component should bound the max value 1`] = `
       }
     }
   />
-  <ForwardRef(AnimatedComponentWrapper)
+  <AnimatedComponent
     style={
       Object {
         "backgroundColor": "#3f3f3f",
@@ -44,12 +43,27 @@ exports[`Slider component should bound the max value 1`] = `
       }
     }
   />
-  <SliderThumb
-    color="red"
-    isVisible={false}
+  <AnimatedComponent
     onLayout={[Function]}
-    start={0}
-    vertical={false}
+    style={
+      Object {
+        "backgroundColor": "red",
+        "borderRadius": 10,
+        "height": 20,
+        "position": "absolute",
+        "top": 22,
+        "transform": Array [
+          Object {
+            "translateX": 0,
+          },
+          Object {
+            "translateY": -0,
+          },
+        ],
+        "width": 20,
+      }
+    }
+    testID="sliderThumb"
   />
   <View
     onMoveShouldSetResponder={[Function]}
@@ -80,7 +94,6 @@ exports[`Slider component should bound the max value 1`] = `
 
 exports[`Slider component should bound the min value 1`] = `
 <View
-  allowTouchTrack={false}
   animationType="timing"
   onLayout={[Function]}
   step={0}
@@ -108,7 +121,7 @@ exports[`Slider component should bound the min value 1`] = `
       }
     }
   />
-  <ForwardRef(AnimatedComponentWrapper)
+  <AnimatedComponent
     style={
       Object {
         "backgroundColor": "#3f3f3f",
@@ -120,12 +133,27 @@ exports[`Slider component should bound the min value 1`] = `
       }
     }
   />
-  <SliderThumb
-    color="red"
-    isVisible={false}
+  <AnimatedComponent
     onLayout={[Function]}
-    start={0}
-    vertical={false}
+    style={
+      Object {
+        "backgroundColor": "red",
+        "borderRadius": 10,
+        "height": 20,
+        "position": "absolute",
+        "top": 22,
+        "transform": Array [
+          Object {
+            "translateX": 0,
+          },
+          Object {
+            "translateY": -0,
+          },
+        ],
+        "width": 20,
+      }
+    }
+    testID="sliderThumb"
   />
   <View
     onMoveShouldSetResponder={[Function]}
@@ -156,7 +184,6 @@ exports[`Slider component should bound the min value 1`] = `
 
 exports[`Slider component should pass down Thumb transform values 1`] = `
 <View
-  allowTouchTrack={false}
   animationType="timing"
   onLayout={[Function]}
   step={0}
@@ -184,7 +211,7 @@ exports[`Slider component should pass down Thumb transform values 1`] = `
       }
     }
   />
-  <ForwardRef(AnimatedComponentWrapper)
+  <AnimatedComponent
     style={
       Object {
         "backgroundColor": "#3f3f3f",
@@ -196,21 +223,24 @@ exports[`Slider component should pass down Thumb transform values 1`] = `
       }
     }
   />
-  <SliderThumb
-    color="red"
-    isVisible={false}
+  <AnimatedComponent
     onLayout={[Function]}
-    start={0}
     style={
       Object {
+        "backgroundColor": "red",
+        "borderRadius": 10,
+        "height": 20,
+        "position": "absolute",
+        "top": 22,
         "transform": Array [
           Object {
             "scale": 2,
           },
         ],
+        "width": 20,
       }
     }
-    vertical={false}
+    testID="sliderThumb"
   />
   <View
     onMoveShouldSetResponder={[Function]}
@@ -241,7 +271,6 @@ exports[`Slider component should pass down Thumb transform values 1`] = `
 
 exports[`Slider component should render vertically 1`] = `
 <View
-  allowTouchTrack={false}
   animationType="timing"
   onLayout={[Function]}
   step={0}
@@ -271,7 +300,7 @@ exports[`Slider component should render vertically 1`] = `
       }
     }
   />
-  <ForwardRef(AnimatedComponentWrapper)
+  <AnimatedComponent
     style={
       Object {
         "backgroundColor": "#3f3f3f",
@@ -284,12 +313,27 @@ exports[`Slider component should render vertically 1`] = `
       }
     }
   />
-  <SliderThumb
-    color="red"
-    isVisible={false}
+  <AnimatedComponent
     onLayout={[Function]}
-    start={0}
-    vertical={true}
+    style={
+      Object {
+        "backgroundColor": "red",
+        "borderRadius": 10,
+        "height": 20,
+        "left": 22,
+        "position": "absolute",
+        "transform": Array [
+          Object {
+            "translateX": -0,
+          },
+          Object {
+            "translateY": 0,
+          },
+        ],
+        "width": 20,
+      }
+    }
+    testID="sliderThumb"
   />
   <View
     onMoveShouldSetResponder={[Function]}
@@ -320,7 +364,6 @@ exports[`Slider component should render vertically 1`] = `
 
 exports[`Slider component should render with ThumbTouchRect 1`] = `
 <View
-  allowTouchTrack={false}
   animationType="timing"
   onLayout={[Function]}
   step={0}
@@ -348,7 +391,7 @@ exports[`Slider component should render with ThumbTouchRect 1`] = `
       }
     }
   />
-  <ForwardRef(AnimatedComponentWrapper)
+  <AnimatedComponent
     style={
       Object {
         "backgroundColor": "#3f3f3f",
@@ -360,12 +403,27 @@ exports[`Slider component should render with ThumbTouchRect 1`] = `
       }
     }
   />
-  <SliderThumb
-    color="red"
-    isVisible={false}
+  <AnimatedComponent
     onLayout={[Function]}
-    start={0}
-    vertical={false}
+    style={
+      Object {
+        "backgroundColor": "red",
+        "borderRadius": 10,
+        "height": 20,
+        "position": "absolute",
+        "top": 22,
+        "transform": Array [
+          Object {
+            "translateX": 0,
+          },
+          Object {
+            "translateY": -0,
+          },
+        ],
+        "width": 20,
+      }
+    }
+    testID="sliderThumb"
   />
   <View
     onMoveShouldSetResponder={[Function]}
@@ -392,7 +450,7 @@ exports[`Slider component should render with ThumbTouchRect 1`] = `
       }
     }
   >
-    <ForwardRef(AnimatedComponentWrapper)
+    <AnimatedComponent
       pointerEvents="none"
       style={
         Object {
@@ -409,7 +467,6 @@ exports[`Slider component should render with ThumbTouchRect 1`] = `
 
 exports[`Slider component should render without issues 1`] = `
 <View
-  allowTouchTrack={false}
   animationType="timing"
   onLayout={[Function]}
   step={0}
@@ -437,7 +494,7 @@ exports[`Slider component should render without issues 1`] = `
       }
     }
   />
-  <ForwardRef(AnimatedComponentWrapper)
+  <AnimatedComponent
     style={
       Object {
         "backgroundColor": "#3f3f3f",
@@ -449,12 +506,27 @@ exports[`Slider component should render without issues 1`] = `
       }
     }
   />
-  <SliderThumb
-    color="red"
-    isVisible={false}
+  <AnimatedComponent
     onLayout={[Function]}
-    start={0}
-    vertical={false}
+    style={
+      Object {
+        "backgroundColor": "red",
+        "borderRadius": 10,
+        "height": 20,
+        "position": "absolute",
+        "top": 22,
+        "transform": Array [
+          Object {
+            "translateX": 0,
+          },
+          Object {
+            "translateY": -0,
+          },
+        ],
+        "width": 20,
+      }
+    }
+    testID="sliderThumb"
   />
   <View
     onMoveShouldSetResponder={[Function]}

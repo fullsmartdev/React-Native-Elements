@@ -22,17 +22,9 @@ import {
   TextInputProps,
   ImageProps as RNImageProps,
   TouchableHighlightProps,
-  PressableProps,
 } from 'react-native';
 import { RatingProps, AirbnbRatingProps } from 'react-native-ratings';
-import {
-  IconButtonProps,
-  IconProps as VectorIconProps,
-} from 'react-native-vector-icons/Icon';
-
-export interface TouchableComponent
-  extends TouchableHighlightProps,
-    PressableProps {}
+import { IconButtonProps } from 'react-native-vector-icons/Icon';
 
 /**
  * Supports auto complete for most used types as well as any other string type.
@@ -52,7 +44,7 @@ export type IconType =
   | 'font-awesome-5'
   | string;
 
-export interface IconObject extends TouchableComponent {
+export interface IconObject extends TouchableHighlightProps {
   name?: string;
   color?: string;
   size?: number;
@@ -1097,11 +1089,6 @@ export interface IconProps extends IconButtonProps {
    */
   Component?: React.ComponentClass;
 
-  /*
-   * Extra props supplied to Icon Component from react-native-vector-icons.
-   */
-  iconProps?: VectorIconProps;
-
   /**
    * Reverses color scheme
    *
@@ -1166,7 +1153,7 @@ export interface ScaleProps extends TouchableWithoutFeedbackProps {
   useNativeDriver?: boolean;
 }
 
-export interface ListItemProps extends TouchableComponent {
+export interface ListItemProps extends TouchableHighlightProps {
   containerStyle?: StyleProp<ViewStyle>;
   contentContainerStyle?: StyleProp<ViewStyle>;
   rightContentContainerStyle?: StyleProp<ViewStyle>;
@@ -1336,7 +1323,7 @@ export interface SearchBarWrapper {
   platform?: 'default' | 'ios' | 'android';
 }
 
-export interface SearchBarBase extends InputProps {
+export interface SearchBarBase extends TextInputProperties {
   /**
    * Styling for the searchbar container
    */
@@ -1693,19 +1680,9 @@ export interface SliderProps {
   trackStyle?: StyleProp<ViewStyle>;
 
   /**
-   * Allow touch on track to move the thumb.
-   */
-  allowTouchTrack?: boolean;
-
-  /**
    * The style applied to the thumb
    */
   thumbStyle?: StyleProp<ViewStyle>;
-
-  /**
-   * The props applied to the thumb
-   */
-  thumbProps?: any;
 
   /**
    * Set this to true to visually see the thumb touch rect in green.

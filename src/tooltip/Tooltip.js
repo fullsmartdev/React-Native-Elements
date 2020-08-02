@@ -163,7 +163,7 @@ class Tooltip extends React.PureComponent {
 
   componentDidMount() {
     // wait to compute onLayout values.
-    requestAnimationFrame(this.getElementPosition);
+    setTimeout(this.getElementPosition, 500);
   }
 
   getElementPosition = () => {

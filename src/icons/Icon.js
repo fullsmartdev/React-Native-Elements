@@ -20,7 +20,6 @@ const Icon = (props) => {
     size,
     color,
     iconStyle,
-    iconProps,
     underlayColor,
     reverse,
     raised,
@@ -111,7 +110,6 @@ const Icon = (props) => {
             name={name}
             color={reverse ? reverseColor : color}
             {...iconSpecificStyle}
-            {...iconProps}
           />
         </View>
       </Component>

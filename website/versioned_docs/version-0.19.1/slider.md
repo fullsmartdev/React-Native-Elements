@@ -5,65 +5,21 @@ title: Slider
 
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
-Sliders allow users to select a value from a fixed set of options.
+A pure JavaScript `Slider` component for react-native. It is a drop-in replacement for Slider.
 
 <img alt="Slider" src={useBaseUrl('img/slider_screenshot.png')} />
 
-> This component is a forked implementation of
-> [react-native-slider](https://github.com/jeanregisser/react-native-slider).
+> This component is a forked implementation of [react-native-slider](https://github.com/jeanregisser/react-native-slider).
 
 ## Usage
 
 ```js
 import { Slider } from 'react-native-elements';
-import { Animated } from 'react-native';
 
 <View style={{ flex: 1, alignItems: 'stretch', justifyContent: 'center' }}>
   <Slider
     value={this.state.value}
     onValueChange={(value) => this.setState({ value })}
-  />
-  <Text>Value: {this.state.value}</Text>
-</View>;
-
-// Replace Thumb with custom image
-<View style={{ flex: 1, alignItems: 'stretch', justifyContent: 'center' }}>
-  <Slider
-    value={this.state.value}
-    onValueChange={(value) => this.setState({ value })}
-    thumbStyle={{ height: 40, width: 40, backgroundColor: 'transparent' }}
-    thumbProps={{
-      Component: Animated.Image,
-      source: {
-        uri: 'https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg',
-      },
-    }}
-  />
-  <Text>Value: {this.state.value}</Text>
-</View>;
-
-// Set Custom Children inside thumb
-<View style={{ flex: 1, alignItems: 'stretch', justifyContent: 'center' }}>
-  <Slider
-    value={value}
-    onValueChange={setValue}
-    maximumValue={50}
-    minimumValue={20}
-    step={1}
-    trackStyle={{ height: 10, backgroundColor: 'transparent' }}
-    thumbStyle={{ height: 20, width: 20, backgroundColor: 'transparent' }}
-    thumbProps={{
-      children: (
-        <Icon
-          name="heartbeat"
-          type="font-awesome"
-          size={20}
-          reverse
-          containerStyle={{ bottom: 20, right: 20 }}
-          color="#f50"
-        />
-      ),
-    }}
   />
   <Text>Value: {this.state.value}</Text>
 </View>;
@@ -82,7 +38,6 @@ import { Animated } from 'react-native';
 - [`maximumValue`](#maximumvalue)
 - [`minimumTrackTintColor`](#minimumtracktintcolor)
 - [`minimumValue`](#minimumvalue)
-- [`allowTouchTrack`](#allowtouchtrack)
 - [`onSlidingComplete`](#onslidingcomplete)
 - [`onSlidingStart`](#onslidingstart)
 - [`onValueChange`](#onvaluechange)
@@ -90,7 +45,6 @@ import { Animated } from 'react-native';
 - [`step`](#step)
 - [`style`](#style)
 - [`thumbStyle`](#thumbstyle)
-- [`thumbProps`](#thumbprops)
 - [`thumbTintColor`](#thumbtintcolor)
 - [`thumbTouchSize`](#thumbtouchsize)
 - [`trackStyle`](#trackstyle)
@@ -112,8 +66,7 @@ Set to true if you want to use the default 'spring' animation
 
 ### `animationConfig`
 
-Used to configure the animation parameters. These are the same parameters in the
-[Animated library](https://facebook.github.io/react-native/docs/animations.html).
+Used to configure the animation parameters. These are the same parameters in the [Animated library](https://facebook.github.io/react-native/docs/animations.html).
 
 |  Type  |  Default  | Optional |
 | :----: | :-------: | :------: |
@@ -123,9 +76,7 @@ Used to configure the animation parameters. These are the same parameters in the
 
 ### `animationType`
 
-Set to 'spring' or 'timing' to use one of those two types of animations with the
-default
-[animation properties](https://facebook.github.io/react-native/docs/animations.html).
+Set to 'spring' or 'timing' to use one of those two types of animations with the default [animation properties](https://facebook.github.io/react-native/docs/animations.html).
 
 |  Type  | Default  | Optional |
 | :----: | :------: | :------: |
@@ -193,20 +144,9 @@ Initial minimum value of the slider
 
 ---
 
-### `allowTouchTrack`
-
-If true, thumb will respond and jump to any touch along the track.
-
-|  Type   | Default | Optional |
-| :-----: | :-----: | :------: |
-| boolean |  false  |   Yes    |
-
----
-
 ### `onSlidingComplete`
 
-Callback called when the user finishes changing the value (e.g. when the slider
-is released)
+Callback called when the user finishes changing the value (e.g. when the slider is released)
 
 |   Type   | Default | Optional |
 | :------: | :-----: | :------: |
@@ -216,8 +156,7 @@ is released)
 
 ### `onSlidingStart`
 
-Callback called when the user starts changing the value (e.g. when the slider is
-pressed)
+Callback called when the user starts changing the value (e.g. when the slider is pressed)
 
 |   Type   | Default | Optional |
 | :------: | :-----: | :------: |
@@ -247,8 +186,7 @@ Set the orientation of the slider.
 
 ### `step`
 
-Step value of the slider. The value should be between 0 and maximumValue -
-minimumValue)
+Step value of the slider. The value should be between 0 and maximumValue - minimumValue)
 
 |  Type  | Default | Optional |
 | :----: | :-----: | :------: |
@@ -276,16 +214,6 @@ The style applied to the thumb
 
 ---
 
-### `thumbProps`
-
-The props applied to the thumb. Uses `Component` prop which can accept `Animated` components.
-
-|  Type  | Default | Optional |
-| :----: | :-----: | :------: |
-| object |         |   Yes    |
-
----
-
 ### `thumbTintColor`
 
 The color used for the thumb
@@ -298,9 +226,7 @@ The color used for the thumb
 
 ### `thumbTouchSize`
 
-The size of the touch area that allows moving the thumb. The touch area has the
-same center as the visible thumb. This allows to have a visually small thumb
-while still allowing the user to move it easily.
+The size of the touch area that allows moving the thumb. The touch area has the same center as the visible thumb. This allows to have a visually small thumb while still allowing the user to move it easily.
 
 |  Type  |          Default          | Optional |
 | :----: | :-----------------------: | :------: |
