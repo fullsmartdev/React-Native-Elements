@@ -259,16 +259,16 @@ import LinearGradient from 'react-native-linear-gradient'; // Only if no expo
 > [TouchableHighlight](https://facebook.github.io/react-native/docs/touchablehighlight#props)
 > props
 
-- [`bottomDivider`](#bottomdivider)
 - [`Component`](#Component)
 - [`containerStyle`](#containerstyle)
+- [`onPress`](#onpress)
+- [`onLongPress`](#onlongpress)
 - [`disabled`](#disabled)
 - [`disabledStyle`](#disabledstyle)
-- [`onLongPress`](#onlongpress)
-- [`onPress`](#onpress)
-- [`pad`](#pad)
 - [`topDivider`](#topdivider)
+- [`bottomDivider`](#bottomdivider)
 - [`ViewComponent`](#viewcomponent)
+- [`pad`](#pad)
 
 ---
 
@@ -306,16 +306,6 @@ import LinearGradient from 'react-native-linear-gradient'; // Only if no expo
 
 ## Reference
 
-### `bottomDivider`
-
-Add divider at the bottom of the list item
-
-|  Type   | Default |
-| :-----: | :-----: |
-| boolean |  false  |
-
----
-
 ### `Component`
 
 replace element with custom element (optional)
@@ -333,6 +323,26 @@ additional main container styling (optional)
 |      Type      | Default |
 | :------------: | :-----: |
 | object (style) |  none   |
+
+---
+
+### `onPress`
+
+onPress method for link (optional)
+
+|   Type   | Default |
+| :------: | :-----: |
+| function |  none   |
+
+---
+
+### `onLongPress`
+
+onLongPress method for link (optional)
+
+|   Type   | Default |
+| :------: | :-----: |
+| function |  none   |
 
 ---
 
@@ -356,37 +366,6 @@ Specific styling to be used when list item is disabled.
 
 ---
 
-
-### `onLongPress`
-
-onLongPress method for link (optional)
-
-|   Type   | Default |
-| :------: | :-----: |
-| function |  none   |
-
----
-
-### `onPress`
-
-onPress method for link (optional)
-
-|   Type   | Default |
-| :------: | :-----: |
-| function |  none   |
-
----
-
-### `pad`
-
-adds spacing between the leftComponent, the title component & right component
-
-|  Type  | Default |
-| :----: | :-----: |
-| number |  `16`   |
-
----
-
 ### `topDivider`
 
 Add divider at the top of the list item
@@ -397,7 +376,15 @@ Add divider at the top of the list item
 
 ---
 
+### `bottomDivider`
 
+Add divider at the bottom of the list item
+
+|  Type   | Default |
+| :-----: | :-----: |
+| boolean |  false  |
+
+---
 
 ### `ViewComponent`
 
@@ -409,3 +396,10 @@ Container for linear gradient (for non-expo user)
 
 ---
 
+### `pad`
+
+adds spacing between the leftComponent, the title component & right component
+
+|  Type  | Default |
+| :----: | :-----: |
+| number |  `16`   |

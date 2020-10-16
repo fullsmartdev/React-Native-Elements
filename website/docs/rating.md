@@ -82,43 +82,33 @@ const { rating } = this.props;
 
 ### AirbnbRating
 
-- [`count`](#count)
 - [`defaultRating`](#defaultrating)
-- [`onFinishRating`](#onfinishrating)
 - [`reviews`](#reviews)
+- [`count`](#count)
 - [`showRating`](#showrating)
+- [`onFinishRating`](#onfinishrating)
 
 ## Rating
 
-- [`fractions`](#fractions)
-- [`imageSize`](#imagesize)
-- [`minValue`](#minValue)
-- [`onFinishRating`](#onfinishrating)
-- [`onStartRating`](#onstartrating)
-- [`ratingBackgroundColor`](#ratingbackgroundcolor)
-- [`ratingColor`](#ratingcolor)
-- [`ratingCount`](#ratingcount)
-- [`ratingImage`](#ratingimage)
-- [`ratingTextColor`](#ratingtextcolor)
-- [`readonly`](#readonly)
-- [`showRating`](#showrating)
-- [`startingValue`](#startingvalue)
-- [`style`](#style)
 - [`type`](#type)
+- [`ratingImage`](#ratingimage)
+- [`ratingColor`](#ratingcolor)
+- [`ratingBackgroundColor`](#ratingbackgroundcolor)
+- [`ratingCount`](#ratingcount)
+- [`ratingTextColor`](#ratingtextcolor)
+- [`imageSize`](#imagesize)
+- [`showRating`](#showrating)
+- [`readonly`](#readonly)
+- [`startingValue`](#startingvalue)
+- [`fractions`](#fractions)
+- [`minValue`](#minValue)
+- [`style`](#style)
+- [`onStartRating`](#onstartrating)
+- [`onFinishRating`](#onfinishrating)
 
 ---
 
 ## Reference
-
-### `count`
-
-Total number of ratings to display
-
-|  Type  | Default |
-| :----: | :-----: |
-| number |    5    |
-
----
 
 ### `defaultRating`
 
@@ -130,34 +120,34 @@ Initial value for the rating
 
 ---
 
-### `fractions`
+### `reviews`
 
-The number of decimal places for the rating value; must be between 0 and 20
-(optional)
+Labels to show when each value is tapped
+e.g. If the first star is tapped, then value in index 0 will be used as the label
 
-|  Type  |  Default  |
-| :----: | :-------: |
-| number | undefined |
-
----
-
-### `imageSize`
-
-The size of each rating image (optional)
-
-|  Type  | Default |
-| :----: | :-----: |
-| number |   50    |
+|   Type   |                   Default                    |
+| :------: | :------------------------------------------: |
+| string[] | ['Terrible', 'Bad', 'Okay', 'Good', 'Great'] |
 
 ---
 
-### `minValue`
+### `count`
 
-The minimum value the user can select
+Total number of ratings to display
 
 |  Type  | Default |
 | :----: | :-----: |
-| number |    0    |
+| number |    5    |
+
+---
+
+### `showRating`
+
+Determines if to show the reviews above the rating
+
+|  Type   | Default |
+| :-----: | :-----: |
+| boolean |  true   |
 
 ---
 
@@ -179,6 +169,27 @@ Callback method when the user starts the rating. (optional)
 |   Type   |  Default  |
 | :------: | :-------: |
 | function | undefined |
+
+---
+
+### `fractions`
+
+The number of decimal places for the rating value; must be between 0 and 20
+(optional)
+
+|  Type  |  Default  |
+| :----: | :-------: |
+| number | undefined |
+
+---
+
+### `imageSize`
+
+The size of each rating image (optional)
+
+|  Type  | Default |
+| :----: | :-----: |
+| number |   50    |
 
 ---
 
@@ -245,27 +256,6 @@ Whether the rating can be modified by the user (optional)
 
 ---
 
-### `reviews`
-
-Labels to show when each value is tapped
-e.g. If the first star is tapped, then value in index 0 will be used as the label
-
-|   Type   |                   Default                    |
-| :------: | :------------------------------------------: |
-| string[] | ['Terrible', 'Bad', 'Okay', 'Good', 'Great'] |
-
----
-
-### `showRating`
-
-Determines if to show the reviews above the rating
-
-|  Type   | Default |
-| :-----: | :-----: |
-| boolean |  true   |
-
----
-
 ### `showRating`
 
 Displays the Built-in Rating UI to show the rating value in real-time (optional)
@@ -283,6 +273,16 @@ The initial rating to render (optional)
 |  Type  |     Default     |
 | :----: | :-------------: |
 | number | ratingCount / 2 |
+
+---
+
+### `minValue`
+
+The minimum value the user can select
+
+|  Type  | Default |
+| :----: | :-----: |
+| number |    0    |
 
 ---
 
