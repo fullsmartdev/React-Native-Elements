@@ -6,7 +6,7 @@ title: ListItem
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
 ListItems are used to display rows of information, such as a contact list,
-playlist, or menu. They are very customizable and can contain switches,
+playlist, or menu. They are very customizeable and can contain switches,
 avatars, badges, icons, and more.
 
 <img alt="Lists" src={useBaseUrl('img/lists.png')} />
@@ -356,6 +356,7 @@ Specific styling to be used when list item is disabled.
 
 ---
 
+
 ### `onLongPress`
 
 onLongPress method for link (optional)
@@ -396,6 +397,8 @@ Add divider at the top of the list item
 
 ---
 
+
+
 ### `ViewComponent`
 
 Container for linear gradient (for non-expo user)
@@ -405,3 +408,4 @@ Container for linear gradient (for non-expo user)
 | component |  View   |
 
 ---
+
