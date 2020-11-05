@@ -24,7 +24,7 @@ class BottomSheet extends Component {
 
   render() {
     const { listHeight } = this.state;
-    const { containerStyle, isVisible, modalProps, children } = this.props;
+    const { isVisible, modalProps, children } = this.props;
     const maxHeight = listHeight < MAX_HEIGHT ? listHeight : MAX_HEIGHT;
 
     return (
@@ -34,12 +34,7 @@ class BottomSheet extends Component {
         visible={isVisible}
         {...modalProps}
       >
-        <SafeAreaView
-          style={StyleSheet.flatten([
-            styles.safeAreaView,
-            containerStyle && containerStyle,
-          ])}
-        >
+        <SafeAreaView style={styles.safeAreaView}>
           <View style={styles.modalView}>
             <View
               style={([styles.listContainer], { maxHeight })}
@@ -69,7 +64,6 @@ BottomSheet.defaultProps = {
 };
 
 BottomSheet.propTypes = {
-  containerStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
   modalProps: PropTypes.object,
   isVisible: PropTypes.bool,
 };
