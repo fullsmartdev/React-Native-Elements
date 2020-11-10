@@ -2049,8 +2049,6 @@ export class Image extends React.Component<ImageProps> {}
 export interface Colors {
   readonly primary: string;
   readonly secondary: string;
-  readonly white: string;
-  readonly bkack: string;
   readonly grey0: string;
   readonly grey1: string;
   readonly grey2: string;
@@ -2068,7 +2066,6 @@ export interface Colors {
     ios: {
       primary: string;
       secondary: string;
-      grey: string;
       success: string;
       error: string;
       warning: string;
@@ -2076,7 +2073,6 @@ export interface Colors {
     android: {
       primary: string;
       secondary: string;
-      grey: string;
       success: string;
       error: string;
       warning: string;
