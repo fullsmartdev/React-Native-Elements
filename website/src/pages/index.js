@@ -30,10 +30,12 @@ Button.defaultProps = {
   target: '_self',
 };
 
-const Block = (props) => (
+const Block = props => (
   <section className="margin-vert--xl">
     <div className="container">
-      <div className="row">{props.children}</div>
+      <div className="row">
+        {props.children}
+      </div>
     </div>
   </section>
 );
@@ -49,8 +51,8 @@ const OpenCollective = () => (
       <p className="subtitle">Built with passion, backed by the community</p>
 
       <p>
-        Open Collective is an initiative that allows community members an easy
-        and transparent way to donate to open source projects. <br />
+        Open Collective is an initiative that allows community members an easy and
+        transparent way to donate to open source projects. <br />
       </p>
     </div>
     <div className="backers-section text--center">
@@ -123,7 +125,7 @@ function Home() {
                 'button button--secondary button--outline button--lg margin-right--sm',
                 styles.heroButton
               )}
-              style={{ color: 'white' }}
+              style={{color: 'white'}}
               to={useBaseUrl('/docs')}
             >
               Read docs
@@ -134,10 +136,12 @@ function Home() {
                 'button button--secondary button--outline button--lg',
                 styles.heroButton
               )}
-              style={{ color: 'white' }}
-              to={'https://react-native-elements.js.org/'}
+              style={{color: 'white'}}
+              to={
+                'https://expo.io/@flyingcircle/react-native-elements-app'
+              }
             >
-              Playground 🚀
+              Try the demo app
             </Link>
           </div>
         </div>

@@ -290,16 +290,6 @@ specify other than the default transparent underline color
 
 ---
 
-### `value`
-
-The value of the search field
-
-|  Type  | Default |
-| :----: | :-----: |
-| string |  none   |
-
----
-
 ### `cancelButtonProps`
 
 **(iOS only)** props passed to cancel Button

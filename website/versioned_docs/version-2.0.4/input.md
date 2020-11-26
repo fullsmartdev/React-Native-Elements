@@ -225,16 +225,6 @@ styling for left Icon Component container
 
 ---
 
-### `placeholder`
-
-Placeholder text for the input
-
-|  Type  | Default |
-| :----: | :-----: |
-| string |  none   |
-
----
-
 ### `rightIcon`
 
 displays an icon on the right (optional)
