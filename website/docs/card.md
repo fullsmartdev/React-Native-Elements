@@ -48,7 +48,16 @@ import { Card, ListItem, Button, Icon } from 'react-native-elements'
 // implemented without image without header, using ListItem component
  <Card containerStyle={{padding: 0}} >
   {
-    users.map((u, i) => <ListItem key={i} />)
+    users.map((u, i) => {
+      return (
+        <ListItem
+          key={i}
+          roundAvatar
+          title={u.name}
+          leftAvatar={{ source: { uri: u.avatar } }}
+        />
+      );
+    })
   }
 </Card>
 

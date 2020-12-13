@@ -8,13 +8,15 @@ import {
   TouchableWithoutFeedbackProps,
   TouchableOpacityProps,
   TouchableNativeFeedbackProps,
-  ViewProps,
+  ViewProperties,
+  TextInputProperties,
   TextInput,
-  TextProps as TextProperties,
-  StatusBarProps,
+  TextProperties,
+  StatusBarProperties,
   StyleProp,
   Animated,
-  ActivityIndicatorProps,
+  ActivityIndicatorProperties,
+  SwitchProperties,
   StatusBarStyle,
   ModalProps,
   TextInputProps,
@@ -303,7 +305,7 @@ export interface ButtonProps
   /**
    * Additional props to applied to the ActivityIndicator
    */
-  loadingProps?: ActivityIndicatorProps;
+  loadingProps?: ActivityIndicatorProperties;
 
   /**
    * Object of props to be applied to the linearGradient view(ViewComponent)
@@ -458,6 +460,64 @@ export interface CardProps {
    * Inner container style
    */
   wrapperStyle?: StyleProp<ViewStyle>;
+
+  /**
+   * Card title
+   */
+  title?: string | React.ReactElement<{}>;
+
+  /**
+   * Additional title styling (if title provided)
+   */
+  titleStyle?: StyleProp<TextStyle>;
+
+  /**
+   * Title rendered over the image
+   * (only works if image prop is present)
+   */
+  featuredTitle?: string;
+
+  /**
+   * Styling for featured title
+   */
+  featuredTitleStyle?: StyleProp<TextStyle>;
+
+  /**
+   * Subtitle rendered over the image
+   * (only works if image prop is present)
+   */
+  featuredSubtitle?: string;
+
+  /**
+   * Styling for featured subtitle
+   */
+  featuredSubtitleStyle?: StyleProp<TextStyle>;
+
+  /**
+   * Additional divider styling
+   * (if title provided)
+   */
+  dividerStyle?: StyleProp<ViewStyle>;
+
+  /**
+   * Specify image styling if image is provided
+   */
+  imageStyle?: ImageStyle;
+
+  /**
+   * Specify styling for view surrounding image
+   */
+  imageWrapperStyle?: StyleProp<ViewStyle>;
+
+  /**
+   * Add an image as the heading with the image prop
+   */
+  image?: ImageSourcePropType;
+
+  /**
+   * Optional properties to pass to the image if provided e.g "resizeMode"
+   */
+  imageProps?: Partial<ImageProps>;
 }
 
 /**
@@ -633,7 +693,7 @@ export interface ButtonGroupProps {
 
 export class ButtonGroup extends React.Component<ButtonGroupProps> {}
 
-export interface CheckBoxProps {
+export interface CheckBoxProps extends TouchableOpacityProps {
   /**
    * Icon family, can be one of the following
    * (required only if specifying an icon that is not from font-awesome)
@@ -766,11 +826,11 @@ export interface CheckBoxProps {
 }
 export class CheckBox extends React.Component<CheckBoxProps, any> {}
 
-export interface DividerProps extends ViewProps {}
+export interface DividerProps extends ViewProperties {}
 
 export class Divider extends React.Component<DividerProps> {}
 
-export interface InputProps extends TextInputProps {
+export interface InputProps extends TextInputProperties {
   /**
    * Styling for Input Component Container (optional)
    */
@@ -916,7 +976,7 @@ export type HeaderSubComponent =
   | TextProps
   | HeaderIcon;
 
-export interface HeaderProps extends ViewProps {
+export interface HeaderProps extends ViewProperties {
   /**
    * Specify a different component as the background for the button.
    * Useful for if you want to make a button with a gradient background.
@@ -933,7 +993,7 @@ export interface HeaderProps extends ViewProps {
   /**
    * Accepts all props for StatusBar
    */
-  statusBarProps?: StatusBarProps;
+  statusBarProps?: StatusBarProperties;
 
   /**
    * Sets the color of the status bar text.
@@ -1088,6 +1148,33 @@ export interface ScaleProps extends TouchableWithoutFeedbackProps {
 
 export interface ListItemProps extends TouchableComponent {
   containerStyle?: StyleProp<ViewStyle>;
+  contentContainerStyle?: StyleProp<ViewStyle>;
+  rightContentContainerStyle?: StyleProp<ViewStyle>;
+  chevron?: boolean | Partial<IconProps> | React.ReactElement<{}>;
+  checkmark?: boolean | Partial<IconProps> | React.ReactElement<{}>;
+  title?: string | React.ReactElement<{}>;
+  titleStyle?: StyleProp<TextStyle>;
+  titleProps?: TextProperties;
+  subtitle?: string | React.ReactElement<{}>;
+  subtitleStyle?: StyleProp<TextStyle>;
+  subtitleProps?: TextProperties;
+  rightTitle?: string | React.ReactElement<{}>;
+  rightTitleStyle?: StyleProp<TextStyle>;
+  rightTitleProps?: TextProperties;
+  rightSubtitle?: string | React.ReactElement<{}>;
+  rightSubtitleStyle?: StyleProp<TextStyle>;
+  rightSubtitleProps?: TextProperties;
+  leftIcon?: Partial<IconProps> | React.ReactElement<{}>;
+  rightIcon?: Partial<IconProps> | React.ReactElement<{}>;
+  leftAvatar?: Partial<AvatarProps> | React.ReactElement<{}>;
+  rightAvatar?: Partial<AvatarProps> | React.ReactElement<{}>;
+  leftElement?: React.ReactElement<{}>;
+  rightElement?: React.ReactElement<{}>;
+  switch?: SwitchProperties;
+  input?: InputProps;
+  buttonGroup?: ButtonGroupProps;
+  checkBox?: CheckBoxProps;
+  badge?: BadgeProps;
   disabledStyle?: StyleProp<ViewStyle>;
   topDivider?: boolean;
   bottomDivider?: boolean;
@@ -1101,7 +1188,7 @@ export interface ListItemProps extends TouchableComponent {
  * ListItem component
  */
 export class ListItem extends React.Component<ListItemProps, any> {
-  static Content: React.ComponentType<ViewProps & { right?: boolean }>;
+  static Content: React.ComponentType<ViewProperties & { right?: boolean }>;
   static Title: React.ComponentType<TextProps & { right?: boolean }>;
   static Subtitle: React.ComponentType<TextProps & { right?: boolean }>;
   static ButtonGroup: React.ComponentType<ButtonGroupProps>;
@@ -1266,7 +1353,7 @@ export interface SearchBarBase extends InputProps {
   /**
    * Optional props to pass to the ActivityIndicator
    */
-  loadingProps?: ActivityIndicatorProps;
+  loadingProps?: ActivityIndicatorProperties;
 
   /**
    * If to show the loading indicator
@@ -2040,7 +2127,7 @@ export interface FullTheme {
   ListItem: Partial<ListItemProps>;
   ListItemButtonGroup: Partial<ButtonGroupProps>;
   ListItemCheckBox: Partial<CheckBoxProps>;
-  ListItemContent: Partial<ViewProps>;
+  ListItemContent: Partial<ViewProperties>;
   ListItemChevron: Partial<IconProps>;
   ListItemInput: Partial<InputProps>;
   ListItemSubtitle: Partial<TextProps>;

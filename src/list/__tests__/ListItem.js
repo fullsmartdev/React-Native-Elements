@@ -1,4 +1,5 @@
 import React from 'react';
+import { Text } from 'react-native';
 import { shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import { create } from 'react-test-renderer';
@@ -6,7 +7,7 @@ import { create } from 'react-test-renderer';
 import theme from '../../config/theme';
 import { ThemeProvider } from '../../config';
 
-import ThemedListItem, { ListItem, Icon, Avatar } from '../ListItem';
+import ThemedListItem, { ListItem } from '../ListItem';
 
 describe('ListItem component', () => {
   it('should render without issues', () => {
@@ -18,9 +19,11 @@ describe('ListItem component', () => {
 
   it('should render with avatar', () => {
     const component = shallow(
-      <ListItem theme={theme} containerStyle={{ backgroundColor: 'peru' }}>
-        <Avatar source="avatar_uri" />
-      </ListItem>
+      <ListItem
+        theme={theme}
+        avatar={{ source: 'avatar_uri' }}
+        containerStyle={{ backgroundColor: 'peru' }}
+      />
     );
 
     expect(component.length).toBe(1);
@@ -29,9 +32,33 @@ describe('ListItem component', () => {
 
   it('should render with left icon', () => {
     const component = shallow(
-      <ListItem theme={theme}>
-        <Icon name="wifi" type="font-awesome" color="red" size={20} />
-      </ListItem>
+      <ListItem
+        theme={theme}
+        leftIcon={{
+          name: 'wifi',
+          type: 'font-awesome',
+          color: 'red',
+          size: 20,
+        }}
+      />
+    );
+
+    expect(component.length).toBe(1);
+    expect(toJson(component)).toMatchSnapshot();
+  });
+
+  it('should render with left icon component', () => {
+    const component = shallow(
+      <ListItem theme={theme} leftIcon={<Text>I'm left icon</Text>} />
+    );
+
+    expect(component.length).toBe(1);
+    expect(toJson(component)).toMatchSnapshot();
+  });
+
+  it('should render with right icon component', () => {
+    const component = shallow(
+      <ListItem theme={theme} rightIcon={<Text>I'm right icon</Text>} />
     );
 
     expect(component.length).toBe(1);
@@ -40,19 +67,24 @@ describe('ListItem component', () => {
 
   it('should render with title and subtitle', () => {
     const component = shallow(
-      <ListItem theme={theme}>
-        <ListItem.Content>
-          <ListItem.Title numberOfLines={5} style={{ backgroundColor: 'peru' }}>
-            title test
-          </ListItem.Title>
-          <ListItem.Subtitle style={{ backgroundColor: 'peru' }}>
-            title test
-          </ListItem.Subtitle>
-        </ListItem.Content>
-        <ListItem.Content right>
-          <ListItem.Title right>title</ListItem.Title>
-        </ListItem.Content>
-      </ListItem>
+      <ListItem
+        theme={theme}
+        title="title test"
+        titleProps={{ numberOfLines: 5 }}
+        subtitle="title test"
+        rightTitle="title"
+        titleStyle={{ backgroundColor: 'peru' }}
+        subtitleStyle={{ backgroundColor: 'peru' }}
+      />
+    );
+
+    expect(component.length).toBe(1);
+    expect(toJson(component)).toMatchSnapshot();
+  });
+
+  it('should render with switch', () => {
+    const component = shallow(
+      <ListItem theme={theme} bottomDivider chevron switch={{ value: true }} />
     );
 
     expect(component.length).toBe(1);
@@ -61,9 +93,7 @@ describe('ListItem component', () => {
 
   it('should render with input', () => {
     const component = shallow(
-      <ListItem theme={theme}>
-        <ListItem.Input placeholder="Enter Text" />
-      </ListItem>
+      <ListItem theme={theme} input={{ placeholder: 'Enter Text' }} />
     );
 
     expect(component.length).toBe(1);
@@ -72,23 +102,20 @@ describe('ListItem component', () => {
 
   it('should apply values from theme', () => {
     const testTheme = {
-      ListItemTitle: {
-        style: {
-          color: 'red',
-        },
+      ListItem: {
+        title: 'List Title',
       },
     };
 
     const component = create(
       <ThemeProvider theme={testTheme}>
-        <ThemedListItem>
-          <ThemedListItem.Title />
-        </ThemedListItem>
+        <ThemedListItem />
       </ThemeProvider>
     );
 
     expect(
-      component.root.findByProps({ testID: 'listItemTitle' }).props.style.color
-    ).toBe('red');
+      component.root.findByProps({ testID: 'listItemTitle' }).props.children
+    ).toBe('List Title');
+    expect(component.toJSON()).toMatchSnapshot();
   });
 });
