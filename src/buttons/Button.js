@@ -30,11 +30,11 @@ class Button extends Component {
     }
   }
 
-  handleOnPress = (evt) => {
+  handleOnPress = () => {
     const { loading, onPress } = this.props;
 
     if (!loading) {
-      onPress(evt);
+      onPress();
     }
   };
 
