@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from 'react';
+import React from 'react';
 import {
   View,
   Text,
@@ -54,18 +54,26 @@ export type ButtonProps = TouchableOpacityProps &
   };
 
 const Button: React.FunctionComponent<ButtonProps> = (props: ButtonProps) => {
-  useEffect(() => {
-    if (props.linearGradientProps && !props.ViewComponent) {
-      console.error(
-        "You need to pass a ViewComponent to use linearGradientProps !\nExample: ViewComponent={require('react-native-linear-gradient')}"
-      );
+  if (props.linearGradientProps && !props.ViewComponent) {
+    console.error(
+      "You need to pass a ViewComponent to use linearGradientProps !\nExample: ViewComponent={require('react-native-linear-gradient')}"
+    );
+  }
+
+  const handleOnPress = (evt) => {
+    const {
+      loading,
+      onPress = () => console.log('Please attach a method to this component'),
+    } = props;
+    if (!loading) {
+      onPress(evt);
     }
-  });
+  };
 
   const {
     TouchableComponent,
     containerStyle,
-    onPress = () => console.log('Please attach a method to this component'),
+    onPress,
     buttonStyle,
     type = 'solid',
     loading = false,
@@ -86,15 +94,6 @@ const Button: React.FunctionComponent<ButtonProps> = (props: ButtonProps) => {
     theme,
     ...attributes
   } = props;
-
-  const handleOnPress = useCallback(
-    (evt) => {
-      if (!loading) {
-        onPress(evt);
-      }
-    },
-    [loading, onPress]
-  );
 
   // Refactor to Pressable
   const TouchableComponentInternal =
