@@ -134,6 +134,8 @@ const SocialIcon: React.FunctionComponent<SocialIconProps> = (props) => {
     ...attributes
   } = props;
 
+  const shouldShowExpandedButton = button && title;
+
   return (
     <Component
       {...attributes}
@@ -159,14 +161,17 @@ const SocialIcon: React.FunctionComponent<SocialIconProps> = (props) => {
       ])}
     >
       <View style={styles.wrapper}>
-        <Icon
-          iconStyle={StyleSheet.flatten([iconStyle && iconStyle])}
-          color={light ? colors[type] : iconColor}
-          name={type}
-          size={iconSize}
-          type={iconType}
-        />
-        {button && title && (
+        {(shouldShowExpandedButton || !loading) && (
+          <Icon
+            //@ts-ignore
+            iconStyle={StyleSheet.flatten([iconStyle && iconStyle])}
+            color={light ? colors[type] : iconColor}
+            name={type}
+            size={iconSize}
+            type={iconType}
+          />
+        )}
+        {shouldShowExpandedButton && (
           <Text
             //@ts-ignore
             style={StyleSheet.flatten([
@@ -188,7 +193,7 @@ const SocialIcon: React.FunctionComponent<SocialIconProps> = (props) => {
               styles.activityIndicatorStyle,
               activityIndicatorStyle,
             ])}
-            color={light ? iconColor : 'white'}
+            color={light ? colors[type] : iconColor || 'white'}
             size={(small && 'small') || 'large'}
           />
         )}
