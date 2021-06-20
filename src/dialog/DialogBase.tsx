@@ -1,17 +1,16 @@
 import React, { ReactNode } from 'react';
 import { View, StyleSheet, StyleProp, ViewStyle } from 'react-native';
-import Overlay, { OverlayProps } from '../overlay/Overlay';
-import { withTheme } from '../config';
+import Overlay, { OverlayProps } from '../Overlay';
 import { RneFunctionComponent } from '../helpers';
 
-export type DialogProps = Omit<OverlayProps, 'fullScreen'> & {
+export type DialogBaseProps = Omit<OverlayProps, 'fullScreen'> & {
   children?: ReactNode;
   isVisible?: boolean;
   overlayStyle?: StyleProp<ViewStyle>;
   onBackdropPress?: () => void;
 };
 
-const DialogBase: RneFunctionComponent<DialogProps> = ({
+export const DialogBase: RneFunctionComponent<DialogBaseProps> = ({
   children,
   theme,
   overlayStyle,
@@ -48,5 +47,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export { DialogBase };
-export default withTheme(DialogBase, 'Dialog');
+DialogBase.displayName = 'DialogBase';

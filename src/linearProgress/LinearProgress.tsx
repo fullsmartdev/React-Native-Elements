@@ -10,15 +10,15 @@ import {
 import Color from 'color';
 import { RneFunctionComponent } from '../helpers';
 
-export type LinearProgressProps = {
-  value?: number; // 0 to 1
+export type LinearProgressProps = ViewProps & {
+  value?: number;
   variant?: 'determinate' | 'indeterminate';
   color?: 'primary' | 'secondary' | string;
   trackColor?: string;
   style?: StyleProp<ViewStyle>;
-} & ViewProps;
+};
 
-const LinearProgress: RneFunctionComponent<LinearProgressProps> = ({
+export const LinearProgress: RneFunctionComponent<LinearProgressProps> = ({
   value = 0,
   variant = 'indeterminate',
   color = 'secondary',
@@ -129,4 +129,4 @@ const LinearProgress: RneFunctionComponent<LinearProgressProps> = ({
   );
 };
 
-export default LinearProgress;
+LinearProgress.displayName = 'LinearProgress';

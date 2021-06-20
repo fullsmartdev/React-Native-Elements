@@ -7,7 +7,6 @@ import {
   StyleProp,
   View,
 } from 'react-native';
-import { withTheme } from '../config';
 import { RneFunctionComponent } from '../helpers';
 
 export type DialogLoadingProps = {
@@ -15,7 +14,7 @@ export type DialogLoadingProps = {
   loadingProps?: ActivityIndicatorProps;
 };
 
-const DialogLoading: RneFunctionComponent<DialogLoadingProps> = ({
+export const DialogLoading: RneFunctionComponent<DialogLoadingProps> = ({
   loadingStyle,
   loadingProps,
   theme,
@@ -37,6 +36,8 @@ DialogLoading.defaultProps = {
   loadingProps: { size: 'large' },
 };
 
+DialogLoading.displayName = 'DialogLoading';
+
 const styles = StyleSheet.create({
   loading: {
     marginVertical: 20,
@@ -47,5 +48,3 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
 });
-
-export default withTheme(DialogLoading, 'DialogLoading');

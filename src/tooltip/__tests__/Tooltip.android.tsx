@@ -1,7 +1,7 @@
 import React from 'react';
 import { Modal, Text, TouchableOpacity } from 'react-native';
 import { create } from 'react-test-renderer';
-import { Tooltip } from '../Tooltip';
+import { Tooltip } from '../index';
 
 jest.mock('../../helpers', () => ({
   isIOS: false,

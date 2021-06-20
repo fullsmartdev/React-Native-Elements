@@ -5,14 +5,13 @@ import {
   Platform,
   ColorValue,
 } from 'react-native';
-import { withTheme } from '../config';
 import { RneFunctionComponent } from '../helpers';
 
 export type SwitchProps = NativeSwitchProps & {
   color?: string;
 };
 
-const Switch: RneFunctionComponent<SwitchProps> = ({
+export const Switch: RneFunctionComponent<SwitchProps> = ({
   value = false,
   disabled = false,
   onValueChange,
@@ -74,5 +73,4 @@ const Switch: RneFunctionComponent<SwitchProps> = ({
   );
 };
 
-export { Switch };
-export default withTheme(Switch, 'Switch');
+Switch.displayName = 'Switch';

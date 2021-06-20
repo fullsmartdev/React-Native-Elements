@@ -1,8 +1,7 @@
 import React from 'react';
 import { Text, StyleSheet, TextStyle, StyleProp, Platform } from 'react-native';
-import { withTheme } from '../config';
 import { RneFunctionComponent } from '../helpers';
-import { TextProps } from '../text/Text';
+import { TextProps } from '../Text';
 
 export type DialogTitleProps = {
   title?: string;
@@ -10,7 +9,7 @@ export type DialogTitleProps = {
   titleProps?: TextProps;
 };
 
-const DialogTitle: RneFunctionComponent<DialogTitleProps> = ({
+export const DialogTitle: RneFunctionComponent<DialogTitleProps> = ({
   title,
   titleStyle,
   titleProps,
@@ -34,4 +33,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default withTheme(DialogTitle, 'DialogTitle');
+DialogTitle.displayName = 'DialogTitle';

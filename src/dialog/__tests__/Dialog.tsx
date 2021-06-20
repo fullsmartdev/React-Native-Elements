@@ -4,7 +4,7 @@ import { shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import { create } from 'react-test-renderer';
 import { ThemeProvider } from '../../config';
-import ThemedDialog, { Dialog } from '../Dialog';
+import ThemedDialog, { Dialog } from '../index';
 
 describe('Dialog Component', () => {
   it('should render without any children', () => {

@@ -8,9 +8,8 @@ import {
   ViewStyle,
   ColorValue,
 } from 'react-native';
-import { withTheme } from '../config';
-import Image, { ImageProps } from '../image/Image';
-import Icon, { IconProps } from '../icons/Icon';
+import Image, { ImageProps } from '../Image';
+import Icon, { IconProps } from '../Icon';
 import { RneFunctionComponent } from '../helpers';
 
 export type AccessoryProps = Partial<IconProps> &
@@ -19,7 +18,7 @@ export type AccessoryProps = Partial<IconProps> &
     style?: StyleProp<ViewStyle>;
   };
 
-const Accessory: RneFunctionComponent<AccessoryProps> = ({
+export const Accessory: RneFunctionComponent<AccessoryProps> = ({
   size = 10,
   style,
   underlayColor = '#000',
@@ -90,4 +89,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default withTheme(Accessory, 'AvatarAccessory');
+Accessory.displayName = 'Accessory';

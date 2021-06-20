@@ -1,7 +1,6 @@
 import React from 'react';
 import {
   StyleSheet,
-  TouchableOpacity,
   View,
   Platform,
   TextProps,
@@ -9,11 +8,11 @@ import {
   ViewStyle,
   StyleProp,
   TouchableOpacityProps,
+  TouchableOpacity,
 } from 'react-native';
-import TextElement from '../text/Text';
-import CheckBoxIcon from './CheckBoxIcon';
-import { fonts, withTheme } from '../config';
-import { CheckBoxIconProps } from './CheckBoxIcon';
+import TextElement from '../Text';
+import { CheckBoxIcon, CheckBoxIconProps } from './components/CheckBoxIcon';
+import { fonts } from '../config';
 import { RneFunctionComponent } from '../helpers';
 
 export type CheckBoxProps = TouchableOpacityProps &
@@ -31,28 +30,34 @@ export type CheckBoxProps = TouchableOpacityProps &
     fontFamily?: string;
   };
 
-const CheckBox: RneFunctionComponent<CheckBoxProps> = (props) => {
-  const { theme, ...rest } = props;
-  const {
-    Component = TouchableOpacity,
-    checked = false,
-    iconRight = false,
-    title,
-    titleProps = {},
-    center = false,
-    right = false,
-    containerStyle,
-    textStyle,
-    wrapperStyle,
-    onPress,
-    onLongPress,
-    checkedTitle,
-    fontFamily,
-    checkedColor = theme?.colors?.primary,
-    ...attributes
-  } = rest;
+export const CheckBox: RneFunctionComponent<CheckBoxProps> = ({
+  checked = false,
+  Component = TouchableOpacity,
+  iconRight = false,
+  title,
+  titleProps = {},
+  center = false,
+  right = false,
+  containerStyle,
+  wrapperStyle,
+  textStyle,
+  checkedTitle,
+  fontFamily,
+  theme,
+  onPress,
+  onLongPress,
+  checkedColor = theme?.colors?.primary,
+  ...rest
+}) => {
   const accessibilityState = {
     checked: !!checked,
+  };
+
+  const iconProps = {
+    checked,
+    onLongPress,
+    checkedColor,
+    ...rest,
   };
 
   return (
@@ -60,7 +65,7 @@ const CheckBox: RneFunctionComponent<CheckBoxProps> = (props) => {
       accessibilityRole="checkbox"
       accessibilityState={accessibilityState}
       testID="checkbox"
-      {...attributes}
+      {...rest}
       onLongPress={onLongPress}
       onPress={onPress}
       style={StyleSheet.flatten([
@@ -77,7 +82,9 @@ const CheckBox: RneFunctionComponent<CheckBoxProps> = (props) => {
           wrapperStyle && wrapperStyle,
         ])}
       >
-        {!iconRight && <CheckBoxIcon {...props} checkedColor={checkedColor} />}
+        {!iconRight && (
+          <CheckBoxIcon {...iconProps} checkedColor={checkedColor} />
+        )}
 
         {React.isValidElement(title)
           ? title
@@ -110,7 +117,9 @@ const CheckBox: RneFunctionComponent<CheckBoxProps> = (props) => {
               </TextElement>
             )}
 
-        {iconRight && <CheckBoxIcon {...props} checkedColor={checkedColor} />}
+        {iconRight && (
+          <CheckBoxIcon {...iconProps} checkedColor={checkedColor} />
+        )}
       </View>
     </Component>
   );
@@ -135,5 +144,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export { CheckBox };
-export default withTheme(CheckBox, 'CheckBox');
+CheckBox.displayName = 'Checkbox';

@@ -1,9 +1,9 @@
 import React from 'react';
-import { BottomSheet } from '../BottomSheet';
+import { BottomSheet } from '../index';
 import { Modal } from 'react-native';
 import renderer from 'react-test-renderer';
 import { shallow } from 'enzyme';
-import ListItem from '../../list/ListItem';
+import ListItem from '../../ListItem/index';
 import toJson from 'enzyme-to-json';
 
 describe('BottomSheet Component', () => {

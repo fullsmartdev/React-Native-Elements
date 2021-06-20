@@ -1,13 +1,12 @@
 import React, { ReactNode } from 'react';
 import { View, StyleSheet } from 'react-native';
-import { withTheme } from '../config';
 import { RneFunctionComponent } from '../helpers';
 
 export type DialogActionsProps = {
   children?: ReactNode;
 };
 
-const DialogActions: RneFunctionComponent<DialogActionsProps> = ({
+export const DialogActions: RneFunctionComponent<DialogActionsProps> = ({
   children,
 }) => {
   return (
@@ -26,4 +25,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default withTheme(DialogActions, 'DialogActions');
+DialogActions.displayName = 'DialogActions';
