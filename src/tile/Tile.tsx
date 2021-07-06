@@ -13,63 +13,94 @@ import {
   ImageURISource,
   ImageSourcePropType,
 } from 'react-native';
-import { withTheme } from '../config';
-import Image from '../image/Image';
-import Text from '../text/Text';
-import Icon, { IconObject, IconProps } from '../icons/Icon';
-import FeaturedTile from './FeaturedTile';
+import Image from '../Image';
+import Text from '../Text';
+import Icon, { IconObject, IconProps } from '../Icon';
+import { ThemedFeaturedTile } from './components/FeaturedTile';
 import { RneFunctionComponent } from '../helpers';
 
 export type TileProps = TouchableOpacityProps &
   TouchableNativeFeedbackProps & {
+    /** Text inside the tile. */
     title?: string;
+
+    /** Icon Component Props. */
     icon?: IconObject & IconProps;
+
+    /** Text inside the tilt when tile is featured. */
     caption?: React.ReactNode;
+
+    /** Source for the image. */
     imageSrc?: ImageSourcePropType | string | number;
+
+    /** Number passed to control opacity on press. */
     activeOpacity?: number;
+
+    /** Styling for the outer tile container. */
     containerStyle?: StyleProp<ViewStyle>;
+
+    /** Styling for the image. */
     imageContainerStyle?: StyleProp<ViewStyle>;
+
+    /** Styling for the outer icon container. */
     iconContainerStyle?: StyleProp<ViewStyle>;
+
+    /** Styling for the overlay container when using featured tile. */
     overlayContainerStyle?: StyleProp<ViewStyle>;
+
+    /** Styling for the title. */
     titleStyle?: StyleProp<TextStyle>;
+
+    /** Styling for the caption (optional); You only use this if `caption` is a string. */
     captionStyle?: StyleProp<TextStyle>;
+
+    /** Width for the tile. */
     width?: number;
+
+    /** Height for the tile. */
     height?: number;
+
+    /** Changes the look of the tile. */
     featured?: boolean;
+
+    /** Styling for bottom container when not featured tile. */
     contentContainerStyle?: StyleProp<ViewStyle>;
+
+    /** Number of lines for Title. */
     titleNumberOfLines?: number;
+
+    /** Optional properties to pass to the image if provided e.g "resizeMode". */
     imageProps?: Partial<ImageProps>;
+
+    /** Custom ImageComponent for Tile. */
     ImageComponent?: typeof React.Component;
   };
 
-const Tile: RneFunctionComponent<TileProps> = (props) => {
-  const {
-    featured,
-    imageSrc,
-    icon,
-    title,
-    children,
-    caption,
-    titleStyle,
-    onPress,
-    activeOpacity,
-    overlayContainerStyle,
-    captionStyle,
-    iconContainerStyle,
-    imageContainerStyle,
-    containerStyle,
-    contentContainerStyle,
-    titleNumberOfLines,
-    ImageComponent = Image,
-    imageProps = {},
-    ...attributes
-  } = props;
-
-  const {
-    width = Dimensions.get('window').width,
-    height = width * 0.8,
-  } = props;
-
+/** Tiles like Cards, are a convenient way to display related content about a single subject.
+ * Also receives all [TouchableNativeFeedback](http://reactnative.dev/docs/touchablenativefeedback.html#props) (Android) or [TouchableOpacity](http://reactnative.dev/docs/touchableopacity.html#props) (iOS) props. */
+export const Tile: RneFunctionComponent<TileProps> = ({
+  featured,
+  imageSrc,
+  icon,
+  title,
+  children,
+  caption,
+  titleStyle,
+  onPress,
+  activeOpacity,
+  overlayContainerStyle,
+  captionStyle,
+  iconContainerStyle,
+  imageContainerStyle,
+  containerStyle,
+  contentContainerStyle,
+  titleNumberOfLines,
+  ImageComponent = Image,
+  imageProps = {},
+  width = Dimensions.get('window').width,
+  height = width * 0.8,
+  ...attributes
+}) => {
   if (featured) {
     const featuredProps = {
       title,
@@ -88,7 +119,7 @@ const Tile: RneFunctionComponent<TileProps> = (props) => {
       imageProps,
       ImageComponent,
     };
-    return <FeaturedTile {...(featuredProps as TileProps)} />;
+    return <ThemedFeaturedTile {...(featuredProps as TileProps)} />;
   }
 
   return (
@@ -169,5 +200,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export { Tile };
-export default withTheme(Tile, 'Tile');
+Tile.displayName = 'Tile';

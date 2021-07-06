@@ -1,17 +1,18 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
-import { withTheme } from '../config';
-import Divider, { DividerProps } from '../divider/Divider';
+import Divider, { DividerProps } from '../Divider';
 import { RneFunctionComponent } from '../helpers';
 
-const CardDivider: RneFunctionComponent<DividerProps> = ({
+export type CardDividerProps = DividerProps;
+
+/** Add divider to the card which acts as a separator between elements.
+ * This, Receives all [Divider](divider.md#props) props. */
+export const CardDivider: RneFunctionComponent<CardDividerProps> = ({
   style,
   ...props
-}) => {
-  return (
-    <Divider style={StyleSheet.flatten([styles.divider, style])} {...props} />
-  );
-};
+}) => (
+  <Divider style={StyleSheet.flatten([styles.divider, style])} {...props} />
+);
 
 const styles = StyleSheet.create({
   divider: {
@@ -19,4 +20,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default withTheme(CardDivider, 'CardDivider');
+CardDivider.displayName = 'CardDivider';

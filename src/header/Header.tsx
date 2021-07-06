@@ -5,7 +5,6 @@ import {
   StyleSheet,
   View,
   ImageBackground,
-  TextStyle,
   StyleProp,
   TextProps,
   ViewProps,
@@ -14,112 +13,101 @@ import {
   ImageSourcePropType,
   ImageStyle,
   ViewStyle,
-  FlexAlignType,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { withTheme } from '../config';
-import { renderNode, RneFunctionComponent } from '../helpers';
-
-import Text from '../text/Text';
-import Icon, { IconObject } from '../icons/Icon';
-
-type Placement = 'left' | 'center' | 'right';
-
-const ALIGN_STYLE: Record<Placement, FlexAlignType> = {
-  left: 'flex-start',
-  right: 'flex-end',
-  center: 'center',
-};
-
-type HeaderChildrenProps = {
-  placement: Placement;
-  style: StyleProp<ViewStyle>;
-  children: any;
-};
-
-const Children = ({ style, placement, children }: HeaderChildrenProps) => (
-  <View
-    style={StyleSheet.flatten([{ alignItems: ALIGN_STYLE[placement] }, style])}
-  >
-    {children == null || children === false
-      ? null
-      : children.text
-      ? renderNode(Text, children.text, { numberOfLines: 1, ...children })
-      : children.icon
-      ? renderNode(Icon, {
-          ...children,
-          name: children.icon,
-          containerStyle: StyleSheet.flatten([
-            { alignItems: ALIGN_STYLE[placement] },
-            children.containerStyle,
-          ]),
-        })
-      : renderNode(Text, children)}
-  </View>
-);
-
-interface HeaderIcon extends IconObject {
-  icon?: string;
-  text?: string;
-  color?: string;
-  style?: StyleProp<TextStyle>;
-}
+import { RneFunctionComponent } from '../helpers';
+import { Children } from './components/HeaderChildren';
+import { HeaderIcon } from './components/HeaderIcon';
 
 type HeaderSubComponent = React.ReactElement<{}> | TextProps | HeaderIcon;
 
 export type HeaderProps = ViewProps & {
+  /** Component for container. */
   ViewComponent?: typeof React.Component;
+
+  /** Displays a linear gradient. See [usage](#lineargradient-usage). */
   linearGradientProps?: Object;
+
+  /** Accepts all props for StatusBar. */
   statusBarProps?: StatusBarProps;
+
+  /** Sets the color of the status bar text. */
   barStyle?: StatusBarStyle;
+
+  /** Define your left component here. */
   leftComponent?: HeaderSubComponent;
+
+  /** Define your center component here. */
   centerComponent?: HeaderSubComponent;
+
+  /** Define your right component here. */
   rightComponent?: HeaderSubComponent;
+
+  /** Sets backgroundColor of the parent component. */
   backgroundColor?: string;
+
+  /** Sets backgroundImage for parent component. */
   backgroundImage?: ImageSourcePropType;
+
+  /** Styling for backgroundImage in the main container. */
   backgroundImageStyle?: ImageStyle;
+
+  /** Alignment for title. */
   placement?: 'left' | 'center' | 'right';
+
+  /** Styling around the main container. */
   containerStyle?: StyleProp<ViewStyle>;
+
+  /** Styling for container around the centerComponent. */
   centerContainerStyle?: StyleProp<ViewStyle>;
+
+  /** Styling for container around the leftComponent. */
   leftContainerStyle?: StyleProp<ViewStyle>;
+
+  /** Styling for container around the rightComponent. */
   rightContainerStyle?: StyleProp<ViewStyle>;
+
+  /** Add children component to the header. */
   children?: JSX.Element[];
+
+  /** Elevation for header */
   elevated?: boolean;
 };
 
-const Header: RneFunctionComponent<HeaderProps> = (props) => {
+/** Headers are navigation components that display information and actions relating to the current screen.
+ * **Note:**
+ * Make sure that you have completed [Step 3](getting_started.md#step-3-setup-react-native-safe-area-context) in the setup guide before using `Header`.
+ */
+export const Header: RneFunctionComponent<HeaderProps> = ({
+  statusBarProps,
+  leftComponent,
+  centerComponent,
+  rightComponent,
+  leftContainerStyle,
+  centerContainerStyle,
+  rightContainerStyle,
+  backgroundColor,
+  backgroundImage,
+  backgroundImageStyle,
+  containerStyle,
+  placement = 'center',
+  barStyle,
+  children = [],
+  linearGradientProps,
+  ViewComponent = linearGradientProps || !backgroundImage
+    ? View
+    : ImageBackground,
+  theme,
+  elevated,
+  ...attributes
+}) => {
   React.useEffect(() => {
-    const { linearGradientProps, ViewComponent } = props;
     if (linearGradientProps && !ViewComponent) {
       console.error(
         "You need to pass a ViewComponent to use linearGradientProps !\nExample: ViewComponent={require('react-native-linear-gradient')}"
       );
     }
   });
-
-  const {
-    statusBarProps,
-    leftComponent,
-    centerComponent,
-    rightComponent,
-    leftContainerStyle,
-    centerContainerStyle,
-    rightContainerStyle,
-    backgroundColor,
-    backgroundImage,
-    backgroundImageStyle,
-    containerStyle,
-    placement = 'center',
-    barStyle,
-    children = [],
-    linearGradientProps,
-    ViewComponent = linearGradientProps || !backgroundImage
-      ? View
-      : ImageBackground,
-    theme,
-    elevated,
-    ...attributes
-  } = props;
 
   return (
     <>
@@ -220,6 +208,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export { Header };
-
-export default withTheme<HeaderProps, {}>(Header, 'Header');
+Header.displayName = 'Header';

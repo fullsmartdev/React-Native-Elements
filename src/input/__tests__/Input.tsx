@@ -5,7 +5,7 @@ import toJson from 'enzyme-to-json';
 import { create } from 'react-test-renderer';
 import theme from '../../config/theme';
 import { ThemeProvider } from '../../config';
-import ThemedInput, { Input } from '../Input';
+import ThemedInput, { Input } from '../index';
 
 describe('Input component', () => {
   it('should match snapshot', () => {

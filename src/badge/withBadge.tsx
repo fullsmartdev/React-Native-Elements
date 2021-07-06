@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleProp, StyleSheet, View, ViewStyle } from 'react-native';
-import Badge, { BadgeProps } from './Badge';
+import Badge, { BadgeProps } from './index';
 
 type withBadgeOptions = {
   bottom?: number;
@@ -11,8 +11,11 @@ type withBadgeOptions = {
   containerStyle?: StyleProp<ViewStyle>;
 } & BadgeProps;
 
-const withBadge = (
+export const withBadge = (
+  /** Text value to be displayed by badge, defaults to empty */
   value: React.ReactNode | ((props: any) => React.ReactNode),
+
+  /** Also receives all [Badge](badge.md#props) props. */
   options: withBadgeOptions = {}
 ) => (WrappedComponent: React.ComponentType<any>): React.ComponentType => {
   const WithBadge = (props: any) => {
@@ -63,5 +66,3 @@ const styles = StyleSheet.create({
     position: 'relative',
   },
 });
-
-export default withBadge;
