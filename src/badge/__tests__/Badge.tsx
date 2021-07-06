@@ -6,7 +6,7 @@ import { render } from '@testing-library/react-native';
 import renderer from 'react-test-renderer';
 import { ThemeProvider } from '../../config';
 import theme from '../../config/theme';
-import ThemedBadge, { Badge } from '../index';
+import ThemedBadge, { Badge } from '../Badge';
 
 describe('Badge Component', () => {
   it('should render without issue', () => {

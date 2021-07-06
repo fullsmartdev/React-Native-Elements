@@ -12,8 +12,8 @@ import {
   TextStyle,
   TextInput,
 } from 'react-native';
-import Input, { InputProps } from '../Input';
-import Icon from '../Icon';
+import Input, { InputProps } from '../input/Input';
+import Icon from '../icons/Icon';
 import { renderNode } from '../helpers';
 import { SearchBarBaseProps } from './SearchBar';
 import { Theme } from '../config/theme';
@@ -35,7 +35,7 @@ const defaultClearIcon = (theme: Theme) => ({
 
 export type SearchBarIosProps = InputProps &
   SearchBarBaseProps &
-  typeof SearchBarIOS.defaultProps & {
+  typeof SearchBar.defaultProps & {
     cancelButtonProps?: Partial<TouchableOpacityProps> & {
       buttonStyle?: StyleProp<ViewStyle>;
       buttonTextStyle?: StyleProp<TextStyle>;
@@ -53,7 +53,7 @@ type SearchBarState = {
   cancelButtonWidth: number | null;
 };
 
-export class SearchBarIOS extends Component<
+class SearchBar extends Component<
   SearchBarIosProps & Partial<ThemeProps<SearchBarIosProps>>,
   SearchBarState
 > {
@@ -305,3 +305,5 @@ const styles = StyleSheet.create({
     position: 'absolute',
   },
 });
+
+export default SearchBar;

@@ -1,7 +1,7 @@
 import React from 'react';
 import { create } from 'react-test-renderer';
 import { makeStyles, useTheme } from '../makeStyles';
-import Text from '../../Text';
+import Text from '../../text/Text';
 import { ThemeProvider } from '..';
 
 describe('useTheme()', () => {

@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import { create } from 'react-test-renderer';
 import { ThemeProvider } from '../../config';
-import ThemedSlider, { Slider } from '../index';
+import ThemedSlider, { Slider } from '../Slider';
 import { render } from '@testing-library/react-native';
 
 describe('Slider component', () => {

@@ -4,7 +4,7 @@ import { shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import { create } from 'react-test-renderer';
 import { ThemeProvider } from '../../config';
-import ThemedImage, { Image } from '../index';
+import ThemedImage, { Image } from '../Image';
 
 jest.useFakeTimers();
 

@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import renderer from 'react-test-renderer';
 import { ThemeProvider } from '../../config';
-import TextThemed, { Text } from '../index';
+import TextThemed, { TextElement as Text } from '../Text';
 
 const theme = {
   colors: {

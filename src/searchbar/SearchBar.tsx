@@ -1,7 +1,8 @@
 import React from 'react';
-import { SearchBarIOS, SearchBarIosProps } from './SearchBar-ios';
-import { SearchBarAndroid, SearchBarAndroidProps } from './SearchBar-android';
-import { SearchBarDefault, SearchBarDefaultProps } from './SearchBar-default';
+import { withTheme } from '../config';
+import IOSSearchBar, { SearchBarIosProps } from './SearchBar-ios';
+import AndroidSearchBar, { SearchBarAndroidProps } from './SearchBar-android';
+import DefaultSearchBar, { SearchBarDefaultProps } from './SearchBar-default';
 import {
   ActivityIndicatorProps,
   StyleProp,
@@ -9,19 +10,19 @@ import {
   ViewStyle,
   TextInput,
 } from 'react-native';
-import { IconNode } from '../Icon';
+import { IconNode } from '../icons/Icon';
 import { ThemeProps } from '../config';
 
 const SEARCHBAR_COMPONENTS = {
-  ios: SearchBarIOS,
-  android: SearchBarAndroid,
-  default: SearchBarDefault,
+  ios: IOSSearchBar,
+  android: AndroidSearchBar,
+  default: DefaultSearchBar,
 };
 
 export type SearchBarBaseProps = React.ComponentPropsWithRef<
   typeof TextInput
 > & {
-  platform?: 'default' | 'ios' | 'android';
+  platform: 'default' | 'ios' | 'android';
   containerStyle?: StyleProp<ViewStyle>;
   inputContainerStyle?: StyleProp<ViewStyle>;
   clearIcon?: IconNode;
@@ -38,16 +39,15 @@ export type SearchBarBaseProps = React.ComponentPropsWithRef<
   onCancel?(): void;
 };
 
-export type SearchBarProps =
-  | SearchBarBaseProps
-  | SearchBarDefaultProps
-  | SearchBarAndroidProps
-  | SearchBarIosProps;
+export type SearchBarProps = SearchBarBaseProps &
+  SearchBarDefaultProps &
+  SearchBarAndroidProps &
+  SearchBarIosProps;
 
-export class SearchBar extends React.Component<
+class SearchBar extends React.Component<
   SearchBarProps & Partial<ThemeProps<SearchBarProps>>
 > {
-  searchbar!: SearchBarIOS;
+  searchbar!: IOSSearchBar;
   static defaultProps = {
     platform: 'default' as const,
   };
@@ -70,11 +70,11 @@ export class SearchBar extends React.Component<
 
   render() {
     const Component: typeof React.Component =
-      SEARCHBAR_COMPONENTS[this.props.platform] || SearchBarDefault;
+      SEARCHBAR_COMPONENTS[this.props.platform] || DefaultSearchBar;
 
     return (
       <Component
-        ref={(ref: SearchBarIOS) => {
+        ref={(ref: IOSSearchBar) => {
           this.searchbar = ref;
         }}
         {...this.props}
@@ -82,3 +82,6 @@ export class SearchBar extends React.Component<
     );
   }
 }
+
+export { SearchBar };
+export default withTheme(SearchBar, 'SearchBar');

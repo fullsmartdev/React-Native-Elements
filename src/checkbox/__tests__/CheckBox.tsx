@@ -5,7 +5,7 @@ import toJson from 'enzyme-to-json';
 import renderer from 'react-test-renderer';
 import theme from '../../config/theme';
 import { ThemeProvider } from '../../config';
-import ThemedCheckBox, { CheckBox } from '../index';
+import ThemedCheckBox, { CheckBox } from '../CheckBox';
 
 describe('CheckBox Component', () => {
   it('should render without issues', () => {
@@ -26,12 +26,7 @@ describe('CheckBox Component', () => {
 
   it('should render title in Text', () => {
     const component = shallow(
-      <CheckBox
-        theme={theme}
-        title="Custom Text"
-        checked
-        checkedTitle="Custom Text"
-      />
+      <CheckBox theme={theme} title="Custom Text" checked />
     );
     expect(toJson(component)).toMatchSnapshot();
     expect(component.props().children.props.children[1].props.children).toBe(
@@ -180,7 +175,7 @@ describe('CheckBox Component', () => {
     };
     const component = renderer.create(
       <ThemeProvider theme={testTheme}>
-        <ThemedCheckBox title="George is Cool" />
+        <ThemedCheckBox />
       </ThemeProvider>
     );
     expect(

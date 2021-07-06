@@ -2,8 +2,8 @@ import React from 'react';
 import { Text, TouchableOpacity, Modal } from 'react-native';
 import { create } from 'react-test-renderer';
 import { ThemeProvider } from '../../config';
-import ThemedTooltip, { Tooltip } from '../index';
-import Triangle from '../components/Triangle';
+import ThemedTooltip, { Tooltip } from '../Tooltip';
+import Triangle from '../Triangle';
 
 describe('Tooltip component', () => {
   beforeAll(() => {

@@ -1,9 +1,9 @@
 import React from 'react';
-import { BottomSheet } from '../index';
-import { Modal, ScrollView } from 'react-native';
+import { BottomSheet } from '../BottomSheet';
+import { Modal } from 'react-native';
 import renderer from 'react-test-renderer';
 import { shallow } from 'enzyme';
-import ListItem from '../../ListItem/index';
+import ListItem from '../../list/ListItem';
 import toJson from 'enzyme-to-json';
 
 describe('BottomSheet Component', () => {
@@ -65,17 +65,5 @@ describe('BottomSheet Component', () => {
       />
     );
     expect(toJson(component)).toMatchSnapshot();
-  });
-
-  it('should render ScrollView with the provided scrollViewProps', () => {
-    const component = shallow(
-      <BottomSheet
-        isVisible={true}
-        scrollViewProps={{ keyboardShouldPersistTaps: 'handled' }}
-      />
-    );
-    expect(component.find(ScrollView).props().keyboardShouldPersistTaps).toBe(
-      'handled'
-    );
   });
 });

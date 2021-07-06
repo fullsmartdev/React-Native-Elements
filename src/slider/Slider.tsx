@@ -13,9 +13,8 @@ import {
   PanResponderGestureState,
   LayoutChangeEvent,
 } from 'react-native';
+import { withTheme } from '../config';
 import { RneFunctionComponent } from '../helpers';
-import { Rect } from './components/Rect';
-import { SliderThumb } from './components/SliderThumb';
 
 const TRACK_SIZE = 4;
 const THUMB_SIZE = 40;
@@ -42,106 +41,63 @@ const getBoundedValue = (
   return Math.max(Math.min(value, maximumValue), minimumValue);
 };
 
+class Rect {
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+
+  constructor(x: number, y: number, width: number, height: number) {
+    this.x = x;
+    this.y = y;
+    this.width = width;
+    this.height = height;
+  }
+
+  containsPoint(x: number, y: number) {
+    return (
+      x >= this.x &&
+      y >= this.y &&
+      x <= this.x + this.width &&
+      y <= this.y + this.height
+    );
+  }
+}
+
 type Sizable = {
   width: number;
   height: number;
 };
 
 export type SliderProps = {
-  /** Initial value of the slider. */
   value?: number;
-
-  /** If true the user won't be able to move the slider. */
   disabled?: boolean;
-
-  /** Initial minimum value of the slider. */
   minimumValue?: number;
-
-  /** Initial maximum value of the slider. */
   maximumValue?: number;
-
-  /** Step value of the slider. The value should be between 0 and maximumValue - minimumValue). */
   step?: number;
-
-  /** The color used for the track to the left of the button. */
   minimumTrackTintColor?: string;
-
-  /** The color used for the track to the right of the button. */
   maximumTrackTintColor?: string;
-
-  /** If true, thumb will respond and jump to any touch along the track. */
   allowTouchTrack?: boolean;
-
-  /** The color used for the thumb. */
   thumbTintColor?: string;
-
-  /** The size of the touch area that allows moving the thumb. The touch area has the same center as the visible thumb. This allows to have a visually small thumb while still allowing the user to move it easily. */
   thumbTouchSize?: Sizable;
-
-  /** Callback continuously called while the user is dragging the slider. */
   onValueChange?(value: number): void;
-
-  /** Callback called when the user starts changing the value (e.g. when the slider is pressed). */
   onSlidingStart?(value: number): void;
-
-  /** Callback called when the user finishes changing the value (e.g. when the slider is released). */
   onSlidingComplete?(value: number): void;
-
-  /** The style applied to the slider container. */
   style?: StyleProp<ViewStyle>;
-
-  /** The style applied to the track. */
   trackStyle?: StyleProp<ViewStyle>;
-
-  /** The style applied to the thumb. */
   thumbStyle?: StyleProp<ViewStyle>;
-
-  /** The props applied to the thumb. Uses `Component` prop which can accept `Animated` components. */
   thumbProps?: any;
-
-  /** Set this to true to visually see the thumb touch rect in green. */
   debugTouchArea?: boolean;
-
-  /** Set to true if you want to use the default 'spring' animation. */
   animateTransitions?: boolean;
-
-  /** Set to 'spring' or 'timing' to use one of those two types of animations with the default [animation properties](https://reactnative.dev/docs/animations.html). */
   animationType?: 'spring' | 'timing';
-
-  /** Set the orientation of the slider. */
   orientation?: 'horizontal' | 'vertical';
-
-  /** Used to configure the animation parameters. These are the same parameters in the [Animated library](https://reactnative.dev/docs/animations.html). */
   animationConfig?:
     | Animated.TimingAnimationConfig
     | Animated.SpringAnimationConfig;
-
-  /** Apply style to the container of the slider. */
   containerStyle?: typeof styles;
 };
 
-/** Sliders allow users to select a value from a fixed set of values using drag utility.*/
-export const Slider: RneFunctionComponent<SliderProps> = ({
-  minimumValue,
-  maximumValue,
-  minimumTrackTintColor,
-  maximumTrackTintColor,
-  thumbTintColor,
-  containerStyle,
-  style,
-  trackStyle,
-  thumbStyle,
-  thumbProps,
-  debugTouchArea,
-  orientation,
-  animateTransitions,
-  animationType,
-  disabled,
-  allowTouchTrack,
-  step,
-  thumbTouchSize,
-  ...other
-}) => {
+const Slider: RneFunctionComponent<SliderProps> = (props) => {
   const _previousLeft = useRef(0);
   const [allMeasured, setAllMeasured] = useState(false);
   const [containerSize, setContainerSize] = useState({ width: 0, height: 0 });
@@ -150,17 +106,14 @@ export const Slider: RneFunctionComponent<SliderProps> = ({
   const containerSizeValue = useRef(containerSize);
   const trackSizeValue = useRef(trackSize);
   const thumbSizeValue = useRef(thumbSize);
-  const isVertical = useRef(orientation === 'vertical');
-  const props = other;
-  const propEvents = {
-    onSlidingComplete: props.onSlidingComplete,
-    onSlidingStart: props.onSlidingStart,
-    onValueChange: props.onValueChange,
-  };
-
+  const isVertical = useRef(props.orientation === 'vertical');
   const [value] = useState(
     new Animated.Value(
-      getBoundedValue(props.value || 0, maximumValue || 1, minimumValue || 0)
+      getBoundedValue(
+        props.value || 0,
+        props.maximumValue || 1,
+        props.minimumValue || 0
+      )
     )
   );
 
@@ -224,11 +177,11 @@ export const Slider: RneFunctionComponent<SliderProps> = ({
     if (didMountRef.current) {
       const newValue = getBoundedValue(
         props.value || 0,
-        maximumValue || 1,
-        minimumValue || 0
+        props.maximumValue || 1,
+        props.minimumValue || 0
       );
       if (prevPropValue.current !== newValue) {
-        if (animateTransitions) {
+        if (props.animateTransitions) {
           setCurrentValueAnimated(new Animated.Value(newValue));
         } else {
           setCurrentValue(newValue);
@@ -240,6 +193,7 @@ export const Slider: RneFunctionComponent<SliderProps> = ({
   });
 
   const setCurrentValueAnimated = (value1: Animated.Value) => {
+    const { animationType } = props;
     const animationConfig = Object.assign(
       {},
       DEFAULT_ANIMATION_CONFIGS[animationType || 'timing'],
@@ -268,7 +222,7 @@ export const Slider: RneFunctionComponent<SliderProps> = ({
     _: GestureResponderEvent,
     gestureState: PanResponderGestureState
   ) => {
-    if (disabled) {
+    if (props.disabled) {
       return;
     }
     setCurrentValue(getValue(gestureState));
@@ -284,7 +238,7 @@ export const Slider: RneFunctionComponent<SliderProps> = ({
     _: GestureResponderEvent,
     gestureState: PanResponderGestureState
   ) => {
-    if (disabled) {
+    if (props.disabled) {
       return;
     }
     setCurrentValue(getValue(gestureState));
@@ -303,7 +257,7 @@ export const Slider: RneFunctionComponent<SliderProps> = ({
   ) => {
     // Should we become active when the user presses down on the thumb?
 
-    if (!allowTouchTrack && !TRACK_STYLE) {
+    if (!props.allowTouchTrack && !TRACK_STYLE) {
       return thumbHitTest(e);
     }
     if (!trackStyle) {
@@ -313,9 +267,9 @@ export const Slider: RneFunctionComponent<SliderProps> = ({
     return true;
   };
 
-  const fireChangeEvent = (event: keyof typeof propEvents) => {
-    if (propEvents?.[event]) {
-      propEvents?.[event]?.(currentPropValue.current);
+  const fireChangeEvent = (event: keyof typeof props) => {
+    if (props?.[event]) {
+      props?.[event]?.(currentPropValue.current);
     }
   };
 
@@ -331,19 +285,21 @@ export const Slider: RneFunctionComponent<SliderProps> = ({
     const length =
       containerSizeValue.current.width - thumbSizeValue.current.width;
     const ratio = location / length;
-    let newValue = ratio * ((maximumValue || 1) - (minimumValue || 0));
-    if (step) {
-      newValue = Math.round(newValue / step) * step;
+    let newValue =
+      ratio * ((props.maximumValue || 1) - (props.minimumValue || 0));
+    if (props.step) {
+      newValue = Math.round(newValue / props.step) * props.step;
     }
 
     return getBoundedValue(
-      newValue + (minimumValue || 0),
-      maximumValue || 1,
-      minimumValue || 0
+      newValue + (props.minimumValue || 0),
+      props.maximumValue || 1,
+      props.minimumValue || 0
     );
   };
 
   const getTouchOverflowSize = () => {
+    const { thumbTouchSize } = props;
     const size: { width?: number; height?: number } = {};
     if (allMeasured === true) {
       size.width = Math.max(
@@ -370,7 +326,7 @@ export const Slider: RneFunctionComponent<SliderProps> = ({
       touchOverflowStyle.marginLeft = horizontalMargin;
       touchOverflowStyle.marginRight = horizontalMargin;
     }
-    if (debugTouchArea === true) {
+    if (props.debugTouchArea === true) {
       touchOverflowStyle.backgroundColor = 'orange';
       touchOverflowStyle.opacity = 0.5;
     }
@@ -395,8 +351,8 @@ export const Slider: RneFunctionComponent<SliderProps> = ({
 
   const getRatio = (value1: number) => {
     return (
-      (value1 - (minimumValue || 0)) /
-      ((maximumValue || 1) - (minimumValue || 0))
+      (value1 - (props.minimumValue || 0)) /
+      ((props.maximumValue || 1) - (props.minimumValue || 0))
     );
   };
 
@@ -408,6 +364,7 @@ export const Slider: RneFunctionComponent<SliderProps> = ({
   };
 
   const getThumbTouchRect = () => {
+    const { thumbTouchSize } = props;
     const touchOverflowSize: any = getTouchOverflowSize();
     const height =
       touchOverflowSize?.height / 2 +
@@ -480,6 +437,20 @@ export const Slider: RneFunctionComponent<SliderProps> = ({
     })
   ).current;
 
+  const {
+    minimumValue,
+    maximumValue,
+    minimumTrackTintColor,
+    maximumTrackTintColor,
+    thumbTintColor,
+    containerStyle,
+    style,
+    trackStyle,
+    thumbStyle,
+    thumbProps,
+    debugTouchArea,
+    ...other
+  } = props;
   const mainStyles = containerStyle || styles;
   const appliedTrackStyle = StyleSheet.flatten([styles.track, trackStyle]);
   const thumbStart = value.interpolate({
@@ -556,6 +527,40 @@ export const Slider: RneFunctionComponent<SliderProps> = ({
   );
 };
 
+const SliderThumb = ({
+  Component,
+  isVisible,
+  onLayout,
+  style,
+  start,
+  color,
+  vertical,
+  ...props
+}: any) => {
+  const ThumbComponent = Component || Animated.View;
+  const axis = vertical ? 'translateY' : 'translateX';
+  const thumbPosition = [{ [axis]: start }];
+  const styleTransform = (style && style.transform) || [];
+  const visibleStyle = isVisible ? {} : { height: 0, width: 0 };
+
+  return (
+    <ThumbComponent
+      testID="sliderThumb"
+      onLayout={onLayout}
+      style={StyleSheet.flatten([
+        {
+          backgroundColor: color,
+          transform: [...thumbPosition, ...styleTransform],
+          ...visibleStyle,
+        },
+        styles.thumb,
+        style,
+      ])}
+      {...props}
+    />
+  );
+};
+
 Slider.defaultProps = {
   value: 0,
   minimumValue: 0,
@@ -591,7 +596,12 @@ const styles = StyleSheet.create({
     flex: 1,
     width: TRACK_SIZE,
   },
-
+  thumb: {
+    position: 'absolute',
+    width: THUMB_SIZE,
+    height: THUMB_SIZE,
+    borderRadius: THUMB_SIZE / 2,
+  },
   touchArea: {
     position: 'absolute',
     backgroundColor: 'transparent',
@@ -607,4 +617,5 @@ const styles = StyleSheet.create({
   },
 });
 
-Slider.displayName = 'Slider';
+export { Slider };
+export default withTheme(Slider, 'Slider');

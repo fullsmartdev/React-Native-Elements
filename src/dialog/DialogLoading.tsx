@@ -7,18 +7,16 @@ import {
   StyleProp,
   View,
 } from 'react-native';
-import { RneFunctionComponent } from '../helpers';
+import { withTheme } from '../config';
+import { Theme } from '../config/theme';
 
 export type DialogLoadingProps = {
-  /** Add additional styling for loading component. */
   loadingStyle?: StyleProp<ViewStyle>;
-
-  /** Add additional props for ActivityIndicator component */
   loadingProps?: ActivityIndicatorProps;
+  theme?: Theme;
 };
 
-/** `DialogLoader` allows adding loader to the Dialog. Loader is simply ActivityIndicator. */
-export const DialogLoading: RneFunctionComponent<DialogLoadingProps> = ({
+const DialogLoading: React.FunctionComponent<DialogLoadingProps> = ({
   loadingStyle,
   loadingProps,
   theme,
@@ -27,8 +25,8 @@ export const DialogLoading: RneFunctionComponent<DialogLoadingProps> = ({
     <View style={styles.loadingView}>
       <ActivityIndicator
         style={StyleSheet.flatten([styles.loading, loadingStyle])}
-        color={loadingProps?.color ?? theme?.colors?.primary}
-        size={loadingProps?.size ?? 'large'}
+        color={loadingProps.color ?? theme.colors.primary}
+        size={loadingProps.size ?? 'large'}
         testID="Dialog__Loading"
         {...loadingProps}
       />
@@ -40,8 +38,6 @@ DialogLoading.defaultProps = {
   loadingProps: { size: 'large' },
 };
 
-DialogLoading.displayName = 'DialogLoading';
-
 const styles = StyleSheet.create({
   loading: {
     marginVertical: 20,
@@ -52,3 +48,5 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
 });
+
+export default withTheme(DialogLoading, 'DialogLoading');

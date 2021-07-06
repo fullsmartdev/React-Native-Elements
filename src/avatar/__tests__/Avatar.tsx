@@ -4,8 +4,8 @@ import { shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import { create } from 'react-test-renderer';
 import { ThemeProvider } from '../../config';
-import ThemedAvatar, { AvatarBase as Avatar } from '../index';
-import { Image } from '../../Image';
+import ThemedAvatar, { Avatar } from '../Avatar';
+import { Image } from '../../image/Image';
 
 describe('Avatar Component', () => {
   jest.useFakeTimers();

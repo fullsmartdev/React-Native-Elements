@@ -1,13 +1,9 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
-import Button, { ButtonProps } from '../Button';
-import { RneFunctionComponent } from '../helpers';
+import Button, { ButtonProps } from '../buttons/Button';
+import { withTheme } from '../config';
 
-type DialogButtonProps = ButtonProps;
-
-/** This is used to add a button to the Dialog.
- * Receives all [Button](button.md#props) props. */
-export const DialogButton: RneFunctionComponent<DialogButtonProps> = ({
+const DialogButton: React.FunctionComponent<ButtonProps> = ({
   titleStyle,
   ...rest
 }) => {
@@ -36,4 +32,4 @@ const styles = StyleSheet.create({
   },
 });
 
-DialogButton.displayName = 'DialogButton';
+export default withTheme(DialogButton, 'DialogButton');

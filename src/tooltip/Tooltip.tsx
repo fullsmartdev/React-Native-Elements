@@ -12,9 +12,10 @@ import {
   ColorValue,
   Platform,
 } from 'react-native';
+import { withTheme } from '../config';
 import { ThemeProps } from '../config';
 import { ScreenWidth, ScreenHeight, isIOS } from '../helpers';
-import Triangle from './components/Triangle';
+import Triangle from './Triangle';
 import getTooltipCoordinate, {
   getElementVisibleWidth,
 } from './getTooltipCoordinate';
@@ -65,12 +66,11 @@ type TooltipState = {
   elementHeight: number;
 };
 
-export class Tooltip extends React.Component<
+class Tooltip extends React.Component<
   TooltipProps & Partial<ThemeProps<TooltipProps>>,
   TooltipState
 > {
   static defaultProps = defaultProps;
-  static displayName = 'Tooltip';
   _isMounted: boolean = false;
   state = {
     isVisible: false,
@@ -352,3 +352,6 @@ export class Tooltip extends React.Component<
     );
   }
 }
+
+export { Tooltip };
+export default withTheme(Tooltip, 'Tooltip');

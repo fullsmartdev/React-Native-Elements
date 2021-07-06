@@ -7,8 +7,8 @@ import {
   TextInput,
 } from 'react-native';
 import { renderNode } from '../helpers';
-import Input, { InputProps } from '../Input';
-import Icon, { IconNode } from '../Icon';
+import Input, { InputProps } from '../input/Input';
+import Icon, { IconNode } from '../icons/Icon';
 import { SearchBarBaseProps } from './SearchBar';
 import { Theme, ThemeProps } from '../config';
 
@@ -35,7 +35,7 @@ const defaultClearIcon = (theme: Theme) => ({
 
 export type SearchBarAndroidProps = InputProps &
   SearchBarBaseProps &
-  typeof SearchBarAndroid.defaultProps & {
+  typeof SearchBar.defaultProps & {
     cancelIcon?: IconNode;
   };
 
@@ -44,7 +44,7 @@ type SearchBarState = {
   isEmpty: boolean;
 };
 
-export class SearchBarAndroid extends Component<
+class SearchBar extends Component<
   SearchBarAndroidProps & Partial<ThemeProps<SearchBarAndroidProps>>,
   SearchBarState
 > {
@@ -212,3 +212,5 @@ const styles = StyleSheet.create({
     marginLeft: 8,
   },
 });
+
+export default SearchBar;

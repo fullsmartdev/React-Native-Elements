@@ -1,14 +1,12 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
 import { View, StyleSheet } from 'react-native';
-import { RneFunctionComponent } from '../helpers';
+import { withTheme } from '../config';
 
 export type DialogActionsProps = {
-  /** Add Enclosed components as an action to the dialog. */
-  children?: ReactNode;
+  children?: any;
 };
 
-/** Define Dialog Actions using this component. */
-export const DialogActions: RneFunctionComponent<DialogActionsProps> = ({
+const DialogActions: React.FunctionComponent<DialogActionsProps> = ({
   children,
 }) => {
   return (
@@ -27,4 +25,4 @@ const styles = StyleSheet.create({
   },
 });
 
-DialogActions.displayName = 'DialogActions';
+export default withTheme(DialogActions, 'DialogActions');

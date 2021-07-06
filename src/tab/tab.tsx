@@ -7,28 +7,68 @@ import {
   ViewProps,
   StyleSheet,
 } from 'react-native';
+import Button, { ButtonProps } from '../buttons/Button';
 import { RneFunctionComponent } from '../helpers';
-import { TabItemProps } from './TabItem';
+import { withTheme } from '../config';
+import Color from 'color';
 
-export type TabBaseProps = ViewProps & {
-  /** Child position index value. */
-  value?: number;
-
-  /** On Index Change Callback. */
-  onChange?: (value: number) => void;
-
-  /** Disable the indicator below. */
-  disableIndicator?: boolean;
-
-  /** Additional styling for tab indicator. */
-  indicatorStyle?: StyleProp<ViewStyle>;
-
-  /** Define the background Variant. */
+export type TabItemProps = ButtonProps & {
+  active?: boolean;
   variant?: 'primary' | 'default';
 };
 
-/** Tabs organize content across different screens, data sets, and other interactions. */
-export const TabBase: RneFunctionComponent<TabBaseProps> = ({
+const TabItem: RneFunctionComponent<TabItemProps> = ({
+  active,
+  theme,
+  titleStyle,
+  containerStyle,
+  buttonStyle,
+  variant,
+  iconPosition = 'top',
+  title,
+  ...props
+}) => {
+  return (
+    <Button
+      accessibilityRole="tab"
+      accessibilityState={{ selected: active }}
+      accessibilityValue={
+        typeof title === 'string' ? { text: title } : undefined
+      }
+      buttonStyle={[styles.buttonStyle, buttonStyle]}
+      titleStyle={[
+        styles.titleStyle,
+        {
+          color: variant === 'primary' ? 'white' : theme?.colors?.secondary,
+          paddingVertical: !props.icon ? 8 : 2,
+        },
+        titleStyle,
+      ]}
+      containerStyle={[
+        styles.containerStyle,
+        {
+          backgroundColor: active
+            ? Color(theme?.colors?.secondary).alpha(0.2).rgb().toString()
+            : 'transparent',
+        },
+        containerStyle,
+      ]}
+      iconPosition={iconPosition}
+      title={title}
+      {...props}
+    />
+  );
+};
+
+export type TabProps = ViewProps & {
+  value?: number;
+  onChange?: (value: number) => void;
+  disableIndicator?: boolean;
+  indicatorStyle?: StyleProp<ViewStyle>;
+  variant?: 'primary' | 'default';
+};
+
+const TabContainer: RneFunctionComponent<TabProps> = ({
   theme,
   children,
   value,
@@ -97,6 +137,20 @@ export const TabBase: RneFunctionComponent<TabBaseProps> = ({
   );
 };
 
+interface Tab extends RneFunctionComponent<TabProps> {
+  Item: typeof TabItem;
+}
+
+const Tab: Tab = Object.assign(TabContainer, {
+  Item: TabItem,
+});
+
+export { Tab };
+
+export default Object.assign(withTheme(TabContainer, 'Tab'), {
+  Item: withTheme(TabItem, 'TabItem'),
+});
+
 const styles = StyleSheet.create({
   buttonStyle: {
     borderRadius: 0,
@@ -122,5 +176,3 @@ const styles = StyleSheet.create({
     bottom: 0,
   },
 });
-
-TabBase.displayName = 'TabBase';

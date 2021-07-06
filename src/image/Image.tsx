@@ -10,7 +10,7 @@ import {
   StyleProp,
   ImageStyle,
 } from 'react-native';
-import { ThemeProps } from '../config';
+import { ThemeProps, withTheme } from '../config';
 
 export type ImageProps = RNImageProps & {
   Component?: typeof React.Component;
@@ -29,11 +29,10 @@ type ImageState = {
   placeholderOpacity: Animated.Value;
 };
 
-export class Image extends React.Component<
+class Image extends React.Component<
   ImageProps & Partial<ThemeProps<ImageProps>>,
   ImageState
 > {
-  static displayName = 'Image';
   static getSize = ImageNative.getSize;
   static getSizeWithHeaders = ImageNative.getSizeWithHeaders;
   static prefetch = ImageNative.prefetch;
@@ -150,3 +149,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+
+export { Image };
+export default withTheme(Image, 'Image');

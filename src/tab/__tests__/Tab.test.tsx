@@ -1,5 +1,5 @@
 import React from 'react';
-import Tab from '../index';
+import Tab from '../Tab';
 import { renderWithTheme } from '../../../.ci/testHelper';
 import theme from '../../config/theme';
 import { fireEvent } from '@testing-library/react-native';

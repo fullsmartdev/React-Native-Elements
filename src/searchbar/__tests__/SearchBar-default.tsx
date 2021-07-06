@@ -1,6 +1,6 @@
-import { SearchBarDefault } from '../SearchBar-default';
+import SearchBar from '../SearchBar-default';
 import { commonTests } from './common';
 
 describe('Default SearchBar component', () => {
-  commonTests(SearchBarDefault);
+  commonTests(SearchBar);
 });

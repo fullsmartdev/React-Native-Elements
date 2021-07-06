@@ -1,16 +1,12 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
+import { withTheme } from '../config';
 import { RneFunctionComponent } from '../helpers';
-import Image, { ImageProps } from '../Image';
+import Image, { ImageProps } from '../image/Image';
 
-type CardImageProps = ImageProps;
-
-/** Add information in the form of image to the card.
- * This, Receives all [Image](image.md#props) props. */
-export const CardImage: RneFunctionComponent<CardImageProps> = ({
-  style,
-  ...props
-}) => <Image style={StyleSheet.flatten([styles.image, style])} {...props} />;
+const CardImage: RneFunctionComponent<ImageProps> = ({ style, ...props }) => {
+  return <Image style={StyleSheet.flatten([styles.image, style])} {...props} />;
+};
 
 const styles = StyleSheet.create({
   image: {
@@ -19,4 +15,4 @@ const styles = StyleSheet.create({
   },
 });
 
-CardImage.displayName = 'CardImage';
+export default withTheme(CardImage, 'CardImage');

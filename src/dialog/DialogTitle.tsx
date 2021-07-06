@@ -1,21 +1,15 @@
 import React from 'react';
 import { Text, StyleSheet, TextStyle, StyleProp, Platform } from 'react-native';
-import { RneFunctionComponent } from '../helpers';
-import { TextProps } from '../Text';
+import { withTheme } from '../config';
+import { TextProps } from '../text/Text';
 
 export type DialogTitleProps = {
-  /** Add Dialog title. */
   title?: string;
-
-  /** Add additional styling for title component. */
   titleStyle?: StyleProp<TextStyle>;
-
-  /** Add additional props for Text component. */
   titleProps?: TextProps;
 };
 
-/** `DialogTitle` allows you to add title to the Dialog. */
-export const DialogTitle: RneFunctionComponent<DialogTitleProps> = ({
+const DialogTitle: React.FunctionComponent<DialogTitleProps> = ({
   title,
   titleStyle,
   titleProps,
@@ -39,4 +33,4 @@ const styles = StyleSheet.create({
   },
 });
 
-DialogTitle.displayName = 'DialogTitle';
+export default withTheme(DialogTitle, 'DialogTitle');

@@ -12,9 +12,12 @@ import {
   ImageURISource,
   ImageStyle,
 } from 'react-native';
+import isEqual from 'lodash.isequal';
+import { withTheme } from '../config';
 import { renderNode, RneFunctionComponent } from '../helpers';
-import Icon, { IconObject } from '../Icon';
-import Image, { ImageProps } from '../Image';
+import Icon, { IconObject } from '../icons/Icon';
+import Image, { ImageProps } from '../image/Image';
+import Accessory from './Accessory';
 
 const avatarSizes = {
   small: 34,
@@ -23,69 +26,34 @@ const avatarSizes = {
   xlarge: 150,
 };
 
-type AvatarIcon = IconObject & {
+interface AvatarIcon extends IconObject {
   iconStyle?: StyleProp<TextStyle>;
-};
+}
 
-export type AvatarBaseProps = {
-  /** Component for enclosing element (eg: TouchableHighlight, View, etc). */
+export type AvatarProps = {
   Component?: typeof React.Component;
-
-  /** Callback function when pressing component. */
   onPress?(): void;
-
-  /** Callback function when long pressing component. */
   onLongPress?(): void;
-
-  /** Styling for outer container. */
   containerStyle?: StyleProp<ViewStyle>;
-
-  /** Image source to be displayed on avatar. */
   source?: ImageSourcePropType;
-
-  /** Style for avatar image. */
   avatarStyle?: ImageStyle;
-
-  /** Makes the avatar circular. */
   rounded?: boolean;
-
-  /** Renders title in the placeholder. */
   title?: string;
-
-  /** Style for the title. */
   titleStyle?: StyleProp<TextStyle>;
-
-  /** Style for the view outside image or icon. */
   overlayContainerStyle?: StyleProp<TextStyle>;
-
-  /** Opacity when pressed. */
   activeOpacity?: number;
-
-  /** Displays an icon as the main content of the Avatar. **Cannot be used alongside title**. When used with the `source` prop it will be used as the placeholder. */
   icon?: AvatarIcon;
-
-  /** Extra styling for icon component. */
   iconStyle?: StyleProp<TextStyle>;
-
-  /** Size of the avatar. */
   size?: ('small' | 'medium' | 'large' | 'xlarge') | number;
-
-  /** Adds style to the placeholder wrapper. */
   placeholderStyle?: StyleProp<ViewStyle>;
-
-  /** Custom placeholder element (by default, it's the title). */
   renderPlaceholderContent?: React.ReactElement<{}>;
-
-  /** Optional properties to pass to the avatar e.g "resizeMode". */
   imageProps?: Partial<ImageProps>;
-
-  /** Custom ImageComponent for Avatar. */
   ImageComponent?: React.ComponentClass;
 };
 
-/** Avatars are found all over ui design from lists to profile screens.
- * They are commonly used to represent a user and can contain photos, icons, or even text. */
-export const AvatarBase: RneFunctionComponent<AvatarBaseProps> = ({
+interface Avatar extends RneFunctionComponent<AvatarProps> {}
+
+const AvatarComponent: Avatar = ({
   onPress,
   onLongPress,
   Component = onPress || onLongPress ? TouchableOpacity : View,
@@ -105,14 +73,12 @@ export const AvatarBase: RneFunctionComponent<AvatarBaseProps> = ({
   ImageComponent = RNImage,
   children,
   ...attributes
-}) => {
+}: React.PropsWithChildren<AvatarProps>) => {
   let width = avatarSizes.small;
   width = typeof size === 'number' ? size : avatarSizes[size];
-
   const height = width;
   const titleSize = width / 2;
   const iconSize = width / 2;
-
   const PlaceholderContent =
     (renderPlaceholderContent &&
       renderNode(undefined, renderPlaceholderContent)) ||
@@ -148,7 +114,6 @@ export const AvatarBase: RneFunctionComponent<AvatarBaseProps> = ({
   if (imageProps && imageProps.containerStyle) {
     delete imageProps.containerStyle;
   }
-
   return (
     <Component
       onPress={onPress}
@@ -205,4 +170,9 @@ const styles = StyleSheet.create({
   },
 });
 
-AvatarBase.displayName = 'AvatarBase';
+const Avatar = React.memo(AvatarComponent, isEqual);
+export { Avatar };
+const ThemedAvatar = Object.assign(withTheme(Avatar, 'Avatar'), {
+  Accessory: Accessory,
+});
+export default ThemedAvatar;
