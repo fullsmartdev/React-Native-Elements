@@ -1,18 +1,16 @@
 ---
 id: image
+
 title: Image
+
 slug: /image
 ---
 
-import Props from './props/image.md'
 import Usage from './usage/Image/Image.md'
 
 Drop-in replacement for the standard React Native Image component that displays
-images with a placeholder and smooth image load transitioning.
 
-<div class="component-preview component-preview--single margin-none">
-  <img src="https://user-images.githubusercontent.com/5962998/48658581-f4170a00-ea1a-11e8-866c-df4f42f21947.gif" alt="Image Component" />
-</div>
+images with a placeholder and smooth image load transitioning.
 
 ## Usage
 
@@ -20,6 +18,121 @@ images with a placeholder and smooth image load transitioning.
 
 ---
 
-<Props />
+## Props
+
+### Image
+
+- [Component](#component)
+- [ImageComponent](#imagecomponent)
+- [PlaceholderContent](#placeholdercontent)
+- [childrenContainerStyle](#childrencontainerstyle)
+- [containerStyle](#containerstyle)
+- [onLongPress](#onlongpress)
+- [onPress](#onpress)
+- [placeholderStyle](#placeholderstyle)
+- [transition](#transition)
+- [transitionDuration](#transitionduration)
+
+## Reference
+
+### Image
+
+#### Component
+
+Define the component passed to image.
+
+| Type            | Default                  |
+| --------------- | ------------------------ |
+| React Component | TouchableOpacity or View |
+
+---
+
+#### ImageComponent
+
+Specify a different component as the Image component.
+
+| Type | Default |
+| ---- | ------- |
+| any  | None    |
+
+---
+
+#### PlaceholderContent
+
+Content to load when Image is rendering.
+
+| Type | Default |
+| ---- | ------- |
+| any  | None    |
+
+---
+
+#### childrenContainerStyle
+
+Additional styling for the children container.
+
+| Type               | Default |
+| ------------------ | ------- |
+| View style(Object) | null    |
+
+---
+
+#### containerStyle
+
+Additional styling for the container.
+
+| Type               | Default |
+| ------------------ | ------- |
+| View style(Object) | None    |
+
+---
+
+#### onLongPress
+
+Callback function when long pressing component.
+
+| Type     | Default |
+| -------- | ------- |
+| Function | None    |
+
+---
+
+#### onPress
+
+Callback function when pressing component.
+
+| Type     | Default |
+| -------- | ------- |
+| Function | None    |
+
+---
+
+#### placeholderStyle
+
+Additional styling for the placeholder container.
+
+| Type               | Default |
+| ------------------ | ------- |
+| View style(Object) | None    |
+
+---
+
+#### transition
+
+Perform fade transition on image load.
+
+| Type    | Default |
+| ------- | ------- |
+| boolean | None    |
+
+---
+
+#### transitionDuration
+
+Perform fade transition on image load.
+
+| Type   | Default |
+| ------ | ------- |
+| number | 360     |
 
 ---
