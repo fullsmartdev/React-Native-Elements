@@ -1,10 +1,13 @@
 ---
 id: circularslider
-title: Circular Slider
+title: CircularSlider
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import {} from "react-native-elements";
+
+A slider with circular track and thumb
 
 ## Installation
 
@@ -34,240 +37,44 @@ yarn add @react-native-elements/circular-slider
 
 ## Usage
 
-```tsx
-import { CircularSlider } from '@react-native-elements/circular-slider';
+```jsx
+import { CircularSlider } from "@react-native-elements/circular-slider";
 ```
 
-```tsx
-<CircularSlider value={value} onChange={setValue} />;
+```jsx
+<CircularSlider value={value} onChange={setValue} />
 
-<CircularSlider value={value} noThumb />;
+<CircularSlider value={value} noThumb />
 
-// 90 deg Arc
-<CircularSlider maxAngle={90} />;
+<CircularSlider maxAngle={90} />
 ```
 
-> Either use percentage (0 to 100) in `value` or specify `maximumValue` & `minimumValue`
-
----
-
-## Preview
-
-Sliders allow users to make selections from a range of values.
-
-<div className="component-preview component-preview--grid component-preview--grid-10">
-  <figure>
-    <img src="/img/circularSlider1.gif" alt="Circular Slider" />
-    <figcaption>With Thumb (as a slider)</figcaption>
-  </figure>
-  <figure>
-    <img src="/img/circularSlider2.gif" alt="Circular Slider" />
-    <figcaption>Without Thumb (as a Progress Indicator)</figcaption>
-  </figure>
-  <figure>
-    <img src="/img/arcSlider.png" alt="Arc Slider" />
-  </figure>
-</div>
+Either use percentage (0 to 100) in value or specify maximumValue & minimumValue
 
 ## Props
 
-- [`value`](#value)
-- [`maximumValue`](#maximumvalue)
-- [`minimumValue`](#minimumvalue)
-- [`minAngle`](#minangle)
-- [`maxAngle`](#maxangle)
-- [`trackRadius`](#trackradius)
-- [`thumbRadius`](#thumbradius)
-- [`trackWidth`](#trackwidth)
-- [`trackColor`](#trackcolor)
-- [`thumbColor`](#thumbcolor)
-- [`trackTintColor`](#tracktintcolor)
-- [`thumbTextColor`](#thumbtextcolor)
-- [`thumbTextSize`](#thumbtextsize)
-- [`noThumb`](#nothumb)
-- [`showText`](#showtext)
-- [`showThumbText`](#showthumbtext)
-- [`textColor`](#textcolor)
-- [`textSize`](#textsize)
-
----
-
-### `value`
-
-Value of Slider
-
-|  Type  | Default |
-| :----: | :-----: |
-| number |   100   |
-
----
-
-### `maximumValue`
-
-Maximum value of Slider
-
-|  Type  | Default |
-| :----: | :-----: |
-| number |   100   |
-
----
-
-### `minimumValue`
-
-Minimum value of Slider
-
-|  Type  | Default |
-| :----: | :-----: |
-| number |    0    |
-
----
-
-### `minAngle`
-
-Minimum angle of arc (in degrees)
-
-|  Type  | Default |
-| :----: | :-----: |
-| number |    0    |
-
----
-
-### `maxAngle`
-
-Maximum angle of arc (in degress)
-
-|  Type  | Default |
-| :----: | :-----: |
-| number |  359.9  |
-
----
-
-### `trackRadius`
-
-Radius of Circular Slider
-
-|  Type  | Default |
-| :----: | :-----: |
-| number |   100   |
-
----
-
-### `thumbRadius`
-
-Radius of Circular Slider's thumb
-
-|  Type  | Default |
-| :----: | :-----: |
-| number |   12    |
-
----
-
-### `trackWidth`
-
-Width of Circular Slider
-
-|  Type  | Default |
-| :----: | :-----: |
-| number |    5    |
-
----
-
-### `trackColor`
-
-Color of track
-
-|     Type     |       Default       |
-| :----------: | :-----------------: |
-| color string | theme primary color |
-
----
-
-### `thumbColor`
-
-color of thumb
-
-|     Type     |      Default       |
-| :----------: | :----------------: |
-| color string | trackColor's value |
-
----
-
-### `trackTintColor`
-
-Tint Color of track
-
-|     Type     |       Default       |
-| :----------: | :-----------------: |
-| color string | theme.primary.gray5 |
-
----
-
-### `thumbTextColor`
-
-Marker Text of thumb color
-
-|     Type     | Default |
-| :----------: | :-----: |
-| color string |  white  |
-
----
-
-### `thumbTextSize`
-
-Marker Text of thumb Size
-
-|  Type  | Default |
-| :----: | :-----: |
-| number |   10    |
-
----
-
-### `noThumb`
-
-Show no thumb (for progress)
-
-|  Type   | Default |
-| :-----: | :-----: |
-| boolean |  false  |
-
----
-
-### `showText`
-
-Show slider value at middle of slider
-
-|  Type   | Default |
-| :-----: | :-----: |
-| boolean |  false  |
-
----
-
-### `showThumbText`
-
-Show value at thumb
-
-|  Type   | Default |
-| :-----: | :-----: |
-| boolean |  false  |
-
----
-
-### `textColor`
-
-Slider value at middle of slider color
-
-|     Type     |      Default       |
-| :----------: | :----------------: |
-| color string | `trackColor` value |
-
----
-
-### `textSize`
-
-Slider value at middle of slider font size
-
-|  Type  | Default |
-| :----: | :-----: |
-| number |   100   |
-
----
+<div class='table-responsive'>
+
+| Name             | Type                    | Default    | Description                            |
+| ---------------- | ----------------------- | ---------- | -------------------------------------- |
+| `maxAngle`       | number                  | `359.9`    | Max angle in radians                   |
+| `maximumValue`   | number                  | `100`      | Maximum value of the slider            |
+| `minAngle`       | number                  | `0`        | Min angle in radians                   |
+| `minimumValue`   | number                  | `0`        | Minimum value of the slider            |
+| `noThumb`        | boolean                 | `false`    | Show thumb                             |
+| `onChange`       | (value: number) => void | `(x) => x` | Handler for the value change           |
+| `showText`       | boolean                 | `false`    | show text on center of slider          |
+| `showThumbText`  | boolean                 | `false`    | show text on thumb                     |
+| `textColor`      | string                  |            | color for text on center of slider     |
+| `textSize`       | number                  | `80`       | text size for text on center of slider |
+| `thumbColor`     | string                  |            | color of the slider thumb              |
+| `thumbRadius`    | number                  | `12`       | Radius of the slider thumb             |
+| `thumbTextColor` | string                  | `white`    | color of thumb text                    |
+| `thumbTextSize`  | number                  | `10`       | text size of thumb text                |
+| `trackColor`     | string                  |            | color of the slider track              |
+| `trackRadius`    | number                  | `100`      | Radius of the slider track             |
+| `trackTintColor` | string                  |            | color of the slider background         |
+| `trackWidth`     | number                  | `5`        | Width of the slider track              |
+| `value`          | number                  | `0`        | value of the slider                    |
+
+</div>
